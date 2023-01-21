@@ -1,0 +1,24 @@
+﻿@viewModel RockFests.ViewModels.Authentication.RegisterViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    
+    <h2>{{resource: Texts.Registration}}</h2>
+    <cc:FormGroupText Label="{value: Texts.Label_FirstName}" Value="{value: User.FirstName}" />
+    <cc:FormGroupText Label="{value: Texts.Label_LastName}" Value="{value: User.LastName}" />
+    <cc:FormGroupText Label="{value: Texts.Label_Email}" Value="{value: User.Email}" />
+    <cc:FormGroupText Label="{value: Texts.Label_Phone}" Value="{value: User.Phone}" Required="false" Validate="false" />
+    <cc:FormGroupText Label="{value: Texts.Label_UserName}" Value="{value: User.Login}" />
+    <cc:FormGroupPassword Label="{value: Texts.Label_Password}" Value="{value: Password.Password}" InputType="Password" />
+    <cc:FormGroupPassword Label="{value: Texts.Label_ConfirmPassword}" Value="{value: Password.ConfirmPassword}" InputType="Password" />
+
+    <dot:Validator Value="{value: LoginExists}" InvalidCssClass="has-error" ShowErrorMessageText="true" class="d-block mb-3" />
+
+    <div class="btn-container">
+        <dot:Button Text="{value: Texts.Register}" Click="{command: Register()}" Validation.Enabled="true" class="btn btn-dark" />
+    </div>
+    
+</dot:Content>
+

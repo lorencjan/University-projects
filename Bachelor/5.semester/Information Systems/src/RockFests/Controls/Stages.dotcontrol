@@ -1,0 +1,74 @@
+﻿@viewModel RockFests.ViewModels.Festivals.StagesViewModel, RockFests
+@import RockFests.BL.Resources
+
+<dot:Repeater DataSource="{value: Stages}" RenderWrapperTag="false">
+    <ItemTemplate>
+        <div class="mb-3 w-100 shadow-sm">
+            <div class="d-flex justify-content-between bg-dark p-2">
+                <h5 style="margin-bottom: 0px;" class="pt-1">
+                    <dot:Literal Text="{value: Stage.Name}" IncludeInPage="{value: EditStage == null}" style="color: white;" />
+                    <dot:TextBox Text="{value: EditStage.Name}" IncludeInPage="{value: EditStage != null}" />
+                    <dot:Validator Value="{value: EditStage.Name}" ShowErrorMessageText="true" InvalidCssClass="has-error" IncludeInPage="{value: EditStage != null}" />
+                </h5>
+                <dot:RoleView Roles="Admin,Organizer" RenderWrapperTag="true" WrapperTagName="div">
+                    <dot:Button Click="{staticCommand: _parent.Stages = _parent.CopyToEdit(Stage)}" class="btn btn-light" ButtonTagName="button" IncludeInPage="{value: EditStage == null}">
+                        <span class="fa fa-pencil-alt"></span>
+                    </dot:Button>
+                    <dot:Button Click="{staticCommand: EditStage = null}" class="btn btn-light" ButtonTagName="button" IncludeInPage="{value: EditStage != null}">
+                        <span class="fa fa-door-open"></span>
+                    </dot:Button>
+                </dot:RoleView>
+            </div>
+
+            <dot:Repeater DataSource="{value: Stage.Performances}" IncludeInPage="{value: EditStage == null}" RenderWrapperTag="true" WrapperTagName="div" class="p-2">
+                <ItemTemplate>
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <dot:Literal Text="{value: Time.Start.ToString("MM/dd/yyyy hh:mm tt")}" />
+                            <dot:Literal Text="-" class="d-inline-block ml-3 mr-3" />
+                            <dot:Literal Text="{value: Time.End.ToString("MM/dd/yyyy hh:mm tt")}" />
+                        </div>
+                        <dot:Literal Text="{value: Interpret.Name}" class="d-block font-weight-bolder" />
+                    </div>
+                </ItemTemplate>
+            </dot:Repeater>
+
+            <div IncludeInPage="{value: EditStage != null}" class="p-2">
+                <dot:Repeater DataSource="{value: EditStage.Performances}">
+                    <ItemTemplate>
+                        <div class="d-flex justify-content-between mt-2">
+                            <div>
+                                <dot:TextBox Text="{value: Time.Start}" Type="DateTimeLocal" />
+                                <dot:Literal Text="-" class="d-inline-block ml-2 mr-2" />
+                                <dot:TextBox Text="{value: Time.End}" Type="DateTimeLocal" />       
+                            </div>
+                            <div>
+                                <dot:Literal Text="{value: Texts.Label_Band}"/>
+                                <dot:CheckBox Checked="{value: IsBand}" />
+                                <dot:ComboBox SelectedValue="{value: Interpret.Id}" DataSource="{value: _root.Bands}" ItemValueBinding="{value: Id}" ItemTextBinding="{value: Name}" IncludeInPage="{value: IsBand}" />
+                                <dot:ComboBox SelectedValue="{value: Interpret.Id}" DataSource="{value: _root.Musicians}" ItemValueBinding="{value: Id}" ItemTextBinding="{value: Name}" IncludeInPage="{value: !IsBand}" />
+                            </div>
+                            <dot:Button Click="{staticCommand: _root.Stages = _root.DeletePerformance(_parent.Stage.Id, _this)}" ButtonTagName="button" class="btn btn-outline-danger">
+                                <span class="fa fa-trash-alt"></span>
+                            </dot:Button>
+                        </div>
+                    </ItemTemplate>
+                </dot:Repeater>
+
+                <dot:Literal Text="{value: Error}" IncludeInPage="{value: Error != null}" class="d-block mt-1 mb1 has-error" />
+
+                <div class="d-flex justify-content-between mt-2">
+                    <div>
+                        <dot:Button Text="{value: Texts.Btn_Save}" Click="{command: _parent.SaveStage(EditStage)}" class="btn btn-dark" />
+                        <dot:Button Click="{staticCommand: _parent.Stages = _parent.CreatePerformance(EditStage)}" class="btn btn-light" ButtonTagName="button">
+                            <span class="fa fa-plus mr-2"></span>{{value: Texts.Btn_AddPerformance}}
+                        </dot:Button>
+                    </div>
+                    <dot:Button Click="{command: _parent.DeleteStage(EditStage.Id)}" class="btn btn-danger" ButtonTagName="button">
+                        <span class="fa fa-trash-alt mr-2"></span>{{value: Texts.Btn_Delete}}
+                    </dot:Button>
+                </div>
+            </div>
+        </div>
+    </ItemTemplate>
+</dot:Repeater>

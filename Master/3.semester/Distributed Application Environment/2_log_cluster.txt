@@ -1,0 +1,487 @@
+22/12/03 22:12:54 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+22/12/03 22:12:55 INFO SparkContext: Running Spark version 3.2.2
+22/12/03 22:12:55 INFO ResourceUtils: ==============================================================
+22/12/03 22:12:55 INFO ResourceUtils: No custom resources configured for spark.driver.
+22/12/03 22:12:55 INFO ResourceUtils: ==============================================================
+22/12/03 22:12:55 INFO SparkContext: Submitted application: EurofxrefSdmx$
+22/12/03 22:12:55 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+22/12/03 22:12:55 INFO ResourceProfile: Limiting resource is cpu
+22/12/03 22:12:55 INFO ResourceProfileManager: Added ResourceProfile id: 0
+22/12/03 22:12:55 INFO SecurityManager: Changing view acls to: demo
+22/12/03 22:12:55 INFO SecurityManager: Changing modify acls to: demo
+22/12/03 22:12:55 INFO SecurityManager: Changing view acls groups to:
+22/12/03 22:12:55 INFO SecurityManager: Changing modify acls groups to:
+22/12/03 22:12:55 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(demo); groups with view permissions: Set(); users  with modify permissions: Set(demo); groups with modify permissions: Set()
+22/12/03 22:12:56 INFO Utils: Successfully started service 'sparkDriver' on port 42053.
+22/12/03 22:12:56 INFO SparkEnv: Registering MapOutputTracker
+22/12/03 22:12:56 INFO SparkEnv: Registering BlockManagerMaster
+22/12/03 22:12:56 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+22/12/03 22:12:56 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+22/12/03 22:12:56 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+22/12/03 22:12:56 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-8c9cda84-8b34-4fe6-8efb-0a1273ef0b1e
+22/12/03 22:12:56 INFO MemoryStore: MemoryStore started with capacity 366.3 MiB
+22/12/03 22:12:56 INFO SparkEnv: Registering OutputCommitCoordinator
+22/12/03 22:12:56 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+22/12/03 22:12:57 INFO SparkUI: Bound SparkUI to 127.0.0.2, and started at http://nixos:4040
+22/12/03 22:12:57 INFO SparkContext: Added JAR file:/media/sf_PDI_proj/eurofxref-sdmx-spark-1.0-SNAPSHOT.jar at spark://nixos:42053/jars/eurofxref-sdmx-spark-1.0-SNAPSHOT.jar with timestamp 1670105575455
+22/12/03 22:12:57 INFO StandaloneAppClient$ClientEndpoint: Connecting to master spark://127.0.0.2:7077...
+22/12/03 22:12:57 INFO TransportClientFactory: Successfully created connection to /127.0.0.2:7077 after 79 ms (0 ms spent in bootstraps)
+22/12/03 22:12:58 INFO StandaloneSchedulerBackend: Connected to Spark cluster with app ID app-20221203221258-0000
+22/12/03 22:12:58 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 33247.
+22/12/03 22:12:58 INFO NettyBlockTransferService: Server created on nixos:33247
+22/12/03 22:12:58 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+22/12/03 22:12:58 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, nixos, 33247, None)
+22/12/03 22:12:58 INFO BlockManagerMasterEndpoint: Registering block manager nixos:33247 with 366.3 MiB RAM, BlockManagerId(driver, nixos, 33247, None)
+22/12/03 22:12:58 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, nixos, 33247, None)
+22/12/03 22:12:58 INFO StandaloneAppClient$ClientEndpoint: Executor added: app-20221203221258-0000/0 on worker-20221203221148-10.0.2.15-41095 (10.0.2.15:41095) with 1 core(s)
+22/12/03 22:12:58 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, nixos, 33247, None)
+22/12/03 22:12:58 INFO StandaloneSchedulerBackend: Granted executor ID app-20221203221258-0000/0 on hostPort 10.0.2.15:41095 with 1 core(s), 1024.0 MiB RAM
+22/12/03 22:12:58 INFO StandaloneSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+22/12/03 22:12:58 INFO StandaloneAppClient$ClientEndpoint: Executor updated: app-20221203221258-0000/0 is now RUNNING
+22/12/03 22:12:59 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+22/12/03 22:12:59 INFO SharedState: Warehouse path is 'file:/media/sf_PDI_proj/spark-warehouse'.
+22/12/03 22:13:04 INFO InMemoryFileIndex: It took 181 ms to list leaf files for 1 paths.
+22/12/03 22:13:04 INFO InMemoryFileIndex: It took 24 ms to list leaf files for 1 paths.
+22/12/03 22:13:04 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Registered executor NettyRpcEndpointRef(spark-client://Executor) (127.0.0.1:48108) with ID 0,  ResourceProfileId 0
+22/12/03 22:13:05 INFO BlockManagerMasterEndpoint: Registering block manager 10.0.2.15:41331 with 366.3 MiB RAM, BlockManagerId(0, 10.0.2.15, 41331, None)
+22/12/03 22:13:09 INFO FileSourceStrategy: Pushed Filters:
+22/12/03 22:13:09 INFO FileSourceStrategy: Post-Scan Filters: (length(trim(value#0, None)) > 0)
+22/12/03 22:13:09 INFO FileSourceStrategy: Output Data Schema: struct<value: string>
+22/12/03 22:13:10 INFO CodeGenerator: Code generated in 442.525194 ms
+22/12/03 22:13:10 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 417.9 KiB, free 365.9 MiB)
+22/12/03 22:13:11 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 44.8 KiB, free 365.8 MiB)
+22/12/03 22:13:11 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on nixos:33247 (size: 44.8 KiB, free: 366.3 MiB)
+22/12/03 22:13:11 INFO SparkContext: Created broadcast 0 from load at EurofxrefSdmx.scala:31
+22/12/03 22:13:11 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4235242 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 22:13:11 INFO SparkContext: Starting job: load at EurofxrefSdmx.scala:31
+22/12/03 22:13:11 INFO DAGScheduler: Got job 0 (load at EurofxrefSdmx.scala:31) with 1 output partitions
+22/12/03 22:13:11 INFO DAGScheduler: Final stage: ResultStage 0 (load at EurofxrefSdmx.scala:31)
+22/12/03 22:13:11 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 22:13:11 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:11 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[3] at load at EurofxrefSdmx.scala:31), which has no missing parents
+22/12/03 22:13:11 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 11.6 KiB, free 365.8 MiB)
+22/12/03 22:13:11 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 5.8 KiB, free 365.8 MiB)
+22/12/03 22:13:11 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on nixos:33247 (size: 5.8 KiB, free: 366.3 MiB)
+22/12/03 22:13:11 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:11 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[3] at load at EurofxrefSdmx.scala:31) (first 15 tasks are for partitions Vector(0))
+22/12/03 22:13:11 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+22/12/03 22:13:11 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.0.2.15, executor 0, partition 0, ANY, 4879 bytes) taskResourceAssignments Map()
+22/12/03 22:13:12 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.0.2.15:41331 (size: 5.8 KiB, free: 366.3 MiB)
+22/12/03 22:13:14 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.0.2.15:41331 (size: 44.8 KiB, free: 366.3 MiB)
+22/12/03 22:13:16 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 5153 ms on 10.0.2.15 (executor 0) (1/1)
+22/12/03 22:13:16 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool
+22/12/03 22:13:16 INFO DAGScheduler: ResultStage 0 (load at EurofxrefSdmx.scala:31) finished in 5.405 s
+22/12/03 22:13:16 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 22:13:16 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+22/12/03 22:13:16 INFO DAGScheduler: Job 0 finished: load at EurofxrefSdmx.scala:31, took 5.528791 s
+22/12/03 22:13:16 INFO CodeGenerator: Code generated in 12.037189 ms
+22/12/03 22:13:16 INFO FileSourceStrategy: Pushed Filters:
+22/12/03 22:13:16 INFO FileSourceStrategy: Post-Scan Filters:
+22/12/03 22:13:16 INFO FileSourceStrategy: Output Data Schema: struct<value: string>
+22/12/03 22:13:16 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 417.9 KiB, free 365.4 MiB)
+22/12/03 22:13:16 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 44.8 KiB, free 365.4 MiB)
+22/12/03 22:13:16 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on nixos:33247 (size: 44.8 KiB, free: 366.2 MiB)
+22/12/03 22:13:16 INFO SparkContext: Created broadcast 2 from load at EurofxrefSdmx.scala:31
+22/12/03 22:13:16 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4235242 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 22:13:17 INFO SparkContext: Starting job: load at EurofxrefSdmx.scala:31
+22/12/03 22:13:17 INFO DAGScheduler: Got job 1 (load at EurofxrefSdmx.scala:31) with 2 output partitions
+22/12/03 22:13:17 INFO DAGScheduler: Final stage: ResultStage 1 (load at EurofxrefSdmx.scala:31)
+22/12/03 22:13:17 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 22:13:17 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:17 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[9] at load at EurofxrefSdmx.scala:31), which has no missing parents
+22/12/03 22:13:17 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 16.6 KiB, free 365.4 MiB)
+22/12/03 22:13:17 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 8.5 KiB, free 365.4 MiB)
+22/12/03 22:13:17 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on nixos:33247 (size: 8.5 KiB, free: 366.2 MiB)
+22/12/03 22:13:17 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:17 INFO DAGScheduler: Submitting 2 missing tasks from ResultStage 1 (MapPartitionsRDD[9] at load at EurofxrefSdmx.scala:31) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:17 INFO TaskSchedulerImpl: Adding task set 1.0 with 2 tasks resource profile 0
+22/12/03 22:13:17 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.0.2.15, executor 0, partition 0, ANY, 4879 bytes) taskResourceAssignments Map()
+22/12/03 22:13:17 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.0.2.15:41331 (size: 8.5 KiB, free: 366.2 MiB)
+22/12/03 22:13:19 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.0.2.15:41331 (size: 44.8 KiB, free: 366.2 MiB)
+22/12/03 22:13:20 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 2) (10.0.2.15, executor 0, partition 1, ANY, 4879 bytes) taskResourceAssignments Map()
+22/12/03 22:13:20 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 3318 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:20 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 2) in 142 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:20 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool
+22/12/03 22:13:20 INFO DAGScheduler: ResultStage 1 (load at EurofxrefSdmx.scala:31) finished in 3.562 s
+22/12/03 22:13:20 INFO DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 22:13:20 INFO TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+22/12/03 22:13:20 INFO DAGScheduler: Job 1 finished: load at EurofxrefSdmx.scala:31, took 3.597362 s
+22/12/03 22:13:21 INFO FileSourceStrategy: Pushed Filters: IsNotNull(CURRENCY)
+22/12/03 22:13:21 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(CURRENCY#16)
+22/12/03 22:13:21 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 22:13:21 INFO FileSourceStrategy: Pushed Filters:
+22/12/03 22:13:21 INFO FileSourceStrategy: Post-Scan Filters:
+22/12/03 22:13:21 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 22:13:21 INFO FileSourceStrategy: Pushed Filters:
+22/12/03 22:13:21 INFO FileSourceStrategy: Post-Scan Filters:
+22/12/03 22:13:21 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, OBS_VALUE: double>
+22/12/03 22:13:21 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+22/12/03 22:13:21 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22/12/03 22:13:21 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22/12/03 22:13:22 INFO CodeGenerator: Code generated in 33.870174 ms
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 417.8 KiB, free 364.9 MiB)
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 44.8 KiB, free 364.9 MiB)
+22/12/03 22:13:22 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on nixos:33247 (size: 44.8 KiB, free: 366.2 MiB)
+22/12/03 22:13:22 INFO SparkContext: Created broadcast 4 from save at EurofxrefSdmx.scala:76
+22/12/03 22:13:22 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4235242 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 22:13:22 INFO DAGScheduler: Registering RDD 13 (save at EurofxrefSdmx.scala:76) as input to shuffle 0
+22/12/03 22:13:22 INFO DAGScheduler: Got map stage job 2 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 22:13:22 INFO DAGScheduler: Final stage: ShuffleMapStage 2 (save at EurofxrefSdmx.scala:76)
+22/12/03 22:13:22 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 22:13:22 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:22 INFO DAGScheduler: Submitting ShuffleMapStage 2 (MapPartitionsRDD[13] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 22:13:22 INFO CodeGenerator: Code generated in 52.412284 ms
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 417.8 KiB, free 364.5 MiB)
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 16.2 KiB, free 364.5 MiB)
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 8.1 KiB, free 364.5 MiB)
+22/12/03 22:13:22 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on nixos:33247 (size: 8.1 KiB, free: 366.1 MiB)
+22/12/03 22:13:22 INFO SparkContext: Created broadcast 6 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 44.8 KiB, free 364.4 MiB)
+22/12/03 22:13:22 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 2 (MapPartitionsRDD[13] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:22 INFO TaskSchedulerImpl: Adding task set 2.0 with 2 tasks resource profile 0
+22/12/03 22:13:22 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on nixos:33247 (size: 44.8 KiB, free: 366.1 MiB)
+22/12/03 22:13:22 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 3) (10.0.2.15, executor 0, partition 0, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:22 INFO SparkContext: Created broadcast 5 from save at EurofxrefSdmx.scala:76
+22/12/03 22:13:22 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4235242 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 22:13:22 INFO DAGScheduler: Registering RDD 17 (save at EurofxrefSdmx.scala:76) as input to shuffle 1
+22/12/03 22:13:22 INFO DAGScheduler: Got map stage job 3 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 22:13:22 INFO DAGScheduler: Final stage: ShuffleMapStage 3 (save at EurofxrefSdmx.scala:76)
+22/12/03 22:13:22 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 22:13:22 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:22 INFO DAGScheduler: Submitting ShuffleMapStage 3 (MapPartitionsRDD[17] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 22:13:22 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on 10.0.2.15:41331 (size: 8.1 KiB, free: 366.2 MiB)
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 15.8 KiB, free 364.4 MiB)
+22/12/03 22:13:22 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 8.0 KiB, free 364.4 MiB)
+22/12/03 22:13:22 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on nixos:33247 (size: 8.0 KiB, free: 366.1 MiB)
+22/12/03 22:13:22 INFO SparkContext: Created broadcast 7 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:22 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 3 (MapPartitionsRDD[17] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:22 INFO TaskSchedulerImpl: Adding task set 3.0 with 2 tasks resource profile 0
+22/12/03 22:13:23 INFO CodeGenerator: Code generated in 210.251246 ms
+22/12/03 22:13:23 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 417.8 KiB, free 364.0 MiB)
+22/12/03 22:13:23 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 44.8 KiB, free 364.0 MiB)
+22/12/03 22:13:23 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on nixos:33247 (size: 44.8 KiB, free: 366.1 MiB)
+22/12/03 22:13:23 INFO SparkContext: Created broadcast 8 from save at EurofxrefSdmx.scala:76
+22/12/03 22:13:23 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4235242 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 22:13:23 INFO DAGScheduler: Registering RDD 21 (save at EurofxrefSdmx.scala:76) as input to shuffle 2
+22/12/03 22:13:23 INFO DAGScheduler: Got map stage job 4 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 22:13:23 INFO DAGScheduler: Final stage: ShuffleMapStage 4 (save at EurofxrefSdmx.scala:76)
+22/12/03 22:13:23 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 22:13:23 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:23 INFO DAGScheduler: Submitting ShuffleMapStage 4 (MapPartitionsRDD[21] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 22:13:23 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 38.6 KiB, free 363.9 MiB)
+22/12/03 22:13:23 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 18.3 KiB, free 363.9 MiB)
+22/12/03 22:13:23 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on nixos:33247 (size: 18.3 KiB, free: 366.0 MiB)
+22/12/03 22:13:23 INFO SparkContext: Created broadcast 9 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:23 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 4 (MapPartitionsRDD[21] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:23 INFO TaskSchedulerImpl: Adding task set 4.0 with 2 tasks resource profile 0
+22/12/03 22:13:23 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.0.2.15:41331 (size: 44.8 KiB, free: 366.1 MiB)
+22/12/03 22:13:24 INFO TaskSetManager: Starting task 1.0 in stage 2.0 (TID 4) (10.0.2.15, executor 0, partition 1, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:24 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 3) in 1678 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:24 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 5) (10.0.2.15, executor 0, partition 0, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:24 INFO TaskSetManager: Finished task 1.0 in stage 2.0 (TID 4) in 110 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:24 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool
+22/12/03 22:13:24 INFO DAGScheduler: ShuffleMapStage 2 (save at EurofxrefSdmx.scala:76) finished in 1.956 s
+22/12/03 22:13:24 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 22:13:24 INFO DAGScheduler: running: Set(ShuffleMapStage 3, ShuffleMapStage 4)
+22/12/03 22:13:24 INFO DAGScheduler: waiting: Set()
+22/12/03 22:13:24 INFO DAGScheduler: failed: Set()
+22/12/03 22:13:24 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on 10.0.2.15:41331 (size: 8.0 KiB, free: 366.1 MiB)
+22/12/03 22:13:24 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.0.2.15:41331 (size: 44.8 KiB, free: 366.1 MiB)
+22/12/03 22:13:24 INFO BlockManagerInfo: Removed broadcast_3_piece0 on 10.0.2.15:41331 in memory (size: 8.5 KiB, free: 366.1 MiB)
+22/12/03 22:13:24 INFO BlockManagerInfo: Removed broadcast_3_piece0 on nixos:33247 in memory (size: 8.5 KiB, free: 366.0 MiB)
+22/12/03 22:13:24 INFO BlockManagerInfo: Removed broadcast_1_piece0 on nixos:33247 in memory (size: 5.8 KiB, free: 366.0 MiB)
+22/12/03 22:13:24 INFO BlockManagerInfo: Removed broadcast_1_piece0 on 10.0.2.15:41331 in memory (size: 5.8 KiB, free: 366.1 MiB)
+22/12/03 22:13:24 INFO BlockManagerInfo: Removed broadcast_6_piece0 on nixos:33247 in memory (size: 8.1 KiB, free: 366.1 MiB)
+22/12/03 22:13:24 INFO BlockManagerInfo: Removed broadcast_6_piece0 on 10.0.2.15:41331 in memory (size: 8.1 KiB, free: 366.1 MiB)
+22/12/03 22:13:25 INFO TaskSetManager: Starting task 1.0 in stage 3.0 (TID 6) (10.0.2.15, executor 0, partition 1, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:25 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 5) in 1089 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:25 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 7) (10.0.2.15, executor 0, partition 0, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:25 INFO TaskSetManager: Finished task 1.0 in stage 3.0 (TID 6) in 128 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:25 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool
+22/12/03 22:13:25 INFO DAGScheduler: ShuffleMapStage 3 (save at EurofxrefSdmx.scala:76) finished in 2.888 s
+22/12/03 22:13:25 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 22:13:25 INFO DAGScheduler: running: Set(ShuffleMapStage 4)
+22/12/03 22:13:25 INFO DAGScheduler: waiting: Set()
+22/12/03 22:13:25 INFO DAGScheduler: failed: Set()
+22/12/03 22:13:25 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on 10.0.2.15:41331 (size: 18.3 KiB, free: 366.1 MiB)
+22/12/03 22:13:25 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on 10.0.2.15:41331 (size: 44.8 KiB, free: 366.1 MiB)
+22/12/03 22:13:26 INFO TaskSetManager: Starting task 1.0 in stage 4.0 (TID 8) (10.0.2.15, executor 0, partition 1, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:26 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 7) in 1066 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:26 INFO TaskSetManager: Finished task 1.0 in stage 4.0 (TID 8) in 123 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:26 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool
+22/12/03 22:13:26 INFO DAGScheduler: ShuffleMapStage 4 (save at EurofxrefSdmx.scala:76) finished in 3.490 s
+22/12/03 22:13:26 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 22:13:26 INFO DAGScheduler: running: Set()
+22/12/03 22:13:26 INFO DAGScheduler: waiting: Set()
+22/12/03 22:13:26 INFO DAGScheduler: failed: Set()
+22/12/03 22:13:26 INFO ShufflePartitionsUtil: For shuffle(0, 1, 2), advisory target size: 67108864, actual target size 2433552, minimum partition size: 1048576
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 118.77325 ms
+22/12/03 22:13:27 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 72.898587 ms
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 49.638697 ms
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 34.972384 ms
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 34.611363 ms
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 17.609506 ms
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 50.452142 ms
+22/12/03 22:13:27 INFO CodeGenerator: Code generated in 34.239414 ms
+22/12/03 22:13:27 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:76
+22/12/03 22:13:27 INFO DAGScheduler: Got job 5 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 22:13:27 INFO DAGScheduler: Final stage: ResultStage 8 (save at EurofxrefSdmx.scala:76)
+22/12/03 22:13:27 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 5, ShuffleMapStage 6, ShuffleMapStage 7)
+22/12/03 22:13:27 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:27 INFO DAGScheduler: Submitting ResultStage 8 (MapPartitionsRDD[38] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 22:13:28 INFO MemoryStore: Block broadcast_10 stored as values in memory (estimated size 83.1 KiB, free 363.9 MiB)
+22/12/03 22:13:28 INFO MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 33.0 KiB, free 363.8 MiB)
+22/12/03 22:13:28 INFO BlockManagerInfo: Added broadcast_10_piece0 in memory on nixos:33247 (size: 33.0 KiB, free: 366.0 MiB)
+22/12/03 22:13:28 INFO SparkContext: Created broadcast 10 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:28 INFO DAGScheduler: Submitting 2 missing tasks from ResultStage 8 (MapPartitionsRDD[38] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:28 INFO TaskSchedulerImpl: Adding task set 8.0 with 2 tasks resource profile 0
+22/12/03 22:13:28 INFO TaskSetManager: Starting task 0.0 in stage 8.0 (TID 9) (10.0.2.15, executor 0, partition 0, NODE_LOCAL, 4790 bytes) taskResourceAssignments Map()
+22/12/03 22:13:28 INFO BlockManagerInfo: Added broadcast_10_piece0 in memory on 10.0.2.15:41331 (size: 33.0 KiB, free: 366.0 MiB)
+22/12/03 22:13:28 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 2 to 127.0.0.1:48108
+22/12/03 22:13:28 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 0 to 127.0.0.1:48108
+22/12/03 22:13:29 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 1 to 127.0.0.1:48108
+22/12/03 22:13:31 INFO TaskSetManager: Starting task 1.0 in stage 8.0 (TID 10) (10.0.2.15, executor 0, partition 1, NODE_LOCAL, 4790 bytes) taskResourceAssignments Map()
+22/12/03 22:13:31 INFO TaskSetManager: Finished task 0.0 in stage 8.0 (TID 9) in 3572 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:32 INFO TaskSetManager: Finished task 1.0 in stage 8.0 (TID 10) in 514 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:32 INFO DAGScheduler: ResultStage 8 (save at EurofxrefSdmx.scala:76) finished in 4.139 s
+22/12/03 22:13:32 INFO TaskSchedulerImpl: Removed TaskSet 8.0, whose tasks have all completed, from pool
+22/12/03 22:13:32 INFO DAGScheduler: Job 5 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 22:13:32 INFO TaskSchedulerImpl: Killing all running tasks in stage 8: Stage finished
+22/12/03 22:13:32 INFO DAGScheduler: Job 5 finished: save at EurofxrefSdmx.scala:76, took 4.234043 s
+22/12/03 22:13:32 INFO DAGScheduler: Registering RDD 39 (save at EurofxrefSdmx.scala:76) as input to shuffle 3
+22/12/03 22:13:32 INFO DAGScheduler: Got map stage job 6 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 22:13:32 INFO DAGScheduler: Final stage: ShuffleMapStage 12 (save at EurofxrefSdmx.scala:76)
+22/12/03 22:13:32 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 9, ShuffleMapStage 10, ShuffleMapStage 11)
+22/12/03 22:13:32 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:32 INFO DAGScheduler: Submitting ShuffleMapStage 12 (MapPartitionsRDD[39] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 22:13:32 INFO MemoryStore: Block broadcast_11 stored as values in memory (estimated size 85.3 KiB, free 363.8 MiB)
+22/12/03 22:13:32 INFO MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 33.7 KiB, free 363.7 MiB)
+22/12/03 22:13:32 INFO BlockManagerInfo: Added broadcast_11_piece0 in memory on nixos:33247 (size: 33.7 KiB, free: 366.0 MiB)
+22/12/03 22:13:32 INFO SparkContext: Created broadcast 11 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:32 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 12 (MapPartitionsRDD[39] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:32 INFO TaskSchedulerImpl: Adding task set 12.0 with 2 tasks resource profile 0
+22/12/03 22:13:32 INFO TaskSetManager: Starting task 0.0 in stage 12.0 (TID 11) (10.0.2.15, executor 0, partition 0, NODE_LOCAL, 4779 bytes) taskResourceAssignments Map()
+22/12/03 22:13:32 INFO BlockManagerInfo: Added broadcast_11_piece0 in memory on 10.0.2.15:41331 (size: 33.7 KiB, free: 366.0 MiB)
+22/12/03 22:13:32 INFO TaskSetManager: Starting task 1.0 in stage 12.0 (TID 12) (10.0.2.15, executor 0, partition 1, NODE_LOCAL, 4779 bytes) taskResourceAssignments Map()
+22/12/03 22:13:32 INFO TaskSetManager: Finished task 0.0 in stage 12.0 (TID 11) in 500 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:33 INFO TaskSetManager: Finished task 1.0 in stage 12.0 (TID 12) in 387 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:33 INFO TaskSchedulerImpl: Removed TaskSet 12.0, whose tasks have all completed, from pool
+22/12/03 22:13:33 INFO DAGScheduler: ShuffleMapStage 12 (save at EurofxrefSdmx.scala:76) finished in 0.937 s
+22/12/03 22:13:33 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 22:13:33 INFO DAGScheduler: running: Set()
+22/12/03 22:13:33 INFO DAGScheduler: waiting: Set()
+22/12/03 22:13:33 INFO DAGScheduler: failed: Set()
+22/12/03 22:13:33 INFO ShufflePartitionsUtil: For shuffle(3), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 22:13:33 INFO CodeGenerator: Code generated in 20.097023 ms
+22/12/03 22:13:33 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:76
+22/12/03 22:13:33 INFO DAGScheduler: Got job 7 (save at EurofxrefSdmx.scala:76) with 1 output partitions
+22/12/03 22:13:33 INFO DAGScheduler: Final stage: ResultStage 17 (save at EurofxrefSdmx.scala:76)
+22/12/03 22:13:33 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 16)
+22/12/03 22:13:33 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:33 INFO DAGScheduler: Submitting ResultStage 17 (CoalescedRDD[42] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 22:13:33 INFO MemoryStore: Block broadcast_12 stored as values in memory (estimated size 307.7 KiB, free 363.4 MiB)
+22/12/03 22:13:33 INFO MemoryStore: Block broadcast_12_piece0 stored as bytes in memory (estimated size 116.4 KiB, free 363.3 MiB)
+22/12/03 22:13:33 INFO BlockManagerInfo: Added broadcast_12_piece0 in memory on nixos:33247 (size: 116.4 KiB, free: 365.9 MiB)
+22/12/03 22:13:33 INFO SparkContext: Created broadcast 12 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:33 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 17 (CoalescedRDD[42] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0))
+22/12/03 22:13:33 INFO TaskSchedulerImpl: Adding task set 17.0 with 1 tasks resource profile 0
+22/12/03 22:13:33 INFO TaskSetManager: Starting task 0.0 in stage 17.0 (TID 13) (10.0.2.15, executor 0, partition 0, NODE_LOCAL, 4733 bytes) taskResourceAssignments Map()
+22/12/03 22:13:33 INFO BlockManagerInfo: Added broadcast_12_piece0 in memory on 10.0.2.15:41331 (size: 116.4 KiB, free: 365.9 MiB)
+22/12/03 22:13:33 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 3 to 127.0.0.1:48108
+22/12/03 22:13:34 INFO TaskSetManager: Finished task 0.0 in stage 17.0 (TID 13) in 1145 ms on 10.0.2.15 (executor 0) (1/1)
+22/12/03 22:13:34 INFO TaskSchedulerImpl: Removed TaskSet 17.0, whose tasks have all completed, from pool
+22/12/03 22:13:34 INFO DAGScheduler: ResultStage 17 (save at EurofxrefSdmx.scala:76) finished in 1.213 s
+22/12/03 22:13:34 INFO DAGScheduler: Job 7 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 22:13:34 INFO TaskSchedulerImpl: Killing all running tasks in stage 17: Stage finished
+22/12/03 22:13:34 INFO DAGScheduler: Job 7 finished: save at EurofxrefSdmx.scala:76, took 1.234502 s
+22/12/03 22:13:34 INFO FileFormatWriter: Start to commit write Job 3f49157d-8ba3-4983-a61e-2e6cfe32dd6e.
+22/12/03 22:13:34 INFO FileFormatWriter: Write Job 3f49157d-8ba3-4983-a61e-2e6cfe32dd6e committed. Elapsed time: 135 ms.
+22/12/03 22:13:34 INFO FileFormatWriter: Finished processing stats for write job 3f49157d-8ba3-4983-a61e-2e6cfe32dd6e.
+22/12/03 22:13:34 INFO FileSourceStrategy: Pushed Filters: IsNotNull(TIME_PERIOD),Or(Or(EqualTo(CURRENCY,CHF),EqualTo(CURRENCY,GBP)),EqualTo(CURRENCY,USD)),GreaterThanOrEqual(TIME_PERIOD,2021-12-02),IsNotNull(CURRENCY)
+22/12/03 22:13:34 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(TIME_PERIOD#17),(((CURRENCY#16 = CHF) OR (CURRENCY#16 = GBP)) OR (CURRENCY#16 = USD)),(TIME_PERIOD#17 >= 2021-12-02),isnotnull(CURRENCY#16)
+22/12/03 22:13:34 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 22:13:34 INFO FileSourceStrategy: Pushed Filters: IsNotNull(TIME_PERIOD),Or(Or(EqualTo(CURRENCY,CHF),EqualTo(CURRENCY,GBP)),EqualTo(CURRENCY,USD)),GreaterThanOrEqual(TIME_PERIOD,2022-11-02)
+22/12/03 22:13:34 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(TIME_PERIOD#160),(((CURRENCY#159 = CHF) OR (CURRENCY#159 = GBP)) OR (CURRENCY#159 = USD)),(TIME_PERIOD#160 >= 2022-11-02)
+22/12/03 22:13:34 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 22:13:34 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+22/12/03 22:13:34 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22/12/03 22:13:34 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22/12/03 22:13:35 INFO CodeGenerator: Code generated in 69.053225 ms
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_13 stored as values in memory (estimated size 417.8 KiB, free 362.9 MiB)
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_13_piece0 stored as bytes in memory (estimated size 44.8 KiB, free 362.9 MiB)
+22/12/03 22:13:35 INFO BlockManagerInfo: Added broadcast_13_piece0 in memory on nixos:33247 (size: 44.8 KiB, free: 365.8 MiB)
+22/12/03 22:13:35 INFO SparkContext: Created broadcast 13 from save at EurofxrefSdmx.scala:80
+22/12/03 22:13:35 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4235242 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 22:13:35 INFO DAGScheduler: Registering RDD 46 (save at EurofxrefSdmx.scala:80) as input to shuffle 4
+22/12/03 22:13:35 INFO DAGScheduler: Got map stage job 8 (save at EurofxrefSdmx.scala:80) with 2 output partitions
+22/12/03 22:13:35 INFO DAGScheduler: Final stage: ShuffleMapStage 18 (save at EurofxrefSdmx.scala:80)
+22/12/03 22:13:35 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 22:13:35 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:35 INFO DAGScheduler: Submitting ShuffleMapStage 18 (MapPartitionsRDD[46] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_14 stored as values in memory (estimated size 46.2 KiB, free 362.8 MiB)
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_14_piece0 stored as bytes in memory (estimated size 20.9 KiB, free 362.8 MiB)
+22/12/03 22:13:35 INFO BlockManagerInfo: Added broadcast_14_piece0 in memory on nixos:33247 (size: 20.9 KiB, free: 365.8 MiB)
+22/12/03 22:13:35 INFO SparkContext: Created broadcast 14 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:35 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 18 (MapPartitionsRDD[46] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:35 INFO TaskSchedulerImpl: Adding task set 18.0 with 2 tasks resource profile 0
+22/12/03 22:13:35 INFO TaskSetManager: Starting task 0.0 in stage 18.0 (TID 14) (10.0.2.15, executor 0, partition 0, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:35 INFO BlockManagerInfo: Added broadcast_14_piece0 in memory on 10.0.2.15:41331 (size: 20.9 KiB, free: 365.9 MiB)
+22/12/03 22:13:35 INFO CodeGenerator: Code generated in 110.276369 ms
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_15 stored as values in memory (estimated size 417.8 KiB, free 362.4 MiB)
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_15_piece0 stored as bytes in memory (estimated size 44.8 KiB, free 362.3 MiB)
+22/12/03 22:13:35 INFO BlockManagerInfo: Added broadcast_15_piece0 in memory on nixos:33247 (size: 44.8 KiB, free: 365.8 MiB)
+22/12/03 22:13:35 INFO SparkContext: Created broadcast 15 from save at EurofxrefSdmx.scala:80
+22/12/03 22:13:35 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4235242 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 22:13:35 INFO DAGScheduler: Registering RDD 50 (save at EurofxrefSdmx.scala:80) as input to shuffle 5
+22/12/03 22:13:35 INFO DAGScheduler: Got map stage job 9 (save at EurofxrefSdmx.scala:80) with 2 output partitions
+22/12/03 22:13:35 INFO DAGScheduler: Final stage: ShuffleMapStage 19 (save at EurofxrefSdmx.scala:80)
+22/12/03 22:13:35 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 22:13:35 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:35 INFO DAGScheduler: Submitting ShuffleMapStage 19 (MapPartitionsRDD[50] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_16 stored as values in memory (estimated size 46.9 KiB, free 362.3 MiB)
+22/12/03 22:13:35 INFO MemoryStore: Block broadcast_16_piece0 stored as bytes in memory (estimated size 21.3 KiB, free 362.3 MiB)
+22/12/03 22:13:35 INFO BlockManagerInfo: Added broadcast_16_piece0 in memory on nixos:33247 (size: 21.3 KiB, free: 365.7 MiB)
+22/12/03 22:13:35 INFO SparkContext: Created broadcast 16 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:35 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 19 (MapPartitionsRDD[50] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 22:13:35 INFO TaskSchedulerImpl: Adding task set 19.0 with 2 tasks resource profile 0
+22/12/03 22:13:35 INFO BlockManagerInfo: Added broadcast_13_piece0 in memory on 10.0.2.15:41331 (size: 44.8 KiB, free: 365.8 MiB)
+22/12/03 22:13:36 INFO TaskSetManager: Starting task 1.0 in stage 18.0 (TID 15) (10.0.2.15, executor 0, partition 1, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:36 INFO TaskSetManager: Finished task 0.0 in stage 18.0 (TID 14) in 998 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:36 INFO TaskSetManager: Starting task 0.0 in stage 19.0 (TID 16) (10.0.2.15, executor 0, partition 0, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:36 INFO TaskSetManager: Finished task 1.0 in stage 18.0 (TID 15) in 116 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:36 INFO TaskSchedulerImpl: Removed TaskSet 18.0, whose tasks have all completed, from pool
+22/12/03 22:13:36 INFO DAGScheduler: ShuffleMapStage 18 (save at EurofxrefSdmx.scala:80) finished in 1.149 s
+22/12/03 22:13:36 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 22:13:36 INFO DAGScheduler: running: Set(ShuffleMapStage 19)
+22/12/03 22:13:36 INFO DAGScheduler: waiting: Set()
+22/12/03 22:13:36 INFO DAGScheduler: failed: Set()
+22/12/03 22:13:36 INFO BlockManagerInfo: Added broadcast_16_piece0 in memory on 10.0.2.15:41331 (size: 21.3 KiB, free: 365.8 MiB)
+22/12/03 22:13:36 INFO ShufflePartitionsUtil: For shuffle(4), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 22:13:36 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+22/12/03 22:13:36 INFO BlockManagerInfo: Added broadcast_15_piece0 in memory on 10.0.2.15:41331 (size: 44.8 KiB, free: 365.7 MiB)
+22/12/03 22:13:36 INFO CodeGenerator: Code generated in 111.119065 ms
+22/12/03 22:13:36 INFO SparkContext: Starting job: $anonfun$withThreadLocalCaptured$1 at FutureTask.java:266
+22/12/03 22:13:36 INFO DAGScheduler: Got job 10 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:266) with 1 output partitions
+22/12/03 22:13:36 INFO DAGScheduler: Final stage: ResultStage 21 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:266)
+22/12/03 22:13:36 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 20)
+22/12/03 22:13:36 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:36 INFO DAGScheduler: Submitting ResultStage 21 (MapPartitionsRDD[53] at $anonfun$withThreadLocalCaptured$1 at FutureTask.java:266), which has no missing parents
+22/12/03 22:13:36 INFO MemoryStore: Block broadcast_17 stored as values in memory (estimated size 48.8 KiB, free 362.2 MiB)
+22/12/03 22:13:36 INFO MemoryStore: Block broadcast_17_piece0 stored as bytes in memory (estimated size 21.8 KiB, free 362.2 MiB)
+22/12/03 22:13:36 INFO BlockManagerInfo: Added broadcast_17_piece0 in memory on nixos:33247 (size: 21.8 KiB, free: 365.7 MiB)
+22/12/03 22:13:36 INFO SparkContext: Created broadcast 17 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:36 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 21 (MapPartitionsRDD[53] at $anonfun$withThreadLocalCaptured$1 at FutureTask.java:266) (first 15 tasks are for partitions Vector(0))
+22/12/03 22:13:36 INFO TaskSchedulerImpl: Adding task set 21.0 with 1 tasks resource profile 0
+22/12/03 22:13:36 INFO TaskSetManager: Starting task 1.0 in stage 19.0 (TID 17) (10.0.2.15, executor 0, partition 1, ANY, 4868 bytes) taskResourceAssignments Map()
+22/12/03 22:13:36 INFO TaskSetManager: Finished task 0.0 in stage 19.0 (TID 16) in 735 ms on 10.0.2.15 (executor 0) (1/2)
+22/12/03 22:13:37 INFO TaskSetManager: Starting task 0.0 in stage 21.0 (TID 18) (10.0.2.15, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+22/12/03 22:13:37 INFO TaskSetManager: Finished task 1.0 in stage 19.0 (TID 17) in 140 ms on 10.0.2.15 (executor 0) (2/2)
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Removed TaskSet 19.0, whose tasks have all completed, from pool
+22/12/03 22:13:37 INFO DAGScheduler: ShuffleMapStage 19 (save at EurofxrefSdmx.scala:80) finished in 1.731 s
+22/12/03 22:13:37 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 22:13:37 INFO DAGScheduler: running: Set(ResultStage 21)
+22/12/03 22:13:37 INFO DAGScheduler: waiting: Set()
+22/12/03 22:13:37 INFO DAGScheduler: failed: Set()
+22/12/03 22:13:37 INFO BlockManagerInfo: Added broadcast_17_piece0 in memory on 10.0.2.15:41331 (size: 21.8 KiB, free: 365.7 MiB)
+22/12/03 22:13:37 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 4 to 127.0.0.1:48108
+22/12/03 22:13:37 INFO TaskSetManager: Finished task 0.0 in stage 21.0 (TID 18) in 161 ms on 10.0.2.15 (executor 0) (1/1)
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Removed TaskSet 21.0, whose tasks have all completed, from pool
+22/12/03 22:13:37 INFO DAGScheduler: ResultStage 21 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:266) finished in 0.415 s
+22/12/03 22:13:37 INFO DAGScheduler: Job 10 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Killing all running tasks in stage 21: Stage finished
+22/12/03 22:13:37 INFO DAGScheduler: Job 10 finished: $anonfun$withThreadLocalCaptured$1 at FutureTask.java:266, took 0.429820 s
+22/12/03 22:13:37 INFO CodeGenerator: Code generated in 10.602306 ms
+22/12/03 22:13:37 INFO MemoryStore: Block broadcast_18 stored as values in memory (estimated size 4.0 MiB, free 358.2 MiB)
+22/12/03 22:13:37 INFO MemoryStore: Block broadcast_18_piece0 stored as bytes in memory (estimated size 298.0 B, free 358.2 MiB)
+22/12/03 22:13:37 INFO BlockManagerInfo: Added broadcast_18_piece0 in memory on nixos:33247 (size: 298.0 B, free: 365.7 MiB)
+22/12/03 22:13:37 INFO SparkContext: Created broadcast 18 from $anonfun$withThreadLocalCaptured$1 at FutureTask.java:266
+22/12/03 22:13:37 INFO ShufflePartitionsUtil: For shuffle(5), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 22:13:37 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+22/12/03 22:13:37 INFO CodeGenerator: Code generated in 45.830395 ms
+22/12/03 22:13:37 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:80
+22/12/03 22:13:37 INFO DAGScheduler: Got job 11 (save at EurofxrefSdmx.scala:80) with 1 output partitions
+22/12/03 22:13:37 INFO DAGScheduler: Final stage: ResultStage 23 (save at EurofxrefSdmx.scala:80)
+22/12/03 22:13:37 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 22)
+22/12/03 22:13:37 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:37 INFO DAGScheduler: Submitting ResultStage 23 (MapPartitionsRDD[58] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 22:13:37 INFO MemoryStore: Block broadcast_19 stored as values in memory (estimated size 70.1 KiB, free 358.1 MiB)
+22/12/03 22:13:37 INFO MemoryStore: Block broadcast_19_piece0 stored as bytes in memory (estimated size 29.7 KiB, free 358.1 MiB)
+22/12/03 22:13:37 INFO BlockManagerInfo: Added broadcast_19_piece0 in memory on nixos:33247 (size: 29.7 KiB, free: 365.7 MiB)
+22/12/03 22:13:37 INFO SparkContext: Created broadcast 19 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:37 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 23 (MapPartitionsRDD[58] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0))
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Adding task set 23.0 with 1 tasks resource profile 0
+22/12/03 22:13:37 INFO TaskSetManager: Starting task 0.0 in stage 23.0 (TID 19) (10.0.2.15, executor 0, partition 0, NODE_LOCAL, 4457 bytes) taskResourceAssignments Map()
+22/12/03 22:13:37 INFO BlockManagerInfo: Added broadcast_19_piece0 in memory on 10.0.2.15:41331 (size: 29.7 KiB, free: 365.7 MiB)
+22/12/03 22:13:37 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 5 to 127.0.0.1:48108
+22/12/03 22:13:37 INFO BlockManagerInfo: Added broadcast_18_piece0 in memory on 10.0.2.15:41331 (size: 298.0 B, free: 365.7 MiB)
+22/12/03 22:13:37 INFO TaskSetManager: Finished task 0.0 in stage 23.0 (TID 19) in 227 ms on 10.0.2.15 (executor 0) (1/1)
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Removed TaskSet 23.0, whose tasks have all completed, from pool
+22/12/03 22:13:37 INFO DAGScheduler: ResultStage 23 (save at EurofxrefSdmx.scala:80) finished in 0.259 s
+22/12/03 22:13:37 INFO DAGScheduler: Job 11 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Killing all running tasks in stage 23: Stage finished
+22/12/03 22:13:37 INFO DAGScheduler: Job 11 finished: save at EurofxrefSdmx.scala:80, took 0.270762 s
+22/12/03 22:13:37 INFO DAGScheduler: Registering RDD 59 (save at EurofxrefSdmx.scala:80) as input to shuffle 6
+22/12/03 22:13:37 INFO DAGScheduler: Got map stage job 12 (save at EurofxrefSdmx.scala:80) with 1 output partitions
+22/12/03 22:13:37 INFO DAGScheduler: Final stage: ShuffleMapStage 25 (save at EurofxrefSdmx.scala:80)
+22/12/03 22:13:37 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 24)
+22/12/03 22:13:37 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:37 INFO DAGScheduler: Submitting ShuffleMapStage 25 (MapPartitionsRDD[59] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 22:13:37 INFO MemoryStore: Block broadcast_20 stored as values in memory (estimated size 69.9 KiB, free 358.0 MiB)
+22/12/03 22:13:37 INFO MemoryStore: Block broadcast_20_piece0 stored as bytes in memory (estimated size 29.9 KiB, free 358.0 MiB)
+22/12/03 22:13:37 INFO BlockManagerInfo: Added broadcast_20_piece0 in memory on nixos:33247 (size: 29.9 KiB, free: 365.7 MiB)
+22/12/03 22:13:37 INFO SparkContext: Created broadcast 20 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:37 INFO DAGScheduler: Submitting 1 missing tasks from ShuffleMapStage 25 (MapPartitionsRDD[59] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0))
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Adding task set 25.0 with 1 tasks resource profile 0
+22/12/03 22:13:37 INFO TaskSetManager: Starting task 0.0 in stage 25.0 (TID 20) (10.0.2.15, executor 0, partition 0, NODE_LOCAL, 4446 bytes) taskResourceAssignments Map()
+22/12/03 22:13:37 INFO BlockManagerInfo: Added broadcast_20_piece0 in memory on 10.0.2.15:41331 (size: 29.9 KiB, free: 365.7 MiB)
+22/12/03 22:13:37 INFO TaskSetManager: Finished task 0.0 in stage 25.0 (TID 20) in 74 ms on 10.0.2.15 (executor 0) (1/1)
+22/12/03 22:13:37 INFO TaskSchedulerImpl: Removed TaskSet 25.0, whose tasks have all completed, from pool
+22/12/03 22:13:37 INFO DAGScheduler: ShuffleMapStage 25 (save at EurofxrefSdmx.scala:80) finished in 0.094 s
+22/12/03 22:13:37 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 22:13:37 INFO DAGScheduler: running: Set()
+22/12/03 22:13:37 INFO DAGScheduler: waiting: Set()
+22/12/03 22:13:37 INFO DAGScheduler: failed: Set()
+22/12/03 22:13:38 INFO ShufflePartitionsUtil: For shuffle(6), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 22:13:38 INFO CodeGenerator: Code generated in 42.288653 ms
+22/12/03 22:13:38 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:80
+22/12/03 22:13:38 INFO DAGScheduler: Got job 13 (save at EurofxrefSdmx.scala:80) with 1 output partitions
+22/12/03 22:13:38 INFO DAGScheduler: Final stage: ResultStage 28 (save at EurofxrefSdmx.scala:80)
+22/12/03 22:13:38 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 27)
+22/12/03 22:13:38 INFO DAGScheduler: Missing parents: List()
+22/12/03 22:13:38 INFO DAGScheduler: Submitting ResultStage 28 (CoalescedRDD[62] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 22:13:38 INFO MemoryStore: Block broadcast_21 stored as values in memory (estimated size 311.5 KiB, free 357.7 MiB)
+22/12/03 22:13:38 INFO MemoryStore: Block broadcast_21_piece0 stored as bytes in memory (estimated size 117.2 KiB, free 357.6 MiB)
+22/12/03 22:13:38 INFO BlockManagerInfo: Added broadcast_21_piece0 in memory on nixos:33247 (size: 117.2 KiB, free: 365.6 MiB)
+22/12/03 22:13:38 INFO SparkContext: Created broadcast 21 from broadcast at DAGScheduler.scala:1478
+22/12/03 22:13:38 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 28 (CoalescedRDD[62] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0))
+22/12/03 22:13:38 INFO TaskSchedulerImpl: Adding task set 28.0 with 1 tasks resource profile 0
+22/12/03 22:13:38 INFO TaskSetManager: Starting task 0.0 in stage 28.0 (TID 21) (10.0.2.15, executor 0, partition 0, NODE_LOCAL, 4733 bytes) taskResourceAssignments Map()
+22/12/03 22:13:38 INFO BlockManagerInfo: Added broadcast_21_piece0 in memory on 10.0.2.15:41331 (size: 117.2 KiB, free: 365.6 MiB)
+22/12/03 22:13:38 INFO MapOutputTrackerMasterEndpoint: Asked to send map output locations for shuffle 6 to 127.0.0.1:48108
+22/12/03 22:13:38 INFO TaskSetManager: Finished task 0.0 in stage 28.0 (TID 21) in 490 ms on 10.0.2.15 (executor 0) (1/1)
+22/12/03 22:13:38 INFO TaskSchedulerImpl: Removed TaskSet 28.0, whose tasks have all completed, from pool
+22/12/03 22:13:38 INFO DAGScheduler: ResultStage 28 (save at EurofxrefSdmx.scala:80) finished in 0.561 s
+22/12/03 22:13:38 INFO DAGScheduler: Job 13 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 22:13:38 INFO TaskSchedulerImpl: Killing all running tasks in stage 28: Stage finished
+22/12/03 22:13:38 INFO DAGScheduler: Job 13 finished: save at EurofxrefSdmx.scala:80, took 0.573521 s
+22/12/03 22:13:38 INFO FileFormatWriter: Start to commit write Job 69c7aa1a-ed9d-4910-b706-2d470399594c.
+22/12/03 22:13:38 INFO FileFormatWriter: Write Job 69c7aa1a-ed9d-4910-b706-2d470399594c committed. Elapsed time: 170 ms.
+22/12/03 22:13:38 INFO FileFormatWriter: Finished processing stats for write job 69c7aa1a-ed9d-4910-b706-2d470399594c.
+22/12/03 22:13:39 INFO SparkContext: Invoking stop() from shutdown hook
+22/12/03 22:13:39 INFO BlockManagerInfo: Removed broadcast_4_piece0 on 10.0.2.15:41331 in memory (size: 44.8 KiB, free: 365.6 MiB)
+22/12/03 22:13:39 INFO BlockManagerInfo: Removed broadcast_4_piece0 on nixos:33247 in memory (size: 44.8 KiB, free: 365.6 MiB)
+22/12/03 22:13:39 INFO SparkUI: Stopped Spark web UI at http://nixos:4040
+22/12/03 22:13:39 INFO BlockManagerInfo: Removed broadcast_20_piece0 on nixos:33247 in memory (size: 29.9 KiB, free: 365.6 MiB)
+22/12/03 22:13:39 INFO BlockManagerInfo: Removed broadcast_20_piece0 on 10.0.2.15:41331 in memory (size: 29.9 KiB, free: 365.6 MiB)
+22/12/03 22:13:39 INFO StandaloneSchedulerBackend: Shutting down all executors
+22/12/03 22:13:39 INFO CoarseGrainedSchedulerBackend$DriverEndpoint: Asking each executor to shut down
+22/12/03 22:13:39 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+22/12/03 22:13:39 INFO MemoryStore: MemoryStore cleared
+22/12/03 22:13:39 INFO BlockManager: BlockManager stopped
+22/12/03 22:13:39 INFO BlockManagerMaster: BlockManagerMaster stopped
+22/12/03 22:13:40 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+22/12/03 22:13:40 INFO SparkContext: Successfully stopped SparkContext
+22/12/03 22:13:40 INFO ShutdownHookManager: Shutdown hook called
+22/12/03 22:13:40 INFO ShutdownHookManager: Deleting directory /tmp/spark-af9ddd72-556d-44c1-a448-9f712ce8daaa
+22/12/03 22:13:40 INFO ShutdownHookManager: Deleting directory /tmp/spark-9cfeb86e-78b2-43e2-971f-b4f2f0820ca8

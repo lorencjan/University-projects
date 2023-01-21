@@ -1,0 +1,56 @@
+.book-list{
+    background-color: #d0d3d3;
+    border-radius: 20px;
+}
+
+.book-list-title {
+    background-color: #bac1c0;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.book-user-img {
+    width: 80px;
+    height: 115px;
+    padding-bottom: 10px;
+}
+
+.book-user-text {
+    font-size: 20px;
+    height: 20px;
+    color: #333;
+    padding-top: 30px;
+    text-align: left;
+}
+
+.book-user-list {
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.user-form {
+    padding-top: 20px;
+}
+
+.form-label {
+    height: 20px;
+    color: #333;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: right;
+}
+
+.submit-button {
+    background-color: #24433e;
+    border-radius: 20px;
+    float: right;
+}
+
+.form-row {
+    padding-bottom: 15px;
+}

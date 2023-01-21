@@ -1,0 +1,103 @@
+﻿<local:UserControlBase x:Class="MovieDatabase.App.Views.NewMoviePage"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                       xmlns:local="clr-namespace:MovieDatabase.App.Views"
+                       xmlns:viewModels="clr-namespace:MovieDatabase.App.ViewModels"
+                       mc:Ignorable="d"
+                       d:DataContext="{d:DesignInstance viewModels:NewMovieViewModel}"
+                       DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=NewMovieViewModel}">
+    
+    <StackPanel Margin="5,0,5,5">
+        <Grid>
+            <TextBlock Text="New movie" Visibility="{Binding NewVisible}" Style="{StaticResource ListViewHeader}" FontSize="20" Foreground="DarkBlue" Margin="15,0,15,0"/>
+            <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MoviesPage}}, Path=DataContext.SaveEditCommand}" 
+                    CommandParameter="{Binding Id}"
+                    Style="{StaticResource IconButton}" Margin="15,0,10,0">
+                <Image Source="{Binding SaveIcon}"/>
+            </Button>
+        </Grid>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+           
+            <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource ListInDetail}">Original Name</TextBlock>
+            <TextBox Text="{Binding OriginalName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1" Style="{StaticResource InputBox}" Name="OriginalNameInput"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource ListInDetail}">Czech Name</TextBlock>
+            <TextBox Text="{Binding CzechName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Style="{StaticResource InputBox}" Name="CzechNameInput"/>
+
+            <TextBlock Grid.Row="2" Grid.Column="0" Style="{StaticResource ListInDetail}" >Description</TextBlock>
+            <TextBox Text="{Binding Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Style="{StaticResource InputBox}" Name="DescriptionInput" TextWrapping="Wrap"/>
+
+            <TextBlock Grid.Row="3" Grid.Column="0" Style="{StaticResource ListInDetail}">Country</TextBlock>
+            <TextBox Text="{Binding Country, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Style="{StaticResource InputBox}" Name="CountryInput"/>
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Style="{StaticResource ListInDetail}">Duration</TextBlock>
+            <TextBox Text="{Binding Duration, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Style="{StaticResource InputBox}" Name="DurationNameInput"/>
+
+            <TextBlock Grid.Row="5" Grid.Column="0" Style="{StaticResource ListInDetail}">Year</TextBlock>
+            <TextBox Text="{Binding Year, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1" Style="{StaticResource InputBox}" Name="YearInput"/>
+
+            <TextBlock Grid.Row="6" Grid.Column="0" Style="{StaticResource ListInDetail}">Genre</TextBlock>
+            <ComboBox SelectedValue="{Binding MovieGenre, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding Source={StaticResource GenresEnum}}" Grid.Row="6" Grid.Column="1" Style="{StaticResource InputComboBox}" Name="GenreInput"/>
+
+            <TextBlock Grid.Row="7" Grid.Column="0" Style="{StaticResource ListInDetail}">Actors</TextBlock>
+            <ComboBox ItemsSource="{Binding Path=AvailablePeople}" DisplayMemberPath="DisplayName" SelectedValue="{Binding ChosenActor}" Grid.Row="7" Grid.Column="1" Style="{StaticResource InputComboBox}" Name="ActorsInput" HorizontalAlignment="Left" Width="450"/>
+            <Button Command="{Binding ResetActorsCommand}"  Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Style="{StaticResource IconButton}" Margin="0 0 80 0">
+                <Image Source="{Binding ResetIcon}"/>
+            </Button>
+            <Button Command="{Binding AddActorCommand}" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Right" Style="{StaticResource IconButton}" Margin="5, 5, 130, 5">
+                <Image Source="{Binding NewIcon}"/>
+            </Button>
+
+            <ItemsControl Grid.Row="8" Grid.Column="1" ItemsSource="{Binding AddedActors}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource ListInNew}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+            <TextBlock Grid.Row="9" Grid.Column="0" Style="{StaticResource ListInDetail}">Directors</TextBlock>
+            <ComboBox ItemsSource="{Binding Path=AvailablePeople}" DisplayMemberPath="DisplayName" SelectedValue="{Binding ChosenDirector}" Grid.Row="9" Grid.Column="1" Style="{StaticResource InputComboBox}" Name="DirectorsInput" HorizontalAlignment="Left" Width="450"></ComboBox>
+            <Button Command="{Binding ResetDirectorsCommand}"  Grid.Column="1" Grid.Row="9" Style="{StaticResource IconButton}" HorizontalAlignment="Right" Margin="0 0 80 0">
+                <Image Source="{Binding ResetIcon}"/>
+            </Button>
+            <Button Command="{Binding AddDirectorCommand}" Grid.Column="1" Grid.Row="9" Style="{StaticResource IconButton}" HorizontalAlignment="Right" Margin="5, 5, 130, 5">
+                <Image Source="{Binding NewIcon}"/>
+            </Button>
+
+            <ItemsControl ItemsSource="{Binding AddedDirectors}" Grid.Row="10" Grid.Column="1">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding DisplayName}" Style="{StaticResource ListInNew}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+            <TextBlock Grid.Row="11" Grid.Column="0" Style="{StaticResource ListInDetail}">Photo</TextBlock>
+            <TextBlock Grid.Row="11" Grid.Column="1" Text="{Binding FileName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource TextBlockBase}" Margin="5 10" FontWeight="Normal"/>
+            <Button Command="{Binding LoadPhotoCommand}" Grid.Row="11" Grid.Column="1" Style="{StaticResource IconButton}" HorizontalAlignment="Right">
+                <Image Source="{Binding AddImage}"/>
+            </Button>
+        </Grid>
+    </StackPanel>
+</local:UserControlBase>

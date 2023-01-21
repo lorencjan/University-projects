@@ -1,0 +1,45 @@
+﻿@viewModel RockFests.ViewModels.Users.UserDetailViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="d-flex justify-content-between detail-header">
+        <h2>{{value: UserId == 0 ? Texts.CreateUser : Texts.UserInformation}}</h2>
+        <div IncludeInPage="{value: UserId > 0}">
+            <dot:RouteLink RouteName="{resource: Routes.Users}" class="btn btn-light">
+                <span class="fa fa-door-open"></span>
+            </dot:RouteLink>
+            <dot:Button Click="{staticCommand: IsDeleteModalShowed = true}" class="btn btn-danger" ButtonTagName="button">
+                <span class="fa fa-trash-alt"></span>
+            </dot:Button>
+        </div>
+    </div>
+
+    <cc:FormGroupText Label="{value: Texts.Label_FirstName}" Value="{value: User.FirstName}" />
+    <cc:FormGroupText Label="{value: Texts.Label_LastName}" Value="{value: User.LastName}" />
+    <cc:FormGroupText Label="{value: Texts.Label_Email}" Value="{value: User.Email}" />
+    <cc:FormGroupText Label="{value: Texts.Label_Phone}" Value="{value: User.Phone}" Required="false" Validate="false" />
+    <cc:FormGroupText Label="{value: Texts.Label_UserName}" Value="{value: User.Login}" />
+    <div class="form-group w-50">
+        <dot:Literal Text="{value: Texts.Label_AccessRole}" class="d-block" />
+        <dot:ComboBox SelectedValue="{value: User.AccessRole}" DataSource="{value: AccessRoles}" class="w-100 form-control" />
+    </div>
+
+    <div class="btn-container" IncludeInPage="{value: UserId > 0}">
+        <dot:Button Text="{value: Texts.Btn_Save}" Click="{command: UpdateUser()}" Validation.Enabled="true" Validation.Target="{value: User}" class="btn btn-dark" />
+    </div>
+
+    <h3 class="mt-4" IncludeInPage="{value: UserId > 0}">{{value: Texts.SetNewPassword}}</h3>
+
+    <cc:FormGroupPassword Label="{value: Texts.Label_Password}" Value="{value: Password.Password}" InputType="Password" />
+    <cc:FormGroupPassword Label="{value: Texts.Label_ConfirmPassword}" Value="{value: Password.ConfirmPassword}" InputType="Password" />
+
+    <div class="btn-container">
+        <dot:Button IncludeInPage="{value: UserId > 0}" Text="{value: Texts.Btn_ChangePassword}" Click="{command: UpdateUsersPassword()}" Validation.Enabled="true" Validation.Target="{value: Password}" class="btn btn-dark" />
+        <dot:Button IncludeInPage="{value: UserId == 0}" Text="{value: Texts.Btn_Create}" Click="{command: CreateUser()}" Validation.Enabled="true" class="btn btn-dark" />
+        <dot:RouteLink IncludeInPage="{value: UserId == 0}" Text="{value: Texts.Btn_Storno}" RouteName="{resource: Routes.Users}" class="btn btn-light" />
+    </div>
+
+    <cc:Modal Header="{value: Texts.ModalDeleteHeader}" Message="{value: ModalDeleteMessage}" ConfirmCommand="{command: DeleteUser()}" HasConfirmation="true" IsShowed="{value: IsDeleteModalShowed}" />
+</dot:Content>

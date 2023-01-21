@@ -1,0 +1,84 @@
+2022-12-02 11:46:03,190 INFO  [Listener at localhost/37121] mapreduce.SimplePigStats (SimplePigStats.java:display(210)) - Script Statistics: 
+
+HadoopVersion   PigVersion      UserId  StartedAt       FinishedAt      Features
+3.2.2   0.17.0  null    2022-12-02 11:45:56     2022-12-02 11:46:03     GROUP_BY,FILTER
+
+Success!
+
+Job Stats (time in seconds):
+JobId   Maps    Reduces MaxMapTime      MinMapTime      AvgMapTime      MedianMapTime   MaxReduceTime   MinReduceTime   AvgReduceTime   MedianReducetime        Alias   Feature Outputs
+job_local655040707_0001 1       1       n/a     n/a     n/a     n/a     n/a     n/a     n/a     n/a     fielding,fielding95,groupedByTeam,results,results10ge   GROUP_BY,COMBINER       hdfs://localhost:38845/user/lori/pig/output,
+
+Input(s):
+Successfully read 147080 records (26805270 bytes) from: "hdfs://localhost:38845/user/lori/pig/input/Fielding.csv"
+
+Output(s):
+Successfully stored 12383 records (27115624 bytes) in: "hdfs://localhost:38845/user/lori/pig/output"
+
+Counters:
+Total records written : 12383
+Total bytes written : 27115624
+Spillable Memory Manager spill count : 0
+Total bags proactively spilled: 0
+Total records proactively spilled: 0
+
+Job DAG:
+job_local655040707_0001
+
+
+2022-12-02 11:46:03,192 INFO  [Listener at localhost/37121] impl.MetricsSystemImpl (MetricsSystemImpl.java:init(158)) - JobTracker metrics system started (again)
+2022-12-02 11:46:03,196 INFO  [Listener at localhost/37121] impl.MetricsSystemImpl (MetricsSystemImpl.java:init(158)) - JobTracker metrics system started (again)
+2022-12-02 11:46:03,197 INFO  [Listener at localhost/37121] mapReduceLayer.MapReduceLauncher (MapReduceLauncher.java:launchPig(522)) - Success!
+2022-12-02 11:46:03,200 INFO  [IPC Server handler 3 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=delete      src=/tmp/temp-304399780 dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,206 INFO  [IPC Server handler 8 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=listStatus  src=/user/lori/pig/output       dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,208 INFO  [IPC Server handler 9 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=getfileinfo src=/user/lori/pig/output/_SUCCESS      dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,211 INFO  [IPC Server handler 0 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=open        src=/user/lori/pig/output/_SUCCESS      dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,223 INFO  [IPC Server handler 1 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=delete      src=/user/lori/pig/output/_SUCCESS      dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,224 INFO  [IPC Server handler 2 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=getfileinfo src=/user/lori/pig/output/part-r-00000  dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,225 INFO  [IPC Server handler 4 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=open        src=/user/lori/pig/output/part-r-00000  dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,257 INFO  [IPC Server handler 5 on default port 38845] FSNamesystem.audit (FSNamesystem.java:logAuditMessage(8145)) - allowed=true  ugi=lori (auth:SIMPLE)  ip=/127.0.0.1   cmd=delete      src=/user/lori/pig/output/part-r-00000  dst=null        perm=null       proto=rpc
+2022-12-02 11:46:03,257 INFO  [Listener at localhost/37121] hdfs.MiniDFSCluster (MiniDFSCluster.java:shutdown(2072)) - Shutting down the Mini HDFS Cluster
+2022-12-02 11:46:03,258 INFO  [Listener at localhost/37121] hdfs.MiniDFSCluster (MiniDFSCluster.java:shutdownDataNode(2120)) - Shutting down DataNode 0
+2022-12-02 11:46:03,258 WARN  [Listener at localhost/37121] datanode.DirectoryScanner (DirectoryScanner.java:shutdown(343)) - DirectoryScanner: shutdown has been called
+2022-12-02 11:46:03,258 INFO  [org.apache.hadoop.hdfs.server.datanode.DataXceiverServer@53e800f9] datanode.DataNode (DataXceiverServer.java:closeAllPeers(281)) - Closing all peers.
+2022-12-02 11:46:03,262 INFO  [VolumeScannerThread(/tmp/1669977949355-0/data/data2)] datanode.VolumeScanner (VolumeScanner.java:run(637)) - VolumeScanner(/tmp/1669977949355-0/data/data2, DS-1a3ba857-e3f0-4229-873e-94dd05ae3fec) exiting.
+2022-12-02 11:46:03,263 INFO  [VolumeScannerThread(/tmp/1669977949355-0/data/data1)] datanode.VolumeScanner (VolumeScanner.java:run(637)) - VolumeScanner(/tmp/1669977949355-0/data/data1, DS-e4524015-4756-45df-bd04-b941926852dd) exiting.
+2022-12-02 11:46:03,276 INFO  [Listener at localhost/37121] handler.ContextHandler (ContextHandler.java:doStop(1007)) - Stopped o.e.j.w.WebAppContext@599e4d41{datanode,/,null,UNAVAILABLE}{jar:file:/home/lori/.gradle/caches/modules-2/files-2.1/org.apache.hadoop/hadoop-hdfs/3.2.2/e644bd31b0e13dc30845cfc659c57fb1ee4a8786/hadoop-hdfs-3.2.2-tests.jar!/webapps/datanode}
+2022-12-02 11:46:03,280 INFO  [Listener at localhost/37121] server.AbstractConnector (AbstractConnector.java:doStop(343)) - Stopped ServerConnector@77b919a3{HTTP/1.1,[http/1.1]}{localhost:0}
+2022-12-02 11:46:03,280 INFO  [Listener at localhost/37121] server.session (HouseKeeper.java:stopScavenging(158)) - node0 Stopped scavenging
+2022-12-02 11:46:03,280 INFO  [Listener at localhost/37121] handler.ContextHandler (ContextHandler.java:doStop(1007)) - Stopped o.e.j.s.ServletContextHandler@2e66bc32{static,/static,jar:file:/home/lori/.gradle/caches/modules-2/files-2.1/org.apache.hadoop/hadoop-hdfs/3.2.2/e644bd31b0e13dc30845cfc659c57fb1ee4a8786/hadoop-hdfs-3.2.2-tests.jar!/webapps/static,UNAVAILABLE}
+2022-12-02 11:46:03,281 INFO  [Listener at localhost/37121] ipc.Server (Server.java:stop(3403)) - Stopping server on 37121
+2022-12-02 11:46:03,282 INFO  [IPC Server listener on 0] ipc.Server (Server.java:run(1366)) - Stopping IPC Server listener on 0
+2022-12-02 11:46:03,282 INFO  [IPC Server Responder] ipc.Server (Server.java:run(1502)) - Stopping IPC Server Responder
+2022-12-02 11:46:03,282 WARN  [BP-449223217-127.0.1.1-1669977950314 heartbeating to localhost/127.0.0.1:38845] datanode.IncrementalBlockReportManager (IncrementalBlockReportManager.java:waitTillNextIBR(160)) - IncrementalBlockReportManager interrupted
+2022-12-02 11:46:03,282 WARN  [BP-449223217-127.0.1.1-1669977950314 heartbeating to localhost/127.0.0.1:38845] datanode.DataNode (BPServiceActor.java:run(865)) - Ending block pool service for: Block pool BP-449223217-127.0.1.1-1669977950314 (Datanode Uuid 60715c20-60bb-4a49-b69d-8320c98a40eb) service to localhost/127.0.0.1:38845
+2022-12-02 11:46:03,283 INFO  [BP-449223217-127.0.1.1-1669977950314 heartbeating to localhost/127.0.0.1:38845] datanode.DataNode (BlockPoolManager.java:remove(102)) - Removed Block pool BP-449223217-127.0.1.1-1669977950314 (Datanode Uuid 60715c20-60bb-4a49-b69d-8320c98a40eb)
+2022-12-02 11:46:03,283 INFO  [BP-449223217-127.0.1.1-1669977950314 heartbeating to localhost/127.0.0.1:38845] impl.FsDatasetImpl (FsDatasetImpl.java:shutdownBlockPool(2866)) - Removing block pool BP-449223217-127.0.1.1-1669977950314
+2022-12-02 11:46:03,284 WARN  [refreshUsed-/tmp/1669977949355-0/data/data1/current/BP-449223217-127.0.1.1-1669977950314] fs.CachingGetSpaceUsed (CachingGetSpaceUsed.java:run(183)) - Thread Interrupted waiting to refresh disk information: sleep interrupted
+2022-12-02 11:46:03,284 WARN  [refreshUsed-/tmp/1669977949355-0/data/data2/current/BP-449223217-127.0.1.1-1669977950314] fs.CachingGetSpaceUsed (CachingGetSpaceUsed.java:run(183)) - Thread Interrupted waiting to refresh disk information: sleep interrupted
+2022-12-02 11:46:03,285 INFO  [Listener at localhost/37121] impl.FsDatasetAsyncDiskService (FsDatasetAsyncDiskService.java:shutdown(193)) - Shutting down all async disk service threads
+2022-12-02 11:46:03,285 INFO  [Listener at localhost/37121] impl.FsDatasetAsyncDiskService (FsDatasetAsyncDiskService.java:shutdown(201)) - All async disk service threads have been shut down
+2022-12-02 11:46:03,285 INFO  [Listener at localhost/37121] impl.RamDiskAsyncLazyPersistService (RamDiskAsyncLazyPersistService.java:shutdown(177)) - Shutting down all async lazy persist service threads
+2022-12-02 11:46:03,285 INFO  [Listener at localhost/37121] impl.RamDiskAsyncLazyPersistService (RamDiskAsyncLazyPersistService.java:shutdown(184)) - All async lazy persist service threads have been shut down
+2022-12-02 11:46:03,285 INFO  [Listener at localhost/37121] datanode.DataNode (DataNode.java:shutdown(2169)) - Shutdown complete.
+2022-12-02 11:46:03,285 INFO  [Listener at localhost/37121] hdfs.MiniDFSCluster (MiniDFSCluster.java:stopAndJoinNameNode(2153)) - Shutting down the namenode
+2022-12-02 11:46:03,285 INFO  [Listener at localhost/37121] namenode.FSNamesystem (FSNamesystem.java:stopActiveServices(1365)) - Stopping services started for active state
+2022-12-02 11:46:03,286 INFO  [org.apache.hadoop.hdfs.server.namenode.FSNamesystem$LazyPersistFileScrubber@741f8dbe] namenode.FSNamesystem (FSNamesystem.java:run(4231)) - LazyPersistFileScrubber was interrupted, exiting
+2022-12-02 11:46:03,286 INFO  [org.apache.hadoop.hdfs.server.namenode.FSNamesystem$NameNodeEditLogRoller@66f0548d] namenode.FSNamesystem (FSNamesystem.java:run(4138)) - NameNodeEditLogRoller was interrupted, exiting
+2022-12-02 11:46:03,286 INFO  [Listener at localhost/37121] namenode.FSEditLog (FSEditLog.java:endCurrentLogSegment(1410)) - Ending log segment 1, 70
+2022-12-02 11:46:03,287 INFO  [Listener at localhost/37121] namenode.FSEditLog (FSEditLog.java:printStatistics(778)) - Number of transactions: 71 Total time for transactions(ms): 24 Number of transactions batched in Syncs: 16 Number of syncs: 56 SyncTimes(ms): 7 1 
+2022-12-02 11:46:03,288 INFO  [Listener at localhost/37121] namenode.FileJournalManager (FileJournalManager.java:finalizeLogSegment(145)) - Finalizing edits file /tmp/1669977949355-0/name-0-1/current/edits_inprogress_0000000000000000001 -> /tmp/1669977949355-0/name-0-1/current/edits_0000000000000000001-0000000000000000071
+2022-12-02 11:46:03,288 INFO  [Listener at localhost/37121] namenode.FileJournalManager (FileJournalManager.java:finalizeLogSegment(145)) - Finalizing edits file /tmp/1669977949355-0/name-0-2/current/edits_inprogress_0000000000000000001 -> /tmp/1669977949355-0/name-0-2/current/edits_0000000000000000001-0000000000000000071
+2022-12-02 11:46:03,288 INFO  [FSEditLogAsync] namenode.FSEditLog (FSEditLogAsync.java:run(253)) - FSEditLogAsync was interrupted, exiting
+2022-12-02 11:46:03,289 INFO  [CacheReplicationMonitor(1333162198)] blockmanagement.CacheReplicationMonitor (CacheReplicationMonitor.java:run(169)) - Shutting down CacheReplicationMonitor
+2022-12-02 11:46:03,290 INFO  [Listener at localhost/37121] ipc.Server (Server.java:stop(3403)) - Stopping server on 38845
+2022-12-02 11:46:03,290 INFO  [IPC Server listener on 0] ipc.Server (Server.java:run(1366)) - Stopping IPC Server listener on 0
+2022-12-02 11:46:03,290 INFO  [IPC Server Responder] ipc.Server (Server.java:run(1502)) - Stopping IPC Server Responder
+2022-12-02 11:46:03,291 INFO  [RedundancyMonitor] blockmanagement.BlockManager (BlockManager.java:run(4834)) - Stopping RedundancyMonitor.
+2022-12-02 11:46:03,291 INFO  [StorageInfoMonitor] blockmanagement.BlockManager (BlockManager.java:run(4869)) - Stopping thread.
+2022-12-02 11:46:03,389 INFO  [Listener at localhost/37121] namenode.FSNamesystem (FSNamesystem.java:stopActiveServices(1365)) - Stopping services started for active state
+2022-12-02 11:46:03,389 INFO  [Listener at localhost/37121] namenode.FSNamesystem (FSNamesystem.java:stopStandbyServices(1466)) - Stopping services started for standby state
+2022-12-02 11:46:03,390 INFO  [Listener at localhost/37121] handler.ContextHandler (ContextHandler.java:doStop(1007)) - Stopped o.e.j.w.WebAppContext@7f9e1534{hdfs,/,null,UNAVAILABLE}{jar:file:/home/lori/.gradle/caches/modules-2/files-2.1/org.apache.hadoop/hadoop-hdfs/3.2.2/e644bd31b0e13dc30845cfc659c57fb1ee4a8786/hadoop-hdfs-3.2.2-tests.jar!/webapps/hdfs}
+2022-12-02 11:46:03,391 INFO  [Listener at localhost/37121] server.AbstractConnector (AbstractConnector.java:doStop(343)) - Stopped ServerConnector@7cd1ac19{HTTP/1.1,[http/1.1]}{localhost:0}
+2022-12-02 11:46:03,391 INFO  [Listener at localhost/37121] server.session (HouseKeeper.java:stopScavenging(158)) - node0 Stopped scavenging
+2022-12-02 11:46:03,391 INFO  [Listener at localhost/37121] handler.ContextHandler (ContextHandler.java:doStop(1007)) - Stopped o.e.j.s.ServletContextHandler@fac80{static,/static,jar:file:/home/lori/.gradle/caches/modules-2/files-2.1/org.apache.hadoop/hadoop-hdfs/3.2.2/e644bd31b0e13dc30845cfc659c57fb1ee4a8786/hadoop-hdfs-3.2.2-tests.jar!/webapps/static,UNAVAILABLE}

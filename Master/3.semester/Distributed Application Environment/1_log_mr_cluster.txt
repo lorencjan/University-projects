@@ -1,0 +1,75 @@
+2022-12-03 19:50:28,918 INFO client.RMProxy: Connecting to ResourceManager at /127.0.0.2:8032
+2022-12-03 19:50:29,549 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/demo/.staging/job_1670096417115_0001
+2022-12-03 19:50:29,852 INFO input.FileInputFormat: Total input files to process : 1
+2022-12-03 19:50:30,838 INFO mapreduce.JobSubmitter: number of splits:1
+2022-12-03 19:50:31,543 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1670096417115_0001
+2022-12-03 19:50:31,545 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2022-12-03 19:50:31,978 INFO conf.Configuration: resource-types.xml not found
+2022-12-03 19:50:31,982 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2022-12-03 19:50:32,808 INFO impl.YarnClientImpl: Submitted application application_1670096417115_0001
+2022-12-03 19:50:32,920 INFO mapreduce.Job: The url to track the job: http://nixos:8088/proxy/application_1670096417115_0001/
+2022-12-03 19:50:32,924 INFO mapreduce.Job: Running job: job_1670096417115_0001
+2022-12-03 19:50:46,396 INFO mapreduce.Job: Job job_1670096417115_0001 running in uber mode : false
+2022-12-03 19:50:46,399 INFO mapreduce.Job:  map 0% reduce 0%
+2022-12-03 19:50:53,553 INFO mapreduce.Job:  map 100% reduce 0%
+2022-12-03 19:50:58,642 INFO mapreduce.Job:  map 100% reduce 100%
+2022-12-03 19:50:59,691 INFO mapreduce.Job: Job job_1670096417115_0001 completed successfully
+2022-12-03 19:50:59,835 INFO mapreduce.Job: Counters: 52
+        File System Counters
+                FILE: Number of bytes read=371383
+                FILE: Number of bytes written=1216217
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=7250585
+                HDFS: Number of bytes written=307840
+                HDFS: Number of read operations=8
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=1
+                Launched reduce tasks=1
+                Data-local map tasks=1
+                Total time spent by all maps in occupied slots (ms)=5147
+                Total time spent by all reduces in occupied slots (ms)=2875
+                Total time spent by all map tasks (ms)=5147
+                Total time spent by all reduce tasks (ms)=2875
+                Total vcore-milliseconds taken by all map tasks=5147
+                Total vcore-milliseconds taken by all reduce tasks=2875
+                Total megabyte-milliseconds taken by all map tasks=5270528
+                Total megabyte-milliseconds taken by all reduce tasks=2944000
+        Map-Reduce Framework
+                Map input records=147081
+                Map output records=48802
+                Map output bytes=909391
+                Map output materialized bytes=371383
+                Input split bytes=109
+                Combine input records=48802
+                Combine output records=17726
+                Reduce input groups=17726
+                Reduce shuffle bytes=371383
+                Reduce input records=17726
+                Reduce output records=12383
+                Spilled Records=35452
+                Shuffled Maps =1
+                Failed Shuffles=0
+                Merged Map outputs=1
+                GC time elapsed (ms)=247
+                CPU time spent (ms)=0
+                Physical memory (bytes) snapshot=0
+                Virtual memory (bytes) snapshot=8442015744
+                Total committed heap usage (bytes)=638058496
+                Peak Map Virtual memory (bytes)=4015484928
+                Peak Reduce Virtual memory (bytes)=4426530816
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters
+                Bytes Read=7250476
+        File Output Format Counters
+                Bytes Written=307840

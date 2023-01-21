@@ -1,0 +1,125 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BooksWpf.Styles">
+    <Style TargetType="Button" x:Key="ButtonBase">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Cursor" Value="Hand"/>
+    </Style>
+    <Style TargetType="Button" x:Key="NavigationButton" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="Background" Value="#379816"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="BorderThickness" Value="0px"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="5px"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#286b0d"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="BasicButton" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0px"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="5px"/>
+    </Style>
+    <Style TargetType="Button" x:Key="GlobalSearch" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0px"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="5px"/>
+        <Setter Property="Margin" Value="5px"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#379816"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="#74a45c"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="Button" x:Key="ListViewHeaderButton" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0px"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Padding" Value="5px"/>
+    </Style>
+    <Style TargetType="Button" x:Key="ListLine" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0px"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="3"/>
+    </Style>
+    
+    <Style TargetType="Button" x:Key="FilterButton" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0px"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="3px"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="DetailButton" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="BorderThickness" Value="0px"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Margin" Value="5px"/>
+    </Style>
+
+    <Style TargetType="Button" x:Key="ResetFilter" BasedOn="{StaticResource FilterButton}">
+        <Setter Property="Background" Value="	#bdd7b3"/>
+
+    </Style>
+
+    <Style TargetType="Button" x:Key="ApplyFilter" BasedOn="{StaticResource FilterButton}">
+        <Setter Property="Background" Value="#74a45c"/>
+
+    </Style>
+
+
+    <Style TargetType="Button" x:Key="IconButton" BasedOn="{StaticResource ButtonBase}">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderThickness="0" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="LightGray" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

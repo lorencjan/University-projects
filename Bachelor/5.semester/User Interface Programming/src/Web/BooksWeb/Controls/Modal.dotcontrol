@@ -1,0 +1,22 @@
+﻿@viewModel BooksWeb.ViewModels.MasterPageViewModel, BooksWeb
+@baseType BooksWeb.Controls.Modal, BooksWeb
+
+<div class="hidden custom-modal" Class-modal-visible="{value: _control.IsShowed}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{resource: _control.Header}}</h5>
+                <button type="button" class="close" Events.Click="{staticCommand: IsDeleteModalShowed = false; IsErrorModalShowed = false}">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <dot:HtmlLiteral Html="{value: _control.Message}" />
+            </div>
+            <div class="modal-footer">
+                <dot:Button Text="Yes" Click="{command: _control.ConfirmCommand()}" class="btn btn-dark" IncludeInPage="{value: _control.HasConfirmation}" />
+                <dot:Button Text="Close" Click="{staticCommand: IsDeleteModalShowed = false; IsErrorModalShowed = false}" class="btn btn-secondary" />
+            </div>
+        </div>
+    </div>
+</div>

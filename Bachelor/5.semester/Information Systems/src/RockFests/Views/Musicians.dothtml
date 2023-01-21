@@ -1,0 +1,58 @@
+﻿@viewModel RockFests.ViewModels.Musicians.MusiciansViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    
+    <div class="d-flex justify-content-between mb-3">
+        <dot:RoleView Roles="Admin,Organizer" RenderWrapperTag="true" WrapperTagName="div">
+            <dot:RouteLink Text="{value: Texts.AddMusician}" RouteName="{resource: Routes.Musicians_Detail}" Param-Id="0" class="btn btn-dark">
+                <span class="fa fa-plus"></span>
+            </dot:RouteLink>
+        </dot:RoleView>
+        <cc:DataSetUtils Text="{value: Musicians.Filter}" Refresh="{command: Musicians.RequestRefresh()}" Search="{command: Musicians.RequestFilter()}" />
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>{{resource: Texts.Name}}</th>
+                    <th>{{resource: Texts.Role}}</th>
+                    <th>{{resource: Texts.Rating}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <dot:Repeater DataSource="{value: Musicians.DataSet}" RenderWrapperTag="false">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{value: Name}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Role}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Rating.ToString("0.##")}" />
+                            </td>
+                            <td class="btn-cell">
+                                <dot:RouteLink RouteName="{resource: Routes.Musicians_Detail}" Param-Id="{value: Id}" class="btn btn-light">
+                                    <span class="fa fa-eye"></span>
+                                </dot:RouteLink>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <EmptyDataTemplate>
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                {{value: Texts.EmptyDataset}}
+                            </td>
+                        </tr>
+                    </EmptyDataTemplate>
+                </dot:Repeater>
+            </tbody>
+        </table>
+    </div>
+    <dot:DataPager DataSet="{value: Musicians.DataSet}" class="pager mt-3" />
+
+</dot:Content>

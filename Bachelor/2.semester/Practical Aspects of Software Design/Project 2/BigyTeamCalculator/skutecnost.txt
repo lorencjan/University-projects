@@ -1,0 +1,1 @@
+V obecnosti lze øíci, e se nám plán daøilo dret po celou dobu projektu. A v závìru kvùli pár problémùm s Makefile jsme pøetáhli o jedne den, nicménì to neèinilo vùbec ádnı problém, nebo jsme poèítali s dodìlávkami a zámìrnì jsme mìli deadline nastavenı s rezervou.

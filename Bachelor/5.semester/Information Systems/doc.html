@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=iso-8859-2"/>
+        <title>Projekt IIS</title>
+        <style type="text/css">
+            table { border-collapse: collapse; }
+            td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
+            dt { font-weight: bold; margin-top: 0.5em; }
+        </style>
+    </head>
+    <body>
+
+        <h1>1. Festival: rezervace vstupenek na hudební festivaly</h1>
+
+        <dl>
+            <dt>Autoři</dt>
+            <dd>Jan Lorenc
+                <a href="mailto:xloren15@stud.fit.vutbr.cz">xloren15@stud.fit.vutbr.cz</a> -
+                Backend + Design frontendu
+            </dd>
+            <dd>Dominik Kaláb
+                <a href="mailto:xkalab11@stud.fit.vutbr.cz">xkalab11@stud.fit.vutbr.cz</a> - 
+                Testy + Frontend
+            </dd>
+        <dd>Vojtěch Staněk
+                <a href="mailto:xstane45@stud.fit.vutbr.cz">xstane45@stud.fit.vutbr.cz</a> - 
+                Frontend
+            </dd>
+            <dt>URL aplikace</dt>
+            <dd><a href="http://xloren15-001-site1.etempurl.com/">http://xloren15-001-site1.etempurl.com/</a></dd>
+        </dl>
+
+        <h2>Uživatelé systému pro testování</h2>
+        <table>
+        <tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
+        <tr><td>admin</td><td>admin</td><td>administrátor</td></tr>
+        <tr><td>organizer</td><td>organizer</td><td>pořadatel</td></tr>
+        <tr><td>cashier</td><td>cashier</td><td>pokladní</td></tr>
+        <tr><td>spectator</td><td>spectator</td><td>divák</td></tr>
+        <tr><td>CarolusNovus</td><td>karelnovy</td><td>divák</td></tr>
+        </table>
+
+        <h2>Implementace</h2>
+        Řešení sestává ze 4 podprojektů:
+        <h4>RockFests</h4>
+        Prezentační vrstva aplikace implementovaná v DotVVM na architektuře MVVM. (Pro sestavení z VS bude možná potřeba bezplatné rozšíření "DotVVM for Visual Studio", z cmd však bez problémů).
+        <br>
+        Jednotlivé domény aplikace (festivaly, iterpreti(kapely a muzikanti), lístky ...) jsou řešeny ve stejnojmenných Views (markup souborech .dothtml) a ViewModelech (normální .cs).
+        <br>
+        Ve složce Model se nachází různé pomocné třídy, v Controls pak vlastní UI kontrolky, jež v DotVVM prakticky znamenají subviews.
+        <br>
+        Ve složce wwwroot/lib by se nacházely použité knihovny, jež kvůli velikosti nebyly odevzdány (viz. zadání) ... jedná se o
+        <a href="https://getbootstrap.com/">Bootstrap v4.5.2</a>, <a href="https://jquery.com/">jQuery v2.1.3</a>, 
+        <a href="https://fontawesome.com">Font Awesome Free 5.15.0</a> a <a href="https://popper.js.org/docs/v2/">popper v2</a>
+        <br>
+        Případy užití lze tedy nalézt následovně:
+        <br>
+        Neregistrovaný uživatel:
+        <ul>
+            <li>Vyhledávání a prohlížení se nachází v korespondujících souborech ve složkách Views, ViewModels s využitím korespondující třídy z BL vrstvy. 
+            Například kapely jsou tedy řešeny v souborech <i>Views/Bands.dothtml, Views/Bands/Detail.dothtml, ViewModels/Bands/BandsViewModel.cs, ViewModels/Bands/BandDetailViewModel.cs</i> a <i>Repositories/BandRepository.cs</i> z BL vrstvy.<br>
+            Stejným způsobem i ostatní domény s tím, že festivaly pod sebou schraňují i pódia.</li>
+            <li>Vyprodané festivaly pozná díky "disabled" rezervačnímu tlačítku - řešeno ve view a viewmodelu detailu festivalu.</li>
+            <li>Rezervace/registrace během rezervace implementována opět v detailu festivalu, jenž však využívá <i>UnregisteredFormViewModel.cs</i> a kontrolku <i>Controls/UnregisteredForm.dotcontrol.</i></li>
+        </ul>
+        Divák:
+        <ul>
+            <li>Rezervace opět v detailu festivalu, tentokrát však již bez formuláře. Řeší tedy jen <i>FestivalDetailViewModel</i>.
+            <li>Své lístky vidí v sekci My Tickets (implementováno v souborech viz. "prohlížení" u neregistrovaného).</li>
+        </ul>
+        Pokladní:
+        <ul>
+            <li>Lístky spravuje v sekci Tickets (implementováno v souborech viz "prohlížení" u neregistrovaného, rozdíl jen ve využití služby <i>Services/TicketService.cs</i> místo repozitáře).</li>
+        </ul>
+        Pořadatel:
+        <ul>
+            <li>Správa interpretů/festivalů ve stejných souborech jako prohlížení. Pouze díky roli vidí více možností (create, edit, delete) - kontrolka <i>dot:RoleView</i>.</li>
+            <li>Přihlašování interpretů a správa pódií řešena skrze <i>FestivalDetailViewModel</i> ve <i>StagesViewModel</i> a <i>Controls/Stages.dotcontrol</i>.</li>
+        </ul>
+        Administrátor:
+        <ul>
+            <li>Správu uživatelů lze najít v <i>Users.dothtml, Users/Detail.dothtml, UsersViewModel.cs</i> s využitím <i>UserService</i> z BL vrstvy.</li>
+        </ul>
+        Správa účtu:
+        <ul>
+            <li>Přihlášení/registrace je pak ve složkách <i>Views/Authentication</i> a <i>ViewModels/Authentication</i>.</li>
+            <li>Nastavení v souborech <i>Settings.dothtml, SettingsViewModel.cs</i></li>
+            <li>Oboje s využitím <i>UserService</i> z BL vrstvy.</li>
+        </ul>
+
+        <h4>RockFests.BL</h4>
+        Vrstva aplikační logiky. Obsahuje:
+        <ul>
+            <li>DTO - Data transfer objekty a jejich mapování z/do databázových entit.</li>
+            <li>Resources - Zdroje aplikace. V našem případě textové konstanty pro chybové hlášky, routy a texty v aplikaci.</li>
+            <li>Repozitáře - CRUD operace nad databází máme řešeny přes návrhový vzor Repository. Třída <i>RepositoryBase</i> slouží jako
+            generický repozitář pro jakoukoliv entitu (tabulku databáze). Konkrétní repozitáře si případně doplňují vlastní funkcionalitu.</li>
+            <li>Služby - Uživatelé (kvůli přihlášení/registraci) a lístky (kvůli kontrole počtů, datumu splatnosti atd.) jsou jediné domény 
+            vyžadující širší funkcionalitu než CRUD. Z toho důvodu mají vlastní službu, která to vše řeší, včetně CRUDu, takže nemají repozitář, 
+            neboť by bylo zbytečné je spravovat dvěma různými třídami.</li>
+        </ul>
+
+        <h4>RockFests.DAL</h4>
+        Datová vrstva aplikace pracující s databází. Obsahuje:
+        <ul>
+            <li>Entity - Šablony pro tabulky. Jejich instance jsou jednotlivé záznamy.</li>
+            <li>Migrace - Slouží k uchování stavů databázového systémů. Automaticky generované Entity Frameworkem.</li>
+            <li>Seedy databáze.</li>
+            <li>DbContext - abstrakce databáze.</li>
+            <li>Pomocné typy a metody pro aplikaci.</li>
+        </ul>
+
+        <h4>RockFests.Specification</h4>
+        Unit testy aplikace. Zároveň ukazují příkladné použití jednotlivých tříd, služeb, vzorů.
+
+        <h3>Schéma databáze</h3>
+
+        <img src="db-schema.png" />
+
+        <h2>Instalace</h2>
+
+        <h4>Instalace na server</h4>
+        K nasazení slouží soubor site1.PublishSettings, jenž obsahuje informace o serveru, na kterém se má aplikace spustit. Ten navíc umí většina hostingů vygenerovat.
+        Ve Visual Studiu se pak jen pravým tlačítkem klikne na projekt aplikace, jenž se chce nasadit a zvolí se Publish.
+        Pokud se nasazuje poprvé, vybere se soubor site1.PublishSettings, jinak se již jen klikne na Publish, čímž se aplikace přeloží a spustí na serveru.
+        <br>
+        Databáze se nemusí vůbec řešit, ta se zprovozní automaticky viz. sekce Databáze.
+
+        <h4>Softwarové požadavky</h4>
+        Aplikace je psaná na platformě .NET Core 3.1, takže pro její lokální spuštění se vyžaduje mít .NET Core nainstalovaný.
+        Měla by být zaručena zpětná kompatibilita s .NET Core 3.0, nicméně to jsme nezkoušeli.
+        <br>
+        Pro potřeby databáze je potřeba mít nainstalovaný MS SQL Server.
+
+        <h4>Databáze</h4>
+        Databáze je vytvářena, upravována a spravována skrze ORM Entity Framework Core verze 3.1.5. Externě není zapotřebí na databázi vůbec sahat.
+        Při spuštění aplikace se databáze automaticky sama vytvoří, pokud neexistuje, případně upraví, pokud v ní od posledního deploye nastaly nějaké změny (<i>RockFests/Model/MigrationStartupFilter.cs</i>).
+        Úpravy se provádí přímo v kódu aplikace, konkrétně v projektu RockFests.DAL, a po nich je potřeba vytvořit migraci, jež se pak může aplikovat na databázi.
+        <br><br>
+        Nová migrace se vytvoří příkazem: dotnet ef migrations add JMENO_MIGRACE --project RockFests.DAL --startup-project RockFests
+        <br>
+        Manuálně lze databázi vytvořit/upravit příkazem: dotnet ef database update --project RockFests.DAL --startup-project RockFests
+        <br>
+        <i>(pro oba příkazy je potřeba mít nainstalovaný ef tooling a ukázka předpokládá spouštění z kořenového adresáře (se souborem RockFests.sln))</i>
+        <br><br>
+        Umístění a přístup k samotné databázi se konfiguruje přes tzv. ConnectionString v souboru appsettings.json.
+        <br>
+        <small>Pokud budete chtít vytvořit lokální databázi manuálním příkazem, budete muset zkopírovat ConnectionString z appsettings.development.json do appsettings.json. Jinak se budete stažit manipulovat s databází na serveru, místo localdb.</small>
+        
+        <h2>Zajímavosti</h2>
+        V případě rezervace lístku je přihlášený uživatel odkázán na jeho detail, nepřihlášený zpět na festivaly, protože lístek je spjatý s uživatelem, jenž v tomto případě neexistuje.
+        Může nastat otázka, jak to má zaplatit? Idea je taková, že by se v obou případech uživateli poslal e-mail s číslem účtu a pokyny k platbě. Do systému jsme to dávat nechtěli, neboť
+        například ve většině e-shopů to uživatele taky odkáže zpět na nákup a vše dostane v e-mailu. E-maily nechodí, protože jsme nechtěli platit za e-mailovou službu. Jen to tu zmiňujeme
+        pro klarifikaci v případě výše zmíněné otázky. Neregistrovaný uživatel stále může svůj koupený lístek identifikovat variabilním symbolem, jeho absence účtu tedy nevadí.
+    </body>
+</html>

@@ -1,0 +1,29 @@
+﻿@viewModel BooksWeb.ViewModels.ChartsBooksViewModel, BooksWeb
+@masterPage Views/MasterPage.dotmaster
+@import BooksWeb.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h2 class="fancyfont dark-green font-weight-bold text-center" style="font-size: 3rem;">{{resource: Texts.BestRatedBooks}}</h2>
+
+    <table class="table table-striped chart fancyfont shadow">
+        <thead>
+            <th>{{resource: Texts.Chart_Place}}</th>
+            <th>{{resource: Texts.Name}}</th>
+            <th>{{resource: Texts.Author}}</th>
+            <th >{{resource: Texts.Rating}}</th>
+        </thead>
+        <dot:Repeater DataSource="{value: Books.DataSet}" WrapperTagName="tbody">
+            <ItemTemplate>
+                <tr>
+                    <td class="text-right font-weight-bold"><dot:Literal Text="{value: _parent.Books.Page*10 + _collection.Index + 1 + "."}" /></td>
+                    <td style="width: 55%;"><dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: Id}">{{value: Name}}</dot:RouteLink></td>
+                    <td style="width: 45%;">{{value: Author}}</td>
+                    <td class="text-right font-weight-bold">{{value: Rating.ToString("0.#")}}</td>
+                </tr>
+            </ItemTemplate>
+        </dot:Repeater>
+    </table>
+    <dot:DataPager DataSet="{value: Books.DataSet}" class="pager mt-3" />
+
+</dot:Content>

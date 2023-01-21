@@ -1,0 +1,14 @@
+docker
+python3.8
+    numpy
+    pandas
+    geopandas
+    pyproj
+    contextily
+    sklearn
+    dateutil
+    requests
+    bs4
+    pymongo
+    seaborn
+    matplotlib

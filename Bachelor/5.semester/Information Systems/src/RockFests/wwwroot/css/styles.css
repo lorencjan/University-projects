@@ -1,0 +1,183 @@
+﻿h2 {
+    font-size: 24px;
+    color: #343a40;
+    margin-bottom: 16px;
+}
+
+h3 {
+    font-size: 21px;
+    color: #343a40;
+    margin-bottom: 12px;
+}
+
+header {
+    z-index: 5000;
+    padding: 12px 16px;
+    background-color: #343a40;
+    color: white;
+}
+    header .dropdown-toggle::after {
+        margin-top: 17px;
+    }
+
+.header-image {
+    padding-top: 3px;
+}
+
+    .header-image a {
+        color: white;
+        font: bold 36px Impact, serif;
+        text-decoration: none;
+    }
+
+.nav-side {
+    width: 210px;
+    min-height: calc(100vh - 71px);
+    background-color: #6c757d;
+}
+
+button.nav-side-item, .nav-side-item a {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-top: 1px solid white;
+    font-weight: 500;
+    color: white;
+    background-color: #6c757d;
+    text-align: left;
+    width: 100%;
+}
+
+    .nav-side-item:focus, .nav-side-item:active {
+        outline: none;
+    }
+
+    .nav-side-item:hover, .nav-side-item a:hover {
+        background-color: #343a40;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+.sub-nav-side-item a {
+    background-color: #5f5f5f;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
+
+.has-error {
+    color: red;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.modal-visible {
+    display: block !important;
+    position: absolute;
+    top: 100px;
+    left: 30%;
+    width: 40%;
+    z-index: 15000;
+}
+
+.screen-overlay {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 14999;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdown-menu {
+    min-width: 100%;
+}
+
+.dropdown-item:active, .dropdown-item:hover {
+    cursor: pointer;
+    background-color: #343a40;
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: #4b5157;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+select {
+    padding: 2px 1px;
+}
+
+ul.pager {
+    display: flex;
+    justify-content: center;
+}
+
+    ul.pager li {
+        list-style-type: none;
+        display: inline-block;
+        background-color: #6c757d;
+        min-width: 2rem;
+        height: 2rem;
+        line-height: 2rem;
+        border-right: 1px solid white;
+        overflow: hidden;
+        text-decoration: none;
+    }
+
+        ul.pager li.active {
+            text-align: center;
+            font-weight: 500;
+            color: white;
+            background-color: #343a40;
+        }        
+
+        ul.pager li a {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+            color: white;
+            text-align: center;
+        }
+
+            ul.pager li a:hover {
+                background-color: #343a40;
+                text-decoration: none;
+            }
+
+table td {
+    vertical-align: middle !important;
+}
+
+.btn-cell {
+    width: 50px;
+    text-align: center;
+}
+
+.detail-header {
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    .page-input, .detail-header {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    body {
+        width: 640px;
+        overflow: scroll
+    }
+}

@@ -1,0 +1,16 @@
+/*PARAMETRIZUJE SPEKTRUM VSTUPNÍ VĚTY*/
+Nc = 16;
+B = 256/Nc;
+for i=1:B;
+F(i,:) = sum(PX(i*B-B+1:i*B,:));
+end;
+
+/*PARAMETRIZUJE SPEKTRUM PRVNÍHO VYHLEDÁVANÉHO VZORU*/
+for i=1:B;
+Q1(i,:) = sum(PQ1(i*B-B+1:i*B,:));
+end;
+
+/*PARAMETRIZUJE SPEKTRUM DRUHÉHO VYHLEDÁVANÉHO VZORU*/
+for i=1:B;
+Q2(i,:) = sum(PQ2(i*B-B+1:i*B,:));
+end;

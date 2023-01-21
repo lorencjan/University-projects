@@ -1,0 +1,88 @@
+﻿@page "/Projects"
+@inject ProjectService projectService
+@inject NavigationManager NavigationManager
+
+<AuthorizeView >
+
+<NotAuthorized>
+ <div class="container"> 
+     <div class="card text-center">
+      <div class="card-body">
+         <h1>Welcome to <b>StackBoss</b> system!</h1>
+         <h2>Please log in</h2>
+      </div>
+    </div>
+</div>
+</NotAuthorized>
+<Authorized Context="Auth">
+@if(ProjectList == null)
+{
+    <p>Loading..</p>
+}
+else
+{
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <h1>
+                <span class="HP-font">Projects</span>
+            </h1>
+        </div>
+        <AuthorizeView Roles="Admin,ProjectDirector">
+        <div class="col-md-2 d-flex justify-content-end">
+            <span>
+                <button type="button" class="btn btn-primary" @onclick="OnAddClicked">Add new</button>
+            </span>
+        </div>
+        </AuthorizeView>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="container">
+            <ul class="list-group">
+                @foreach (ProjectEntity proj in ProjectList)
+                {
+                    <NavLink class="no-text-decoration seller-list" href="@($"/Project/{proj.Id}")">
+                        <li class="list-group-item d-flex justify-content-start mt-2">
+                     
+                            <div style="width:60%; margin-top: 1.5em; padding-left: 2%">
+                                <h3 class="HP-font">@proj.Name</h3>
+                                <p>@proj.Manager</p>
+                            </div>
+                        </li>
+                    </NavLink>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+}
+</Authorized>
+</AuthorizeView>
+@code {
+    private List<ProjectEntity> ProjectList;
+    private ProjectEntity Project;
+
+    private void OnDetailClicked(ProjectEntity context)
+    {
+         //NavigationManager.NavigateTo($"EditRisk/{context.Id}");
+
+    }
+    private void OnDeleteClicked(ProjectEntity context)
+    {
+        // NavigationManager.NavigateTo($"Delete/{context.Id}");
+
+    }
+    private void OnAddClicked()
+    {
+        NavigationManager.NavigateTo("AddProject");
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        ProjectList = await projectService.GetAllProjectsAsync();
+     
+    }
+}
+

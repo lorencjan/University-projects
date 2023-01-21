@@ -1,0 +1,27 @@
+﻿<local:UserControlBase x:Class="MovieDatabase.App.Views.HomePage"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                       xmlns:local="clr-namespace:MovieDatabase.App.Views"
+                       xmlns:viewModels="clr-namespace:MovieDatabase.App.ViewModels"
+                       mc:Ignorable="d"
+                       d:DataContext="{d:DesignInstance viewModels:HomePageViewModel}"
+                       DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=HomePageViewModel}">
+    
+    <StackPanel Background="White" Margin="28">
+        <TextBlock Text="Welcome to our movie database" Style="{StaticResource TextBlockBase}" FontSize="21" HorizontalAlignment="Center"/>
+        <TextBlock Text="In this app you can:" Style="{StaticResource TextBlockBase}"/>
+        <ItemsControl ItemsSource="{Binding AppPossibilities}" Margin="0, 10, 0, 0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <Image Margin="20, 0, 20, 0" Width="20px" Source="{Binding Path=DataContext.ListIndent, RelativeSource={RelativeSource AncestorType={x:Type local:UserControlBase}}}"></Image>
+                        <TextBlock FontSize="16" Text="{Binding}"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <Image Margin="0, 50, 0, 0" Source="{Binding TitlePicture}"/>
+    </StackPanel>
+</local:UserControlBase>

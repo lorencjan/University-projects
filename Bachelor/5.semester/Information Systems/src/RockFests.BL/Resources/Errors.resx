@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BandCreate" xml:space="preserve">
+    <value>Failed to create new band.</value>
+  </data>
+  <data name="BandDelete" xml:space="preserve">
+    <value>Failed to delete this band.</value>
+  </data>
+  <data name="BandLoad" xml:space="preserve">
+    <value>Failed to load the band.</value>
+  </data>
+  <data name="Bands500" xml:space="preserve">
+    <value>Failed to load bands from the database.</value>
+  </data>
+  <data name="BandSave" xml:space="preserve">
+    <value>Failed to save the band</value>
+  </data>
+  <data name="BandUpdate" xml:space="preserve">
+    <value>Failed to update this band.</value>
+  </data>
+  <data name="CountTickets" xml:space="preserve">
+    <value>Failed to count available tickets.</value>
+  </data>
+  <data name="DashboardLoad" xml:space="preserve">
+    <value>Dashboard wasn't loaded successfully.</value>
+  </data>
+  <data name="ExistingLogin" xml:space="preserve">
+    <value>User with this login already exists</value>
+  </data>
+  <data name="FestivalDelete" xml:space="preserve">
+    <value>Failed to delete this festival.</value>
+  </data>
+  <data name="FestivalLoad" xml:space="preserve">
+    <value>Failed to load the festival.</value>
+  </data>
+  <data name="Festivals500" xml:space="preserve">
+    <value>Failed to load festivals</value>
+  </data>
+  <data name="FestivalSave" xml:space="preserve">
+    <value>Failed to save the festival.</value>
+  </data>
+  <data name="InsufficientRights" xml:space="preserve">
+    <value>You don't have rights for this page</value>
+  </data>
+  <data name="InvalidDateInterval" xml:space="preserve">
+    <value>Start of date interval must be lower then end.</value>
+  </data>
+  <data name="InvalidEmailFormat" xml:space="preserve">
+    <value>Invalid email format</value>
+  </data>
+  <data name="MemberRemove" xml:space="preserve">
+    <value>Failed to remove member.</value>
+  </data>
+  <data name="MembersEmpty" xml:space="preserve">
+    <value>Band has to have at least 1 member.</value>
+  </data>
+  <data name="Modal500Body" xml:space="preserve">
+    <value>Internal server error occured.</value>
+  </data>
+  <data name="Modal500BodyExtension" xml:space="preserve">
+    <value>Please, try the action again. If the error persists, try later.</value>
+  </data>
+  <data name="Modal500Header" xml:space="preserve">
+    <value>Internal server error</value>
+  </data>
+  <data name="MusicianCreate" xml:space="preserve">
+    <value>Failed to create new musician.</value>
+  </data>
+  <data name="MusicianDelete" xml:space="preserve">
+    <value>Failed to delete this musician.</value>
+  </data>
+  <data name="MusicianLoad" xml:space="preserve">
+    <value>Failed to load the musician.</value>
+  </data>
+  <data name="Musicians500" xml:space="preserve">
+    <value>Failed to load musicians.</value>
+  </data>
+  <data name="MusicianUpdate" xml:space="preserve">
+    <value>Failed to update this musician.</value>
+  </data>
+  <data name="Page404" xml:space="preserve">
+    <value>404 - Page not found</value>
+  </data>
+  <data name="Page500" xml:space="preserve">
+    <value>500 - Internal server error</value>
+  </data>
+  <data name="PasswordsDontMatch" xml:space="preserve">
+    <value>Passwords don't match</value>
+  </data>
+  <data name="PerformanceOverlap" xml:space="preserve">
+    <value>Some of the performances overlap.</value>
+  </data>
+  <data name="RatingCreate" xml:space="preserve">
+    <value>Failed to create new rating.</value>
+  </data>
+  <data name="RatingDelete" xml:space="preserve">
+    <value>Failed to delete this rating.</value>
+  </data>
+  <data name="RatingUpdate" xml:space="preserve">
+    <value>Failed to update this rating.</value>
+  </data>
+  <data name="Register500" xml:space="preserve">
+    <value>Failed to register new user.</value>
+  </data>
+  <data name="Required" xml:space="preserve">
+    <value>This field is required</value>
+  </data>
+  <data name="RequiredInterpret" xml:space="preserve">
+    <value>Please select an interpret.</value>
+  </data>
+  <data name="RequiredName" xml:space="preserve">
+    <value>Name field is required.</value>
+  </data>
+  <data name="ReservationConcurrency" xml:space="preserve">
+    <value>Selected tickets are no longer available. Please refresh page to get updated data.</value>
+  </data>
+  <data name="ReserveTicket" xml:space="preserve">
+    <value>Failed to reserve your ticket.</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Incorrect user name or password</value>
+  </data>
+  <data name="SignIn500" xml:space="preserve">
+    <value>Failed to sign in.</value>
+  </data>
+  <data name="StageCreate" xml:space="preserve">
+    <value>Failed to create a new stage.</value>
+  </data>
+  <data name="StageDelete" xml:space="preserve">
+    <value>Failed to delete this stage.</value>
+  </data>
+  <data name="StageExists" xml:space="preserve">
+    <value>Stage with this name already exists.</value>
+  </data>
+  <data name="StageSave" xml:space="preserve">
+    <value>Failed to save the stage.</value>
+  </data>
+  <data name="TicketApprove" xml:space="preserve">
+    <value>Failed to approve this ticket.</value>
+  </data>
+  <data name="TicketCreate" xml:space="preserve">
+    <value>Failed to create a ticket.</value>
+  </data>
+  <data name="TicketDelete" xml:space="preserve">
+    <value>Failed to delete this ticket.</value>
+  </data>
+  <data name="TicketLoad" xml:space="preserve">
+    <value>Failed to load the ticket.</value>
+  </data>
+  <data name="Tickets500" xml:space="preserve">
+    <value>Failed to load tickets.</value>
+  </data>
+  <data name="TicketUpdate" xml:space="preserve">
+    <value>Failed to update this ticket.</value>
+  </data>
+  <data name="UserCreate" xml:space="preserve">
+    <value>Failed to create new user.</value>
+  </data>
+  <data name="UserDelete" xml:space="preserve">
+    <value>Failed to delete this user.</value>
+  </data>
+  <data name="UserLoad" xml:space="preserve">
+    <value>Failed to load the user.</value>
+  </data>
+  <data name="Users500" xml:space="preserve">
+    <value>Failed to load users from the database.</value>
+  </data>
+  <data name="UserSettings500" xml:space="preserve">
+    <value>Failed to change new settings.</value>
+  </data>
+  <data name="UserUpdate" xml:space="preserve">
+    <value>Failed to update information about this user.</value>
+  </data>
+  <data name="UserUpdatePassword" xml:space="preserve">
+    <value>Failed to update user's password.</value>
+  </data>
+</root>

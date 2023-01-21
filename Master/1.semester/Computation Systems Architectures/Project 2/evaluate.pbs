@@ -1,0 +1,21 @@
+#!/bin/bash
+#PBS -q qexp
+#PBS -A dd-21-22
+#PBS -l select=1:ncpus=36
+#PBS -l walltime=0:15:00
+#PBS -m e
+#PBS -N AVS-evaluate
+
+
+cd $PBS_O_WORKDIR
+ml CMake intel-compilers/2021.1.2 
+
+rm -rf build_evaluate
+mkdir build_evaluate
+cd build_evaluate
+
+CC=icc CXX=icpc cmake ..
+make
+
+ml matplotlib/3.3.3-intel-2020a
+bash ../scripts/generate_data_and_plots.sh

@@ -1,0 +1,23 @@
+/*VYKRESLÍ GRAF SIGNÁLU ... výpočtem zjištěno, že 1s ≐ 16000 vzorků*/
+plot(x)
+set(gca,'XTick',[16000 32000 48000 64000])
+set(gca,'xticklabel',({'1','2','3','4'}))
+xlabel("Time");
+ylabel("Signal");
+
+/*VYKRESLÍ ZPARAMETRIZOVANÉ SPEKTRUM*/
+imagesc(F);
+xlabel("Time");
+ylabel("Features");
+set(gca,'XTick',[100 200 300 400])
+set(gca,'xticklabel',({'1','2','3','4'}))
+
+/*VYKRESLÍ GRAF S OBĚMA VÝSLEDNÝMI SKÓRY*/
+figure(1)
+plot(DPP)
+hold on
+plot(DPP2)
+set(gca,'XTick',[100 200 300 400])
+set(gca,'xticklabel',({'1','2','3','4'}))
+xlabel("Time");
+ylabel("Scores");

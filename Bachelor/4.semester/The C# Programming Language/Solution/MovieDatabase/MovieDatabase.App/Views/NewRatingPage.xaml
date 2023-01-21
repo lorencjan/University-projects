@@ -1,0 +1,36 @@
+﻿<local:UserControlBase x:Class="MovieDatabase.App.Views.NewRatingPage"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                       xmlns:local="clr-namespace:MovieDatabase.App.Views"
+                       xmlns:viewModels="clr-namespace:MovieDatabase.App.ViewModels"
+                       mc:Ignorable="d"
+                       d:DataContext="{d:DesignInstance viewModels:NewRatingViewModel}"
+                       DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=NewRatingViewModel}">
+    <StackPanel Margin="0,5,10,0">
+        <Grid>
+            <TextBlock Style="{StaticResource ListInDetail}">New Rating</TextBlock>
+            <Button Command="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MoviesPage}}, Path=DataContext.SaveRatingCommand}" 
+                    Style="{StaticResource IconButton}">
+                <Image Source="{Binding SaveIcon}" Margin="0,3,0,0"/>
+            </Button>
+        </Grid>
+        <Grid Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.25*"/>
+                <ColumnDefinition Width="0.75*"/>
+            </Grid.ColumnDefinitions>
+           
+            <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource ListInNew}" FontSize="15">Number</TextBlock>
+            <TextBox Text="{Binding Number, Mode=TwoWay}" Grid.Row="0" Grid.Column="1" Style="{StaticResource InputBox}" Name="NumberInput"/>
+
+            <TextBlock Grid.Row="1" Grid.Column="0" Style="{StaticResource ListInNew}" FontSize="15">Text</TextBlock>
+            <TextBox Text="{Binding Text, Mode=TwoWay}" TextWrapping="Wrap" Grid.Row="1" Grid.Column="1" Style="{StaticResource InputBox}" Name="TextInput"/>
+        </Grid>
+    </StackPanel>
+</local:UserControlBase>

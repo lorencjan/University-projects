@@ -1,0 +1,29 @@
+﻿<Application x:Class="MovieDatabase.App.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:viewModels="clr-namespace:MovieDatabase.App.ViewModels"
+             xmlns:enums="clr-namespace:MovieDatabase.DAL.Enums;assembly=MovieDatabase.DAL"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             StartupUri="Views/MainWindow.xaml">
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Buttons.xaml"/>
+                <ResourceDictionary Source="Styles/Borders.xaml"/>
+                <ResourceDictionary Source="Styles/TextBlocks.xaml"/>
+                <ResourceDictionary Source="Styles/ListViews.xaml"/>                
+                <ResourceDictionary Source="Styles/Inputs.xaml"/>
+                
+                <ResourceDictionary>
+                    <viewModels:ViewModelLocator x:Key="ViewModelLocator"/>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <ObjectDataProvider x:Key="GenresEnum" MethodName="GetValues" ObjectType="{x:Type System:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="enums:Genre"/>
+                </ObjectDataProvider.MethodParameters>  
+            </ObjectDataProvider>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

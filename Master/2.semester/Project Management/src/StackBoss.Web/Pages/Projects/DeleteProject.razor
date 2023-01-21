@@ -1,0 +1,38 @@
+﻿@page "/DeleteProject/{Id}"
+
+@inject ProjectService projectService
+@inject NavigationManager NavigationManager
+<AuthorizeView Roles="Admin,ProjectDirector" Context="Auth">
+<h2>Delete Project</h2>
+<hr />
+<form>
+<h3>Are you sure want to delete project @Project.Name?</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-danger" @onclick="@Delete" value="Delete" />
+                <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+</AuthorizeView>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    ProjectEntity Project = new ProjectEntity();
+    protected override async Task OnInitializedAsync()
+    {
+        Project = await Task.Run(() => projectService.GetProjectAsync(Convert.ToInt32(Id)));
+    }
+    protected async void Delete()
+    {
+        Project.RiskList = null;
+        await projectService.DeleteProjectAsync(Project);
+        NavigationManager.NavigateTo("Projects");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo($"Project/{Id}");
+    }
+}

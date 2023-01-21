@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AddBand" xml:space="preserve">
+    <value>Add band</value>
+  </data>
+  <data name="AddMusician" xml:space="preserve">
+    <value>Add musician</value>
+  </data>
+  <data name="AddPhoto" xml:space="preserve">
+    <value>Add photo</value>
+  </data>
+  <data name="AddRating" xml:space="preserve">
+    <value>Add rating</value>
+  </data>
+  <data name="AddUser" xml:space="preserve">
+    <value>Add user</value>
+  </data>
+  <data name="Bands" xml:space="preserve">
+    <value>Bands</value>
+  </data>
+  <data name="Btn_AddMusician" xml:space="preserve">
+    <value>Add musician</value>
+  </data>
+  <data name="Btn_AddPerformance" xml:space="preserve">
+    <value>Add performance</value>
+  </data>
+  <data name="Btn_AddStage" xml:space="preserve">
+    <value>Add stage</value>
+  </data>
+  <data name="Btn_Approve" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="Btn_Back" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Btn_ChangePassword" xml:space="preserve">
+    <value>Change password</value>
+  </data>
+  <data name="Btn_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Btn_Create" xml:space="preserve">
+    <value>Create</value>
+  </data>
+  <data name="Btn_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Btn_Detail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="Btn_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Btn_Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Btn_SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="Btn_Storno" xml:space="preserve">
+    <value>Storno</value>
+  </data>
+  <data name="ChangePhoto" xml:space="preserve">
+    <value>Change photo</value>
+  </data>
+  <data name="CreateFestival" xml:space="preserve">
+    <value>Create festival</value>
+  </data>
+  <data name="CreateTicket" xml:space="preserve">
+    <value>Create ticket</value>
+  </data>
+  <data name="CreateUser" xml:space="preserve">
+    <value>Create new user</value>
+  </data>
+  <data name="Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="EmptyDataset" xml:space="preserve">
+    <value>No items found.</value>
+  </data>
+  <data name="Festival" xml:space="preserve">
+    <value>Festival</value>
+  </data>
+  <data name="Festivals" xml:space="preserve">
+    <value>Festivals</value>
+  </data>
+  <data name="Genre" xml:space="preserve">
+    <value>Genre</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="Interprets" xml:space="preserve">
+    <value>Interprets</value>
+  </data>
+  <data name="Label_AccessRole" xml:space="preserve">
+    <value>Access role:</value>
+  </data>
+  <data name="Label_Band" xml:space="preserve">
+    <value>Band:</value>
+  </data>
+  <data name="Label_Bands" xml:space="preserve">
+    <value>Bands:</value>
+  </data>
+  <data name="Label_Biography" xml:space="preserve">
+    <value>Biography:</value>
+  </data>
+  <data name="Label_Born" xml:space="preserve">
+    <value>Born:</value>
+  </data>
+  <data name="Label_Capacity" xml:space="preserve">
+    <value>Capacity:</value>
+  </data>
+  <data name="Label_ConfirmPassword" xml:space="preserve">
+    <value>Confirm password:</value>
+  </data>
+  <data name="Label_Count" xml:space="preserve">
+    <value>Count:</value>
+  </data>
+  <data name="Label_Country" xml:space="preserve">
+    <value>Country: </value>
+  </data>
+  <data name="Label_Currency" xml:space="preserve">
+    <value>Currency:</value>
+  </data>
+  <data name="Label_Description" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="Label_Email" xml:space="preserve">
+    <value>E-mail:</value>
+  </data>
+  <data name="Label_End" xml:space="preserve">
+    <value>End:</value>
+  </data>
+  <data name="Label_Festival" xml:space="preserve">
+    <value>Festival:</value>
+  </data>
+  <data name="Label_FirstName" xml:space="preserve">
+    <value>First name:</value>
+  </data>
+  <data name="Label_FormationYear" xml:space="preserve">
+    <value>Formation year:</value>
+  </data>
+  <data name="Label_Genre" xml:space="preserve">
+    <value>Genre:</value>
+  </data>
+  <data name="Label_LastName" xml:space="preserve">
+    <value>Last name:</value>
+  </data>
+  <data name="Label_Location" xml:space="preserve">
+    <value>Location:</value>
+  </data>
+  <data name="Label_MaxTicketsForUser" xml:space="preserve">
+    <value>Maximum tickets per user:</value>
+  </data>
+  <data name="Label_Members" xml:space="preserve">
+    <value>Members:</value>
+  </data>
+  <data name="Label_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Label_Password" xml:space="preserve">
+    <value>Password:</value>
+  </data>
+  <data name="Label_PaymentDue" xml:space="preserve">
+    <value>Payment due:</value>
+  </data>
+  <data name="Label_Phone" xml:space="preserve">
+    <value>Phone:</value>
+  </data>
+  <data name="Label_Price" xml:space="preserve">
+    <value>Price:</value>
+  </data>
+  <data name="Label_ReservationLength" xml:space="preserve">
+    <value>Reservation length:</value>
+  </data>
+  <data name="Label_Role" xml:space="preserve">
+    <value>Role: </value>
+  </data>
+  <data name="Label_Start" xml:space="preserve">
+    <value>Start:</value>
+  </data>
+  <data name="Label_User" xml:space="preserve">
+    <value>User:</value>
+  </data>
+  <data name="Label_UserName" xml:space="preserve">
+    <value>User name:</value>
+  </data>
+  <data name="Label_VariableSymbol" xml:space="preserve">
+    <value>Variable symbol:</value>
+  </data>
+  <data name="Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="Logo" xml:space="preserve">
+    <value>ROCKFESTS.FIT</value>
+  </data>
+  <data name="ModalDeleteBody" xml:space="preserve">
+    <value>Are you sure you want to delete this item from the database?</value>
+  </data>
+  <data name="ModalDeleteBodyFormat" xml:space="preserve">
+    <value>Are you sure you want to delete {0} from the database?</value>
+  </data>
+  <data name="ModalDeleteHeader" xml:space="preserve">
+    <value>Delete confirmation</value>
+  </data>
+  <data name="Musicians" xml:space="preserve">
+    <value>Musicians</value>
+  </data>
+  <data name="My" xml:space="preserve">
+    <value>My</value>
+  </data>
+  <data name="MyRating" xml:space="preserve">
+    <value>My Rating</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoRatingsBand" xml:space="preserve">
+    <value>This band doesn't have any ratings.</value>
+  </data>
+  <data name="NoRatingsMusician" xml:space="preserve">
+    <value>This musician doesn't have any ratings.</value>
+  </data>
+  <data name="NotPaid" xml:space="preserve">
+    <value>Not paid</value>
+  </data>
+  <data name="NoUpcomingFestival" xml:space="preserve">
+    <value>There is no festival in the near future.</value>
+  </data>
+  <data name="NoUsersClosestFestival" xml:space="preserve">
+    <value>I don't have any reserved festival.</value>
+  </data>
+  <data name="Paid" xml:space="preserve">
+    <value>Paid</value>
+  </data>
+  <data name="PaymentDue" xml:space="preserve">
+    <value>Payment due</value>
+  </data>
+  <data name="People" xml:space="preserve">
+    <value>People</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="Price" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="Rating" xml:space="preserve">
+    <value>Rating</value>
+  </data>
+  <data name="Ratings" xml:space="preserve">
+    <value>Ratings</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="Registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
+  <data name="RemainingTime" xml:space="preserve">
+    <value>Remaining time</value>
+  </data>
+  <data name="ReserveTickets" xml:space="preserve">
+    <value>Reserve tickets</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="SetNewPassword" xml:space="preserve">
+    <value>Set new password</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ShowPaid" xml:space="preserve">
+    <value>Show paid</value>
+  </data>
+  <data name="ShowPast" xml:space="preserve">
+    <value>Show past</value>
+  </data>
+  <data name="SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="SignOut" xml:space="preserve">
+    <value>Sign out</value>
+  </data>
+  <data name="Stage" xml:space="preserve">
+    <value>Stage</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ThisTicket" xml:space="preserve">
+    <value>this ticket</value>
+  </data>
+  <data name="TicketFor" xml:space="preserve">
+    <value>Ticket for </value>
+  </data>
+  <data name="Tickets" xml:space="preserve">
+    <value>Tickets</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>RockFests</value>
+  </data>
+  <data name="TrashValueToPassValidation" xml:space="preserve">
+    <value>TrashValueToPassValidation</value>
+  </data>
+  <data name="UpcomingFestival" xml:space="preserve">
+    <value>Upcoming festival</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="UserInformation" xml:space="preserve">
+    <value>User information</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="UsersClosestFestival" xml:space="preserve">
+    <value>My closest festival</value>
+  </data>
+  <data name="VariableSymbol" xml:space="preserve">
+    <value>Variable symbol</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+</root>

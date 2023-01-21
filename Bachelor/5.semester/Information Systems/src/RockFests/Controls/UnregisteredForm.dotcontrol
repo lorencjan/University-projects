@@ -1,0 +1,19 @@
+﻿@viewModel RockFests.ViewModels.Festivals.UnregisteredFormViewModel, RockFests
+@import RockFests.BL.Resources
+
+<div class="justify-content-between d-flex position-relative">
+    <div class="w-50 p-2">
+        <cc:FormGroupText Label="{value: Texts.Label_FirstName}" Value="{value: User.FirstName}" InputWidth="100" />
+        <cc:FormGroupText Label="{value: Texts.Label_LastName}" Value="{value: User.LastName}" InputWidth="100" />
+        <cc:FormGroupText Label="{value: Texts.Label_Email}" Value="{value: User.Email}" InputWidth="100" />
+        <cc:FormGroupText Label="{value: Texts.Label_Phone}" Value="{value: User.Phone}" Required="false" Validate="false" InputWidth="100" />
+        <dot:CheckBox Checked="{value: ShowRegisterForm}" Changed="{staticCommand: User.Login = ShowRegisterForm ? "" : Texts.TrashValueToPassValidation;Password.DontValidate = !ShowRegisterForm}" class="d-inline-block mr-2" />
+        <dot:Literal Text="{value: Texts.Register}" />
+    </div>
+    <div class="w-50 p-2" IncludeInPage="{value: ShowRegisterForm}">
+        <cc:FormGroupText Label="{value: Texts.Label_UserName}" Value="{value: User.Login}" InputWidth="100" />
+        <cc:FormGroupPassword Label="{value: Texts.Label_Password}" Value="{value: Password.Password}" InputType="Password" InputWidth="100" />
+        <cc:FormGroupPassword Label="{value: Texts.Label_ConfirmPassword}" Value="{value: Password.ConfirmPassword}" InputType="Password" InputWidth="100" />
+    </div>
+    <dot:Validator Value="{value: Error}" InvalidCssClass="has-error" ShowErrorMessageText="true" class="position-absolute" style="bottom: 0; right: 6px;" />
+</div>

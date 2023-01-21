@@ -1,0 +1,726 @@
+Picked up _JAVA_OPTIONS: -Xmx1g
+Using Spark's default log4j profile: org/apache/spark/log4j-defaults.properties
+22/12/03 23:03:46 WARN Utils: Your hostname, lori-pc resolves to a loopback address: 127.0.1.1; using 192.168.0.108 instead (on interface wlp5s0)
+22/12/03 23:03:46 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+22/12/03 23:03:46 INFO SparkContext: Running Spark version 3.2.2
+22/12/03 23:03:47 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+22/12/03 23:03:47 INFO ResourceUtils: ==============================================================
+22/12/03 23:03:47 INFO ResourceUtils: No custom resources configured for spark.driver.
+22/12/03 23:03:47 INFO ResourceUtils: ==============================================================
+22/12/03 23:03:47 INFO SparkContext: Submitted application: EurofxrefSdmx$
+22/12/03 23:03:47 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+22/12/03 23:03:47 INFO ResourceProfile: Limiting resource is cpu
+22/12/03 23:03:47 INFO ResourceProfileManager: Added ResourceProfile id: 0
+22/12/03 23:03:47 INFO SecurityManager: Changing view acls to: lori
+22/12/03 23:03:47 INFO SecurityManager: Changing modify acls to: lori
+22/12/03 23:03:47 INFO SecurityManager: Changing view acls groups to: 
+22/12/03 23:03:47 INFO SecurityManager: Changing modify acls groups to: 
+22/12/03 23:03:47 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(lori); groups with view permissions: Set(); users  with modify permissions: Set(lori); groups with modify permissions: Set()
+22/12/03 23:03:47 INFO Utils: Successfully started service 'sparkDriver' on port 45097.
+22/12/03 23:03:47 INFO SparkEnv: Registering MapOutputTracker
+22/12/03 23:03:47 INFO SparkEnv: Registering BlockManagerMaster
+22/12/03 23:03:47 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+22/12/03 23:03:47 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+22/12/03 23:03:47 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+22/12/03 23:03:47 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-06521067-a34f-4598-a35b-3d1fb0934f35
+22/12/03 23:03:47 INFO MemoryStore: MemoryStore started with capacity 434.4 MiB
+22/12/03 23:03:47 INFO SparkEnv: Registering OutputCommitCoordinator
+22/12/03 23:03:47 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+22/12/03 23:03:47 INFO SparkUI: Bound SparkUI to 0.0.0.0, and started at http://192.168.0.108:4040
+22/12/03 23:03:47 INFO Executor: Starting executor ID driver on host 192.168.0.108
+22/12/03 23:03:47 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 46621.
+22/12/03 23:03:47 INFO NettyBlockTransferService: Server created on 192.168.0.108:46621
+22/12/03 23:03:47 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+22/12/03 23:03:48 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 192.168.0.108, 46621, None)
+22/12/03 23:03:48 INFO BlockManagerMasterEndpoint: Registering block manager 192.168.0.108:46621 with 434.4 MiB RAM, BlockManagerId(driver, 192.168.0.108, 46621, None)
+22/12/03 23:03:48 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 192.168.0.108, 46621, None)
+22/12/03 23:03:48 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 192.168.0.108, 46621, None)
+22/12/03 23:03:48 INFO SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+22/12/03 23:03:48 INFO SharedState: Warehouse path is 'file:/mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx-spark/spark-warehouse'.
+22/12/03 23:03:48 INFO InMemoryFileIndex: It took 31 ms to list leaf files for 1 paths.
+22/12/03 23:03:48 INFO InMemoryFileIndex: It took 2 ms to list leaf files for 1 paths.
+22/12/03 23:03:50 INFO FileSourceStrategy: Pushed Filters: 
+22/12/03 23:03:50 INFO FileSourceStrategy: Post-Scan Filters: (length(trim(value#0, None)) > 0)
+22/12/03 23:03:50 INFO FileSourceStrategy: Output Data Schema: struct<value: string>
+22/12/03 23:03:51 INFO CodeGenerator: Code generated in 160.583715 ms
+22/12/03 23:03:51 INFO MemoryStore: Block broadcast_0 stored as values in memory (estimated size 189.5 KiB, free 434.2 MiB)
+22/12/03 23:03:51 INFO MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 32.8 KiB, free 434.2 MiB)
+22/12/03 23:03:51 INFO BlockManagerInfo: Added broadcast_0_piece0 in memory on 192.168.0.108:46621 (size: 32.8 KiB, free: 434.4 MiB)
+22/12/03 23:03:51 INFO SparkContext: Created broadcast 0 from load at EurofxrefSdmx.scala:31
+22/12/03 23:03:51 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 23:03:51 INFO SparkContext: Starting job: load at EurofxrefSdmx.scala:31
+22/12/03 23:03:51 INFO DAGScheduler: Got job 0 (load at EurofxrefSdmx.scala:31) with 1 output partitions
+22/12/03 23:03:51 INFO DAGScheduler: Final stage: ResultStage 0 (load at EurofxrefSdmx.scala:31)
+22/12/03 23:03:51 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 23:03:51 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:51 INFO DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[3] at load at EurofxrefSdmx.scala:31), which has no missing parents
+22/12/03 23:03:51 INFO MemoryStore: Block broadcast_1 stored as values in memory (estimated size 11.6 KiB, free 434.2 MiB)
+22/12/03 23:03:51 INFO MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 5.8 KiB, free 434.2 MiB)
+22/12/03 23:03:51 INFO BlockManagerInfo: Added broadcast_1_piece0 in memory on 192.168.0.108:46621 (size: 5.8 KiB, free: 434.4 MiB)
+22/12/03 23:03:51 INFO SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:51 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[3] at load at EurofxrefSdmx.scala:31) (first 15 tasks are for partitions Vector(0))
+22/12/03 23:03:51 INFO TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+22/12/03 23:03:51 INFO TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (192.168.0.108, executor driver, partition 0, PROCESS_LOCAL, 4881 bytes) taskResourceAssignments Map()
+22/12/03 23:03:51 INFO Executor: Running task 0.0 in stage 0.0 (TID 0)
+22/12/03 23:03:51 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 0-4194304, partition values: [empty row]
+22/12/03 23:03:51 INFO CodeGenerator: Code generated in 10.460417 ms
+22/12/03 23:03:51 INFO Executor: Finished task 0.0 in stage 0.0 (TID 0). 1542 bytes result sent to driver
+22/12/03 23:03:51 INFO TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 183 ms on 192.168.0.108 (executor driver) (1/1)
+22/12/03 23:03:51 INFO TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+22/12/03 23:03:51 INFO DAGScheduler: ResultStage 0 (load at EurofxrefSdmx.scala:31) finished in 0.302 s
+22/12/03 23:03:51 INFO DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 23:03:51 INFO TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+22/12/03 23:03:51 INFO DAGScheduler: Job 0 finished: load at EurofxrefSdmx.scala:31, took 0.338174 s
+22/12/03 23:03:51 INFO CodeGenerator: Code generated in 8.729091 ms
+22/12/03 23:03:51 INFO BlockManagerInfo: Removed broadcast_1_piece0 on 192.168.0.108:46621 in memory (size: 5.8 KiB, free: 434.4 MiB)
+22/12/03 23:03:51 INFO FileSourceStrategy: Pushed Filters: 
+22/12/03 23:03:51 INFO FileSourceStrategy: Post-Scan Filters: 
+22/12/03 23:03:51 INFO FileSourceStrategy: Output Data Schema: struct<value: string>
+22/12/03 23:03:51 INFO MemoryStore: Block broadcast_2 stored as values in memory (estimated size 189.5 KiB, free 434.0 MiB)
+22/12/03 23:03:51 INFO MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 32.8 KiB, free 434.0 MiB)
+22/12/03 23:03:51 INFO BlockManagerInfo: Added broadcast_2_piece0 in memory on 192.168.0.108:46621 (size: 32.8 KiB, free: 434.3 MiB)
+22/12/03 23:03:51 INFO SparkContext: Created broadcast 2 from load at EurofxrefSdmx.scala:31
+22/12/03 23:03:51 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 23:03:52 INFO SparkContext: Starting job: load at EurofxrefSdmx.scala:31
+22/12/03 23:03:52 INFO DAGScheduler: Got job 1 (load at EurofxrefSdmx.scala:31) with 2 output partitions
+22/12/03 23:03:52 INFO DAGScheduler: Final stage: ResultStage 1 (load at EurofxrefSdmx.scala:31)
+22/12/03 23:03:52 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 23:03:52 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:52 INFO DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[9] at load at EurofxrefSdmx.scala:31), which has no missing parents
+22/12/03 23:03:52 INFO MemoryStore: Block broadcast_3 stored as values in memory (estimated size 16.4 KiB, free 433.9 MiB)
+22/12/03 23:03:52 INFO MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 8.4 KiB, free 433.9 MiB)
+22/12/03 23:03:52 INFO BlockManagerInfo: Added broadcast_3_piece0 in memory on 192.168.0.108:46621 (size: 8.4 KiB, free: 434.3 MiB)
+22/12/03 23:03:52 INFO SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:52 INFO DAGScheduler: Submitting 2 missing tasks from ResultStage 1 (MapPartitionsRDD[9] at load at EurofxrefSdmx.scala:31) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 23:03:52 INFO TaskSchedulerImpl: Adding task set 1.0 with 2 tasks resource profile 0
+22/12/03 23:03:52 INFO TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (192.168.0.108, executor driver, partition 0, PROCESS_LOCAL, 4881 bytes) taskResourceAssignments Map()
+22/12/03 23:03:52 INFO TaskSetManager: Starting task 1.0 in stage 1.0 (TID 2) (192.168.0.108, executor driver, partition 1, PROCESS_LOCAL, 4881 bytes) taskResourceAssignments Map()
+22/12/03 23:03:52 INFO Executor: Running task 0.0 in stage 1.0 (TID 1)
+22/12/03 23:03:52 INFO Executor: Running task 1.0 in stage 1.0 (TID 2)
+22/12/03 23:03:52 INFO BlockManagerInfo: Removed broadcast_0_piece0 on 192.168.0.108:46621 in memory (size: 32.8 KiB, free: 434.4 MiB)
+22/12/03 23:03:52 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 4194304-4276181, partition values: [empty row]
+22/12/03 23:03:52 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 0-4194304, partition values: [empty row]
+22/12/03 23:03:52 INFO Executor: Finished task 1.0 in stage 1.0 (TID 2). 1646 bytes result sent to driver
+22/12/03 23:03:52 INFO TaskSetManager: Finished task 1.0 in stage 1.0 (TID 2) in 219 ms on 192.168.0.108 (executor driver) (1/2)
+22/12/03 23:03:52 INFO Executor: Finished task 0.0 in stage 1.0 (TID 1). 1603 bytes result sent to driver
+22/12/03 23:03:52 INFO TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 562 ms on 192.168.0.108 (executor driver) (2/2)
+22/12/03 23:03:52 INFO TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+22/12/03 23:03:52 INFO DAGScheduler: ResultStage 1 (load at EurofxrefSdmx.scala:31) finished in 0.604 s
+22/12/03 23:03:52 INFO DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 23:03:52 INFO TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+22/12/03 23:03:52 INFO DAGScheduler: Job 1 finished: load at EurofxrefSdmx.scala:31, took 0.609702 s
+22/12/03 23:03:53 INFO FileSourceStrategy: Pushed Filters: IsNotNull(CURRENCY)
+22/12/03 23:03:53 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(CURRENCY#16)
+22/12/03 23:03:53 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 23:03:53 INFO FileSourceStrategy: Pushed Filters: 
+22/12/03 23:03:53 INFO FileSourceStrategy: Post-Scan Filters: 
+22/12/03 23:03:53 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 23:03:53 INFO BlockManagerInfo: Removed broadcast_3_piece0 on 192.168.0.108:46621 in memory (size: 8.4 KiB, free: 434.4 MiB)
+22/12/03 23:03:53 INFO FileSourceStrategy: Pushed Filters: 
+22/12/03 23:03:53 INFO FileSourceStrategy: Post-Scan Filters: 
+22/12/03 23:03:53 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, OBS_VALUE: double>
+22/12/03 23:03:53 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+22/12/03 23:03:53 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22/12/03 23:03:53 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 15.395383 ms
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_4 stored as values in memory (estimated size 189.4 KiB, free 434.0 MiB)
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 32.7 KiB, free 434.0 MiB)
+22/12/03 23:03:53 INFO BlockManagerInfo: Added broadcast_4_piece0 in memory on 192.168.0.108:46621 (size: 32.7 KiB, free: 434.3 MiB)
+22/12/03 23:03:53 INFO SparkContext: Created broadcast 4 from save at EurofxrefSdmx.scala:76
+22/12/03 23:03:53 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 23:03:53 INFO DAGScheduler: Registering RDD 13 (save at EurofxrefSdmx.scala:76) as input to shuffle 0
+22/12/03 23:03:53 INFO DAGScheduler: Got map stage job 2 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 23:03:53 INFO DAGScheduler: Final stage: ShuffleMapStage 2 (save at EurofxrefSdmx.scala:76)
+22/12/03 23:03:53 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 23:03:53 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:53 INFO DAGScheduler: Submitting ShuffleMapStage 2 (MapPartitionsRDD[13] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 16.494759 ms
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_5 stored as values in memory (estimated size 189.4 KiB, free 433.8 MiB)
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_6 stored as values in memory (estimated size 16.2 KiB, free 433.8 MiB)
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 8.1 KiB, free 433.8 MiB)
+22/12/03 23:03:53 INFO BlockManagerInfo: Added broadcast_6_piece0 in memory on 192.168.0.108:46621 (size: 8.1 KiB, free: 434.3 MiB)
+22/12/03 23:03:53 INFO SparkContext: Created broadcast 6 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:53 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 2 (MapPartitionsRDD[13] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 23:03:53 INFO TaskSchedulerImpl: Adding task set 2.0 with 2 tasks resource profile 0
+22/12/03 23:03:53 INFO TaskSetManager: Starting task 0.0 in stage 2.0 (TID 3) (192.168.0.108, executor driver, partition 0, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:53 INFO TaskSetManager: Starting task 1.0 in stage 2.0 (TID 4) (192.168.0.108, executor driver, partition 1, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:53 INFO Executor: Running task 0.0 in stage 2.0 (TID 3)
+22/12/03 23:03:53 INFO Executor: Running task 1.0 in stage 2.0 (TID 4)
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 32.7 KiB, free 433.7 MiB)
+22/12/03 23:03:53 INFO BlockManagerInfo: Added broadcast_5_piece0 in memory on 192.168.0.108:46621 (size: 32.7 KiB, free: 434.3 MiB)
+22/12/03 23:03:53 INFO SparkContext: Created broadcast 5 from save at EurofxrefSdmx.scala:76
+22/12/03 23:03:53 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 23:03:53 INFO DAGScheduler: Registering RDD 17 (save at EurofxrefSdmx.scala:76) as input to shuffle 1
+22/12/03 23:03:53 INFO DAGScheduler: Got map stage job 3 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 23:03:53 INFO DAGScheduler: Final stage: ShuffleMapStage 3 (save at EurofxrefSdmx.scala:76)
+22/12/03 23:03:53 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 23:03:53 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:53 INFO DAGScheduler: Submitting ShuffleMapStage 3 (MapPartitionsRDD[17] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_7 stored as values in memory (estimated size 15.8 KiB, free 433.7 MiB)
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 8.0 KiB, free 433.7 MiB)
+22/12/03 23:03:53 INFO BlockManagerInfo: Added broadcast_7_piece0 in memory on 192.168.0.108:46621 (size: 8.0 KiB, free: 434.3 MiB)
+22/12/03 23:03:53 INFO SparkContext: Created broadcast 7 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:53 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 3 (MapPartitionsRDD[17] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 23:03:53 INFO TaskSchedulerImpl: Adding task set 3.0 with 2 tasks resource profile 0
+22/12/03 23:03:53 INFO TaskSetManager: Starting task 0.0 in stage 3.0 (TID 5) (192.168.0.108, executor driver, partition 0, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:53 INFO TaskSetManager: Starting task 1.0 in stage 3.0 (TID 6) (192.168.0.108, executor driver, partition 1, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:53 INFO Executor: Running task 0.0 in stage 3.0 (TID 5)
+22/12/03 23:03:53 INFO Executor: Running task 1.0 in stage 3.0 (TID 6)
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 16.923492 ms
+22/12/03 23:03:53 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 0-4194304, partition values: [empty row]
+22/12/03 23:03:53 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 4194304-4276181, partition values: [empty row]
+22/12/03 23:03:53 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 4194304-4276181, partition values: [empty row]
+22/12/03 23:03:53 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 0-4194304, partition values: [empty row]
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 12.96537 ms
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 31.278186 ms
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 131.101762 ms
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_8 stored as values in memory (estimated size 189.4 KiB, free 433.5 MiB)
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 32.7 KiB, free 433.5 MiB)
+22/12/03 23:03:53 INFO BlockManagerInfo: Added broadcast_8_piece0 in memory on 192.168.0.108:46621 (size: 32.7 KiB, free: 434.3 MiB)
+22/12/03 23:03:53 INFO SparkContext: Created broadcast 8 from save at EurofxrefSdmx.scala:76
+22/12/03 23:03:53 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 23:03:53 INFO DAGScheduler: Registering RDD 21 (save at EurofxrefSdmx.scala:76) as input to shuffle 2
+22/12/03 23:03:53 INFO DAGScheduler: Got map stage job 4 (save at EurofxrefSdmx.scala:76) with 2 output partitions
+22/12/03 23:03:53 INFO DAGScheduler: Final stage: ShuffleMapStage 4 (save at EurofxrefSdmx.scala:76)
+22/12/03 23:03:53 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 23:03:53 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:53 INFO DAGScheduler: Submitting ShuffleMapStage 4 (MapPartitionsRDD[21] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_9 stored as values in memory (estimated size 38.6 KiB, free 433.4 MiB)
+22/12/03 23:03:53 INFO MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 18.3 KiB, free 433.4 MiB)
+22/12/03 23:03:53 INFO BlockManagerInfo: Added broadcast_9_piece0 in memory on 192.168.0.108:46621 (size: 18.3 KiB, free: 434.2 MiB)
+22/12/03 23:03:53 INFO SparkContext: Created broadcast 9 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:53 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 4 (MapPartitionsRDD[21] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 23:03:53 INFO TaskSchedulerImpl: Adding task set 4.0 with 2 tasks resource profile 0
+22/12/03 23:03:53 INFO TaskSetManager: Starting task 0.0 in stage 4.0 (TID 7) (192.168.0.108, executor driver, partition 0, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:53 INFO TaskSetManager: Starting task 1.0 in stage 4.0 (TID 8) (192.168.0.108, executor driver, partition 1, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:53 INFO Executor: Running task 0.0 in stage 4.0 (TID 7)
+22/12/03 23:03:53 INFO Executor: Running task 1.0 in stage 4.0 (TID 8)
+22/12/03 23:03:53 INFO Executor: Finished task 1.0 in stage 3.0 (TID 6). 2064 bytes result sent to driver
+22/12/03 23:03:53 INFO Executor: Finished task 1.0 in stage 2.0 (TID 4). 2120 bytes result sent to driver
+22/12/03 23:03:53 INFO TaskSetManager: Finished task 1.0 in stage 2.0 (TID 4) in 321 ms on 192.168.0.108 (executor driver) (1/2)
+22/12/03 23:03:53 INFO TaskSetManager: Finished task 1.0 in stage 3.0 (TID 6) in 294 ms on 192.168.0.108 (executor driver) (1/2)
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 14.423088 ms
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 11.231468 ms
+22/12/03 23:03:53 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 4194304-4276181, partition values: [empty row]
+22/12/03 23:03:53 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 0-4194304, partition values: [empty row]
+22/12/03 23:03:53 INFO CodeGenerator: Code generated in 12.749284 ms
+22/12/03 23:03:53 INFO Executor: Finished task 1.0 in stage 4.0 (TID 8). 2720 bytes result sent to driver
+22/12/03 23:03:53 INFO TaskSetManager: Finished task 1.0 in stage 4.0 (TID 8) in 164 ms on 192.168.0.108 (executor driver) (1/2)
+22/12/03 23:03:54 INFO Executor: Finished task 0.0 in stage 4.0 (TID 7). 2763 bytes result sent to driver
+22/12/03 23:03:54 INFO TaskSetManager: Finished task 0.0 in stage 4.0 (TID 7) in 482 ms on 192.168.0.108 (executor driver) (2/2)
+22/12/03 23:03:54 INFO TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool 
+22/12/03 23:03:54 INFO DAGScheduler: ShuffleMapStage 4 (save at EurofxrefSdmx.scala:76) finished in 0.495 s
+22/12/03 23:03:54 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 23:03:54 INFO DAGScheduler: running: Set(ShuffleMapStage 2, ShuffleMapStage 3)
+22/12/03 23:03:54 INFO DAGScheduler: waiting: Set()
+22/12/03 23:03:54 INFO DAGScheduler: failed: Set()
+22/12/03 23:03:54 INFO Executor: Finished task 0.0 in stage 2.0 (TID 3). 2077 bytes result sent to driver
+22/12/03 23:03:54 INFO TaskSetManager: Finished task 0.0 in stage 2.0 (TID 3) in 774 ms on 192.168.0.108 (executor driver) (2/2)
+22/12/03 23:03:54 INFO TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+22/12/03 23:03:54 INFO DAGScheduler: ShuffleMapStage 2 (save at EurofxrefSdmx.scala:76) finished in 0.815 s
+22/12/03 23:03:54 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 23:03:54 INFO DAGScheduler: running: Set(ShuffleMapStage 3)
+22/12/03 23:03:54 INFO DAGScheduler: waiting: Set()
+22/12/03 23:03:54 INFO DAGScheduler: failed: Set()
+22/12/03 23:03:54 INFO Executor: Finished task 0.0 in stage 3.0 (TID 5). 2021 bytes result sent to driver
+22/12/03 23:03:54 INFO TaskSetManager: Finished task 0.0 in stage 3.0 (TID 5) in 811 ms on 192.168.0.108 (executor driver) (2/2)
+22/12/03 23:03:54 INFO TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+22/12/03 23:03:54 INFO DAGScheduler: ShuffleMapStage 3 (save at EurofxrefSdmx.scala:76) finished in 0.825 s
+22/12/03 23:03:54 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 23:03:54 INFO DAGScheduler: running: Set()
+22/12/03 23:03:54 INFO DAGScheduler: waiting: Set()
+22/12/03 23:03:54 INFO DAGScheduler: failed: Set()
+22/12/03 23:03:54 INFO ShufflePartitionsUtil: For shuffle(0, 1, 2), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 28.333072 ms
+22/12/03 23:03:54 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 35.324214 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 22.306337 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 12.64061 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 13.60083 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 10.524748 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 12.969395 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 13.299391 ms
+22/12/03 23:03:54 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:76
+22/12/03 23:03:54 INFO DAGScheduler: Got job 5 (save at EurofxrefSdmx.scala:76) with 4 output partitions
+22/12/03 23:03:54 INFO DAGScheduler: Final stage: ResultStage 8 (save at EurofxrefSdmx.scala:76)
+22/12/03 23:03:54 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 5, ShuffleMapStage 6, ShuffleMapStage 7)
+22/12/03 23:03:54 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:54 INFO DAGScheduler: Submitting ResultStage 8 (MapPartitionsRDD[38] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 23:03:54 INFO MemoryStore: Block broadcast_10 stored as values in memory (estimated size 83.3 KiB, free 433.3 MiB)
+22/12/03 23:03:54 INFO MemoryStore: Block broadcast_10_piece0 stored as bytes in memory (estimated size 33.2 KiB, free 433.3 MiB)
+22/12/03 23:03:54 INFO BlockManagerInfo: Added broadcast_10_piece0 in memory on 192.168.0.108:46621 (size: 33.2 KiB, free: 434.2 MiB)
+22/12/03 23:03:54 INFO SparkContext: Created broadcast 10 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:54 INFO DAGScheduler: Submitting 4 missing tasks from ResultStage 8 (MapPartitionsRDD[38] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+22/12/03 23:03:54 INFO TaskSchedulerImpl: Adding task set 8.0 with 4 tasks resource profile 0
+22/12/03 23:03:54 INFO TaskSetManager: Starting task 0.0 in stage 8.0 (TID 9) (192.168.0.108, executor driver, partition 0, NODE_LOCAL, 4786 bytes) taskResourceAssignments Map()
+22/12/03 23:03:54 INFO TaskSetManager: Starting task 1.0 in stage 8.0 (TID 10) (192.168.0.108, executor driver, partition 1, NODE_LOCAL, 4786 bytes) taskResourceAssignments Map()
+22/12/03 23:03:54 INFO TaskSetManager: Starting task 2.0 in stage 8.0 (TID 11) (192.168.0.108, executor driver, partition 2, NODE_LOCAL, 4786 bytes) taskResourceAssignments Map()
+22/12/03 23:03:54 INFO TaskSetManager: Starting task 3.0 in stage 8.0 (TID 12) (192.168.0.108, executor driver, partition 3, NODE_LOCAL, 4786 bytes) taskResourceAssignments Map()
+22/12/03 23:03:54 INFO Executor: Running task 1.0 in stage 8.0 (TID 10)
+22/12/03 23:03:54 INFO Executor: Running task 0.0 in stage 8.0 (TID 9)
+22/12/03 23:03:54 INFO Executor: Running task 3.0 in stage 8.0 (TID 12)
+22/12/03 23:03:54 INFO Executor: Running task 2.0 in stage 8.0 (TID 11)
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 1 (1224.0 B) non-empty blocks including 1 (1224.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 1 (704.0 B) non-empty blocks including 1 (704.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 1 (792.0 B) non-empty blocks including 1 (792.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 15 ms
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 16 ms
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 15 ms
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 2 (960.0 B) non-empty blocks including 2 (960.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 26 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 11.643601 ms
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 1 (688.9 KiB) non-empty blocks including 1 (688.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 2 (577.7 KiB) non-empty blocks including 2 (577.7 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 1 (556.5 KiB) non-empty blocks including 1 (556.5 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Getting 1 (551.9 KiB) non-empty blocks including 1 (551.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:54 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 8.518795 ms
+22/12/03 23:03:54 INFO CodeGenerator: Code generated in 7.60063 ms
+22/12/03 23:03:55 INFO CodeGenerator: Code generated in 5.358094 ms
+22/12/03 23:03:55 INFO CodeGenerator: Code generated in 5.349006 ms
+22/12/03 23:03:55 INFO CodeGenerator: Code generated in 4.563281 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (556.5 KiB) non-empty blocks including 1 (556.5 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (688.9 KiB) non-empty blocks including 1 (688.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 2 (577.7 KiB) non-empty blocks including 2 (577.7 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (551.9 KiB) non-empty blocks including 1 (551.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:55 INFO CodeGenerator: Code generated in 9.523365 ms
+22/12/03 23:03:55 INFO BlockManagerInfo: Removed broadcast_7_piece0 on 192.168.0.108:46621 in memory (size: 8.0 KiB, free: 434.2 MiB)
+22/12/03 23:03:55 INFO BlockManagerInfo: Removed broadcast_9_piece0 on 192.168.0.108:46621 in memory (size: 18.3 KiB, free: 434.2 MiB)
+22/12/03 23:03:55 INFO BlockManagerInfo: Removed broadcast_6_piece0 on 192.168.0.108:46621 in memory (size: 8.1 KiB, free: 434.2 MiB)
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO BlockManagerInfo: Removed broadcast_2_piece0 on 192.168.0.108:46621 in memory (size: 32.8 KiB, free: 434.3 MiB)
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO Executor: Finished task 2.0 in stage 8.0 (TID 11). 7426 bytes result sent to driver
+22/12/03 23:03:55 INFO TaskSetManager: Finished task 2.0 in stage 8.0 (TID 11) in 949 ms on 192.168.0.108 (executor driver) (1/4)
+22/12/03 23:03:55 INFO Executor: Finished task 1.0 in stage 8.0 (TID 10). 7424 bytes result sent to driver
+22/12/03 23:03:55 INFO TaskSetManager: Finished task 1.0 in stage 8.0 (TID 10) in 956 ms on 192.168.0.108 (executor driver) (2/4)
+22/12/03 23:03:55 INFO Executor: Finished task 0.0 in stage 8.0 (TID 9). 7342 bytes result sent to driver
+22/12/03 23:03:55 INFO TaskSetManager: Finished task 0.0 in stage 8.0 (TID 9) in 962 ms on 192.168.0.108 (executor driver) (3/4)
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO Executor: Finished task 3.0 in stage 8.0 (TID 12). 7588 bytes result sent to driver
+22/12/03 23:03:55 INFO TaskSetManager: Finished task 3.0 in stage 8.0 (TID 12) in 970 ms on 192.168.0.108 (executor driver) (4/4)
+22/12/03 23:03:55 INFO TaskSchedulerImpl: Removed TaskSet 8.0, whose tasks have all completed, from pool 
+22/12/03 23:03:55 INFO DAGScheduler: ResultStage 8 (save at EurofxrefSdmx.scala:76) finished in 0.987 s
+22/12/03 23:03:55 INFO DAGScheduler: Job 5 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 23:03:55 INFO TaskSchedulerImpl: Killing all running tasks in stage 8: Stage finished
+22/12/03 23:03:55 INFO DAGScheduler: Job 5 finished: save at EurofxrefSdmx.scala:76, took 1.007555 s
+22/12/03 23:03:55 INFO DAGScheduler: Registering RDD 39 (save at EurofxrefSdmx.scala:76) as input to shuffle 3
+22/12/03 23:03:55 INFO DAGScheduler: Got map stage job 6 (save at EurofxrefSdmx.scala:76) with 4 output partitions
+22/12/03 23:03:55 INFO DAGScheduler: Final stage: ShuffleMapStage 12 (save at EurofxrefSdmx.scala:76)
+22/12/03 23:03:55 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 9, ShuffleMapStage 10, ShuffleMapStage 11)
+22/12/03 23:03:55 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:55 INFO DAGScheduler: Submitting ShuffleMapStage 12 (MapPartitionsRDD[39] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 23:03:55 INFO MemoryStore: Block broadcast_11 stored as values in memory (estimated size 85.5 KiB, free 433.6 MiB)
+22/12/03 23:03:55 INFO MemoryStore: Block broadcast_11_piece0 stored as bytes in memory (estimated size 33.9 KiB, free 433.5 MiB)
+22/12/03 23:03:55 INFO BlockManagerInfo: Added broadcast_11_piece0 in memory on 192.168.0.108:46621 (size: 33.9 KiB, free: 434.2 MiB)
+22/12/03 23:03:55 INFO BlockManagerInfo: Removed broadcast_10_piece0 on 192.168.0.108:46621 in memory (size: 33.2 KiB, free: 434.3 MiB)
+22/12/03 23:03:55 INFO SparkContext: Created broadcast 11 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:55 INFO DAGScheduler: Submitting 4 missing tasks from ShuffleMapStage 12 (MapPartitionsRDD[39] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+22/12/03 23:03:55 INFO TaskSchedulerImpl: Adding task set 12.0 with 4 tasks resource profile 0
+22/12/03 23:03:55 INFO TaskSetManager: Starting task 0.0 in stage 12.0 (TID 13) (192.168.0.108, executor driver, partition 0, NODE_LOCAL, 4775 bytes) taskResourceAssignments Map()
+22/12/03 23:03:55 INFO TaskSetManager: Starting task 1.0 in stage 12.0 (TID 14) (192.168.0.108, executor driver, partition 1, NODE_LOCAL, 4775 bytes) taskResourceAssignments Map()
+22/12/03 23:03:55 INFO TaskSetManager: Starting task 2.0 in stage 12.0 (TID 15) (192.168.0.108, executor driver, partition 2, NODE_LOCAL, 4775 bytes) taskResourceAssignments Map()
+22/12/03 23:03:55 INFO TaskSetManager: Starting task 3.0 in stage 12.0 (TID 16) (192.168.0.108, executor driver, partition 3, NODE_LOCAL, 4775 bytes) taskResourceAssignments Map()
+22/12/03 23:03:55 INFO Executor: Running task 2.0 in stage 12.0 (TID 15)
+22/12/03 23:03:55 INFO Executor: Running task 0.0 in stage 12.0 (TID 13)
+22/12/03 23:03:55 INFO Executor: Running task 1.0 in stage 12.0 (TID 14)
+22/12/03 23:03:55 INFO Executor: Running task 3.0 in stage 12.0 (TID 16)
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 2 (960.0 B) non-empty blocks including 2 (960.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (792.0 B) non-empty blocks including 1 (792.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (1224.0 B) non-empty blocks including 1 (1224.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (704.0 B) non-empty blocks including 1 (704.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 2 (577.7 KiB) non-empty blocks including 2 (577.7 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (551.9 KiB) non-empty blocks including 1 (551.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (688.9 KiB) non-empty blocks including 1 (688.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (556.5 KiB) non-empty blocks including 1 (556.5 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 2 (577.7 KiB) non-empty blocks including 2 (577.7 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (556.5 KiB) non-empty blocks including 1 (556.5 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (688.9 KiB) non-empty blocks including 1 (688.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Getting 1 (551.9 KiB) non-empty blocks including 1 (551.9 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:55 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:55 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO Executor: Finished task 1.0 in stage 12.0 (TID 14). 7089 bytes result sent to driver
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO TaskSetManager: Finished task 1.0 in stage 12.0 (TID 14) in 301 ms on 192.168.0.108 (executor driver) (1/4)
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO Executor: Finished task 0.0 in stage 12.0 (TID 13). 7089 bytes result sent to driver
+22/12/03 23:03:56 INFO TaskSetManager: Finished task 0.0 in stage 12.0 (TID 13) in 315 ms on 192.168.0.108 (executor driver) (2/4)
+22/12/03 23:03:56 INFO Executor: Finished task 2.0 in stage 12.0 (TID 15). 7089 bytes result sent to driver
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO TaskSetManager: Finished task 2.0 in stage 12.0 (TID 15) in 319 ms on 192.168.0.108 (executor driver) (3/4)
+22/12/03 23:03:56 INFO ExternalAppendOnlyUnsafeRowArray: Reached spill threshold of 4096 rows, switching to org.apache.spark.util.collection.unsafe.sort.UnsafeExternalSorter
+22/12/03 23:03:56 INFO Executor: Finished task 3.0 in stage 12.0 (TID 16). 7089 bytes result sent to driver
+22/12/03 23:03:56 INFO TaskSetManager: Finished task 3.0 in stage 12.0 (TID 16) in 333 ms on 192.168.0.108 (executor driver) (4/4)
+22/12/03 23:03:56 INFO TaskSchedulerImpl: Removed TaskSet 12.0, whose tasks have all completed, from pool 
+22/12/03 23:03:56 INFO DAGScheduler: ShuffleMapStage 12 (save at EurofxrefSdmx.scala:76) finished in 0.350 s
+22/12/03 23:03:56 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 23:03:56 INFO DAGScheduler: running: Set()
+22/12/03 23:03:56 INFO DAGScheduler: waiting: Set()
+22/12/03 23:03:56 INFO DAGScheduler: failed: Set()
+22/12/03 23:03:56 INFO ShufflePartitionsUtil: For shuffle(3), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 23:03:56 INFO CodeGenerator: Code generated in 7.937356 ms
+22/12/03 23:03:56 INFO BlockManagerInfo: Removed broadcast_11_piece0 on 192.168.0.108:46621 in memory (size: 33.9 KiB, free: 434.3 MiB)
+22/12/03 23:03:56 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:76
+22/12/03 23:03:56 INFO DAGScheduler: Got job 7 (save at EurofxrefSdmx.scala:76) with 1 output partitions
+22/12/03 23:03:56 INFO DAGScheduler: Final stage: ResultStage 17 (save at EurofxrefSdmx.scala:76)
+22/12/03 23:03:56 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 16)
+22/12/03 23:03:56 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:56 INFO DAGScheduler: Submitting ResultStage 17 (CoalescedRDD[42] at save at EurofxrefSdmx.scala:76), which has no missing parents
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_12 stored as values in memory (estimated size 250.0 KiB, free 433.5 MiB)
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_12_piece0 stored as bytes in memory (estimated size 92.1 KiB, free 433.4 MiB)
+22/12/03 23:03:56 INFO BlockManagerInfo: Added broadcast_12_piece0 in memory on 192.168.0.108:46621 (size: 92.1 KiB, free: 434.2 MiB)
+22/12/03 23:03:56 INFO SparkContext: Created broadcast 12 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:56 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 17 (CoalescedRDD[42] at save at EurofxrefSdmx.scala:76) (first 15 tasks are for partitions Vector(0))
+22/12/03 23:03:56 INFO TaskSchedulerImpl: Adding task set 17.0 with 1 tasks resource profile 0
+22/12/03 23:03:56 INFO TaskSetManager: Starting task 0.0 in stage 17.0 (TID 17) (192.168.0.108, executor driver, partition 0, NODE_LOCAL, 4729 bytes) taskResourceAssignments Map()
+22/12/03 23:03:56 INFO Executor: Running task 0.0 in stage 17.0 (TID 17)
+22/12/03 23:03:56 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+22/12/03 23:03:56 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22/12/03 23:03:56 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22/12/03 23:03:56 INFO ShuffleBlockFetcherIterator: Getting 4 (5.6 KiB) non-empty blocks including 4 (5.6 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:56 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:56 INFO FileOutputCommitter: Saved output of task 'attempt_202212032303568937465497728701839_0017_m_000000_17' to file:/mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx-spark/OUT/task_1/_temporary/0/task_202212032303568937465497728701839_0017_m_000000
+22/12/03 23:03:56 INFO SparkHadoopMapRedUtil: attempt_202212032303568937465497728701839_0017_m_000000_17: Committed
+22/12/03 23:03:56 INFO Executor: Finished task 0.0 in stage 17.0 (TID 17). 8779 bytes result sent to driver
+22/12/03 23:03:56 INFO TaskSetManager: Finished task 0.0 in stage 17.0 (TID 17) in 166 ms on 192.168.0.108 (executor driver) (1/1)
+22/12/03 23:03:56 INFO TaskSchedulerImpl: Removed TaskSet 17.0, whose tasks have all completed, from pool 
+22/12/03 23:03:56 INFO DAGScheduler: ResultStage 17 (save at EurofxrefSdmx.scala:76) finished in 0.199 s
+22/12/03 23:03:56 INFO DAGScheduler: Job 7 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 23:03:56 INFO TaskSchedulerImpl: Killing all running tasks in stage 17: Stage finished
+22/12/03 23:03:56 INFO DAGScheduler: Job 7 finished: save at EurofxrefSdmx.scala:76, took 0.204558 s
+22/12/03 23:03:56 INFO FileFormatWriter: Start to commit write Job 2ae2c2be-da00-4780-af73-1e217f252853.
+22/12/03 23:03:56 INFO FileFormatWriter: Write Job 2ae2c2be-da00-4780-af73-1e217f252853 committed. Elapsed time: 26 ms.
+22/12/03 23:03:56 INFO FileFormatWriter: Finished processing stats for write job 2ae2c2be-da00-4780-af73-1e217f252853.
+22/12/03 23:03:56 INFO FileSourceStrategy: Pushed Filters: IsNotNull(TIME_PERIOD),Or(Or(EqualTo(CURRENCY,CHF),EqualTo(CURRENCY,GBP)),EqualTo(CURRENCY,USD)),GreaterThanOrEqual(TIME_PERIOD,2021-12-02),IsNotNull(CURRENCY)
+22/12/03 23:03:56 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(TIME_PERIOD#17),(((CURRENCY#16 = CHF) OR (CURRENCY#16 = GBP)) OR (CURRENCY#16 = USD)),(TIME_PERIOD#17 >= 2021-12-02),isnotnull(CURRENCY#16)
+22/12/03 23:03:56 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 23:03:56 INFO FileSourceStrategy: Pushed Filters: IsNotNull(TIME_PERIOD),Or(Or(EqualTo(CURRENCY,CHF),EqualTo(CURRENCY,GBP)),EqualTo(CURRENCY,USD)),GreaterThanOrEqual(TIME_PERIOD,2022-11-02)
+22/12/03 23:03:56 INFO FileSourceStrategy: Post-Scan Filters: isnotnull(TIME_PERIOD#160),(((CURRENCY#159 = CHF) OR (CURRENCY#159 = GBP)) OR (CURRENCY#159 = USD)),(TIME_PERIOD#160 >= 2022-11-02)
+22/12/03 23:03:56 INFO FileSourceStrategy: Output Data Schema: struct<CURRENCY: string, TIME_PERIOD: string, OBS_VALUE: double ... 1 more fields>
+22/12/03 23:03:56 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+22/12/03 23:03:56 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22/12/03 23:03:56 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22/12/03 23:03:56 INFO CodeGenerator: Code generated in 54.59015 ms
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_13 stored as values in memory (estimated size 189.4 KiB, free 433.2 MiB)
+22/12/03 23:03:56 INFO BlockManagerInfo: Removed broadcast_12_piece0 on 192.168.0.108:46621 in memory (size: 92.1 KiB, free: 434.3 MiB)
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_13_piece0 stored as bytes in memory (estimated size 32.7 KiB, free 433.5 MiB)
+22/12/03 23:03:56 INFO BlockManagerInfo: Added broadcast_13_piece0 in memory on 192.168.0.108:46621 (size: 32.7 KiB, free: 434.3 MiB)
+22/12/03 23:03:56 INFO SparkContext: Created broadcast 13 from save at EurofxrefSdmx.scala:80
+22/12/03 23:03:56 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 23:03:56 INFO DAGScheduler: Registering RDD 46 (save at EurofxrefSdmx.scala:80) as input to shuffle 4
+22/12/03 23:03:56 INFO DAGScheduler: Got map stage job 8 (save at EurofxrefSdmx.scala:80) with 2 output partitions
+22/12/03 23:03:56 INFO DAGScheduler: Final stage: ShuffleMapStage 18 (save at EurofxrefSdmx.scala:80)
+22/12/03 23:03:56 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 23:03:56 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:56 INFO DAGScheduler: Submitting ShuffleMapStage 18 (MapPartitionsRDD[46] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_14 stored as values in memory (estimated size 46.2 KiB, free 433.5 MiB)
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_14_piece0 stored as bytes in memory (estimated size 20.9 KiB, free 433.5 MiB)
+22/12/03 23:03:56 INFO BlockManagerInfo: Added broadcast_14_piece0 in memory on 192.168.0.108:46621 (size: 20.9 KiB, free: 434.3 MiB)
+22/12/03 23:03:56 INFO SparkContext: Created broadcast 14 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:56 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 18 (MapPartitionsRDD[46] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 23:03:56 INFO TaskSchedulerImpl: Adding task set 18.0 with 2 tasks resource profile 0
+22/12/03 23:03:56 INFO TaskSetManager: Starting task 0.0 in stage 18.0 (TID 18) (192.168.0.108, executor driver, partition 0, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:56 INFO TaskSetManager: Starting task 1.0 in stage 18.0 (TID 19) (192.168.0.108, executor driver, partition 1, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:56 INFO Executor: Running task 0.0 in stage 18.0 (TID 18)
+22/12/03 23:03:56 INFO Executor: Running task 1.0 in stage 18.0 (TID 19)
+22/12/03 23:03:56 INFO CodeGenerator: Code generated in 20.371079 ms
+22/12/03 23:03:56 INFO CodeGenerator: Code generated in 10.250292 ms
+22/12/03 23:03:56 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 4194304-4276181, partition values: [empty row]
+22/12/03 23:03:56 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 0-4194304, partition values: [empty row]
+22/12/03 23:03:56 INFO CodeGenerator: Code generated in 112.674778 ms
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_15 stored as values in memory (estimated size 189.4 KiB, free 428.8 MiB)
+22/12/03 23:03:56 INFO CodeGenerator: Code generated in 19.92493 ms
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_15_piece0 stored as bytes in memory (estimated size 32.7 KiB, free 428.7 MiB)
+22/12/03 23:03:56 INFO BlockManagerInfo: Added broadcast_15_piece0 in memory on 192.168.0.108:46621 (size: 32.7 KiB, free: 434.2 MiB)
+22/12/03 23:03:56 INFO SparkContext: Created broadcast 15 from save at EurofxrefSdmx.scala:80
+22/12/03 23:03:56 INFO CodeGenerator: Code generated in 8.004324 ms
+22/12/03 23:03:56 INFO FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+22/12/03 23:03:56 INFO DAGScheduler: Registering RDD 50 (save at EurofxrefSdmx.scala:80) as input to shuffle 5
+22/12/03 23:03:56 INFO DAGScheduler: Got map stage job 9 (save at EurofxrefSdmx.scala:80) with 2 output partitions
+22/12/03 23:03:56 INFO DAGScheduler: Final stage: ShuffleMapStage 19 (save at EurofxrefSdmx.scala:80)
+22/12/03 23:03:56 INFO DAGScheduler: Parents of final stage: List()
+22/12/03 23:03:56 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:56 INFO DAGScheduler: Submitting ShuffleMapStage 19 (MapPartitionsRDD[50] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_16 stored as values in memory (estimated size 46.9 KiB, free 428.7 MiB)
+22/12/03 23:03:56 INFO MemoryStore: Block broadcast_16_piece0 stored as bytes in memory (estimated size 21.2 KiB, free 428.7 MiB)
+22/12/03 23:03:56 INFO BlockManagerInfo: Added broadcast_16_piece0 in memory on 192.168.0.108:46621 (size: 21.2 KiB, free: 434.2 MiB)
+22/12/03 23:03:56 INFO SparkContext: Created broadcast 16 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:56 INFO DAGScheduler: Submitting 2 missing tasks from ShuffleMapStage 19 (MapPartitionsRDD[50] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0, 1))
+22/12/03 23:03:56 INFO TaskSchedulerImpl: Adding task set 19.0 with 2 tasks resource profile 0
+22/12/03 23:03:56 INFO TaskSetManager: Starting task 0.0 in stage 19.0 (TID 20) (192.168.0.108, executor driver, partition 0, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:56 INFO TaskSetManager: Starting task 1.0 in stage 19.0 (TID 21) (192.168.0.108, executor driver, partition 1, PROCESS_LOCAL, 4870 bytes) taskResourceAssignments Map()
+22/12/03 23:03:56 INFO Executor: Running task 0.0 in stage 19.0 (TID 20)
+22/12/03 23:03:56 INFO Executor: Running task 1.0 in stage 19.0 (TID 21)
+22/12/03 23:03:57 INFO Executor: Finished task 1.0 in stage 18.0 (TID 19). 2647 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 1.0 in stage 18.0 (TID 19) in 240 ms on 192.168.0.108 (executor driver) (1/2)
+22/12/03 23:03:57 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 4194304-4276181, partition values: [empty row]
+22/12/03 23:03:57 INFO FileScanRDD: Reading File path: file:///mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx.csv, range: 0-4194304, partition values: [empty row]
+22/12/03 23:03:57 INFO CodeGenerator: Code generated in 34.477592 ms
+22/12/03 23:03:57 INFO Executor: Finished task 1.0 in stage 19.0 (TID 21). 2647 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 1.0 in stage 19.0 (TID 21) in 214 ms on 192.168.0.108 (executor driver) (1/2)
+22/12/03 23:03:57 INFO Executor: Finished task 0.0 in stage 18.0 (TID 18). 2819 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 0.0 in stage 18.0 (TID 18) in 585 ms on 192.168.0.108 (executor driver) (2/2)
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Removed TaskSet 18.0, whose tasks have all completed, from pool 
+22/12/03 23:03:57 INFO DAGScheduler: ShuffleMapStage 18 (save at EurofxrefSdmx.scala:80) finished in 0.594 s
+22/12/03 23:03:57 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 23:03:57 INFO DAGScheduler: running: Set(ShuffleMapStage 19)
+22/12/03 23:03:57 INFO DAGScheduler: waiting: Set()
+22/12/03 23:03:57 INFO DAGScheduler: failed: Set()
+22/12/03 23:03:57 INFO ShufflePartitionsUtil: For shuffle(4), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 23:03:57 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+22/12/03 23:03:57 INFO Executor: Finished task 0.0 in stage 19.0 (TID 20). 2819 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 0.0 in stage 19.0 (TID 20) in 470 ms on 192.168.0.108 (executor driver) (2/2)
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Removed TaskSet 19.0, whose tasks have all completed, from pool 
+22/12/03 23:03:57 INFO DAGScheduler: ShuffleMapStage 19 (save at EurofxrefSdmx.scala:80) finished in 0.490 s
+22/12/03 23:03:57 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 23:03:57 INFO DAGScheduler: running: Set()
+22/12/03 23:03:57 INFO DAGScheduler: waiting: Set()
+22/12/03 23:03:57 INFO DAGScheduler: failed: Set()
+22/12/03 23:03:57 INFO CodeGenerator: Code generated in 30.480564 ms
+22/12/03 23:03:57 INFO SparkContext: Starting job: $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264
+22/12/03 23:03:57 INFO DAGScheduler: Got job 10 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:264) with 1 output partitions
+22/12/03 23:03:57 INFO DAGScheduler: Final stage: ResultStage 21 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:264)
+22/12/03 23:03:57 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 20)
+22/12/03 23:03:57 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:57 INFO DAGScheduler: Submitting ResultStage 21 (MapPartitionsRDD[53] at $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264), which has no missing parents
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_17 stored as values in memory (estimated size 48.8 KiB, free 433.1 MiB)
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_17_piece0 stored as bytes in memory (estimated size 21.9 KiB, free 433.1 MiB)
+22/12/03 23:03:57 INFO BlockManagerInfo: Added broadcast_17_piece0 in memory on 192.168.0.108:46621 (size: 21.9 KiB, free: 434.2 MiB)
+22/12/03 23:03:57 INFO BlockManagerInfo: Removed broadcast_14_piece0 on 192.168.0.108:46621 in memory (size: 20.9 KiB, free: 434.2 MiB)
+22/12/03 23:03:57 INFO SparkContext: Created broadcast 17 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:57 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 21 (MapPartitionsRDD[53] at $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264) (first 15 tasks are for partitions Vector(0))
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Adding task set 21.0 with 1 tasks resource profile 0
+22/12/03 23:03:57 INFO TaskSetManager: Starting task 0.0 in stage 21.0 (TID 22) (192.168.0.108, executor driver, partition 0, NODE_LOCAL, 4453 bytes) taskResourceAssignments Map()
+22/12/03 23:03:57 INFO Executor: Running task 0.0 in stage 21.0 (TID 22)
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Getting 1 (318.0 B) non-empty blocks including 1 (318.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:57 INFO Executor: Finished task 0.0 in stage 21.0 (TID 22). 3931 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 0.0 in stage 21.0 (TID 22) in 24 ms on 192.168.0.108 (executor driver) (1/1)
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Removed TaskSet 21.0, whose tasks have all completed, from pool 
+22/12/03 23:03:57 INFO DAGScheduler: ResultStage 21 ($anonfun$withThreadLocalCaptured$1 at FutureTask.java:264) finished in 0.057 s
+22/12/03 23:03:57 INFO DAGScheduler: Job 10 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Killing all running tasks in stage 21: Stage finished
+22/12/03 23:03:57 INFO DAGScheduler: Job 10 finished: $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264, took 0.066487 s
+22/12/03 23:03:57 INFO BlockManagerInfo: Removed broadcast_16_piece0 on 192.168.0.108:46621 in memory (size: 21.2 KiB, free: 434.2 MiB)
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_18 stored as values in memory (estimated size 2.0 MiB, free 431.2 MiB)
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_18_piece0 stored as bytes in memory (estimated size 298.0 B, free 431.2 MiB)
+22/12/03 23:03:57 INFO BlockManagerInfo: Added broadcast_18_piece0 in memory on 192.168.0.108:46621 (size: 298.0 B, free: 434.2 MiB)
+22/12/03 23:03:57 INFO SparkContext: Created broadcast 18 from $anonfun$withThreadLocalCaptured$1 at FutureTask.java:264
+22/12/03 23:03:57 INFO ShufflePartitionsUtil: For shuffle(5), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 23:03:57 INFO HashAggregateExec: spark.sql.codegen.aggregate.map.twolevel.enabled is set to true, but current version of codegened fast hashmap does not support this aggregate.
+22/12/03 23:03:57 INFO CodeGenerator: Code generated in 34.778102 ms
+22/12/03 23:03:57 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:80
+22/12/03 23:03:57 INFO DAGScheduler: Got job 11 (save at EurofxrefSdmx.scala:80) with 1 output partitions
+22/12/03 23:03:57 INFO DAGScheduler: Final stage: ResultStage 23 (save at EurofxrefSdmx.scala:80)
+22/12/03 23:03:57 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 22)
+22/12/03 23:03:57 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:57 INFO DAGScheduler: Submitting ResultStage 23 (MapPartitionsRDD[58] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_19 stored as values in memory (estimated size 70.1 KiB, free 431.2 MiB)
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_19_piece0 stored as bytes in memory (estimated size 29.7 KiB, free 431.1 MiB)
+22/12/03 23:03:57 INFO BlockManagerInfo: Added broadcast_19_piece0 in memory on 192.168.0.108:46621 (size: 29.7 KiB, free: 434.2 MiB)
+22/12/03 23:03:57 INFO SparkContext: Created broadcast 19 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:57 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 23 (MapPartitionsRDD[58] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0))
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Adding task set 23.0 with 1 tasks resource profile 0
+22/12/03 23:03:57 INFO BlockManagerInfo: Removed broadcast_17_piece0 on 192.168.0.108:46621 in memory (size: 21.9 KiB, free: 434.2 MiB)
+22/12/03 23:03:57 INFO TaskSetManager: Starting task 0.0 in stage 23.0 (TID 23) (192.168.0.108, executor driver, partition 0, NODE_LOCAL, 4453 bytes) taskResourceAssignments Map()
+22/12/03 23:03:57 INFO Executor: Running task 0.0 in stage 23.0 (TID 23)
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Getting 1 (291.0 B) non-empty blocks including 1 (291.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:57 INFO Executor: Finished task 0.0 in stage 23.0 (TID 23). 6242 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 0.0 in stage 23.0 (TID 23) in 25 ms on 192.168.0.108 (executor driver) (1/1)
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Removed TaskSet 23.0, whose tasks have all completed, from pool 
+22/12/03 23:03:57 INFO DAGScheduler: ResultStage 23 (save at EurofxrefSdmx.scala:80) finished in 0.044 s
+22/12/03 23:03:57 INFO DAGScheduler: Job 11 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Killing all running tasks in stage 23: Stage finished
+22/12/03 23:03:57 INFO DAGScheduler: Job 11 finished: save at EurofxrefSdmx.scala:80, took 0.049732 s
+22/12/03 23:03:57 INFO DAGScheduler: Registering RDD 59 (save at EurofxrefSdmx.scala:80) as input to shuffle 6
+22/12/03 23:03:57 INFO DAGScheduler: Got map stage job 12 (save at EurofxrefSdmx.scala:80) with 1 output partitions
+22/12/03 23:03:57 INFO DAGScheduler: Final stage: ShuffleMapStage 25 (save at EurofxrefSdmx.scala:80)
+22/12/03 23:03:57 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 24)
+22/12/03 23:03:57 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:57 INFO DAGScheduler: Submitting ShuffleMapStage 25 (MapPartitionsRDD[59] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_20 stored as values in memory (estimated size 69.9 KiB, free 431.1 MiB)
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_20_piece0 stored as bytes in memory (estimated size 30.0 KiB, free 431.1 MiB)
+22/12/03 23:03:57 INFO BlockManagerInfo: Added broadcast_20_piece0 in memory on 192.168.0.108:46621 (size: 30.0 KiB, free: 434.2 MiB)
+22/12/03 23:03:57 INFO SparkContext: Created broadcast 20 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:57 INFO DAGScheduler: Submitting 1 missing tasks from ShuffleMapStage 25 (MapPartitionsRDD[59] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0))
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Adding task set 25.0 with 1 tasks resource profile 0
+22/12/03 23:03:57 INFO TaskSetManager: Starting task 0.0 in stage 25.0 (TID 24) (192.168.0.108, executor driver, partition 0, NODE_LOCAL, 4442 bytes) taskResourceAssignments Map()
+22/12/03 23:03:57 INFO Executor: Running task 0.0 in stage 25.0 (TID 24)
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Getting 1 (291.0 B) non-empty blocks including 1 (291.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:57 INFO Executor: Finished task 0.0 in stage 25.0 (TID 24). 6156 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 0.0 in stage 25.0 (TID 24) in 22 ms on 192.168.0.108 (executor driver) (1/1)
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Removed TaskSet 25.0, whose tasks have all completed, from pool 
+22/12/03 23:03:57 INFO DAGScheduler: ShuffleMapStage 25 (save at EurofxrefSdmx.scala:80) finished in 0.036 s
+22/12/03 23:03:57 INFO DAGScheduler: looking for newly runnable stages
+22/12/03 23:03:57 INFO DAGScheduler: running: Set()
+22/12/03 23:03:57 INFO DAGScheduler: waiting: Set()
+22/12/03 23:03:57 INFO DAGScheduler: failed: Set()
+22/12/03 23:03:57 INFO ShufflePartitionsUtil: For shuffle(6), advisory target size: 67108864, actual target size 1048576, minimum partition size: 1048576
+22/12/03 23:03:57 INFO CodeGenerator: Code generated in 12.053164 ms
+22/12/03 23:03:57 INFO SparkContext: Starting job: save at EurofxrefSdmx.scala:80
+22/12/03 23:03:57 INFO DAGScheduler: Got job 13 (save at EurofxrefSdmx.scala:80) with 1 output partitions
+22/12/03 23:03:57 INFO DAGScheduler: Final stage: ResultStage 28 (save at EurofxrefSdmx.scala:80)
+22/12/03 23:03:57 INFO DAGScheduler: Parents of final stage: List(ShuffleMapStage 27)
+22/12/03 23:03:57 INFO DAGScheduler: Missing parents: List()
+22/12/03 23:03:57 INFO DAGScheduler: Submitting ResultStage 28 (CoalescedRDD[62] at save at EurofxrefSdmx.scala:80), which has no missing parents
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_21 stored as values in memory (estimated size 253.7 KiB, free 430.9 MiB)
+22/12/03 23:03:57 INFO BlockManagerInfo: Removed broadcast_20_piece0 on 192.168.0.108:46621 in memory (size: 30.0 KiB, free: 434.2 MiB)
+22/12/03 23:03:57 INFO MemoryStore: Block broadcast_21_piece0 stored as bytes in memory (estimated size 92.7 KiB, free 430.8 MiB)
+22/12/03 23:03:57 INFO BlockManagerInfo: Added broadcast_21_piece0 in memory on 192.168.0.108:46621 (size: 92.7 KiB, free: 434.1 MiB)
+22/12/03 23:03:57 INFO SparkContext: Created broadcast 21 from broadcast at DAGScheduler.scala:1478
+22/12/03 23:03:57 INFO DAGScheduler: Submitting 1 missing tasks from ResultStage 28 (CoalescedRDD[62] at save at EurofxrefSdmx.scala:80) (first 15 tasks are for partitions Vector(0))
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Adding task set 28.0 with 1 tasks resource profile 0
+22/12/03 23:03:57 INFO TaskSetManager: Starting task 0.0 in stage 28.0 (TID 25) (192.168.0.108, executor driver, partition 0, NODE_LOCAL, 4729 bytes) taskResourceAssignments Map()
+22/12/03 23:03:57 INFO Executor: Running task 0.0 in stage 28.0 (TID 25)
+22/12/03 23:03:57 INFO BlockManagerInfo: Removed broadcast_19_piece0 on 192.168.0.108:46621 in memory (size: 29.7 KiB, free: 434.1 MiB)
+22/12/03 23:03:57 INFO FileOutputCommitter: File Output Committer Algorithm version is 1
+22/12/03 23:03:57 INFO FileOutputCommitter: FileOutputCommitter skip cleanup _temporary folders under output directory:false, ignore cleanup failures: false
+22/12/03 23:03:57 INFO SQLHadoopMapReduceCommitProtocol: Using output committer class org.apache.hadoop.mapreduce.lib.output.FileOutputCommitter
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Getting 1 (351.0 B) non-empty blocks including 1 (351.0 B) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+22/12/03 23:03:57 INFO ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+22/12/03 23:03:57 INFO FileOutputCommitter: Saved output of task 'attempt_202212032303573004011430401361587_0028_m_000000_25' to file:/mnt/64643AEF643AC398/PDI_proj/eurofxref-sdmx-spark/OUT/task_2/_temporary/0/task_202212032303573004011430401361587_0028_m_000000
+22/12/03 23:03:57 INFO SparkHadoopMapRedUtil: attempt_202212032303573004011430401361587_0028_m_000000_25: Committed
+22/12/03 23:03:57 INFO Executor: Finished task 0.0 in stage 28.0 (TID 25). 7897 bytes result sent to driver
+22/12/03 23:03:57 INFO TaskSetManager: Finished task 0.0 in stage 28.0 (TID 25) in 69 ms on 192.168.0.108 (executor driver) (1/1)
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Removed TaskSet 28.0, whose tasks have all completed, from pool 
+22/12/03 23:03:57 INFO DAGScheduler: ResultStage 28 (save at EurofxrefSdmx.scala:80) finished in 0.106 s
+22/12/03 23:03:57 INFO DAGScheduler: Job 13 is finished. Cancelling potential speculative or zombie tasks for this job
+22/12/03 23:03:57 INFO TaskSchedulerImpl: Killing all running tasks in stage 28: Stage finished
+22/12/03 23:03:57 INFO DAGScheduler: Job 13 finished: save at EurofxrefSdmx.scala:80, took 0.109055 s
+22/12/03 23:03:57 INFO FileFormatWriter: Start to commit write Job 63cf2ce2-c31f-461b-a940-e7693397f444.
+22/12/03 23:03:57 INFO FileFormatWriter: Write Job 63cf2ce2-c31f-461b-a940-e7693397f444 committed. Elapsed time: 11 ms.
+22/12/03 23:03:57 INFO FileFormatWriter: Finished processing stats for write job 63cf2ce2-c31f-461b-a940-e7693397f444.
+22/12/03 23:03:58 INFO SparkContext: Invoking stop() from shutdown hook
+22/12/03 23:03:58 INFO SparkUI: Stopped Spark web UI at http://192.168.0.108:4040
+22/12/03 23:03:58 INFO MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+22/12/03 23:03:58 INFO MemoryStore: MemoryStore cleared
+22/12/03 23:03:58 INFO BlockManager: BlockManager stopped
+22/12/03 23:03:58 INFO BlockManagerMaster: BlockManagerMaster stopped
+22/12/03 23:03:58 INFO OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+22/12/03 23:03:58 INFO SparkContext: Successfully stopped SparkContext
+22/12/03 23:03:58 INFO ShutdownHookManager: Shutdown hook called
+22/12/03 23:03:58 INFO ShutdownHookManager: Deleting directory /tmp/spark-74ab4ed5-e2dd-4614-a788-2c2a43714c46

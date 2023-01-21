@@ -1,0 +1,219 @@
+﻿@viewModel RockFests.ViewModels.Bands.BandDetailViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+@import RockFests.DAL.Enums
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div IncludeInPage="{value: EditBand == null && BandId > 0}" class="mb-3 w-100 shadow-sm">
+        <div class="shadow-sm">
+            <div class="d-flex justify-content-between bg-dark p-2">
+                <h2 style="color:white;margin-bottom:0px;">{{value: Band.Name}}</h2>
+                <div>
+                    <dot:RoleView Roles="Admin,Organizer">
+                        <dot:Button Click="{command: EditBand = Band.Copy()}" class="btn btn-light" ButtonTagName="button">
+                            <span class="fa fa-pencil-alt"></span>
+                        </dot:Button>
+                        <dot:Button Click="{staticCommand: IsDeleteModalShowed = true}" class="btn btn-danger" ButtonTagName="button">
+                            <span class="fa fa-trash-alt"></span>
+                        </dot:Button>
+                    </dot:RoleView>
+                </div>
+            </div>
+
+            <!-- Band detail -->
+            <div style="float: right; padding:5px">
+                <img src="{value: Base64Photo}" style="width: 125px; height: 125px;" />
+            </div>
+            <div DataContext="{value: Band}" class="p-2">
+                <cc:FormGroupDisplay Label="{value: Texts.Label_Genre}" Value="{value: Genre}" />
+                <cc:FormGroupDisplay Label="{value: Texts.Label_Country}" Value="{value: Country}" />
+                <cc:FormGroupDisplay Label="{value: Texts.Label_FormationYear}" Value="{value: FormationYear}" />
+                <div class="form-group mb-1 w-100">
+                    <dot:Literal Text="{value: Texts.Label_Members}" class="font-weight-bolder mr-1" />
+                    <table>
+                        <tbody>
+                            <dot:Repeater DataSource="{value: Members}" RenderWrapperTag="false">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td>
+                                            <dot:RouteLink RouteName="{resource: Routes.Musicians_Detail}" Param-Id="{value: Id}">
+                                                <dot:Literal Text="{value: Name}" />
+                                            </dot:RouteLink>
+                                        </td>
+                                        <td class="pl-2 pr-2">-</td>
+                                        <td>
+                                            <dot:Literal Text="{value: Role}" />
+                                        </td>
+                                    </tr>
+                                </ItemTemplate>
+                            </dot:Repeater>
+                        </tbody>
+                    </table>
+                </div>
+                <dot:Literal Text="{value: Texts.Label_Description}" class="font-weight-bolder d-block" />
+                <dot:Literal Text="{value: Description}" />
+            </div>
+        </div>
+    </div>
+
+    <!-- Band ratings -->
+    <div IncludeInPage="{value: EditBand == null && BandId > 0}" class="w-100 mt-3">
+        <!-- My rating-->
+        <div IncludeInPage="{value: MyRating != null}" class="table-responsive shadow-sm">
+            <table class="table mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="vertical-align: middle" colspan="4">{{value: Texts.MyRating}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- View mode -->
+                    <tr IncludeInPage="{value: EditMyRating == null}">
+                        <td style="width: 150px">
+                            <dot:Literal Text="{value: MyRating.UserName}" />
+                        </td>
+                        <td style="width: 70px">
+                            <dot:Literal Text="{value: MyRating.Number}" />/10
+                        </td>
+                        <td>
+                            <dot:Literal Text="{value: MyRating.Text}" />
+                        </td>
+                        <td class="text-right" style="min-width: 120px">
+                            <dot:Button Click="{command: CopyMyRating()}" class="btn btn-light" ButtonTagName="button">
+                                <span class="fa fa-pencil-alt"></span>
+                            </dot:Button>
+                            <dot:Button Click="{command: DeleteRating(MyRating.Id)}" class="btn btn-danger" ButtonTagName="button">
+                                <span class="fa fa-trash-alt"></span>
+                            </dot:Button>
+                        </td>
+                    </tr>
+                    <!-- Edit mode -->
+                    <tr IncludeInPage="{value: EditMyRating != null}">
+                        <td style="width: 150px">
+                            <dot:Literal Text="{value: EditMyRating.UserName}" />
+                        </td>
+                        <td style="width: 70px">
+                            <dot:ComboBox DataSource="{value: RatingValues}" SelectedValue="{value: EditMyRating.Number}" />
+                        </td>
+                        <td>
+                            <dot:TextBox style="width: 100%" Type="MultiLine" Text="{value: EditMyRating.Text}" />
+                        </td>
+                        <td style="float: right">
+                            <dot:Button Click="{command: UpdateMyRating()}" class="btn btn-dark" ButtonTagName="button">
+                                <span class="fa fa-save"></span>
+                            </dot:Button>
+                            <dot:Button Click="{command: EditMyRating = null}" class="btn btn-light" ButtonTagName="button">
+                                <span class="fa fa-door-open"></span>
+                            </dot:Button>
+                            <dot:Button Click="{command: DeleteRating(EditMyRating.Id)}" class="btn btn-danger" ButtonTagName="button">
+                                <span class="fa fa-trash-alt"></span>
+                            </dot:Button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Other ratings-->
+        <div IncludeInPage="{value: !(MyRating != null && Band.Ratings.Count == 1)}" class="table-responsive mt-2 shadow-sm">
+            <table class="table mb-0">
+                <thead class="thead-dark">
+                    <tr>
+                        <th style="vertical-align: middle" colspan="2">
+                            {{value: Texts.Ratings}}
+                        </th>
+                        <th colspan="2" class="text-right">
+                            <dot:Button Click="{command: EditMyRating = NewRating()}" IncludeInPage="{value: MyRating == null && _root.SignedInUser != null}" class="btn btn-light" ButtonTagName="button">
+                                <span class="fa fa-plus"/> {{value: Texts.AddRating}}
+                            </dot:Button>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- New rating -->
+                    <tr IncludeInPage="{value: EditMyRating != null && EditMyRating.Id == 0}">
+                        <td style="width: 150px">
+                            <dot:Literal Text="{value: EditMyRating.UserName}" />
+                        </td>
+                        <td style="width: 70px">
+                            <dot:ComboBox DataSource="{value: RatingValues}" SelectedValue="{value: EditMyRating.Number}" />
+                        </td>
+                        <td>
+                            <dot:TextBox style="width: 100%" Type="MultiLine" Text="{value: EditMyRating.Text}" />
+                        </td>
+                        <td class="text-right">
+                            <dot:Button Click="{command: CreateRating()}" class="btn btn-dark" ButtonTagName="button">
+                                <span class="fa fa-save"></span>
+                            </dot:Button>
+                            <dot:Button Click="{command: EditMyRating = null}" class="btn btn-light" ButtonTagName="button">
+                                <span class="fa fa-door-open"></span>
+                            </dot:Button>
+                        </td>
+                    </tr>
+                    <!-- Existing ratings -->
+                    <dot:Repeater DataSource="{value: Band.Ratings}" RenderWrapperTag="false">
+                        <ItemTemplate>
+                            <tr IncludeInPage="{value: UserName != _root.SignedInUser.Login}">
+                                <td style="width: 150px">
+                                    <dot:Literal Text="{value: UserName}" />
+                                </td>
+                                <td style="width: 70px">
+                                    <dot:Literal Text="{value: Number + "/10"}" />
+                                </td>
+                                <td>
+                                    <dot:Literal Text="{value: Text}" />
+                                </td>
+                                <td class="text-right">
+                                    <dot:Button IncludeInPage="{value: _root.SignedInUser.AccessRole == AccessRole.Admin}" Click="{command: _parent.DeleteRating(Id)}" class="btn btn-danger" ButtonTagName="button">
+                                        <span class="fa fa-trash-alt"></span>
+                                    </dot:Button>
+                                </td>
+                            </tr>
+                        </ItemTemplate>
+                        <EmptyDataTemplate>
+                            <tr>
+                                <td colspan="4">{{value: Texts.NoRatingsBand}}</td>
+                            </tr>
+                        </EmptyDataTemplate>
+                    </dot:Repeater>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div IncludeInPage="{value: EditBand != null || BandId == 0}" class="mb-3 border-dark w-100">
+        <div DataContext="{value: EditBand}">
+            <cc:FormGroupText Label="{value: Texts.Label_Name}" Value="{value: Name}" />
+            <cc:FormGroupText Label="{value: Texts.Label_Genre}" Value="{value: Genre}" />
+            <cc:FormGroupText Label="{value: Texts.Label_Country}" Value="{value: Country}" Required="false" />
+            <cc:FormGroupNumber Label="{value: Texts.Label_FormationYear}" Value="{value: FormationYear}" />
+            <cc:FormGroupTextArea Label="{value: Texts.Label_Description}" Value="{value: Description}" Required="false"/>
+            <div class="mb-3 border-dark w-100" style="width: 300px">
+                <dot:Repeater DataSource="{value: Members}" RenderWrapperTag="false">
+                    <ItemTemplate>
+                        <div>
+                            <dot:Button Click="{command: _root.DeleteMember(_this)}" ButtonTagName="button" class="btn btn-outline-danger" style="margin: 5px">
+                                <span class="fa fa-trash-alt"></span>
+                            </dot:Button>
+                            <dot:RouteLink RouteName="{resource: Routes.Musicians_Detail}" Param-Id="{value: Id}">
+                                <dot:Literal Text="{value: Name}" />
+                            </dot:RouteLink>
+                            <br />
+                        </div>
+                    </ItemTemplate>
+                </dot:Repeater>
+                <dot:Validator Value="{value: Members}" ShowErrorMessageText="true" InvalidCssClass="has-error"/>
+                <div>
+                    <dot:ComboBox SelectedValue="{value: _root.SelectedMusicianId}" DataSource="{value: _root.Musicians}" ItemValueBinding="{value: Id}" ItemTextBinding="{value: Name}" style="margin: 5px" />
+                    <dot:Button Click="{command: _root.AddMember()}" class="btn btn-secondary" ButtonTagName="button" Text="{value:  Texts.Btn_AddMusician}"></dot:Button>
+                </div>
+            </div>
+        </div>
+
+        <dot:FileUpload UploadedFiles="{value: Files}" AllowMultipleFiles="false" UploadButtonText="{value: Band.Photo==null ? Texts.AddPhoto : Texts.ChangePhoto}" UploadCompleted={command: NewPhotoUploaded()} NumberOfFilesIndicatorText="" SuccessMessageText="The file was succesfully uploaded." />
+        <dot:Button Text="{value: Texts.Btn_Save}" Click="{command: SaveBand()}" Validation.Enabled="true" Validation.Target="{value: EditBand}" class="btn btn-dark" />
+        <dot:Button IncludeInPage="{value: EditBand.Id > 0}" Text="{value: Texts.Btn_Storno}" Click="{staticCommand: EditBand = null}" class="btn btn-light" />
+        <dot:RouteLink IncludeInPage="{value: EditBand.Id == 0}" Text="{value: Texts.Btn_Storno}" RouteName="{resource: Routes.Bands}" class="btn btn-light" />
+    </div>
+    <cc:Modal Header="{value: Texts.ModalDeleteHeader}" Message="{value: ModalDeleteMessage}" ConfirmCommand="{command: DeleteBand()}" HasConfirmation="true" IsShowed="{value: IsDeleteModalShowed}" />
+</dot:Content>

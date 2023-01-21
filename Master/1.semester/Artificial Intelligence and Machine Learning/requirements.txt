@@ -1,0 +1,7 @@
+hexutil
+numpy
+pyqt5==5.14
+matplotlib
+scipy
+torch==1.9.1
+pandas

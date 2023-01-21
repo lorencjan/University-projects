@@ -1,0 +1,11 @@
+No automatic tests were implemented. There are couple of "look if ok" manual tests
+
+Tests starting with "test-err":
+ - handle various erroneous input ... e.g. missing input, incorrect format, FA is not deterministic etc.
+
+Tests starting with "test-i":
+ - test if the internal representation is printed out
+ - able to parse extra whitespaces
+
+Tests starting with "test-t":
+ - test if specific DFA get minimized

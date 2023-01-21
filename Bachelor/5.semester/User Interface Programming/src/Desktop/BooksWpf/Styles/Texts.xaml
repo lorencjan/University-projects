@@ -1,0 +1,88 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:BooksWpf.Styles">
+    <Style TargetType="TextBlock" x:Key="WhiteLabel">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="18px"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="BlackLabel">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="18px"/>
+        <Setter Property="Foreground" Value="Black"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="ListText">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="15,0,0,0"/>
+        <Setter Property="TextAlignment" Value="Left"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="DetailText">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+
+    <Style TargetType="ComboBox" x:Key="DetailComboBox">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+    
+    <Style TargetType="TextBlock" x:Key="TextBlockBase">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="DetailHeader" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="Foreground" Value="#286b0d"/>
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="EditDetailHeader">
+        <Setter Property="Foreground" Value="#286b0d"/>
+        <Setter Property="FontSize" Value="28"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="EditDetailText">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Margin" Value="4"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="DetailButtonText" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="Foreground" Value="#286b0d"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="DetailInfo" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="Margin" Value="10 0 0 7"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="ListViewHeader" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="Foreground" Value="#286b0d"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <Style TargetType="TextBlock" x:Key="FilterLabel" BasedOn="{StaticResource TextBlockBase}">
+        <Setter Property="Foreground" Value="#286b0d"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+
+    <Style TargetType="TextBox" x:Key="FilterInput">
+        <Setter Property="FontFamily" Value="Segoe UI"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="Margin" Value="2"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+</ResourceDictionary>

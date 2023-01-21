@@ -1,0 +1,111 @@
+﻿@page "/Project/{Id}"
+@inject ProjectService projectService
+@inject NavigationManager NavigationManager
+
+
+<AuthorizeView Context="Auth">
+    @if (Project == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>@Project.Name</h1>
+                </div>
+                <div class="col-md-6 d-flex justify-content-end">
+                    <button class="btn btn-primary" @onclick="() => OnEditClicked(Project.Id)">Edit</button>
+                </div>
+            </div>
+
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="bold">Manager</div>
+                        @Project.Manager
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="bold">Staff</div>
+                        @Project.Staff
+                    </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="bold">Description</div>
+                        @Project.Description
+                    </div>
+                </li>
+            </ul>
+            @* <div class="row"> *@
+            @*     <div class="col-md-12"> *@
+            @*         <p>@Project.Manager</p> *@
+            @*     </div> *@
+            @* </div> *@
+            @* <div class="row"> *@
+            @*     <div class="col-md-12"> *@
+            @*         <p>@Project.Staff</p> *@
+            @*     </div> *@
+            @* </div> *@
+            @* *@
+            @* <hr/> *@
+            @* <p>@Project.Description</p> *@
+
+
+            @if (Project.RiskList != null)
+            {
+                <hr/>
+                <h3>Risks</h3>
+                <BlazmGrid Data="Project.RiskList" PageSize="10" Sortable="true">
+                    <GridColumns>
+                        <GridColumn Field="@nameof(RiskEntity.CustomId)" Title="Id"></GridColumn>
+                        <GridColumn Field="@nameof(RiskEntity.Name)" CanFilter="true"></GridColumn>
+                        <GridColumn Field="@nameof(RiskEntity.Category)" CanFilter="true"></GridColumn>
+                        <GridColumn Field="@nameof(RiskEntity.Probability)" Format="{0:d}"></GridColumn>
+                        <GridColumn Field="@nameof(RiskEntity.Consequences)" Format="{0:d}"></GridColumn>
+                        <GridColumn Field="@nameof(RiskEntity.RiskEvaluation)"></GridColumn>
+                        <GridColumn Field="@nameof(RiskEntity.CreatedDate)" Format="{0:dd.MM.yyyy}"></GridColumn>
+                        <GridColumn>
+                            <Template>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-primary" @onclick="() => OnDetailClicked(((RiskEntity)context).Id)">Detail</button>
+                                </div>
+                            </Template>
+                        </GridColumn>
+                    </GridColumns>
+                </BlazmGrid>
+                <hr/>
+                <h3>Risk matrix</h3>
+                <RiskMatrix Project="@Project"></RiskMatrix>
+            }
+        </div>
+    }
+</AuthorizeView>
+
+@code {
+    [Parameter]
+    public string Id
+    {
+        get;
+        set;
+    }
+
+    ProjectEntity Project = new ProjectEntity();
+
+    private void OnDetailClicked(int id)
+    {
+        NavigationManager.NavigateTo($"/Risk/{id}");
+    }
+    private void OnEditClicked(int id)
+    {
+        NavigationManager.NavigateTo($"/EditProject/{id}");
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        Project = await projectService.GetProjectAsync(Convert.ToInt32(Id));
+    }
+}

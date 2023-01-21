@@ -1,0 +1,98 @@
+Architektury Výpočetních Systémů (AVS 2021)
+Projekt č. 2 (PMC)
+Login: xloren15
+
+Úloha 1: Paralelizace původního řešení
+===============================================================================
+
+1) Kterou ze smyček (viz zadání) je vhodnější paralelizovat a co způsobuje 
+   neefektivitu paralelizaci té druhé?
+   Lepší je paralelizovat smyčku v marchCubes() metodě. Paralelizovat smyčku uvnitř
+   evaluateFieldAt() není efektivní, neboť tato metoda je volaná uvnitř buildCube(),
+   která je zase volaná ve smyčce v marchCubes() -> paralelizovali bychom jen krátký
+   úsek kódu (zejména ve srovnání s možností z marchCubes()) a naopak režie paralelismu
+   by mohla ještě spíš uškodit.
+
+2) Jaké plánování (rozdělení práce mezi vlákna) jste zvolili a proč? 
+   Jaký vliv má velikost "chunk" při dynamickém plánování (8, 16, 32, 64)?
+   Poněvadž složitost cyklů smyčky je téměř stejná, je vhodné použít "static" pro jeho nízkou režii.
+   Chunk určuje, kolik cyklů má vlákno vykonat. S vyšší hodnotou dochází ke
+   zpomalení, neboť vlákna dostávají nerovnoměrné množství práce.
+   (některá pracují méně, jiná více ... zbytečné čekání, zatímco by mohla pomoci vytíženým)
+
+3) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+   Pomocí kritické sekce (atomic pro počítání trojúhelníků pro jeho nižší režii,
+   critical při ukládání, poněvadž zde atomic již nejde)
+   -> zdroj se uzamkne a je k němu zaručen sekvenční přístup.
+
+Úloha 2: Paralelní průchod stromem
+===============================================================================
+
+1) Stručně popište použití OpenMP tasků ve vašem řešení.
+   Podobně jako Fibonachiho z přednášky. Jedno vlákno spustí výpočet (#pragma single)
+   a uvnitř výpočtu se vytváří tasky pro rekurzivní výpočty. Před návratem hodnoty
+   čekám pomocí taskwait, než se tasky dokončí.
+
+2) Jakým způsobem jste realizovali sesbírání celkového počtu trojúhelníků?
+   Rekurzivně volám metodu treeStep() pro menší a menší kostky, až na nejmenší úrovni
+   volám buildCube(), čímž získám počet trojúhelníků pro danou kostku. Při rekurzivním
+   návratu pak přičítám k předchozím hodnotám. Taskwait zmíněný v předešlé otázce pak
+   zaručí čekání na subtasky, tedy že budu mít všechny nižší úrovně sečtené, než půjdu zase výš.
+
+3) Jaký vliv má na vaše řešení tzv. "cut-off"? Je vhodné vytvářet nový 
+   task pro každou krychli na nejnižší úrovni?
+   Urychluje výpočet. Pozná, které kostky není třeba vykreslovat -> zbytečně se neprochází.
+   I na nejnižší úrovni stále dochází k efektivní paralelizaci -> task je vhodný.
+
+4) Jakým způsobem zajišťujete ukládání trojúhelníků z několika vláken současně?
+   Stejně jako u otázky 1.3 - kritickou sekcí, abych zaručil výlučný přístup ke zdroji.
+
+Úloha 3: Grafy škálování všech řešení
+===============================================================================
+
+1) Stručně zhodnoťte efektivitu vytvořených řešení (na základě grafů škálování).
+   Efektivita obou implementací je relativně podobná. U obou lze vidět obdobný lineární nárůst
+   délky výpočtu při zvyšováním elementů a rozdíl křivek není výrazný. Při nižším počtu elementů
+   mřížky (do cca 2^15) je však efektivnější verze loop, při větším počtu elementů pak tree.
+   Poněvadž tree zaznamenává právě ve 2^15 lokální extrém a při stabilnější linearitě v této oblasti
+   by jeho křivka protnula loop křivku již při cca 2^13.5, lze předpokládat, že bude v obecnosti 
+   efektivnější již při trochu menších počtech elementů než 2^15.
+
+2) V jakém případě (v závislosti na počtu bodů ve vstupním souboru a velikosti 
+   mřížky) bude vaše řešení 1. úlohy neefektivní? (pokud takový případ existuje)
+   Pokud počet vstupních bodů ve vstupním souboru bude nízký a naopak budu používat mnoho jader.
+
+3) Je (nebo není) stromový algoritmus efektivnější z pohledu slabého škálování 
+   vzhledem ke vstupu?
+   Není. Navzdory tomu, že délka výpočtu pro všechny vstupy je menší než u loop (což může zmást),
+   tak je třeba zkoumat škálování jako takové. U tree čas roste s přibývajícími vlákny, zatímco
+   u loop si čas drží +- konstantní hodnotu (modrá je trochu výjimka) -> loop škáluje lépe.
+
+Úloha 4: Analýza využití jader pomocí VTune
+================================================================================
+
+1) Jaké bylo průměrné využití jader pro všechny tři implementace s omezením na 
+   18 vláken? Na kolik procent byly využity?
+   
+   ČÍSLA V ODPOVĚDÍCH NA 1),2),3) JSOU PŘIBLIŽNÁ, KOLEM KTERÝCH SE TO POHYBOVALO (+- desetiny až jednotky procent)
+
+   ref: 2.8% utilizace, 0.996/36 logických CPU využito (celý výpočet na 1)
+   loop: 47.5% utilizace, 17.1/36 logických CPU využito, 4% sériový výpočet, 96% paralelní výpočet
+   tree: 41% utilizace, 14.75/36 logických CPU využito, 10% sériový výpočet, 90% paralelní výpočet
+
+2) Jaké bylo průměrné využití jader pro všechny tři implementace s využitím 
+   všech jader? Na kolik procent se podařilo využít obě CPU?
+   
+   ref: 2.8% utilizace, 0.998/36 logických CPU využito (celý výpočet na 1) ... stejné jako u 18 CPU
+   loop: 78% utilizace, 28/36 logických CPU využito, 9.5% sériový výpočet, 90.5% paralelní výpočet
+   tree: 62% utilizace, 22.3/36 logických CPU využito, 23% sériový výpočet, 77% paralelní výpočet
+
+3) Jaké jsou závěry z těchto měření?
+   U referenčního řešení skutečně vše probíhalo sériově na 1 jádře. Zajímavé výsledky pak byly v porovnání
+   loop a tree implementace paralelizace. Loop implementaci se lépe podařilo vytížit logické CPU, přesto však
+   u 18 vláken je cca 2.7x pomalejší a u 32 pak cca 2.4x pomalejší. Nižší paralelizace u tree dává smysl,
+   neboť se tasky vytvářejí postupně, jak se zanořuje, a před každým zanořením je sériová část rodičovského
+   vlákna. U loop se zato paralelizuje hned na začátku celá vnější smyčka. Dále vlákna v loop čekají pouze
+   v kritických sekcích, kdežto v tree se ještě čeká na synovská vlákna na taskwait. Lepší čas bych pak přisoudil
+   efektivnější implementaci algoritmu a případně i trochu nižší režii s vytvářením vláken, když se paralelizuje méně.
+   U obou implementací je pak nižší paralelizované procento výpočtu u 32 vláken oproti 18 dáno soupeřením více vláken o kritické sekce.

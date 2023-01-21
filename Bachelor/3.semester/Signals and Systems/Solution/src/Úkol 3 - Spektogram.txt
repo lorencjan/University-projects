@@ -1,0 +1,44 @@
+/*PŘEČTE A VYTVOŘÍ SPEKTRUM PRO ZADANOU VĚTU*/
+[x, Fs] = audioread('sa1.wav');
+x = x-mean(x);
+N = 512; wlen=25e-3*Fs; wshift=10e-3*Fs; woverlap=wlen-wshift;
+win = hamming(wlen);
+f = (0:(N/2-1))/N*Fs;
+t = (0:(1+floor((length(x)-wlen)/wshift)-1)) * wshift/Fs;
+X = specgram(x, N, Fs, win, woverlap);
+PX = 10*log(abs(X).^2);
+imagesc(t,f,PX);
+set(gca(), "ydir", "normal");
+xlabel("Time");
+ylabel("Frequency");
+colormap(jet);
+
+/*PŘEČTE A VYTVOŘÍ SPEKTRUM PRO PRVNÍ POROVNÁVACÍ VZOREK*/
+[x, Fs] = audioread('q1.wav');
+x = x-mean(x);
+N = 512; wlen=25e-3*Fs; wshift=10e-3*Fs; woverlap=wlen-wshift;
+win = hamming(wlen);
+f = (0:(N/2-1))/N*Fs;
+t = (0:(1+floor((length(x)-wlen)/wshift)-1)) * wshift/Fs;
+Q1 = specgram(x, N, Fs, win, woverlap);
+PQ1 = 10*log(abs(Q1).^2);
+imagesc(t,f,PQ1);
+set(gca(), "ydir", "normal");
+xlabel("Time");
+ylabel("Frequency");
+colormap(jet);
+
+/*PŘEČTE A VYTVOŘÍ SPEKTRUM PRO DRUHÝ POROVNÁVACÍ VZOREK*/
+[x, Fs] = audioread('q2.wav');
+x = x-mean(x);
+N = 512; wlen=25e-3*Fs; wshift=10e-3*Fs; woverlap=wlen-wshift;
+win = hamming(wlen);
+f = (0:(N/2-1))/N*Fs;
+t = (0:(1+floor((length(x)-wlen)/wshift)-1)) * wshift/Fs;
+Q2 = specgram(x, N, Fs, win, woverlap);
+PQ2 = 10*log(abs(Q2).^2);
+imagesc(t,f,PQ2);
+set(gca(), "ydir", "normal");
+xlabel("Time");
+ylabel("Frequency");
+colormap(jet);

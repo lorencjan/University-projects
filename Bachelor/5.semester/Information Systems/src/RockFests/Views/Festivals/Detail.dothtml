@@ -1,0 +1,86 @@
+﻿@viewModel RockFests.ViewModels.Festivals.FestivalDetailViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div IncludeInPage="{value: EditFestival == null && FestivalId > 0}" class="mb-3 w-100 shadow-sm">
+        <div class="d-flex justify-content-between bg-dark p-2">
+            <h2 style="color:white;margin-bottom:0px;">{{value: Festival.Name}}</h2>
+            <div>
+                <dot:RoleView Roles="Admin,Organizer">
+                    <dot:Button Click="{command: EditFestival = Festival.Copy()}" class="btn btn-light" ButtonTagName="button">
+                        <span class="fa fa-pencil-alt"></span>
+                    </dot:Button>
+                    <dot:Button Click="{staticCommand: IsDeleteModalShowed = true}" class="btn btn-danger" ButtonTagName="button">
+                        <span class="fa fa-trash-alt"></span>
+                    </dot:Button>
+                </dot:RoleView>
+            </div>
+        </div>
+        <div DataContext="{value: Festival}" class="p-2">
+            <cc:FormGroupDisplay Label="{value: Texts.Label_Start}" Value="{value: Date.Start}" />
+            <cc:FormGroupDisplay Label="{value: Texts.Label_End}" Value="{value: Date.End}" />
+            <cc:FormGroupDisplay Label="{value: Texts.Label_Location}" Value="{value: Location}" />
+            <cc:FormGroupDisplay Label="{value: Texts.Label_Price}" Value="{value: Price + " " + Currency}" />
+            <cc:FormGroupDisplay Label="{value: Texts.Label_Capacity}" Value="{value: MaxTickets + " " + Texts.People}" />
+            <dot:Literal Text="{value: Texts.Label_Description}" class="font-weight-bolder d-block" />
+            <dot:Literal Text="{value: Description}" />
+        </div>
+        <dot:AuthenticatedView>
+            <AuthenticatedTemplate>
+                <div class="d-flex justify-content-end p-3">
+                    <dot:TextBox Type="Number" min="1" max="{value: AvailableTickets}" Text="{value: TicketsCount}" ValueType="Number" IncludeInPage="{value: AvailableTickets > 0}" />
+                    <dot:Button Text="{value: Texts.ReserveTickets}" Click="{command: ReserveTickets()}" Enabled="{value: AvailableTickets > 0}" class="btn btn-dark ml-1" />
+                </div>
+            </AuthenticatedTemplate>
+            <NotAuthenticatedTemplate>
+                <div class="d-flex justify-content-end p-3">
+                    <dot:TextBox Type="Number" min="1" max="{value: AvailableTickets}" Text="{value: TicketsCount}" ValueType="Number" IncludeInPage="{value: AvailableTickets > 0}" />
+                    <dot:Button Text="{value: Texts.ReserveTickets}" Click="{staticCommand: UnregisteredFormViewModel.ShowForm = true}" Enabled="{value: AvailableTickets > 0}" class="btn btn-dark ml-1" IncludeInPage="{value: !UnregisteredFormViewModel.ShowForm}" />
+                </div>
+                <div IncludeInPage="{value: UnregisteredFormViewModel.ShowForm}">
+                    <cc:UnregisteredForm DataContext="{value: UnregisteredFormViewModel}" />
+                    <div class="d-flex justify-content-end p-2">
+                        <dot:Button Text="{value: Texts.ReserveTickets}" Click="{command: UnregisteredFormViewModel.ReserveTickets(FestivalId, TicketsCount)}" Validation.Enabled="true" Validation.Target="{value: UnregisteredFormViewModel}" class="btn btn-dark ml-1" />
+                    </div>
+                </div>
+            </NotAuthenticatedTemplate>    
+        </dot:AuthenticatedView>
+    </div>
+
+    <div IncludeInPage="{value: EditFestival != null || FestivalId == 0}" class="mb-3 border-dark w-100">
+        <div DataContext="{value: EditFestival}">
+            <cc:FormGroupText Label="{value: Texts.Label_Name}" Value="{value: Name}" />
+            <div class="form-group w-50">
+                <dot:Literal Text="{value: Texts.Label_Start}" class="mr-2 required" />
+                <dot:Validator Value="{value: Date}" ShowErrorMessageText="true" InvalidCssClass="has-error" />
+                <dot:TextBox Text="{value: Date.Start}" class="page-input form-control d-block w-100" Type="DateTimeLocal" />
+            </div>
+            <cc:FormGroupDateTime Label="{value: Texts.Label_End}" Value="{value: Date.End}" Validate="false" />
+            <cc:FormGroupText Label="{value: Texts.Label_Location}" Value="{value: Location}" />
+            <cc:FormGroupNumber Label="{value: Texts.Label_Price}" Value="{value: Price.Value}" />
+            <cc:FormGroupText Label="{value: Texts.Label_Currency}" Value="{value: Currency}" />
+            <cc:FormGroupNumber Label="{value: Texts.Label_Capacity}" Value="{value: MaxTickets.Value}" />
+            <cc:FormGroupNumber Label="{value: Texts.Label_MaxTicketsForUser}" Value="{value: MaxTicketsForUser.Value}" Required="false" Validate="false" />
+            <cc:FormGroupNumber Label="{value: Texts.Label_ReservationLength}" Value="{value: ReservationDays.Value}" />
+            <cc:FormGroupTextArea Label="{value: Texts.Label_Description}" Value="{value: Description}" Required="false" Validate="false" />
+        </div>
+        <dot:Button Text="{value: Texts.Btn_Save}" Click="{command: SaveFestival()}" Validation.Enabled="true" Validation.Target="{value: EditFestival}" class="btn btn-dark" />
+        <dot:Button IncludeInPage="{value: EditFestival.Id > 0}" Text="{value: Texts.Btn_Storno}" Click="{staticCommand: EditFestival = null}" class="btn btn-light" />
+        <dot:RouteLink IncludeInPage="{value: EditFestival.Id == 0}" Text="{value: Texts.Btn_Storno}" RouteName="{resource: Routes.Festivals}" class="btn btn-light" />
+    </div>
+
+    <cc:Stages DataContext="{value: StagesViewModel}" />
+
+    <div IncludeInPage="{value: EditFestival.Id != 0}">
+        <dot:RoleView Roles="Admin,Organizer">
+            <dot:Button Click="{command: CreateStage()}" ButtonTagName="button" class="btn btn-outline-dark">
+                <span class="fa fa-plus mr-2"></span>{{value: Texts.Btn_AddStage}}
+            </dot:Button>
+        </dot:RoleView>
+        <dot:RouteLink RouteName="{resource: Routes.Festivals}" Text="{value: Texts.Btn_Back}" class="btn btn-light" />
+    </div>
+
+    <cc:Modal Header="{value: Texts.ModalDeleteHeader}" Message="{value: ModalDeleteMessage}" ConfirmCommand="{command: DeleteFestival()}" HasConfirmation="true" IsShowed="{value: IsDeleteModalShowed}" />
+</dot:Content>

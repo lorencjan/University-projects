@@ -1,0 +1,15 @@
+﻿@viewModel RockFests.ViewModels.DashboardViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    
+    <div class="d-flex align-top">
+        <cc:DashboardFestival Festival="{value: UpcomingFestival}" Header="{value: Texts.UpcomingFestival}"
+                              EmptyText="{value: Texts.NoUpcomingFestival}" class="d-inline-block" />
+
+        <cc:DashboardFestival Festival="{value: UsersClosestFestival}" Header="{value: Texts.UsersClosestFestival}" EmptyText="{value: Texts.NoUsersClosestFestival}"
+                              IncludeInPage="{value: UsersClosestFestival != null}" class="d-inline-block" />
+    </div>
+    
+</dot:Content>

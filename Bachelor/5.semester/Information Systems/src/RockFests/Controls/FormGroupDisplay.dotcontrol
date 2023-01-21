@@ -1,0 +1,9 @@
+﻿@viewModel System.Object, mscorlib
+@baseType RockFests.Controls.FormGroupText, RockFests
+
+<div class="{value: "form-group mb-1 w-" + _control.Width}">
+    <dot:Literal Text="{controlProperty: Label}" class="font-weight-bolder mr-1" />
+    <dot:Literal Text="{controlProperty: Value}" />
+</div>
+
+

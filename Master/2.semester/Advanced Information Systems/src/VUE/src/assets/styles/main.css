@@ -1,0 +1,109 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #ebebeb;
+}
+
+#type {
+    background-color: #ffa332;
+    border-radius: 20px;
+}
+
+#mynavbar {
+    background-color: #24433e;
+    padding-bottom: 10px;
+}
+
+
+.tile-img {
+    width: 100px;
+    height: 155px;
+    padding-bottom: 10px;
+}
+
+.book-cover {
+    width: 200px;
+    height: 300px;
+    padding-bottom: 10px;
+}
+
+.author-img {
+    width: 255px;
+    height: 255px;
+    padding: 0;
+}
+
+small{
+    color: #6a6a6a;
+}
+
+h3,h4 {
+    color: #777!important;
+    font-weight: bold;
+    padding-top: 10px;
+    text-align: right;
+}
+
+h1{
+    color: #333!important;
+    font-weight: bold;
+    text-align: left;
+}
+
+h5{
+    color: #333;
+    font-weight: bold;
+}
+
+p{
+    color: #6a6a6a;
+}
+
+.navbar-logo {
+    width: 200px;
+    padding: 0px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #d0d3d3!important;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.navbar {
+    background-color: #24433e!important;
+}
+
+#my-dropdown {
+    color: #d0d3d3!important;
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#my-footer{
+    background-color: #24433e!important;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 100%;
+}
+
+#my-footer-text{
+    color: #d0d3d3;
+    font-size: 20px;
+}
+
+.container {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+.required:after {
+    content:"*";
+    color: red;
+}
+
+.wrapper {
+    min-height: 100vh;
+}

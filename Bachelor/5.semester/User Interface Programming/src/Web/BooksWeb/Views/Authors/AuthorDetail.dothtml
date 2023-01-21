@@ -1,0 +1,180 @@
+﻿@viewModel BooksWeb.ViewModels.Authors.AuthorDetailViewModel, BooksWeb
+@masterPage Views/MasterPage.dotmaster
+@import BooksWeb.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <%--Info--%>
+    <div class="d-flex flex-nowrap detail">
+        <img src="{value: "data:image/png;base64," + AuthorDetail.Photo}" class="float-left mt-2" style="width: 210px; height: 280px;" />
+        <div class="ml-4 fancyfont" style="min-height: calc(280px + 0.5rem); min-width: 20rem; font-size: 1.5rem;">
+            <div style="margin-bottom: -10px;">
+                <dot:Literal class="dark-green font-weight-bold" Text="{value: AuthorDetail.FirstName + " " + AuthorDetail.LastName}" style="font-size: 3rem;" />
+            </div>
+            <div class="normal-green font-weight-bold" style="font-size: 1.5rem;">
+                <dot:Literal Text="{resource: Texts.Bibliography + ": "}" class="dark-green"/>
+                <dot:Repeater DataSource="{value: AuthorDetail.Books}" RenderWrapperTag="false">
+                    <ItemTemplate><dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: BookId}">
+                    <dot:Literal Text="{value: Book.Name}" /></dot:RouteLink></ItemTemplate>
+                    <SeparatorTemplate>, </SeparatorTemplate>
+                </dot:Repeater>
+            </div>
+            <div>
+                <dot:Literal Text="{resource: Texts.BirthDate + ": "}" class="dark-green font-weight-bold" />
+                <dot:Literal Text="{value: BirthDate}" />
+            </div>
+            <div>
+                <dot:Literal Text="{resource: Texts.Filter_narodnost + ": "}" class="dark-green font-weight-bold" />
+                <dot:Literal Text="{value: AuthorDetail.Country}" />
+            </div>
+            <div>
+                <dot:Literal Text="{resource: Texts.Filter_hodnoceni + ": "}" class="dark-green font-weight-bold" />
+                <dot:Literal Text="{value: AverageRating.ToString("0.#") + " z 10"}" />
+            </div>
+        </div>
+        <div class="dark-green ml-auto">
+            <dot:Button ButtonTagName="button" Click="{command: AddToFavourites(); Favourite = !Favourite;}" Visible="{value: !Favourite}">
+                <span class="far fa-star pb-1" style="font-size: 3rem;" /><br />
+                {{value: Texts.Favourite_add}}
+            </dot:Button>
+            <dot:Button ButtonTagName="button" Click="{command: RemoveFromFavourites(); Favourite = !Favourite;}" Visible="{value: Favourite}">
+                <span class="fa fa-star pb-1" style="font-size: 3rem;" /><br />
+                {{value: Texts.Favourite_remove}}
+            </dot:Button>
+        </div>
+    </div>
+    <%--Popis--%>
+    <div class="mt-4 text-justify" style="font-family: 'Open Sans', sans-serif;">
+        <dot:Literal Text="{value: AuthorDetail.Biography}" />
+    </div>
+    <%--Ratings--%>
+    <div class="ratings mt-4">
+        <h2 class="fancyfont font-weight-bold">
+            <dot:Literal Text="{resource: Texts.Ratings}">
+        </h2>
+        <%--Edit or new rating--%>
+        <div>
+            <div Visible="{value: MyRating == null}">
+                <button class="fancyfont p-0" data-toggle="collapse" data-target="{value: _root.SignedInUser == null ? "#newrating-unsigned" : "#newrating-signed" }">
+                    <h3 class="mb-0">
+                        <dot:Literal Text="{resource: Texts.Write_rating}" />
+                        <span class="d-inline-block fa fa-angle-down" style="width: 25px; padding-top: 5px;" />
+                    </h3>
+                </button>
+                <%-- Přihlášený uživatel --%>
+                <div class="collapse mt-1" id="newrating-signed">
+                    <table class="w-100">
+                        <tbody>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <dot:Literal Text="{resource: Texts.Filter_hodnoceni}" class="mr-2" />
+                                </td>
+                                <td class="form-group">
+                                    <dot:ComboBox DataSource="{value: RatingValues}" SelectedValue="{value: EditRating.Number}" EmptyItemText="{value: ""}" class="form-group page-input" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pr-2" style="vertical-align: top; width: 1%; white-space: nowrap;">
+                                    <dot:Literal Text="{resource: Texts.Rating_text}" />
+                                </td>
+                                <td>
+                                    <cc:FormGroupTextArea Label="{resource: Texts.Rating_text}" Value="{value: EditRating.Text}" class="w-100" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-right">
+                                    <dot:Button ButtonTagName="button" Click="{command: CreateRatingButtonEnabled = false; CreateRating();}" Text="{resource: Texts.Send}" class="btn primarybutton" Enabled="{value: CreateRatingButtonEnabled}" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <%-- Nepřihlášený uživatel --%>
+                <div class="collapse mt-1" id="newrating-unsigned">
+                    Pro psaní recenzí se musíte přihlásit v pravém horním rohu obrazovky. Pokud ještě nemáte účet, <dot:RouteLink RouteName="{resource: Routes.Register}">můžete se zaregistrovat</dot:RouteLink>.
+                </div>
+            </div>
+            <div Visible="{value: MyRating != null}" class="mt-3">
+                <h3 class="fancyfont font-weight-bold">
+                    <dot:Literal Text="{resource: Texts.MyRating}" />
+                </h3>
+                <div Visible="{value: EditRating.Id == 0}">
+                    <div class="d-flex flex-nowrap" style="font-size: 1.1rem;" DataContext="{value: MyRating}">
+                        <dot:Literal Text="{value: UserName}" class="fancyfont normal-green font-weight-bold" />
+                        <dot:Literal Text="{value: Number + "/10"}" class="ml-2 mr-auto fancyfont dark-green font-weight-bold" />
+                        <dot:Literal Text="{value: Date}" class="font-italic" style="color: rgb(130, 130, 130); font-size: initial;" />
+                    </div>
+                    <div class="text-justify">
+                        <dot:Literal Text="{value: MyRating.Text}" class="text-justify w-100" />
+                    </div>
+                    <div class="d-flex flex-nowrap mt-1 justify-content-end">
+                        <div class="p-2">
+                            <dot:Button ButtonTagName="button" Click="{command: EditMyRating()}" class="p-0"><span class="fa fa-edit normal-green mr-1" />{{resource: Texts.EditRating}}</dot:Button>
+                        </div>
+                        <div class="p-2">
+                            <dot:Button ButtonTagName="button" Click="{command: DeleteRating()}" class="p-0"><span class="fa fa-trash normal-green mr-1" />{{resource: Texts.DeleteRating}}</dot:Button>
+                        </div>
+                    </div>
+                </div>
+                <div Visible="{value: EditRating.Id != 0}">
+                    <table class="w-100">
+                        <tbody>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <dot:Literal Text="{resource: Texts.Filter_hodnoceni}" class="mr-2" />
+                                </td>
+                                <td class="form-group">
+                                    <dot:ComboBox DataSource="{value: RatingValues}" SelectedValue="{value: EditRating.Number}" EmptyItemText="{value: ""}" class="form-group page-input" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="pr-2" style="vertical-align: top; width: 1%; white-space: nowrap;">
+                                    <dot:Literal Text="{resource: Texts.Rating_text}" />
+                                </td>
+                                <td>
+                                    <cc:FormGroupTextArea Label="{resource: Texts.Rating_text}" Value="{value: EditRating.Text}" class="w-100" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="d-flex justify-content-end">
+                                        <div class="p-2 d-inline-block">
+                                            <dot:Button ButtonTagName="button" Click="{command: CancelEditRating()}" class="btn btn-outline text-nowrap"><span class="fa fa-door-open mr-1" />{{resource: Texts.Cancel}}</dot:Button>
+                                        </div>
+                                        <div class="p-2 d-inline-block">
+                                            <dot:Button ButtonTagName="button" Click="{command: UpdateRating()}" class="btn primarybutton text-nowrap"><span class="fa fa-save mr-1" />{{resource: Texts.Save}}</dot:Button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr style="border-color: green; opacity: 0.5;" />
+            </div>
+        </div>
+        <%--Rest of the ratings--%>
+        <div class="d-flex flex-nowrap flex-column mt-3">
+            <dot:Repeater DataSource="{value: Ratings}">
+                <ItemTemplate>
+                    <div class="d-flex flex-nowrap" style="font-size: 1.1rem;">
+                        <dot:Literal Text="{value: UserName}" class="fancyfont normal-green font-weight-bold" />
+                        <dot:Literal Text="{value: Number + "/10"}" class="ml-2 mr-auto fancyfont dark-green font-weight-bold" />
+                        <dot:Literal Text="{value: Date}" class="font-italic" style="color: rgb(130, 130, 130); font-size: initial;" />
+                    </div>
+                    <div class="text-justify">
+                        <dot:Literal Text="{value: Text}" class="text-justify w-100" />
+                    </div>
+                </ItemTemplate>
+                <SeparatorTemplate>
+                    <hr style="border-color: green; opacity: 0.5;" />
+                </SeparatorTemplate>
+                <EmptyDataTemplate>
+                    <dot:Literal Text="{resource: Texts.NoRatings_author}" />
+                </EmptyDataTemplate>
+            </dot:Repeater>
+        </div>
+    </div>
+
+</dot:Content>

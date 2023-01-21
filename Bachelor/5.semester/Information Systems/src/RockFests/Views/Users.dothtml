@@ -1,0 +1,56 @@
+﻿@viewModel RockFests.ViewModels.Users.UsersViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="d-flex justify-content-between mb-3">
+        <dot:RouteLink Text="{value: Texts.AddUser}" RouteName="{resource: Routes.Users_Detail}" Param-Id="0" class="btn btn-dark">
+            <span class="fa fa-plus"></span>
+        </dot:RouteLink>
+        <cc:DataSetUtils Text="{value: Users.Filter}" Refresh="{command: Users.RequestRefresh()}" Search="{command: Users.RequestFilter()}" />
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>{{resource: Texts.Name}}</th>
+                    <th>{{resource: Texts.Login}}</th>
+                    <th>{{resource: Texts.Role}}</th>
+                    <th>{{resource: Texts.Email}}</th>
+                    <th>{{resource: Texts.Phone}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <dot:Repeater DataSource="{value: Users.DataSet}" RenderWrapperTag="false">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{value: FirstName == null ? "-" : FirstName + " " + LastName}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Login}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: AccessRole}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Email}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Phone}" />
+                            </td>
+                            <td class="btn-cell">
+                                <dot:RouteLink RouteName="{resource: Routes.Users_Detail}" Param-Id="{value: Id}" class="btn btn-light">
+                                    <span class="fa fa-pencil-alt"></span>
+                                </dot:RouteLink>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                </dot:Repeater>
+            </tbody>
+        </table>
+    </div>
+    <dot:DataPager DataSet="{value: Users.DataSet}" class="pager mt-3" />
+</dot:Content>

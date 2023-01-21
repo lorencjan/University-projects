@@ -1,0 +1,96 @@
+﻿@page "/UserManagement"
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+@inject NavigationManager NavigationManager
+
+<div class="container">
+    <h3>User Management</h3>
+
+    <button class="btn btn-primary" @onclick="@(() => OnCreate())">Create</button>   
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col card m-1" style=" height: 500px !important; overflow-y: scroll; overflow-x: hidden;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                       
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Users)
+                        {
+                            <tr @onclick="@(() => RowClicked(user))">
+                                <th>@user.UserName</th>
+           
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+              <div class="col m-1">
+                @if (SelectedUser != null)
+                {
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">@SelectedUser.UserName</h5>
+                        <h6>Roles:</h6>
+                        @if(SelectedUserRoles != null)
+                        {
+                           <table class="table table-hover">
+                                <tbody>
+                                @foreach(var role in SelectedUserRoles)
+                                {
+                                <tr >@role</tr>
+                                }
+                                </tbody>
+                            </table>
+                          }
+                        <button class="btn btn-danger" @onclick="@(() => OnDelete(SelectedUser))">Delete</button>   
+              
+                      </div>
+                </div>
+                }
+           </div>
+         </div>
+    </div>
+</div>
+
+
+@code {
+
+    private IdentityUser SelectedUser { get; set; }
+   
+    private IList<string> SelectedUserRoles { get; set; }
+    private List<IdentityUser> Users { get; set; }
+    
+    public async Task RowClicked(IdentityUser user)
+    {
+        SelectedUser = user;
+        SelectedUserRoles = await UserManager.GetRolesAsync(user);
+    } 
+
+    public async Task OnDelete(IdentityUser user)
+    {
+       await UserManager.DeleteAsync(user);
+       Users = UserManager.Users.ToList();
+       SelectedUser = null;
+       InvokeAsync(() => StateHasChanged());
+    } 
+    public void OnCreate()
+    {
+        NavigationManager.NavigateTo("/CreateUser");
+    } 
+    
+    protected override Task OnInitializedAsync()
+    {
+        Users = UserManager.Users.ToList();
+        return base.OnInitializedAsync();
+     
+    }
+
+}

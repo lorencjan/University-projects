@@ -1,0 +1,22 @@
+Deadlines     Tasks
+20.02.        Initialize git repository (xkalab11)
+20.02.        Create config files (xloren15)
+22.02.        Create math library tests (xloren15)
+01.03.        Create math library and check with the tests (xloren15)
+31.03.        GUI and logic layer (xkalab11)
+14.04.        Doxygen code documentation (xstane45)
+14.04.        Profiling (xstane45)
+14.04.        Mockup (xkalab11)
+14.04.        Installer and user documentation (xhrani01)
+17.04.        Makefile (xhrani01)
+
+Communication channels:
+personal consultations, facebook(primary), phone(secondary)
+email (for notification purposes when making another step)
+
+Communication rules:
+Notify the others about starting and finishing important steps
+
+Versing system: Git
+Hosting: GitHub
+	 link: https://github.com/Dominator55/BigyTeamCalculator

@@ -1,0 +1,222 @@
+﻿@viewModel BooksWeb.ViewModels.MasterPageViewModel, BooksWeb
+@import BooksWeb.Resources
+@service _userService = BooksWeb.DAL.Services.UsersService
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>{{value: Title}}</title>
+    <link rel="icon" href="~/Img/favicon.ico" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
+    <dot:RequiredResource Name="bootstrap.min.css" />
+    <dot:RequiredResource Name="font-awesome-all.min.css" />
+    <dot:RequiredResource Name="styles.css" />
+</head>
+<body Validation.Enabled="false">
+    <header class="w-100 d-flex justify-content-between align-items-center" Validation.Target="{value: _this}">
+        <div class="header-title">
+            <dot:RouteLink RouteName="{resource: Routes.Home}">
+                <dot:Literal Text="{resource: Texts.Title}" />
+            </dot:RouteLink>
+        </div>
+        <div class="alert alert-danger mb-3" style="border: none; margin: 0px; padding: 0px;">
+            <dot:Validator Value="{value: CredentialsError}" InvalidCssClass="has-error-alert" ShowErrorMessageText="true" class="d-block" />
+        </div>
+        <div class="portrait-w-100 d-flex align-items-end justify-content-between">
+            <button class="portrait menu-button text-white" data-toggle="collapse" data-target="#menu" style="background: none; border: none; font-size: 4rem;">
+                <span class="fa fa-bars" />
+            </button>
+            <div class="login-area" Visible="{value: SignedInUser == null}" style="min-width: 250px;">
+                <cc:FormGroupText Label="{resource: Texts.Login}" Value="{value: UserName}" />
+                <cc:FormGroupPassword Label="{resource: Texts.Password}" Value="{value: Password}" />
+
+                <div class="btn-container text-right mb-3">
+                    <dot:Button ButtonTagName="button" Text="{resource: Texts.SignIn}" Click="{command: SignIn( _userService.SignIn(UserName, Password).Result)}" Validation.Enabled="true" class="btn" />
+                </div>
+
+                <div class="text-right">
+                    <dot:Literal Text="{resource: Texts.NoAccountYet}" class="font-italic" />
+                    <dot:RouteLink RouteName="{resource: Routes.Register}">
+                        <dot:Literal Text="{resource: Texts.Register_Link}" style="text-decoration: underline;" />
+                    </dot:RouteLink>
+                </div>
+            </div>
+            <div class="login-area text-right" Visible="{value: SignedInUser != null}" style="min-width: 250px;">
+                <div>
+                    {{resource: Texts.SignedUser}}
+                </div>
+                <div class="font-weight-bold fancyfont" style="font-size: larger">
+                    {{value: SignedInUser}}
+                </div>
+                <div class="">
+                    <dot:RouteLink RouteName="{resource: Routes.Profile}">
+                        <dot:Literal Text="{resource: Texts.EditProfile}" />
+                    </dot:RouteLink>
+                </div>
+                <div class="btn-container text-right mt-3 mb-3">
+                    <dot:Button ButtonTagName="button" Text="{value: Texts.SignOut}" Click="{command: SignOut()}" class="btn" />
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="d-flex">
+        <nav class="landscape pt-2">
+            <%-- Home - Novinky --%>
+            <div class="nav-item" Class-highlighted="{value: HighlightedNavItem == Routes.Home}">
+                <dot:RouteLink RouteName="{resource: Routes.Home}">
+                    <span class="d-inline-block fa fa-newspaper mr-2" style="width: 30px;" />
+                    <dot:Literal Text="{value: Texts.Novinky}" />
+                </dot:RouteLink>
+            </div>
+            <%-- Knihy --%>
+            <div class="nav-item" Class-highlighted="{value: HighlightedNavItem == Routes.Books}">
+                <dot:RouteLink RouteName="{resource: Routes.Books}">
+                    <span class="d-inline-block fa fa-book-open mr-2" style="width: 30px;" />
+                    <dot:Literal Text="{value: Texts.Knihy}" />
+                </dot:RouteLink>
+            </div>
+            <%-- Autoři --%>
+            <div class="nav-item" Class-highlighted="{value: HighlightedNavItem == Routes.Authors}">
+                <dot:RouteLink RouteName="{resource: Routes.Authors}">
+                    <span class="d-inline-block fa fa-pen-fancy mr-2" style="width: 30px;" />
+                    <dot:Literal Text="{value: Texts.Spisovatele}" />
+                </dot:RouteLink>
+            </div>
+            <%-- Žebříčky --%>
+            <button class="nav-item" data-toggle="collapse" data-target="#nav-item-charts">
+                <span class="d-inline-block fa fa-chart-bar mr-2" style="width: 30px;" />
+                <dot:Literal Text="{value: Texts.Zebricky}" />
+                <span class="d-inline-block float-right fa fa-angle-down" style="height: 40px; width: 23px; margin-top: 6px;" />
+            </button>
+            <%-- Dropdown žebříčky --%>
+            <div class="collapse" id="nav-item-charts" Class-show="{value: HighlightedNavItem == Routes.Charts_books || HighlightedNavItem == Routes.Charts_authors}">
+                <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Charts_books}">
+                    <dot:RouteLink RouteName="{resource: Routes.Charts_books}">
+                        <dot:Literal Text="{resource: Texts.Zebricky_knihy}" />
+                    </dot:RouteLink>
+                </div>
+                <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Charts_authors}">
+                    <dot:RouteLink RouteName="{resource: Routes.Charts_authors}">
+                        <dot:Literal Text="{resource: Texts.Zebricky_autori}" />
+                    </dot:RouteLink>
+                </div>
+            </div>
+            <%-- Oblíbené --%>
+            <button class="nav-item" data-toggle="collapse" data-target="#nav-item-favourites" Visible="{value: SignedInUser != null}">
+                <span class="d-inline-block fa fa-star mr-2" style="width: 30px;" />
+                <dot:Literal Text="{value: Texts.Oblibene}" />
+                <span class="d-inline-block float-right fa fa-angle-down" style="height: 40px; width: 23px; margin-top: 6px;" />
+            </button>
+            <%-- Dropdown oblíbené --%>
+            <div class="collapse" id="nav-item-favourites" Class-show="{value: HighlightedNavItem == Routes.Favourites_books || HighlightedNavItem == Routes.Favourites_authors}">
+                <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Favourites_books}">
+                    <dot:RouteLink RouteName="{resource: Routes.Favourites_books}">
+                        <dot:Literal Text="{resource: Texts.Oblibene_knihy}" />
+                    </dot:RouteLink>
+                </div>
+                <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Favourites_authors}">
+                    <dot:RouteLink RouteName="{resource: Routes.Favourites_authors}">
+                        <dot:Literal Text="{resource: Texts.Oblibeni_autori}" />
+                    </dot:RouteLink>
+                </div>
+            </div>
+            <%-- Napište nám --%>
+            <dot:Button ButtonTagName="button" Visible="{value: SignedInUser != null}" class="nav-item p-2 text-right mt-auto mb-3" Click="{staticCommand: FeedbackShowed = !FeedbackShowed}" style="font-size: 1.5rem; font-weight: normal;">
+                <span class="d-inline-block fa fa mr-2" Class-fa-comment="{value: FeedbackText == "" || FeedbackText == null}" Class-fa-comment-dots="{value: FeedbackText != "" && FeedbackText != null}" />
+                <dot:Literal Text="{value: Texts.Feedback}" />
+            </dot:Button>
+        </nav>
+        <div id="menu" class="portrait collapse" style="z-index: 1;">
+            <nav class="pt-2">
+                <%-- Home - Novinky --%>
+                <div class="nav-item" Class-highlighted="{value: HighlightedNavItem == Routes.Home}">
+                    <dot:RouteLink RouteName="{resource: Routes.Home}">
+                        <span class="d-inline-block fa fa-newspaper mr-2" style="width: 30px;" />
+                        <dot:Literal Text="{value: Texts.Novinky}" />
+                    </dot:RouteLink>
+                </div>
+                <%-- Knihy --%>
+                <div class="nav-item" Class-highlighted="{value: HighlightedNavItem == Routes.Books}">
+                    <dot:RouteLink RouteName="{resource: Routes.Books}">
+                        <span class="d-inline-block fa fa-book-open mr-2" style="width: 30px;" />
+                        <dot:Literal Text="{value: Texts.Knihy}" />
+                    </dot:RouteLink>
+                </div>
+                <%-- Autoři --%>
+                <div class="nav-item" Class-highlighted="{value: HighlightedNavItem == Routes.Authors}">
+                    <dot:RouteLink RouteName="{resource: Routes.Authors}">
+                        <span class="d-inline-block fa fa-pen-fancy mr-2" style="width: 30px;" />
+                        <dot:Literal Text="{value: Texts.Spisovatele}" />
+                    </dot:RouteLink>
+                </div>
+                <%-- Žebříčky --%>
+                <button class="nav-item" data-toggle="collapse" data-target="#nav-item-charts">
+                    <span class="d-inline-block fa fa-chart-bar mr-2" style="width: 30px;" />
+                    <dot:Literal Text="{value: Texts.Zebricky}" />
+                    <span class="d-inline-block float-right fa fa-angle-down" style="height: 40px; width: 23px; margin-top: 6px;" />
+                </button>
+                <%-- Dropdown žebříčky --%>
+                <div class="collapse" id="nav-item-charts" Class-show="{value: HighlightedNavItem == Routes.Charts_books || HighlightedNavItem == Routes.Charts_authors}">
+                    <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Charts_books}">
+                        <dot:RouteLink RouteName="{resource: Routes.Charts_books}">
+                            <dot:Literal Text="{resource: Texts.Zebricky_knihy}" />
+                        </dot:RouteLink>
+                    </div>
+                    <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Charts_authors}">
+                        <dot:RouteLink RouteName="{resource: Routes.Charts_authors}">
+                            <dot:Literal Text="{resource: Texts.Zebricky_autori}" />
+                        </dot:RouteLink>
+                    </div>
+                </div>
+                <%-- Oblíbené --%>
+                <button class="nav-item" data-toggle="collapse" data-target="#nav-item-favourites" Visible="{value: SignedInUser != null}">
+                    <span class="d-inline-block fa fa-star mr-2" style="width: 30px;" />
+                    <dot:Literal Text="{value: Texts.Oblibene}" />
+                    <span class="d-inline-block float-right fa fa-angle-down" style="height: 40px; width: 23px; margin-top: 6px;" />
+                </button>
+                <%-- Dropdown oblíbené --%>
+                <div class="collapse" id="nav-item-favourites" Class-show="{value: HighlightedNavItem == Routes.Favourites_books || HighlightedNavItem == Routes.Favourites_authors}">
+                    <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Favourites_books}">
+                        <dot:RouteLink RouteName="{resource: Routes.Favourites_books}">
+                            <dot:Literal Text="{resource: Texts.Oblibene_knihy}" />
+                        </dot:RouteLink>
+                    </div>
+                    <div class="nav-item nav-sub-item" Class-highlighted="{value: HighlightedNavItem == Routes.Favourites_authors}">
+                        <dot:RouteLink RouteName="{resource: Routes.Favourites_authors}">
+                            <dot:Literal Text="{resource: Texts.Oblibeni_autori}" />
+                        </dot:RouteLink>
+                    </div>
+                </div>
+                <%-- Napište nám --%>
+                <dot:Button ButtonTagName="button" Visible="{value: SignedInUser != null}" class="nav-item p-2 text-right mt-4 mb-2" Click="{staticCommand: FeedbackShowed = !FeedbackShowed}" style="font-size: 1.5rem; font-weight: normal;">
+                    <span class="d-inline-block fa fa mr-2" Class-fa-comment="{value: FeedbackText == "" || FeedbackText == null}" Class-fa-comment-dots="{value: FeedbackText != "" && FeedbackText != null}" />
+                    <dot:Literal Text="{value: Texts.Feedback}" />
+                </dot:Button>
+            </nav>
+        </div>
+
+        <%-- Feedback form area --%>
+        <div class="fixed-bottom" Visible="{value: FeedbackShowed}" style="left: 370px;">
+            <div class="d-flex flex-column feedbackBox shadow-lg p-3">
+                <cc:FormGroupTextArea Label="{resource: Texts.Vase_zprava}" Value="{value: FeedbackText}" class="flex-fill mb-2" />
+                <div class="btn-container text-right">
+                    <dot:Button ButtonTagName="button" Text="{resource: Texts.Send}" Click="{command: _userService.CreateFeedback(FeedbackText, SignedInUser); FeedbackText = ""; FeedbackShowed = false;}" class="btn" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Main content area -->
+        <div class="container p-4 p-to" style="display: none;" Visible="{value: true}">
+            <dot:ContentPlaceHolder ID="MainContent" />
+        </div>
+    </div>
+
+    <cc:Modal Header="{value: "Internal server error"}" Message="{value: ErrorModalMessage}" IsShowed="{value: IsErrorModalShowed}" />
+    <div class="hidden" Class-screen-overlay="{value: IsErrorModalShowed || IsDeleteModalShowed}"></div>
+
+    <dot:RequiredResource Name="bootstrap" />
+    <dot:RequiredResource Name="font-awesome" />
+</body>
+</html>

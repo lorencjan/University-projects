@@ -1,0 +1,62 @@
+﻿@viewModel RockFests.ViewModels.Tickets.TicketDetailViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    <div class="w-100 shadow-sm" IncludeInPage="{value: Ticket != null}">
+        <div class="d-flex justify-content-between bg-dark p-2">
+            <h2 style="color:white;margin-bottom:0px;">{{value: Texts.TicketFor + Ticket.Festival.Name}}</h2>
+            <div>
+                <dot:RoleView Roles="Admin,Organizer,Cashier">
+                    <dot:Button Click="{command: EditTicket = Ticket.CopyLight()}" IncludeInPage="{value: EditTicket == null}" class="btn btn-light" ButtonTagName="button">
+                        <span class="fa fa-pencil-alt"></span>
+                    </dot:Button>
+                    <dot:Button Click="{staticCommand: EditTicket = null}" IncludeInPage="{value: EditTicket != null}" class="btn btn-light" ButtonTagName="button">
+                        <span class="fa fa-door-open"></span>
+                    </dot:Button>
+                    <dot:Button Click="{staticCommand: IsDeleteModalShowed = true}" class="btn btn-danger" ButtonTagName="button">
+                        <span class="fa fa-trash-alt"></span>
+                    </dot:Button>
+                </dot:RoleView>
+            </div>
+        </div>
+        <div class="p-2">
+            <cc:FormGroupDisplay Label="{value: Texts.Label_UserName}" Value="{value: Ticket.User.FirstName + " " + Ticket.User.LastName + ( Ticket.User.Login == null ? "" : " (" + Ticket.User.Login + ")")}" />
+            <cc:FormGroupDisplay Label="{value: Texts.Label_VariableSymbol}" Value="{value: Ticket.VariableSymbol}" />
+            <cc:FormGroupDisplay Label="{value: Texts.Label_Price}" Value="{value: Ticket.Festival.Price*Ticket.Count + " " + Ticket.Festival.Currency}" />
+            <div class="form-group mb-1 w-50" IncludeInPage="{value: EditTicket == null}">
+                <dot:Literal Text="{value: Texts.Paid + ":"}" class="font-weight-bolder mr-1" />
+                <dot:Literal Text="{value: Ticket.IsPaid ? Texts.Yes : Texts.No}" style="{value: "color:" + (Ticket.IsPaid ? "#28A745" : "red")}" />
+            </div>
+            <cc:FormGroupDisplay Label="{value: Texts.Label_PaymentDue}" Value="{value: Ticket.PaymentDue}" IncludeInPage="{value: EditTicket == null}" />
+            <cc:FormGroupDisplay Label="{value: Texts.Label_Count}" Value="{value: Ticket.Count}" IncludeInPage="{value: EditTicket == null}" />
+            
+            <div class="form-group">
+                <dot:Literal Text="{value: Texts.Paid + ":"}" class="mr-1" IncludeInPage="{value: EditTicket != null}" />
+                <dot:CheckBox Checked="{value: EditTicket.IsPaid}" IncludeInPage="{value: EditTicket != null}" />
+            </div>
+            <cc:FormGroupDateTime Label="{value: Texts.Label_PaymentDue}" Value="{value: EditTicket.PaymentDue}" IncludeInPage="{value: EditTicket != null}" />
+            <cc:FormGroupNumber Label="{value: Texts.Label_Count}" Value="{value: EditTicket.Count}" IncludeInPage="{value: EditTicket != null}" />
+            <dot:Button Text="{value: Texts.Btn_Save}" Click="{command: UpdateTicket()}" Validation.Enabled="true" Validation.Target="{value: EditTicket}" IncludeInPage="{value: EditTicket != null}" class="d-block btn btn-dark mt-2" />
+        </div>
+    </div>
+    <dot:RouteLink RouteName="{resource: Routes.Tickets}" Text="{value: Texts.Btn_Back}" class="btn btn-outline-dark mt-3" IncludeInPage="{value: Ticket != null}" />
+
+    <dot:RoleView Roles="Admin,Organizer,Cashier" IncludeInPage="{value: Ticket == null}">
+        <cc:FormGroupComboBox Label="{value: Texts.Label_Festival}" Selected="{value: EditTicket.Festival.Id}" DataSource="{value: Festivals}" ValidationValue="{value: EditTicket.Festival}" />
+        <cc:FormGroupComboBox Label="{value: Texts.Label_User}" Selected="{value: EditTicket.User.Id}" DataSource="{value: Users}" ValidationValue="{value: EditTicket.User}" />
+        <div class="form-group">
+            <dot:Literal Text="{value: Texts.Paid + ":"}" class="mr-2" />
+            <dot:CheckBox Checked="{value: EditTicket.IsPaid}" />
+        </div>
+        <cc:FormGroupDateTime Label="{value: Texts.Label_PaymentDue}" Value="{value: EditTicket.PaymentDue}" />
+        <cc:FormGroupNumber Label="{value: Texts.Label_Count}" Value="{value: EditTicket.Count}" />
+        <div class="mt-2">
+            <dot:Button Text="{value: Texts.Btn_Save}" Click="{command: CreateTicket()}" Validation.Enabled="true" Validation.Target="{value: EditTicket}" class="btn btn-dark" />
+            <dot:RouteLink RouteName="{resource: Routes.Tickets}" Text="{value: Texts.Btn_Back}" class="btn btn-light" />
+        </div>
+    </dot:RoleView>
+
+    <cc:Modal Header="{value: Texts.ModalDeleteHeader}" Message="{value: ModalDeleteMessage}" ConfirmCommand="{command: DeleteTicket()}" HasConfirmation="true" IsShowed="{value: IsDeleteModalShowed}" />
+</dot:Content>

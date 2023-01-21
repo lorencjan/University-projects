@@ -1,0 +1,136 @@
+﻿@page "/EditProject/{Id}"
+@inject ProjectService projectService
+@inject RiskService riskService
+@inject NavigationManager NavigationManager
+
+<AuthorizeView Context="Auth">
+    <div class="container">
+        <EditForm Model="@Project" OnValidSubmit="@Save">
+            <DataAnnotationsValidator/>
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        <label class="w-100">
+                            Name:
+                            <InputText @bind-Value="@Project.Name" class="form-control"/>
+                            <small class="form-text text-danger">
+                                <ValidationMessage For="@(() => Project.Name)"/>
+                            </small>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="w-100">
+                            Description:
+                            <InputText @bind-Value="@Project.Description" class="form-control"/>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="w-100">
+                            Manager:
+                            <InputText @bind-Value="@Project.Manager" class="form-control"/>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="w-100">
+                            Staff:
+                            <InputText @bind-Value="@Project.Staff" class="form-control"/>
+                        </label>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <hr>
+            <button type="submit" class="btn btn-success" style="margin-bottom: 2.5em">Save</button>
+        </EditForm>
+        @if (Project.RiskList != null)
+        {
+            <h2>Risks</h2>
+            <BlazmGrid Data="Project.RiskList" PageSize="10" Sortable="true">
+                <GridColumns>
+                    @* <GridColumn Field="@nameof(RiskEntity.Id)"></GridColumn> *@
+                    <GridColumn Field="@nameof(RiskEntity.CustomId)" Title="Id"></GridColumn>
+                    <GridColumn Field="@nameof(RiskEntity.Name)" CanFilter="true"></GridColumn>
+                    <GridColumn Field="@nameof(RiskEntity.Category)" CanFilter="true"></GridColumn>
+                    <GridColumn Field="@nameof(RiskEntity.Probability)" Format="{0:d}"></GridColumn>
+                    <GridColumn Field="@nameof(RiskEntity.Consequences)" Format="{0:d}"></GridColumn>
+                    <GridColumn Field="@nameof(RiskEntity.RiskEvaluation)"></GridColumn>
+                    <GridColumn>
+                        <Template>
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-danger" @onclick="() => OnDeleteRiskClicked((RiskEntity)context)">
+                                    <i class="far fa-trash-alt"></i>
+                                </button>
+
+                            </div>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </BlazmGrid>
+        }
+        <button class="btn btn-primary" @onclick="@Cancel" style="margin-bottom: 2.5em">Cancel</button>
+        <AuthorizeView Roles="Admin,ProjectDirector">
+            <button class="btn btn-danger" @onclick="@Delete" style="margin-bottom: 2.5em">Delete</button>
+        </AuthorizeView>
+    </div>
+</AuthorizeView>
+
+
+@code {
+    [Parameter]
+    public string Id
+    {
+        get;
+        set;
+    }
+
+    ProjectEntity Project = new ProjectEntity();
+    List<RiskEntity> RiskList = new List<RiskEntity>();
+    List<RiskListModel> RiskModelList = new List<RiskListModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        Project = await projectService.GetProjectAsync(Convert.ToInt32(Id));
+        RiskList = await riskService.GetAllRisksAsync();
+        RiskModelList = RiskList.Select(x => new RiskListModel()
+        {
+            Id = x.Id,
+            Name = x.Name
+        }).ToList();
+
+        foreach (var risk in RiskModelList)
+        {
+            if (Project.RiskList.Any(x => x.Id == risk.Id))
+            {
+                risk.IsSelected = true;
+            }
+        }
+    }
+    private async Task Save()
+    {
+        var selectedRisks = RiskModelList.Where(x => x.IsSelected == true).ToList();
+        Project.RiskList = RiskList.Where(p => selectedRisks.Any(x => x.Id == p.Id)).ToList();
+        await projectService.UpdateProjectAsync(Project);
+        NavigationManager.NavigateTo($"/Project/{Id}");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo($"/Project/{Id}");
+    }
+    void Delete()
+    {
+        NavigationManager.NavigateTo($"/DeleteProject/{Id}");
+    }
+    public async Task OnDeleteRiskClicked(RiskEntity risk)
+    {
+        await riskService.DeleteRiskAsync(risk);
+    }
+
+
+}

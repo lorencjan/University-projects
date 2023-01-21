@@ -1,0 +1,10 @@
+﻿@viewModel System.Object, mscorlib
+@baseType RockFests.Controls.DataSetUtils, RockFests
+@import RockFests.BL.Resources
+
+
+<dot:Button Click="{command: _control.Refresh()}" ButtonTagName="button" class="btn btn-light mr-2">
+    <span class="fa fa-sync"></span>
+</dot:Button>
+<dot:TextBox Text="{controlProperty: Text}" class="mr-2 align-middle" />
+<dot:Button Text="{value: Texts.Btn_Search}" Click="{command: _control.Search()}" class="btn btn-secondary"/>

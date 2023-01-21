@@ -1,0 +1,27 @@
+﻿@viewModel RockFests.ViewModels.SettingsViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h2>{{resource: Texts.Settings}}</h2>
+    <cc:FormGroupText Label="{value: Texts.Label_FirstName}" Value="{value: User.FirstName}" />
+    <cc:FormGroupText Label="{value: Texts.Label_LastName}" Value="{value: User.LastName}" />
+    <cc:FormGroupText Label="{value: Texts.Label_Email}" Value="{value: User.Email}" />
+    <cc:FormGroupText Label="{value: Texts.Label_Phone}" Value="{value: User.Phone}" Required="false" Validate="false" />
+
+    <div class="btn-container">
+        <dot:Button Text="{value: Texts.Btn_Save}" Click="{command: SaveInformation()}" Validation.Enabled="true" Validation.Target="{value: User}" class="btn btn-dark" />
+    </div>
+
+    <h3 class="mt-4">{{value: Texts.SetNewPassword}}</h3>
+
+    <cc:FormGroupPassword Label="{value: Texts.Label_Password}" Value="{value: Password.Password}" InputType="Password" />
+    <cc:FormGroupPassword Label="{value: Texts.Label_ConfirmPassword}" Value="{value: Password.ConfirmPassword}" InputType="Password" />
+
+    <div class="btn-container">
+        <dot:Button Text="{value: Texts.Btn_ChangePassword}" Click="{command: ChangePassword()}" Validation.Enabled="true" Validation.Target="{value: Password}" class="btn btn-dark" />
+    </div>
+
+</dot:Content>

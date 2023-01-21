@@ -1,0 +1,76 @@
+﻿<local:UserControlBase x:Class="BooksWpf.Views.FeedbacksPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:command="http://www.galasoft.ch/mvvmlight"
+      xmlns:local="clr-namespace:BooksWpf.Views"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1300"
+     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=FeedbacksViewModel}">
+
+    <Grid Background="White" Margin="20">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadFeedbacksCommand}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <ScrollViewer>
+            <StackPanel>
+                <Grid Background="White" Margin="20" Visibility="{Binding ListVisible}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="11*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <ItemsControl ItemsSource="{Binding Feedbacks}" Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Stretch" BorderThickness="0" IsHitTestVisible="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="15*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <DockPanel Grid.Column="0" Grid.Row="0">
+                                        <TextBlock Text="{Binding User.Login}" Style="{StaticResource ListText}" FontWeight="SemiBold" />
+                                        <Button Command="{Binding  Source={StaticResource ViewModelLocator}, Path=FeedbacksViewModel.DeleteFeedbackCommand}" CommandParameter="{Binding Id}" Style="{StaticResource BasicButton}" HorizontalContentAlignment="Right" HorizontalAlignment="Right">
+                                            <Image Source="{Binding  Source={StaticResource ViewModelLocator}, Path=FeedbacksViewModel.DeleteIcon}" Height="20" Width="20"/>
+                                        </Button>
+                                    </DockPanel>
+                                    <TextBlock Text="{Binding Text}" Style="{StaticResource ListText}" Margin="5" Grid.Column="0" Grid.Row="1" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Command="{Binding PageLeftCommand}" Style="{StaticResource BasicButton}" HorizontalAlignment="Center" Grid.Column="0" >
+                                <Image Source="{Binding PageLeftIcon}" Width="20px" Height="20"/>
+                            </Button>
+                            <TextBlock Text="{Binding Pager.Page}" Style="{StaticResource ListViewHeader}" Grid.Column="1" Margin="10 0 10 0" TextAlignment="Center"/>
+                            <Button Command="{Binding PageRightCommand}"  Style="{StaticResource BasicButton}" HorizontalAlignment="Center" Grid.Column="2">
+                                <Image Source="{Binding PageRightIcon}" Width="20px" Height="20"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</local:UserControlBase>

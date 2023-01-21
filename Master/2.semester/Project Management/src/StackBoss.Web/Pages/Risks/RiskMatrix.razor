@@ -1,0 +1,88 @@
+@if (risks != null)
+{
+    <table class="table table-bordered" style="table-layout: fixed;">
+        <tr>
+            <th></th>
+            <th colspan="@consequences.Length" style="text-align: center">
+                <em>Consequence</em>
+            </th>
+        </tr>
+        <tr>
+            <th>
+                <em>Probability</em>
+            </th>
+            @foreach (var consequence in consequences)
+            {
+                <th style="text-align: center">@consequence</th>
+            }
+        </tr>
+        @foreach (var probability in probabilities)
+        {
+            <tr>
+                <th style="text-align: right">@probability</th>
+                @foreach (var consequence in consequences)
+                {
+                    var riskInCell = GetRisksWithConsequenceAndProbability(probability, consequence).ToArray();
+                    <td class="@GetTableCellStyle(consequence, probability)">
+                        @for (var i = 0; i < riskInCell.Length; i++)
+                        {
+                            var risk = riskInCell[i];
+                            var link = $"Risk/{risk.Id}";
+                            <NavLink href="@link">
+                                <Tooltip Text="@risk.Name">
+                                    @risk.CustomId
+                                </Tooltip>
+                            </NavLink>
+                            if (i < riskInCell.Length - 1)
+                            {
+                                <text> </text>
+                            }
+                        }
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}
+
+@code {
+        private const string DangerTableStyle = "table-danger";
+        private const string OkTableStyle = "table-success";
+        private const string WarnTableStyle = "table-warning";
+        private const int OkThreshold = 10;
+        private const int WarningThreshold = 35;
+
+    [Parameter]
+    public ProjectEntity Project
+    {
+        get;
+        set;
+    }
+
+    private List<RiskEntity> risks;
+    private readonly Probability[] probabilities = Enum.GetValues<Probability>().Reverse().ToArray();
+    private readonly Consequences[] consequences = Enum.GetValues<Consequences>();
+
+
+
+    IEnumerable<RiskEntity> GetRisksWithConsequenceAndProbability(Probability probability, Consequences consequence)
+    {
+        return risks.Where(risk => risk.Consequences == consequence && risk.Probability == probability);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        risks = Project.RiskList;
+        await base.OnInitializedAsync();
+    }
+
+    private static string GetTableCellStyle(Consequences consequence, Probability probability)
+    {
+        return ((int)consequence * (int)probability) switch
+        {
+            <= OkThreshold => OkTableStyle,
+            <= WarningThreshold => WarnTableStyle,
+            _ => DangerTableStyle
+            };
+    }
+}

@@ -1,0 +1,33 @@
+1] ./proj1 i.txt < test.txt
+----
+Toto
+je
+pokusny text
+
+2] ./proj1 ni.txt < test.txt
+Toto
+----
+je
+pokusny text
+
+3] ./proj1 a.txt < test.txt
+Toto taky
+je
+pokusny text
+
+4] ./proj1 dni.txt < test.txt
+Toto
+byl
+pokusny text
+
+5] ./proj1 chyba1.txt < test.txt
+Vypis chyboveho hlaseni na stderr.
+
+6] Testy na detekci cyklu
+./proj1 cycle1.txt < test.txt
+./proj1 cycle2.txt < test.txt
+./proj1 cycle3.txt < test.txt
+
+7] Yes
+./proj1 notreallycycle.txt < test.txt
+

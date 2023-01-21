@@ -1,0 +1,35 @@
+﻿@viewModel BooksWeb.ViewModels.Authentication.RegisterViewModel, BooksWeb
+@masterPage Views/MasterPage.dotmaster
+@import BooksWeb.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    
+    <h2 class="fancyfont dark-green font-weight-bold text-center" style="font-size: 3rem;">{{resource: Texts.New_user_registration}}</h2>
+
+    <div class="text-center">
+        <div class="alert alert-danger mt-4 d-inline-block" style="border: none; padding: 0px;" Visible="{value: LoginExists || PasswordsDontMatch}">
+            <dot:Validator Value="{value: LoginExists}" InvalidCssClass="has-error-alert" ShowErrorMessageText="true" class="d-block" />
+            <dot:Validator Value="{value: PasswordsDontMatch}" InvalidCssClass="has-error-alert" ShowErrorMessageText="true" class="d-block" />
+        </div>
+    </div>
+
+    <div class="mr-auto ml-auto normal-green" style="max-width: 400px;">
+        <dot:Literal Text="{resource: Texts.Nickname + " (" + Texts.Login + ")"}" />
+        <cc:FormGroupText Label="{resource: Texts.Login}" Value="{value: RegisterLogin}" />
+        <dot:Literal Text="{resource: Texts.Password}" />
+        <cc:FormGroupPassword Label="{resource: Texts.Password}" Value="{value: RegisterPassword }" />
+        <dot:Literal Text="{resource: Texts.PasswordConfirm}" />
+        <cc:FormGroupPassword Label="{resource: Texts.PasswordConfirm}" Value="{value: RegisterPasswordConfirm }" />
+        <div class="text-right">
+            <dot:Button ButtonTagName="button" class="btn btn-outline" Click="{command: Register()}" Text="{value: Texts.Register}" Validation.Enabled="true"/>
+        </div>
+    </div>
+    <div>
+        <h4 class="fancyfont font-weight-bold dark-green">{{resource: Texts.WhyRegister}}</h4>
+        <div>
+            {{resource: Texts.ReasonsToRegister}}
+        </div>
+    </div>
+    
+</dot:Content>
+

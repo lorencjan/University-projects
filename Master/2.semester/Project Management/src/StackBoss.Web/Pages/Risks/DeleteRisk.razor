@@ -1,0 +1,55 @@
+﻿@page "/Delete/{Id}"
+
+@inject RiskService riskService
+@inject NavigationManager NavigationManager
+<AuthorizeView Context="Auth">
+<h2>Delete Risk</h2>
+<hr />
+<h3>Are you sure want to delete this?</h3>
+<form>
+    <div class="row">
+        <div class=" col-md-8">
+            <div class="form-group">
+                <label>Risk Id:</label>
+                <label>@obj.Id</label>
+            </div>
+            <div class="form-group">
+                <label>Risk Name:</label>
+                <label>@obj.Name</label>
+            </div>
+            <div class="form-group">
+                <label>Category:</label>
+                <label>@obj.Category</label>
+            </div>
+           
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="button" class="btn btn-danger" @onclick="@Delete" value="Delete" />
+                <input type="button" class="btn btn-primary" @onclick="@Cancel" value="Cancel" />
+            </div>
+        </div>
+    </div>
+</form>
+</AuthorizeView>
+@code {
+    [Parameter]
+    public string Id { get; set; }
+    RiskEntity obj = new RiskEntity();
+    protected override async Task OnInitializedAsync()
+    {
+        obj = await Task.Run(() => riskService.GetRiskAsync(Convert.ToInt32(Id)));
+    }
+    protected async void Delete()
+    {
+        await riskService.DeleteRiskAsync(obj);
+        NavigationManager.NavigateTo("Risks");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("Risks");
+    }
+}

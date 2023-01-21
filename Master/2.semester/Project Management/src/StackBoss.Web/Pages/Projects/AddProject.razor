@@ -1,0 +1,83 @@
+﻿@page "/AddProject"
+@inject ProjectService projectService
+@inject RiskService riskService
+@inject NavigationManager NavigationManager
+
+<AuthorizeView Roles="Admin,ProjectDirector" Context="Auth">
+        <div class="container">
+        <EditForm Model="@Project" OnValidSubmit="@Save">
+                <DataAnnotationsValidator/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>Add new project</h3>
+
+                        <div class="form-group">
+                            <label class="w-100">
+                                Name:
+                                <InputText @bind-Value="@Project.Name" class="form-control"/>
+                                <small class="form-text text-danger">
+                                    <ValidationMessage For="@(() => Project.Name)"/>
+                                </small>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="w-100">
+                                Description:
+                                <InputText @bind-Value="@Project.Description" class="form-control"/>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="w-100">
+                                Manager:
+                                <InputText @bind-Value="@Project.Manager" class="form-control"/>
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="w-100">
+                                Staff:
+                                <InputText @bind-Value="@Project.Staff" class="form-control"/>
+                            </label>
+                        </div>
+                    </div>
+                </div> 
+                   
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn btn-success" style="margin-bottom: 2.5em">Add</button>
+                            </div>
+                            <div class="col-md-6 d-flex justify-content-end">
+                                <button  class="btn btn-primary"  @onclick="@Cancel" style="margin-bottom: 2.5em">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </div>
+</AuthorizeView>
+@code {
+    ProjectEntity Project = new ProjectEntity();
+    List<RiskEntity> RiskList = new List<RiskEntity>();
+    List<RiskListModel> RiskModelList = new List<RiskListModel>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        RiskList = await riskService.GetAllRisksAsync();
+        RiskModelList = RiskList.Select(x => new RiskListModel(){Id = x.Id, Name=x.Name} ).ToList();
+    }
+    private async Task Save()
+    {
+        await projectService.InsertProjectAsync(Project);
+        NavigationManager.NavigateTo("/");
+    }
+    void Cancel()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+
+
+}

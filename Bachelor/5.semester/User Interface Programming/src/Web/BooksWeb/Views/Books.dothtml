@@ -1,0 +1,151 @@
+﻿@viewModel BooksWeb.ViewModels.BooksViewModel, BooksWeb
+@masterPage Views/MasterPage.dotmaster
+@import BooksWeb.Resources
+@import BooksService.Common
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <%-- Filtr --%>
+    <div class="filter p-2">
+        <div>
+            <h1 class="fancyfont">
+                {{resource: Texts.Filter}}
+                <button class="float-right" data-toggle="collapse" data-target="#filter">
+                    <span class="d-inline-block fa fa-angle-down" style="height: 40px; width: 23px;" />
+                </button>
+            </h1>
+        </div>
+        <div class="row collapse mt-2" id="filter">
+            <div class="d-flex flex-column col-xl">
+                <table class="table table-striped table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{resource: Texts.Filter_nazev + ":"}" />
+                            </td>
+                            <td>
+                                <cc:FormGroupText Label="{resource: Texts.Filter_nazev}" Value="{value: Filter.Name}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{resource: Texts.Filter_rok_vydani + ":"}" />
+                            </td>
+                            <td>
+                                <cc:FormGroupText Label="{resource: Texts.Filter_rok_vydani}" Value="{value: Filter.Year}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{resource: Texts.Filter_ISBN + ":"}" />
+                            </td>
+                            <td>
+                                <cc:FormGroupText Label="{resource: Texts.Filter_ISBN}" Value="{value: Filter.Isbn}" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{resource: Texts.Filter_autor + ":"}" />
+                            </td>
+                            <td>
+                                <cc:FormGroupText Label="{resource: Texts.Filter_autor}" Value="{value: Filter.Author}" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex flex-column col-xl">
+                <table class="table table-striped table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{resource: Texts.Filter_pocet_stran + ":"}" />
+                            </td>
+                            <td class="d-flex justify-content-between">
+                                <dot:Literal Text="{resource: Texts.From}" class="mt-auto mb-auto" />
+                                <cc:FormGroupNumber Label="{resource: Texts.From}" Value="{value: FilterPagesFrom}" class="filterFromTo" />
+                                <dot:Literal Text="{resource: Texts.To}" class="mt-auto mb-auto" />
+                                <cc:FormGroupNumber Label="{resource: Texts.To}" Value="{value: FilterPagesTo}" class="filterFromTo" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{resource: Texts.Filter_zanr + ":"}" />
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <dot:ComboBox DataSource="{value: Genres}" SelectedValue="{value: Filter.Genre}" EmptyItemText="{value: ""}" class="form-group page-input w-100" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{resource: Texts.Filter_hodnoceni + ":"}" />
+                            </td>
+                            <td class="d-flex justify-content-between">
+                                <dot:Literal Text="{resource: Texts.From}" class="mt-auto mb-auto" />
+                                <cc:FormGroupText Label="{resource: Texts.From}" Value="{value: FilterRatingFrom}" class="filterFromTo" />
+                                <dot:Literal Text="{resource: Texts.To}" class="mt-auto mb-auto" />
+                                <cc:FormGroupText Label="{resource: Texts.To}" Value="{value: FilterRatingTo}" class="filterFromTo" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="text-right">
+                                <div class="btn-container text-right mb-3">
+                                    <dot:Button ButtonTagName="button" Click="{command: ResetFilter()}" Text="{resource: Texts.Filter_reset}" class="btn btn-outline" />
+                                </div>
+                                <div class="btn-container text-right mb-3">
+                                    <dot:Button ButtonTagName="button" Click="{command: ApplyFilter()}" Text="{resource: Texts.Hledat}" class="btn" />
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <%-- Sort --%>
+    <div class="sortBy mt-3 mb-3 p-2">
+        <div class="d-flex p-2" style="min-width: 300px">
+            <div class="d-inline-flex justify-content-center flex-wrap w-100 pl-2 pr-2">
+                <dot:Literal Text="{resource: Texts.Sort_by}" class="fancyfont align-self-center" style="color: #296c12; font-size: 1.25rem;"/>
+                <div class="pl-1 pr-1">
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Name, SortOrdering.Ascending)}" Text="{value: Texts.Sort_name_asc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Name || SortOrder != SortOrdering.Ascending}" />
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Name, SortOrdering.Descending)}" Text="{value: Texts.Sort_name_desc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Name || SortOrder != SortOrdering.Descending}" />
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Year, SortOrdering.Ascending)}" Text="{value: Texts.Sort_year_asc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Year || SortOrder != SortOrdering.Ascending}" />
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Year, SortOrdering.Descending)}" Text="{value: Texts.Sort_year_desc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Year || SortOrder != SortOrdering.Descending}" />
+                </div>
+                <div>
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Pages, SortOrdering.Ascending)}" Text="{value: Texts.Sort_pages_asc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Pages || SortOrder != SortOrdering.Ascending}" />
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Pages, SortOrdering.Descending)}" Text="{value: Texts.Sort_pages_desc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Pages || SortOrder != SortOrdering.Descending}" />
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Rating, SortOrdering.Ascending)}" Text="{value: Texts.Sort_rating_asc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Rating || SortOrder != SortOrdering.Ascending}" />
+                    <dot:Button ButtonTagName="button" Click="{command: Sort(SortBooksBy.Rating, SortOrdering.Descending)}" Text="{value: Texts.Sort_rating_desc}" class="btn" Class-btn-outline="{value: SortBy != SortBooksBy.Rating || SortOrder != SortOrdering.Descending}" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <dot:Repeater DataSource="{value: Books}" class="d-flex flex-column flex-xl-row flex-xl-wrap">
+        <ItemTemplate>
+            <div class="d-flex p-2 m-2 preview" style="flex: calc(50% - 2rem);">
+                <dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: Id}"><img src="{value: "data:image/png;base64," + Photo}" class="float-left" style="width: 150px; height: 200px;" /></dot:RouteLink>
+                <div class="d-flex flex-column p-2 pl-3" style="width: calc(100% - 150px - 1rem);">
+                    <dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: Id}" class="fancyfont"> <h2>{{value: Name}}</h2> </dot:RouteLink>
+                    <h3 class="fancyfont">{{value: Author}}</h3>
+                    <div class="font-italic">
+                        <dot:Literal Text="{value: Genres}" />
+                    </div>
+                    <div class="font-italic">
+                        <dot:Literal Text="{value: "Hodnocení: " + Rating.ToString("0.#") + "/10"}"/>
+                    </div>
+                    <div>
+                        <dot:Literal Text="{value: Year + ", " + Pages + " " + Texts.Pages}" />
+                    </div>
+                    <dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: Id}" class="fancyfont mt-auto text-right">{{resource: Texts.More}}</dot:RouteLink>
+                </div>
+            </div>
+        </ItemTemplate>
+    </dot:Repeater>
+
+</dot:Content>

@@ -1,0 +1,36 @@
+.\" File: sslsniff.1
+.\" Solution: ISA - project - Monitoring of SSL connections
+.\" Date: 21.10.2020
+.\" Author: Jan Lorenc
+.\" Faculty: Faculty of information technologies VUT
+.\" Desription: File for linux manual pages
+
+.TH SSLSNIFF 1
+
+.SH NAME
+sslsniff \- sniffs from a network interface or a pcap file for ssl/tls comunnication
+
+.SH SYNOPSIS
+.B sslsniff
+[\fB\-i\fR \f interface\fR]
+[\fB\-r\fR \f file\fR]
+
+.SH DESCRIPTION
+.B sslsniff
+sniffs from a network interface or a pcap file for ssl/tls comunnication.
+It classifies a tcp connection as ssl/tls if it detects a ssl handshake after the tcp one.
+It counts the connection packets and the amount of bytes transfered only by ssl/tls.
+When a connection ends, it prints the connection information in the following way:
+.TP
+<timestamp>,<client ip>,<client port>,<server ip>,<SNI>,<bytes>,<packets>,<duration sec>
+
+.SH OPTIONS
+.TP
+.BR \-i \ interface
+Specifies the network interface on which the program should sniff.
+.TP
+.BR \-r \ file
+Specifies the .pcapng file in which the program should find the ssl connections.
+.TP
+.BR \-h
+Prints help for the program usage.

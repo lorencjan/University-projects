@@ -1,0 +1,70 @@
+﻿<local:UserControlBase x:Class="MovieDatabase.App.Views.SearchResultPage"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                       xmlns:local="clr-namespace:MovieDatabase.App.Views"
+                       xmlns:viewModels="clr-namespace:MovieDatabase.App.ViewModels"
+                       mc:Ignorable="d"
+                       d:DataContext="{d:DesignInstance viewModels:SearchResultViewModel}"
+                       DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=SearchResultViewModel}">
+    
+    <Grid Background="White" Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.33*"/>
+            <ColumnDefinition Width="0.33*"/>
+            <ColumnDefinition Width="0.34*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="People" Style="{StaticResource ListViewHeader}" Margin="10" FontSize="20" Foreground="DarkBlue"/>
+            <ListView ItemsSource="{Binding ListPeople}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Button Command="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel.ShowPersonDetail}"
+                                CommandParameter="{Binding Id}"
+                                Style="{StaticResource ListViewContentBtn}">
+                            <TextBlock Text="{Binding DisplayName}" Style="{StaticResource TextBlockBase}" Margin="10" FontSize="16" />
+                        </Button>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Movies" Style="{StaticResource ListViewHeader}" Margin="10" FontSize="20" Foreground="DarkBlue"/>
+            <ListView ItemsSource="{Binding ListMovies}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Button Command="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel.ShowMovieDetail}"
+                                CommandParameter="{Binding Id}"
+                                Style="{StaticResource ListViewContentBtn}">
+                            <TextBlock Text="{Binding DisplayName}" Style="{StaticResource TextBlockBase}" Margin="10" FontSize="16" />
+                        </Button>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+        <StackPanel Grid.Column="2">
+            <TextBlock Text="Ratings" Style="{StaticResource ListViewHeader}" Margin="10" FontSize="20" Foreground="DarkBlue"/>
+            <ListView ItemsSource="{Binding ListRatings}" Style="{StaticResource ListView}" ItemContainerStyle="{StaticResource ListViewItem}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Button Command="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel.ShowMovieOfRating}"
+                                CommandParameter="{Binding Id}"
+                                Style="{StaticResource ListViewContentBtn}"
+                                MaxWidth="270">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource TextBlockBase}" Margin="5, 10, 5, 5" FontSize="14">
+                                    <Run Text="{Binding MovieName}"/>
+                                    <Run Text=": "/>
+                                    <Run Text="{Binding Number}"/>
+                                    <Run Text="/10"/>
+                                </TextBlock>
+                                <TextBlock Style="{StaticResource TextBlockBase}" Margin="5, 0, 5, 10" FontSize="14" Text="{Binding Text}" FontWeight="Normal" TextTrimming="WordEllipsis"/>
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</local:UserControlBase>

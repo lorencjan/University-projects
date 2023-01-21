@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>c897b510-dbd5-42ca-b2e0-9185e9fcfd4a</UserSecretsId>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="**/*.dothtml;**/*.dotmaster;**/*.dotcontrol" Exclude="obj/**/*.*;bin/**/*.*" CopyToPublishDirectory="Always" />
+    <Content Include="Img\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotVVM.AspNetCore" Version="2.4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<ProjectReference Include="..\RockFests.BL\RockFests.BL.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.development.json" />
+    <None Include="appsettings.json" />
+  </ItemGroup>
+</Project>

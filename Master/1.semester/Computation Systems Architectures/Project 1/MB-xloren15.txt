@@ -1,0 +1,42 @@
+#### Stručně odpovězte na následující otázky: ######
+
+1. Proč je nutné určovat, zda má výpočet pokračovat?
+==============================================================================
+Abychom nepočítali a neiterovali zbytečně. V referenční implementaci se počítá
+do prahové hodnoty nebo do limitu, tedy nepočítá se nic zbytečně navíc. U obou
+vektorizovaných verzí je však toto o smyčku výše, a proto nelze tak snadno ukončit
+výpočet po dosažení prahu. Výpočet můžeme ukončit, jakmile všechny prvky vektoru
+prahu dosáhly. Toto je tedy třeba hlídat, neboť pokud by nejvyšší hodnota v daném
+vektoru byla např. 10 a limit byl 100, tak by jinak 90 iterací proběhlo zcela zbytečně.
+
+2. Byla "Line" vektorizace efektivní? Proč?
+==============================================================================
+V porovnání s referenčním řešením ano. Výpočet trvá více než 2x kratší dobu a i
+Intel Advisor informuje o efektivní vektorizaci. Nicméně, s ohledem na to, čeho lze
+dosáhnout a zejména v porovnání s "Batch" implementací již není. Nepracuje tak dobře
+s cache pamětí a provádí mnohem více zbytečných iterací. Jestli alespoň jeden prvek
+má prahovou hodnotu rovnu limitu, tak všechny ostatní musí iterovat do limitu taktéž,
+zatímco v dávce ("Batch") toto ovlivní mnohem méně prvků a značně více zbytečných
+iterací lze vynechat.
+
+3. Jaká byla dosažena výkonnost v Intel Advisoru pro jednotlivé implementace 
+(v GFLOPS)?
+==============================================================================
+Line: 17.34
+Batch: 12.91
+(Bráno ze "summary" pro celý program. Přímo pro dané smyčky viz 5.-Roofline.)
+Rychlostně pak v porovnání s "Ref" je "Line" více než 2x rychlejší a "Batch" cca 7-8x rychlejší.
+
+4. Jaká část kódu byla paralizována v "Line" implementaci? Vyčteme tuto 
+informaci i u batch kalkulátoru?
+==============================================================================
+Nejzanořenější smyčka, v mé implementaci for loop s řídící proměnnou "j" a nad kterou je #pragma omp simd reduction.
+V "Batch" se taktéž jedná o vnitřní smyčku.
+
+5. Co vyčteme z Roofline modelu pro obě vektorizované implementace?
+==============================================================================
+Obě implementace jsou převážně bržděny pamětí a nachází se v šířce pásma mezi L2 a L3.
+Line: Aktuálně má smyčka 19.99 GFLOPS a při dosažení L2 by mohlo dojít až k 2.7 násobnému navýšení.
+Batch: Aktuálně má smyčka 24.27 GFLOPS a při dosažení L2 by mohlo dojít až k 1.6 násobnému navýšení. (Je L2 blíže než "Line")
+
+

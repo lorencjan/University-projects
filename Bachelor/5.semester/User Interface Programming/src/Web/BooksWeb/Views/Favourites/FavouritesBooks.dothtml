@@ -1,0 +1,36 @@
+﻿@viewModel BooksWeb.ViewModels.FavouritesBooksViewModel, BooksWeb
+@masterPage Views/MasterPage.dotmaster
+@import BooksWeb.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h2 class="fancyfont dark-green font-weight-bold text-center" style="font-size: 3rem;">{{resource: Texts.Oblibene_knihy}}</h2>
+
+    <dot:Repeater DataSource="{value: Books}" class="d-flex flex-column flex-xl-row flex-xl-wrap">
+        <ItemTemplate>
+            <div class="d-flex p-2 m-2 preview" style="flex: calc(50% - 2rem);">
+                <dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: Id}"><img src="{value: "data:image/png;base64," + Photo}" class="float-left" style="width: 150px; height: 200px;" /></dot:RouteLink>
+                <div class="d-flex flex-column p-2 pl-3" style="width: calc(100% - 150px - 1rem);">
+                    <dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: Id}" class="fancyfont"> <h2>{{value: Name}}</h2> </dot:RouteLink>
+                    <h3 class="fancyfont">{{value: Author}}</h3>
+                    <div class="font-italic">
+                        <dot:Literal Text="{value: Genres}" />
+                    </div>
+                    <div class="font-italic">
+                        <dot:Literal Text="{value: "Hodnocení: " + Rating.ToString("0.#") + "/10"}" />
+                    </div>
+                    <div>
+                        <dot:Literal Text="{value: Year + ", " + Pages + " " + Texts.Pages}" />
+                    </div>
+                    <dot:RouteLink RouteName="{resource: Routes.Books_detail}" Param-Id="{value: Id}" class="fancyfont mt-auto text-right">{{resource: Texts.More}}</dot:RouteLink>
+                </div>
+            </div>
+        </ItemTemplate>
+        <EmptyDataTemplate>
+            <div class="text-center">
+                {{resource: Texts.NoFavouriteBooks}}
+            </div>
+        </EmptyDataTemplate>
+    </dot:Repeater>
+
+</dot:Content>

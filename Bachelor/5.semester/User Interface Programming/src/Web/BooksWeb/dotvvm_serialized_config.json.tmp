@@ -1,0 +1,693 @@
+{
+  "markup": {
+    "controls": {
+      "$type": "DotVVM.Framework.Configuration.FreezableList`1[[DotVVM.Framework.Configuration.DotvvmControlConfiguration, DotVVM.Framework]], DotVVM.Framework",
+      "$values": [
+        {
+          "tagPrefix": "dot",
+          "namespace": "DotVVM.Framework.Controls",
+          "assembly": "DotVVM.Framework"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "Modal",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\Modal.dotcontrol"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "FormGroupDate",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupDate.dotcontrol"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "FormGroupDateTime",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupDateTime.dotcontrol"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "FormGroupDisplay",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupDisplay.dotcontrol"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "FormGroupNumber",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupNumber.dotcontrol"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "FormGroupPassword",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupPassword.dotcontrol"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "FormGroupText",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupText.dotcontrol"
+        },
+        {
+          "tagPrefix": "cc",
+          "tagName": "FormGroupTextArea",
+          "src": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupTextArea.dotcontrol"
+        }
+      ]
+    },
+    "assemblies": {
+      "$type": "DotVVM.Framework.Configuration.FreezableList`1[[System.String, System.Private.CoreLib]], DotVVM.Framework",
+      "$values": []
+    },
+    "defaultDirectives": {
+      "$type": "DotVVM.Framework.Configuration.FreezableDictionary`2[[System.String, System.Private.CoreLib],[System.String, System.Private.CoreLib]], DotVVM.Framework"
+    },
+    "importedNamespaces": {
+      "$type": "DotVVM.Framework.Configuration.FreezableList`1[[DotVVM.Framework.Compilation.NamespaceImport, DotVVM.Framework]], DotVVM.Framework",
+      "$values": [
+        {
+          "namespace": "DotVVM.Framework.Binding.HelperNamespace",
+          "alias": null
+        }
+      ]
+    },
+    "DefaultExtensionParameters": {
+      "$type": "DotVVM.Framework.Configuration.FreezableList`1[[DotVVM.Framework.Compilation.ControlTree.BindingExtensionParameter, DotVVM.Framework]], DotVVM.Framework",
+      "$values": []
+    }
+  },
+  "routes": {
+    "Default": {
+      "url": "",
+      "virtualPath": "Views/Home.dothtml",
+      "defaultValues": {}
+    },
+    "404": {
+      "url": "404",
+      "virtualPath": "Views/404.dothtml",
+      "defaultValues": {}
+    },
+    "500": {
+      "url": "500",
+      "virtualPath": "Views/500.dothtml",
+      "defaultValues": {}
+    },
+    "Authors": {
+      "url": "Authors",
+      "virtualPath": "Views/Authors.dothtml",
+      "defaultValues": {}
+    },
+    "Books": {
+      "url": "Books",
+      "virtualPath": "Views/Books.dothtml",
+      "defaultValues": {}
+    },
+    "Home": {
+      "url": "Home",
+      "virtualPath": "Views/Home.dothtml",
+      "defaultValues": {}
+    },
+    "Authentication_Profile": {
+      "url": "Authentication/Profile",
+      "virtualPath": "Views/Authentication/Profile.dothtml",
+      "defaultValues": {}
+    },
+    "Authentication_Register": {
+      "url": "Authentication/Register",
+      "virtualPath": "Views/Authentication/Register.dothtml",
+      "defaultValues": {}
+    },
+    "Authors_AuthorDetail_{Id}": {
+      "url": "Authors/AuthorDetail/{Id}",
+      "virtualPath": "Views/Authors/AuthorDetail.dothtml",
+      "defaultValues": {}
+    },
+    "Books_BookDetail_{Id}": {
+      "url": "Books/BookDetail/{Id}",
+      "virtualPath": "Views/Books/BookDetail.dothtml",
+      "defaultValues": {}
+    },
+    "Charts_ChartsAuthors": {
+      "url": "Charts/ChartsAuthors",
+      "virtualPath": "Views/Charts/ChartsAuthors.dothtml",
+      "defaultValues": {}
+    },
+    "Charts_ChartsBooks": {
+      "url": "Charts/ChartsBooks",
+      "virtualPath": "Views/Charts/ChartsBooks.dothtml",
+      "defaultValues": {}
+    },
+    "Favourites_FavouritesAuthors": {
+      "url": "Favourites/FavouritesAuthors",
+      "virtualPath": "Views/Favourites/FavouritesAuthors.dothtml",
+      "defaultValues": {}
+    },
+    "Favourites_FavouritesBooks": {
+      "url": "Favourites/FavouritesBooks",
+      "virtualPath": "Views/Favourites/FavouritesBooks.dothtml",
+      "defaultValues": {}
+    }
+  },
+  "resources": {
+    "stylesheets": {
+      "bootstrap-reboot.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "font-awesome-all.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\font-awesome-all.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "bootstrap.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\bootstrap\\css\\bootstrap.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "FormGroupTextArea.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupTextArea.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "FormGroupDateTime.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupDateTime.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "fontawesome.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\fontawesome.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "FormGroupDate.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupDate.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "solid.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\solid.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "styles.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\css\\styles.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "dotvvm.fileUpload-css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.EmbeddedResourceLocation, DotVVM.Framework",
+          "Assembly": "DotVVM.Framework, Version=2.4.0.1, Culture=neutral, PublicKeyToken=23f3607db32275da",
+          "Name": "DotVVM.Framework.Resources.Scripts.DotVVM.FileUpload.css",
+          "DebugFilePath": null
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "fontawesome.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\fontawesome.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "bootstrap-grid.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "FormGroupDisplay.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupDisplay.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "font-awesome-all.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\font-awesome-all.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "v4-shims.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\v4-shims.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "bootstrap.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\bootstrap\\css\\bootstrap.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "bootstrap-reboot.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\bootstrap\\css\\bootstrap-reboot.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "regular.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\regular.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "bootstrap-grid.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\bootstrap\\css\\bootstrap-grid.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "FormGroupPassword.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupPassword.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "Modal.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\Modal.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "regular.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\regular.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "FormGroupNumber.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupNumber.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "svg-with-js.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\svg-with-js.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "FormGroupText.dotcontrol": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\Controls\\FormGroupControls\\FormGroupText.dotcontrol"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "v4-shims.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\v4-shims.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "svg-with-js.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\svg-with-js.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "brands.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\brands.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "brands.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\brands.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      },
+      "solid.min.css": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "D:\\Škola - FIT\\5.semestr\\ITU - Tvorba uživatelských rozhraní\\Projekt\\Web\\BooksWeb\\wwwroot\\lib\\font-awesome\\css\\solid.min.css"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/css",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 0
+      }
+    },
+    "DotVVM.Framework.ResourceManagement.ScriptResource": {
+      "dotvvm.polyfill.bundle": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.EmbeddedResourceLocation, DotVVM.Framework",
+          "Assembly": "DotVVM.Framework, Version=2.4.0.1, Culture=neutral, PublicKeyToken=23f3607db32275da",
+          "Name": "DotVVM.Framework.Resources.Scripts.Polyfills.polyfill.bundle.js",
+          "DebugFilePath": null
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 1
+      },
+      "knockout": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.EmbeddedResourceLocation, DotVVM.Framework",
+          "Assembly": "DotVVM.Framework, Version=2.4.0.1, Culture=neutral, PublicKeyToken=23f3607db32275da",
+          "Name": "DotVVM.Framework.Resources.Scripts.knockout-latest.js",
+          "DebugFilePath": null
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 1
+      },
+      "jquery": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "wwwroot/lib/jQuery/jquery-2.1.3.min.js"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 1
+      },
+      "font-awesome": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "wwwroot/lib/font-awesome/js/font-awesome-all.min.js"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 1
+      },
+      "dotvvm.debug": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.EmbeddedResourceLocation, DotVVM.Framework",
+          "Assembly": "DotVVM.Framework, Version=2.4.0.1, Culture=neutral, PublicKeyToken=23f3607db32275da",
+          "Name": "DotVVM.Framework.Resources.Scripts.DotVVM.Debug.js",
+          "DebugFilePath": null
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [
+          "dotvvm"
+        ],
+        "RenderPosition": 1
+      },
+      "popper": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "wwwroot/lib/popper/popper.min.js"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 1
+      },
+      "globalize": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.EmbeddedResourceLocation, DotVVM.Framework",
+          "Assembly": "DotVVM.Framework, Version=2.4.0.1, Culture=neutral, PublicKeyToken=23f3607db32275da",
+          "Name": "DotVVM.Framework.Resources.Scripts.Globalize.globalize.min.js",
+          "DebugFilePath": null
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [],
+        "RenderPosition": 1
+      },
+      "dotvvm.internal": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.EmbeddedResourceLocation, DotVVM.Framework",
+          "Assembly": "DotVVM.Framework, Version=2.4.0.1, Culture=neutral, PublicKeyToken=23f3607db32275da",
+          "Name": "DotVVM.Framework.Resources.Scripts.DotVVM.min.js",
+          "DebugFilePath": null
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [
+          "knockout",
+          "dotvvm.polyfill"
+        ],
+        "RenderPosition": 1
+      },
+      "bootstrap": {
+        "Location": {
+          "$type": "DotVVM.Framework.ResourceManagement.FileResourceLocation, DotVVM.Framework",
+          "FilePath": "wwwroot/lib/bootstrap/js/bootstrap.bundle.min.js"
+        },
+        "LocationFallback": null,
+        "MimeType": "text/javascript",
+        "VerifyResourceIntegrity": false,
+        "IntegrityHash": null,
+        "Dependencies": [
+          "jquery",
+          "popper"
+        ],
+        "RenderPosition": 1
+      }
+    },
+    "InlineScriptResource": {
+      "dotvvm": {
+        "Code": "if (window.dotvvm) { throw 'DotVVM is already loaded!'; } window.dotvvm = new DotVVM();",
+        "Dependencies": [
+          "dotvvm.internal"
+        ],
+        "RenderPosition": 1
+      }
+    },
+    "DotVVM.Framework.ResourceManagement.PolyfillResource": {
+      "dotvvm.polyfill": {
+        "Dependencies": [],
+        "RenderPosition": 1
+      }
+    }
+  },
+  "security": {
+    "signingKey": null,
+    "encryptionKey": null,
+    "sessionIdCookieName": "dotvvm_sid_{0}"
+  },
+  "runtime": {},
+  "defaultCulture": "cs-CZ",
+  "clientSideValidation": true,
+  "useHistoryApiSpaNavigation": true,
+  "experimentalFeatures": {
+    "lazyCsrfToken": {
+      "includedRoutes": {
+        "$type": "DotVVM.Framework.Configuration.FreezableSet`1[[System.String, System.Private.CoreLib]], DotVVM.Framework",
+        "$values": []
+      },
+      "excludedRoutes": {
+        "$type": "DotVVM.Framework.Configuration.FreezableSet`1[[System.String, System.Private.CoreLib]], DotVVM.Framework",
+        "$values": []
+      }
+    },
+    "serverSideViewModelCache": {
+      "includedRoutes": {
+        "$type": "DotVVM.Framework.Configuration.FreezableSet`1[[System.String, System.Private.CoreLib]], DotVVM.Framework",
+        "$values": []
+      },
+      "excludedRoutes": {
+        "$type": "DotVVM.Framework.Configuration.FreezableSet`1[[System.String, System.Private.CoreLib]], DotVVM.Framework",
+        "$values": []
+      }
+    }
+  },
+  "AllowBindingDebugging": false,
+  "compiledViewsAssemblies": {
+    "$type": "DotVVM.Framework.Configuration.FreezableList`1[[System.String, System.Private.CoreLib]], DotVVM.Framework",
+    "$values": [
+      "CompiledViews.dll"
+    ]
+  }
+}

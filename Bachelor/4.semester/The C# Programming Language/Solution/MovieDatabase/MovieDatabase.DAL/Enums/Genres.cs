@@ -1,0 +1,29 @@
+﻿namespace MovieDatabase.DAL.Enums
+{
+    public enum Genre
+    {
+        Unknown,
+        Action,
+        Adventure,
+        Anime,
+        Catasthrophic,
+        Comedy,
+        Crime,
+        Drama,
+        Fantasy,
+        Historical,
+        Horror,
+        Mystery,
+        Philosophical,
+        Political,
+        Romance,
+        Saga,
+        Satire,
+        SciFi,
+        Social,
+        Speculative,
+        Thriller,
+        Urban,
+        Western
+    }
+}

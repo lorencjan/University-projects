@@ -1,0 +1,35 @@
+/*KÓD FUNKCE PRO VÝPOČET PEARSONOVÝCH KOEFICIENTŮ*/
+function retVal = pearsonCoefficient(a, b)
+ma = mean(a)
+mb = mean(b)
+numerator=denominatorA=denominatorB=0
+for i=1:length(a)
+numerator += (a(i)-ma)*(b(i)-mb)
+denominatorA += power((a(i)-ma), 2)
+denominatorB += power((b(i)-mb), 2)
+endfor
+denominator = sqrt(denominatorA) * sqrt(denominatorB)
+retVal = numerator/denominator
+endfunction
+
+/*KÓD PRO VÝPOČET SKÓRE Q1*/
+for pp=1:columns(F)-columns(Q1)
+dpp = 0
+for i=1:columns(Q1)
+retVal = pearsonCoefficient(Q1(:,i), F(:,pp+i-1))
+dpp += retVal
+end
+DPP(pp) = dpp
+end
+DPP = DPP / columns(Q1)
+
+/*KÓD PRO VÝPOČET SKÓRE Q2*/
+for pp=1:columns(F)-columns(Q2)
+dpp = 0
+for i=1:columns(Q2)
+retVal = pearsonCoefficient(Q2(:,i), F(:,pp+i-1))
+dpp += retVal
+end
+DPP2(pp) = dpp
+end
+DPP2 = DPP2 / columns(Q2)

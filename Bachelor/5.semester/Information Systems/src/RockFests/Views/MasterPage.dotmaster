@@ -1,0 +1,104 @@
+﻿@viewModel RockFests.ViewModels.MasterPageViewModel, RockFests
+@import RockFests.BL.Resources
+@import RockFests.DAL.Enums
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>{{value: Title}}</title>
+    <link rel="icon" href="~/Img/favicon.ico" type="image/x-icon" />
+    <dot:RequiredResource Name="bootstrap.min.css" />
+    <dot:RequiredResource Name="font-awesome-all.min.css" />
+    <dot:RequiredResource Name="styles.css" />
+</head>
+<body Validation.Enabled="false">
+    <header class="w-100 d-flex justify-content-between">
+        <div class="header-image">
+            <dot:RouteLink RouteName="{resource: Routes.Dashboard}" Text="{value: Texts.Logo}"/>
+        </div>
+        <div class="user-section">
+            <div Visible="{value: SignedInUser == null}">
+                <dot:RouteLink RouteName="{resource: Routes.SignIn}" Text="{value: Texts.Btn_SignIn}" class="btn btn-dark" />
+                <div style="width:1px;height:20px;background-color:white;" class="d-inline-block m-1 border border-1 border-white align-middle"></div>
+                <dot:RouteLink RouteName="{resource: Routes.Register}" Text="{value: Texts.Register}" class="btn btn-dark" />
+            </div>
+            <div class="dropdown logged-user" Visible="{value: SignedInUser != null}">
+                <button class="btn btn-dark dropdown-toggle d-inline-flex" style="max-height: 47px;" data-toggle="dropdown">
+                    <span class="fa fa-user fa-2x"></span>
+                    <div style="margin: 0px 8px;">
+                        <div style="font-size: 13px;"><strong>{{value: SignedInUser.Login}}</strong></div>
+                        <div style="font-size: 11px;" class="text-center">{{value: SignedInUser.AccessRole}}</div>
+                    </div>
+                </button>
+                <div class="dropdown-menu">
+                    <dot:RouteLink Text="{value: Texts.Settings}" RouteName="{resource: Routes.Settings}" class="dropdown-item" />
+                    <dot:Literal Text="{value: Texts.SignOut}" class="dropdown-item" Events.Click="{command: SignOut(); GoHome()}">
+                </div>
+                <div class="d-inline-block ml-2 align-middle" style="font-size: 12px;">
+                    <dot:Literal Text="{value: Texts.RemainingTime}" class="d-block" />
+                    <dot:Literal Text="{value: (RemainingMinutes > 0 ? RemainingMinutes : 0) + " min"}" class="d-block w-100 text-center" />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex">
+        <div class="nav-side">
+            <div class="nav-side-item">
+                <dot:RouteLink RouteName="{resource: Routes.Dashboard}">
+                    <span class="d-inline-block fa fa-desktop mr-2" style="width: 20px;"></span>
+                    <dot:Literal Text="{value: Texts.Dashboard}" />
+                </dot:RouteLink>
+            </div>
+            <div class="nav-side-item">
+                <dot:RouteLink RouteName="{resource: Routes.Festivals}">
+                    <span class="d-inline-block fa fa-calendar-alt mr-2" style="width: 20px;"></span>
+                    <dot:Literal Text="{value: Texts.Festivals}" />
+                </dot:RouteLink>
+            </div>
+            <button class="nav-side-item" data-toggle="collapse" data-target="#nav-side-interprets-collapse">
+                <span class="d-inline-block fa fa-music mr-2" style="width: 20px;"></span>
+                <dot:Literal Text="{value: Texts.Interprets}" />
+            </button>
+            <div class="collapse" id="nav-side-interprets-collapse">
+                <div class="nav-side-item sub-nav-side-item">
+                    <dot:RouteLink RouteName="{resource: Routes.Bands}" Text="{value: Texts.Bands}" />
+                </div>
+                <div class="nav-side-item sub-nav-side-item">
+                    <dot:RouteLink RouteName="{resource: Routes.Musicians}" Text="{value: Texts.Musicians}" />
+                </div>
+            </div>
+            <dot:RoleView Roles="Spectator,Cashier,Organizer,Admin">
+                <div class="nav-side-item">
+                    <dot:RouteLink RouteName="{resource: Routes.Tickets}">
+                        <span class="d-inline-block fa fa-money-bill-wave mr-2" style="width: 20px;"></span>
+                        <dot:Literal Text="{value: Texts.My}" IncludeInPage="{value: SignedInUser.AccessRole == AccessRole.Spectator}" />
+                        <dot:Literal Text="{value: Texts.Tickets}" />
+                    </dot:RouteLink>
+                </div>
+            </dot:RoleView>
+            <dot:RoleView Roles="Admin">
+                <div class="nav-side-item">
+                    <dot:RouteLink RouteName="{resource: Routes.Users}">
+                        <span class="d-inline-block fa fa-users mr-2" style="width: 20px;"></span>
+                        <dot:Literal Text="{value: Texts.Users}" />
+                    </dot:RouteLink>
+                </div>
+            </dot:RoleView>
+        </div>
+
+        <div class="container p-4 p-to" style="display: none;" Visible="{value: true}">
+            <dot:ContentPlaceHolder ID="MainContent" />
+        </div>
+
+    </div>
+
+    <cc:Modal Header="{value: Errors.Modal500Header}" Message="{value: ErrorModalMessage}" IsShowed="{value: IsErrorModalShowed}" />
+    <div class="hidden" Class-screen-overlay="{value: IsErrorModalShowed || IsDeleteModalShowed}"></div>
+
+    <dot:RequiredResource Name="bootstrap" />
+    <dot:RequiredResource Name="font-awesome" />
+</body>
+</html>

@@ -1,0 +1,460 @@
+﻿:root { /* variables with colors used */
+    --green-dark: #296c12;
+    --green-normal: #3a9719;
+    --green-hover: #48b924;
+    --green-highlight: #45b020;
+    --green-light: #e0ffd5; /* rgba(224, 255, 213, 1) */
+}
+
+header {
+    z-index: 5000;
+    padding: 10px 3vw;
+    background-color: var(--green-dark);
+    color: white;
+    border-bottom: 2px solid black;
+    min-height: 180px;
+}
+
+.header-title {
+    font: bold italic 100px "Book Antiqua", serif;
+}
+
+    .header-title a {
+        color: white;
+        text-decoration: none;
+    }
+
+@media (orientation: portrait) {
+    .landscape {
+        display: none !important;
+    }
+
+    header {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .header-title {
+        font-size: 80px;
+    }
+
+    .portrait-w-100{
+        width: 100%;
+    }
+
+    .menu-button {
+        display: block;
+    }
+
+    #menu {
+        position: absolute;
+    }
+
+    nav {
+        width: 350px;
+        background-color: var(--green-normal);
+        border-right: 2px solid black;
+        border-bottom: 2px solid black;
+        display: flex !important;
+        flex-direction: column;
+        flex-shrink: 0;
+    }
+
+    button.nav-item {
+        margin: 0px;
+        background-color: transparent;
+        outline: none;
+    }
+
+    .nav-item, .nav-item a {
+        display: inline-block;
+        border: none;
+        font: bold italic 40px "Book Antiqua", serif;
+        text-decoration: none;
+        color: white;
+        text-align: left;
+        width: 100%;
+    }
+
+        .nav-item a, button.nav-item {
+            padding: 8px 16px 8px 32px;
+        }
+
+        .nav-item:hover {
+            background-color: var(--green-hover);
+        }
+
+    .highlighted {
+        background-color: var(--green-highlight);
+    }
+
+    .nav-sub-item a {
+        font-size: 30px;
+        font-weight: 600;
+        text-align: right;
+    }
+}
+
+@media (orientation: landscape) {
+
+    .portrait {
+        display: none;
+    }
+
+    nav {
+        width: 350px;
+        min-height: calc(100vh - 180px);
+        background-color: var(--green-normal);
+        border-right: 2px solid black;
+        display: flex !important;
+        flex-direction: column;
+        flex-shrink: 0;
+        visibility: visible !important;
+    }
+
+    button.nav-item {
+        margin: 0px;
+        background-color: transparent;
+        outline: none;
+    }
+
+    .nav-item, .nav-item a {
+        display: inline-block;
+        border: none;
+        font: bold italic 40px "Book Antiqua", serif;
+        text-decoration: none;
+        color: white;
+        text-align: left;
+        width: 100%;
+    }
+
+        .nav-item a, button.nav-item {
+            padding: 8px 16px 8px 32px;
+        }
+
+        .nav-item:hover {
+            background-color: var(--green-hover);
+        }
+
+        .highlighted {
+            background-color: var(--green-highlight);
+        }
+
+        .nav-sub-item a {
+            font-size: 30px;
+            font-weight: 600;
+            text-align: right;
+        }
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+.form-group select {
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.login-area {
+    font-size: large;
+}
+
+    .login-area input {
+        height: calc(1em + .75rem + 2px);
+        font-size: large;
+    }
+
+    .login-area button, .feedbackBox button, .filter button:not(.btn-outline), .primarybutton {
+        padding: .375rem .75rem;
+        border-color: var(--green-normal);
+        background: var(--green-normal);
+        color: white;
+        font-size: large;
+    }
+
+    .login-area a {
+        color: white;
+        text-decoration: underline;
+    }
+
+.fancyfont {
+    font-family: "Book Antiqua", serif;
+    font-style: italic;
+}
+
+.dark-green {
+    color: var(--green-dark);
+}
+
+.normal-green {
+    color: var(--green-normal);
+}
+
+.feedbackBox {
+    width: 20vw;
+    height: 50vh;
+    min-width: 300px;
+    min-height: 300px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    z-index: 5000;
+    border: 2px solid var(--green-dark);
+}
+
+@supports (backdrop-filter: blur(5px)) {
+    .feedbackBox {
+        backdrop-filter: blur(5px);
+    }
+}
+
+@supports not (backdrop-filter: blur(5px)) {
+    .feedbackBox {
+        background: white;
+    }
+}
+
+.feedbackBox:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    bottom: 20px;
+    width: 0;
+    height: 0;
+    border-top: 18px solid transparent;
+    border-right: 26px solid var(--green-dark);
+    border-bottom: 18px solid transparent;
+}
+
+.required:after {
+    content: " *";
+    color: red;
+}
+
+.has-error, .has-error-alert {
+    color: red;
+    font-weight: 500;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+}
+
+.has-error-alert {
+    padding: .75rem 1.5rem;
+}
+
+.modal-visible {
+    display: block !important;
+    position: absolute;
+    top: 100px;
+    left: 30%;
+    width: 40%;
+    z-index: 15000;
+}
+
+.screen-overlay {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 14999;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.news-post {
+    border: 2px solid var(--green-normal);
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+}
+
+.news-header {
+    background: var(--green-dark);
+    font-size: 1.3rem;
+    padding: .5rem .5rem .25rem .5rem;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.news-text {
+    text-align: justify;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 500;
+}
+
+.filter, .sortBy {
+    width: 100%;
+    background: var(--green-light);
+    border: 1px solid var(--green-dark);
+}
+
+.filter h1 {
+    color: var(--green-dark);
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.filter table td {
+    vertical-align: middle;
+}
+
+.filter table div {
+    display: inline;
+}
+
+.filterFromTo {
+    min-width: 4rem;
+    max-width: 7rem;
+    margin-right: 1rem;
+    margin-left: 0.25rem;
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--green-dark);
+    border-color: var(--green-dark);
+    transition: 0.15s;
+}
+
+.btn-outline:hover {
+    background-color: rgba(55, 165, 25, 0.7);
+    border-color: var(--green-normal);
+    color: black;
+}
+
+.filter button:not(.btn), .ratings button:not(.primarybutton):not(.btn-outline), .detail button {
+    border: none;
+    background: none;
+    color: var(--green-normal);
+    transition: 0.15s;
+}
+
+.filter button:not(.btn):hover{
+    background: var(--green-normal);
+    border-radius: 0.25rem;
+    color: white;
+}
+
+.detail button:hover {
+    color: var(--green-dark);
+}
+
+.sortBy .btn:not(.btn-outline) {
+    background: rgba(65, 191, 35, 0.7);
+    border: 1px solid var(--green-normal);
+    border-radius: 0.25rem;
+    box-shadow: 2px 2px rgba(0,0,0,.15);
+    transition: 0.15s;
+}
+
+.sortBy .btn:not(.btn-outline):hover {
+    color: white;
+}
+
+.preview {
+    background: var(--green-light);
+}
+
+.preview h2, .ratings h2 {
+    color: var(--green-dark);
+    font-size: 1.75rem;
+}
+
+.preview h3, .ratings h3 {
+    color: var(--green-normal);
+    font-size: 1.3rem;
+}
+
+.preview a {
+    color: var(--green-dark);
+}
+
+.detail a, .ratings a {
+    color: var(--green-normal);
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+ul.pager {
+    display: flex;
+    justify-content: center;
+}
+
+ul.pager li {
+    list-style-type: none;
+    display: inline-block;
+    background-color: var(--green-dark);
+    min-width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    border-right: 1px solid white;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+ul.pager li.active {
+    text-align: center;
+    font-weight: 500;
+    color: white;
+    background-color: var(--green-normal);
+}        
+
+ul.pager li a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: white;
+    text-align: center;
+}
+
+ul.pager li a:hover {
+    background-color: var(--green-hover);
+    text-decoration: none;
+}
+
+.chart {
+    background-color: rgba(224, 255, 213, 0.7);
+}
+
+.chart thead {
+    background: var(--green-dark);
+    color:white;
+    font-size: 2rem;
+}
+
+.chart th {
+    padding: 0rem .75rem;
+}
+
+.chart td {
+    padding: 0rem .75rem;
+    font-size: 1.75rem;
+}
+
+.chart a {
+    color: var(--green-normal);
+}
+
+
+@media only screen and (max-width: 768px) {
+    .page-input, .detail-header {
+        width: 100% !important;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    body {
+        width: 640px;
+        overflow: scroll
+    }
+}

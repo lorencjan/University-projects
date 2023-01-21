@@ -1,0 +1,74 @@
+﻿@viewModel RockFests.ViewModels.Tickets.TicketsViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <dot:RoleView Roles="Admin,Organizer,Cashier">
+                <dot:RouteLink Text="{resource: Texts.CreateTicket}" RouteName="{resource: Routes.Tickets_Detail}" Param-Id="0" class="btn btn-dark mr-2">
+                    <span class="fa fa-plus mr-2"></span>{{value: Texts.CreateTicket}}
+                </dot:RouteLink>
+            </dot:RoleView>
+            <dot:CheckBox Checked="{value: IncludePaid}" Changed="{command: Tickets.RequestRefresh()}" class="mr-1" />
+            <dot:Literal Text="{value: Texts.ShowPaid}" />
+        </div>
+        <cc:DataSetUtils Text="{value: Tickets.Filter}" Refresh="{command: Tickets.RequestRefresh()}" Search="{command: Tickets.RequestFilter()}" />
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>{{resource: Texts.Festival}}</th>
+                    <th>{{resource: Texts.User}}</th>
+                    <th>{{resource: Texts.Status}}</th>
+                    <th>{{resource: Texts.PaymentDue}}</th>
+                    <th>{{resource: Texts.VariableSymbol}}</th>
+                    <dot:RoleView Roles="Admin,Organizer,Cashier" RenderWrapperTag="true" WrapperTagName="th"/>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <dot:Repeater DataSource="{value: Tickets.DataSet}" RenderWrapperTag="false">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{value: Festival.Name}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: User.FirstName + " " + User.LastName}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: IsPaid ? Texts.Paid : Texts.NotPaid}" style="{value: "color:" + (IsPaid ? "#28A745" : "red")}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: PaymentDue}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: VariableSymbol}" />
+                            </td>
+                            <dot:RoleView Roles="Admin,Organizer,Cashier" RenderWrapperTag="true" WrapperTagName="td" class="btn-cell">
+                                <dot:Button Text="{value: Texts.Btn_Approve}" Click="{command: _parent.ApproveTicket(Id)}" class="btn btn-success" IncludeInPage="{value: !IsPaid}" />
+                            </dot:RoleView>
+                            <td class="btn-cell">
+                                <dot:RouteLink RouteName="{resource: Routes.Tickets_Detail}" Param-Id="{value: Id}" class="btn btn-light">
+                                    <span class="fa fa-eye"></span>
+                                </dot:RouteLink>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <EmptyDataTemplate>
+                        <tr>
+                            <td colspan="7" class="text-center">
+                                {{value: Texts.EmptyDataset}}
+                            </td>
+                        </tr>
+                    </EmptyDataTemplate>
+                </dot:Repeater>
+            </tbody>
+        </table>
+    </div>
+    <dot:DataPager DataSet="{value: Tickets.DataSet}" class="pager mt-3" />
+
+</dot:Content>

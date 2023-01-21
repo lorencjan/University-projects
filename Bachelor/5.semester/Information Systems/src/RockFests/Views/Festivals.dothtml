@@ -1,0 +1,66 @@
+﻿@viewModel RockFests.ViewModels.Festivals.FestivalsViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+    
+    <div class="d-flex justify-content-between mb-3">
+        <div>
+            <dot:RoleView Roles="Admin,Organizer">
+                <dot:RouteLink Text="{value: Texts.CreateFestival}" RouteName="{resource: Routes.Festivals_Detail}" Param-Id="0" class="btn btn-dark mr-2">
+                    <span class="fa fa-plus"></span>
+                </dot:RouteLink>
+            </dot:RoleView>
+            <dot:CheckBox Checked="{value: IncludePast}" Changed="{command: Festivals.RequestRefresh()}" class="mr-1" />
+            <dot:Literal Text="{value: Texts.ShowPast}" />
+        </div>
+        <cc:DataSetUtils Text="{value: Festivals.Filter}" Refresh="{command: Festivals.RequestRefresh()}" Search="{command: Festivals.RequestFilter()}" />
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th>{{resource: Texts.Name}}</th>
+                    <th>{{resource: Texts.Date}}</th>
+                    <th>{{resource: Texts.Location}}</th>
+                    <th>{{resource: Texts.Price}}</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <dot:Repeater DataSource="{value: Festivals.DataSet}" RenderWrapperTag="false">
+                    <ItemTemplate>
+                        <tr>
+                            <td>
+                                <dot:Literal Text="{value: Name}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Date.Start}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Location}" />
+                            </td>
+                            <td>
+                                <dot:Literal Text="{value: Price + " " + Currency}" />
+                            </td>
+                            <td class="btn-cell">
+                                <dot:RouteLink RouteName="{resource: Routes.Festivals_Detail}" Param-Id="{value: Id}" class="btn btn-light">
+                                    <span class="fa fa-eye"></span>
+                                </dot:RouteLink>
+                            </td>
+                        </tr>
+                    </ItemTemplate>
+                    <EmptyDataTemplate>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                {{value: Texts.EmptyDataset}}
+                            </td>
+                        </tr>
+                    </EmptyDataTemplate>
+                </dot:Repeater>
+            </tbody>
+        </table>
+    </div>
+    <dot:DataPager DataSet="{value: Festivals.DataSet}" class="pager mt-3" />
+
+</dot:Content>

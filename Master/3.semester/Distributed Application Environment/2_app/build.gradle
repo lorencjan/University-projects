@@ -1,0 +1,101 @@
+plugins {
+    // Apply the scala plugin to add support for Scala
+    id 'scala'
+    // Apply the application plugin to add support for building an application
+    id 'application'
+    // Apply the Maven publish plugin to publish resulting artefacts into a Maven repository
+    id 'maven-publish'
+}
+
+version = externalVersion
+
+// Define the main class for the application
+mainClassName = externalMainClassName
+
+// fix JDK 17 error in Spark runtime
+// https://docs.gradle.org/current/javadoc/org/gradle/api/JavaVersion.html#VERSION_17
+if (JavaVersion.current() >= JavaVersion.VERSION_17) {
+  project.logger.warn("The application will run with add-opens JVM args to fix Spark on JDK 17.")
+  applicationDefaultJvmArgs += [
+    "--add-opens=java.base/java.lang=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang.invoke=ALL-UNNAMED",
+    "--add-opens=java.base/java.lang.reflect=ALL-UNNAMED",
+    "--add-opens=java.base/java.io=ALL-UNNAMED",
+    "--add-opens=java.base/java.net=ALL-UNNAMED",
+    "--add-opens=java.base/java.nio=ALL-UNNAMED",
+    "--add-opens=java.base/java.util=ALL-UNNAMED",
+    "--add-opens=java.base/java.util.concurrent=ALL-UNNAMED",
+    "--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED",
+    "--add-opens=java.base/sun.nio.ch=ALL-UNNAMED",
+    "--add-opens=java.base/sun.nio.cs=ALL-UNNAMED",
+    "--add-opens=java.base/sun.security.action=ALL-UNNAMED",
+    "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED",
+    "--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED"
+  ]
+}
+
+run {
+    // Pass all system properties to the application and the start scripts (overwrite previously defined defaults if any)
+    systemProperties System.getProperties()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name = 'build-repository'
+            url = "file://${buildDir}/mvn-repo"
+        }
+    }
+}
+
+dependencies {
+    // Scala version may be the only way to ensure compatibility with Hadoop distributions.
+    // Both org.scala-lang:scala-library version and org.apache.spark:spark-sql name need to be set according to the Scala version.
+    // NixOS v20.09: Spark 2.4.4 + Scala 2.11.12 @ Java 1.8.0_265
+    // NixOS v22.05: Spark 3.2.2 + Scala 2.12.15 @ Java 1.8.0_322
+    // Cloudera QuickStarts for CDH 5.13: ? @ Java 1.7.0_67
+    // In Scala 2.11, the Scala compiler always compiles to Java 6 compatible bytecode.
+    // In Scala 2.12, the Scala compiler always compiles to Java 8 compatible bytecode.
+    // See https://docs.gradle.org/current/userguide/scala_plugin.html#sec:scala_cross_compilation
+    implementation 'org.scala-lang:scala-library:2.12.15'
+    implementation 'org.apache.spark:spark-sql_2.12:3.2.2'
+    // Use JUnit test framework
+    testImplementation 'junit:junit:4.13.2'
+}
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+jar {
+  manifest {
+    attributes(
+      'Main-Class': externalMainClassName
+    )
+  }
+}
+
+task fatJar(type: Jar) {
+  manifest.from jar.manifest
+  classifier = 'all'
+  duplicatesStrategy = DuplicatesStrategy.INCLUDE // allow duplicates
+  from {
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+  } {
+    exclude "META-INF/*.SF"
+    exclude "META-INF/*.DSA"
+    exclude "META-INF/*.RSA"
+  }
+  zip64 true
+  with jar
+}
+
+artifacts {
+  archives fatJar
+}

@@ -1,0 +1,19 @@
+﻿@viewModel RockFests.ViewModels.Authentication.SignInViewModel, RockFests
+@masterPage Views/MasterPage.dotmaster
+
+@import RockFests.BL.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h2>{{resource: Texts.SignIn}}</h2>
+    <cc:FormGroupText Label="{value: Texts.Label_UserName}" Value="{value: UserName}" />
+    <cc:FormGroupPassword Label="{value: Texts.Label_Password}" Value="{value: Password}" />
+
+    <dot:Validator Value="{value: CredentialsError}" InvalidCssClass="has-error" ShowErrorMessageText="true" class="d-block mb-3" />
+
+    <div class="btn-container">
+        <dot:Button Text="{value: Texts.Btn_SignIn}" Click="{command: SignIn()}" Validation.Enabled="true" class="btn btn-dark" />
+    </div>
+
+</dot:Content>
+

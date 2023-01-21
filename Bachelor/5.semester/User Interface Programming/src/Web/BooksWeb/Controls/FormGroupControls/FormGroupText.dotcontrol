@@ -1,0 +1,7 @@
+﻿@viewModel System.Object, mscorlib
+@baseType BooksWeb.Controls.FormGroupControls.FormGroupText, BooksWeb
+
+<div class="form-group">
+    <dot:Validator Value="{controlProperty: Value}" ShowErrorMessageText="true" InvalidCssClass="has-error" IncludeInPage="{controlProperty: Validate}"/>
+    <dot:TextBox Text="{controlProperty: Value}" placeholder="{controlProperty: Label}" class="page-input form-control d-inline"/>
+</div>

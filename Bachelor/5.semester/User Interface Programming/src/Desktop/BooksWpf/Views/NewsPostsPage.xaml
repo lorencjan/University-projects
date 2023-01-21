@@ -1,0 +1,173 @@
+﻿<local:UserControlBase x:Class="BooksWpf.Views.NewsPostsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:command="http://www.galasoft.ch/mvvmlight"
+      xmlns:local="clr-namespace:BooksWpf.Views"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1300"
+     DataContext="{Binding Source={StaticResource ViewModelLocator}, Path=NewsPostsViewModel}">
+
+    <Grid Background="White" Margin="20">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadNewsPostsCommand}"/>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
+        <ScrollViewer>
+            <StackPanel>
+                <Grid Background="White" Margin="20" Visibility="{Binding ListVisible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button Style="{StaticResource BasicButton}" Grid.Column="1" HorizontalAlignment="Right" Command="{Binding ToggleFilterCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding FilterChevron}" Width="20px" Height="20"/>
+                            <TextBlock Text="Filtrovat" Style="{StaticResource BlackLabel}" Margin="5"/>
+                            <Image Source="{Binding FilterIcon}" Width="20px" Height="20"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Style="{StaticResource BasicButton}" Grid.Column="0" HorizontalAlignment="Left" Command="{Binding CreateNewsPostCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="{Binding NewIcon}" Width="20px" Height="20"/>
+                            <TextBlock Text="Nový" Style="{StaticResource BlackLabel}" Margin="5"/>
+                        </StackPanel>
+                    </Button>
+                    <Grid Grid.ColumnSpan="2" Grid.Row="1" Visibility="{Binding FilterVisible}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <DockPanel Grid.Row="0" Grid.ColumnSpan="2">
+                            <TextBlock Text="Nadpis" Style="{StaticResource FilterLabel}"/>
+                            <TextBox Style="{StaticResource FilterInput}" Text="{Binding HeaderFilter}" />
+                        </DockPanel>
+                        <Button  Grid.Row="1" Grid.Column="0" Style="{StaticResource ResetFilter}" Command="{Binding ResetFilterCommand}">
+                            <TextBlock Text="Resetovat filtr" Style="{StaticResource WhiteLabel}"/>
+                        </Button>
+                        <Button  Grid.Row="1" Grid.Column="1" Style="{StaticResource ApplyFilter}" Command="{Binding FilterCommand}">
+                            <TextBlock Text="Filtrovat" Style="{StaticResource WhiteLabel}"/>
+                        </Button>
+                    </Grid>
+                    <Grid HorizontalAlignment="Stretch" Grid.ColumnSpan="2" Grid.Row="2" Background="#286b0d" Height="40" Margin="0,3,0,3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Style="{StaticResource ListViewHeaderButton}" Command="{Binding SortByHeaderCommand}" Grid.Column="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" >
+                                <Image Source="{Binding HeaderSortIcon}" Width="20px" Height="20"/>
+                                <TextBlock Text="Nadpis" Style="{StaticResource WhiteLabel}"/>
+                            </StackPanel>
+                        </Button>
+                        <Label Grid.Column="0" Width="3" Margin="4" Background="White" HorizontalAlignment="Right"/>
+                        <Button Style="{StaticResource ListViewHeaderButton}" Command="{Binding SortByDateCommand}" Grid.Column="1" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <StackPanel Orientation="Horizontal" >
+                                <Image Source="{Binding DateSortIcon}" Width="20px" Height="20"/>
+                                <TextBlock Text="Datum" Style="{StaticResource WhiteLabel}"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                    <ListView ItemsSource="{Binding NewsPosts}" Grid.Row="3" Grid.ColumnSpan="2" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Button Command="{Binding Source={StaticResource ViewModelLocator}, Path=NewsPostsViewModel.SelectNewsPostCommand}" CommandParameter="{Binding Id}" Style="{StaticResource ListLine}" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Header}" Style="{StaticResource ListText}" Margin="5" Grid.Column="0" TextWrapping="Wrap"/>
+                                        <TextBlock Text="{Binding Date, StringFormat='{}{0:dd.MM.yyyy}'}" Style="{StaticResource ListText}" Grid.Column="1" />
+                                    </Grid>
+                                </Button>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Grid Grid.Row="4" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Command="{Binding PageLeftCommand}" Style="{StaticResource BasicButton}" HorizontalAlignment="Center" Grid.Column="0" >
+                                <Image Source="{Binding PageLeftIcon}" Width="20px" Height="20"/>
+                            </Button>
+                            <TextBlock Text="{Binding Pager.Page}" Style="{StaticResource ListViewHeader}" Grid.Column="1" Margin="10 0 10 0" TextAlignment="Center"/>
+                            <Button Command="{Binding PageRightCommand}"  Style="{StaticResource BasicButton}" HorizontalAlignment="Center" Grid.Column="2">
+                                <Image Source="{Binding PageRightIcon}" Width="20px" Height="20"/>
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                    <StackPanel Visibility="{Binding DetailVisible, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <!--Detail page-->
+                    <Grid Margin="10,10,10,0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Grid.ColumnSpan="2">
+                            <!--Header-->
+                            <DockPanel>
+                                <Button Style="{StaticResource DetailButton}" Command="{Binding ToggleEditNewsPostCommand}" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="{Binding EditButtonText}" Style="{StaticResource DetailButtonText}"/>
+                                        <Image Source="{Binding EditIcon}" Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Style="{StaticResource DetailButton}" Visibility ="{Binding DeleteVisible}" Command="{Binding DeleteNewsPostCommand}" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="Smazat" Style="{StaticResource DetailButtonText}"/>
+                                        <Image Source="{Binding DeleteIcon}" Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Button>
+                                <Button Style="{StaticResource DetailButton}" Visibility ="{Binding EditNewsPostVisible}" Command="{Binding SaveNewsPostCommand}" HorizontalAlignment="Right" VerticalAlignment="Top">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="Uložit" Style="{StaticResource DetailButtonText}"/>
+                                        <Image Source="{Binding SaveIcon}" Width="30" Height="30"/>
+                                    </StackPanel>
+                                </Button>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Grid.Column="0">
+                            <StackPanel Visibility="{Binding ReadNewsPostVisible}">
+                                <!--Read form-->
+                                <TextBlock Style="{StaticResource DetailHeader}" Text="{Binding DetailNewsPost.Header}"/>
+                                <TextBlock Text="{Binding DetailNewsPost.Date, StringFormat='{}{0:dd.MM.yyyy}'}" Style="{StaticResource DetailText}"  TextWrapping="Wrap" Grid.ColumnSpan="2" Grid.Row="6" Margin="10" FontWeight="SemiBold"/>
+                                <TextBlock Text="{Binding DetailNewsPost.Text}" Style="{StaticResource DetailText}"  TextWrapping="Wrap" Grid.ColumnSpan="2" Grid.Row="6" Margin="10"/>
+                            </StackPanel>
+                            <StackPanel Visibility="{Binding EditNewsPostVisible}" >
+                                <!--Edit form-->
+                                <TextBox Style="{StaticResource EditDetailHeader}" Text="{Binding DetailNewsPost.Header}"/>
+                                <DatePicker SelectedDate="{Binding Date}"  Grid.Column="1" Grid.Row="1" Margin="10"/>
+                                <TextBox Text="{Binding DetailNewsPost.Text}" Style="{StaticResource EditDetailText}"  TextWrapping="Wrap" Grid.ColumnSpan="2" Grid.Row="6" Margin="10"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
+    </Grid>
+</local:UserControlBase>

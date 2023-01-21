@@ -1,0 +1,20 @@
+﻿@viewModel System.Object, mscorlib
+@baseType RockFests.Controls.DashboardFestival, RockFests
+@import RockFests.BL.Resources
+
+<div class="m-3 shadow-sm" style="min-width: 300px;">
+    <h2 class="d-block bg-dark mb-0 p-3" style="color:white; font-size:20px;">{{controlProperty: Header}}</h2>
+    <div DataContext="{controlProperty: Festival}" class="p-3" IncludeInPage="{value: Id > 0}">
+        <cc:FormGroupDisplay Label="{value: Texts.Label_Name}" Value="{value: Name}" />
+        <cc:FormGroupDisplay Label="{value: Texts.Label_Start}" Value="{value: Date.Start}" />
+        <cc:FormGroupDisplay Label="{value: Texts.Label_End}" Value="{value: Date.End}" />
+        <cc:FormGroupDisplay Label="{value: Texts.Label_Location}" Value="{value: Location}" />
+        <cc:FormGroupDisplay Label="{value: Texts.Label_Price}" Value="{value: Price + " " + Currency}" />
+        <div class="d-flex justify-content-end mt-4">
+            <dot:RouteLink RouteName="{resource: Routes.Festivals_Detail}" Param-Id={value: Id} class="btn btn-outline-dark">
+                <span class="fa fa-eye mr-2"></span>{{value: Texts.Btn_Detail}}
+            </dot:RouteLink>
+        </div>
+    </div>
+    <dot:Literal Text="{controlProperty: EmptyText}" class="d-block p-3 small" IncludeInPage="{value: _control.Festival.Id == 0}" />
+</div>

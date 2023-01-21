@@ -1,0 +1,4 @@
+xloren15 105 (matematická knihovna, unit testy)
+xkalab11 105 (GUI, logika programu)
+xstane45 100 (profiling, technická dokumentace)
+xhrani01 90 (uživatelská dokumentace, makefile, intalátor)

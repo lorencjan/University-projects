@@ -1,0 +1,84 @@
+﻿@page "/Risks"
+@inject RiskService riskService
+@inject NavigationManager NavigationManager
+
+<AuthorizeView Context="Auth">
+    @if (RiskList is null)
+    {
+        <p>
+            <em>Loading...</em>
+        </p>
+    }
+    else
+    {
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-10">
+                    <h1>Risks</h1>
+                </div>
+                <div class="col-md-2 d-flex justify-content-end">
+                    <span>
+                        <button class="btn btn-primary" @onclick="() => OnAddClicked()">Add new</button>
+                    </span>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row">
+                <div class="container">
+
+                    <BlazmGrid Data="RiskList" PageSize="10" Sortable="true">
+                        <GridColumns>
+                            @* <GridColumn Field="@nameof(RiskEntity.Id)"></GridColumn> *@
+                            <GridColumn Field="@nameof(RiskEntity.CustomId)" Title="Id"></GridColumn>
+                            <GridColumn Field="@nameof(RiskEntity.Name)" CanFilter="true"></GridColumn>
+                            <GridColumn Field="@nameof(RiskEntity.Category)" CanFilter="true"></GridColumn>
+                            <GridColumn Field="@nameof(RiskEntity.Probability)" Format="{0:d}"></GridColumn>
+                            <GridColumn Field="@nameof(RiskEntity.Consequences)" Format="{0:d}"></GridColumn>
+                            <GridColumn Field="@nameof(RiskEntity.RiskEvaluation)"></GridColumn>
+                            <GridColumn>
+                                <Template>
+                                    <div class="d-flex justify-content-end">
+                                        <button class="btn btn-primary" @onclick="() => OnDetailClicked(context as RiskEntity)">Detail</button>
+                                        <button class="btn btn-danger m-lg-1" @onclick="() => OnDeleteClicked(context as RiskEntity)">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </div>
+                                </Template>
+                            </GridColumn>
+                        </GridColumns>
+                    </BlazmGrid>
+
+                </div>
+            </div>
+        </div>
+    }
+</AuthorizeView>
+
+@code {
+    private List<RiskEntity> RiskList;
+    private RiskEntity Risk;
+
+    private void OnDetailClicked(RiskEntity context)
+    {
+        NavigationManager.NavigateTo($"Risk/{context.Id}");
+
+    }
+    private void OnDeleteClicked(RiskEntity context)
+    {
+        NavigationManager.NavigateTo($"Delete/{context.Id}");
+
+    }
+    private void OnAddClicked()
+    {
+        NavigationManager.NavigateTo("AddRisk");
+
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        RiskList = await riskService.GetAllRisksAsync();
+
+    }
+}

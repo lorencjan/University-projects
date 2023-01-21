@@ -1,0 +1,22 @@
+﻿@viewModel BooksWeb.ViewModels.HomeViewModel, BooksWeb
+@masterPage Views/MasterPage.dotmaster
+@import BooksWeb.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <dot:Repeater DataSource="{value: NewsPosts}">
+        <ItemTemplate>
+            <div class="news-post shadow m-3">
+                <div class="news-header d-flex justify-content-between align-items-baseline fancyfont text-white font-weight-bolder">
+                    <dot:Literal Text="{value: Header}" style="font-size: larger;"/>
+                    <dot:Literal Text="{value: Date}" />
+                </div>
+                <div class="news-text p-2">
+                    <dot:Literal Text="{value: Text}" />
+                </div>
+            </div>
+        </ItemTemplate>
+    </dot:Repeater>
+
+</dot:Content>
+

@@ -1,0 +1,26 @@
+﻿@viewModel BooksWeb.ViewModels.Authentication.ProfileViewModel, BooksWeb
+@masterPage Views/MasterPage.dotmaster
+@import BooksWeb.Resources
+
+<dot:Content ContentPlaceHolderID="MainContent">
+
+    <h2 class="fancyfont dark-green font-weight-bold text-center" style="font-size: 3rem;">{{resource: Texts.EditProfile}}</h2>
+
+    <h3 class="mt-5 fancyfont dark-green font-weight-bold text-center">{{resource: Texts.ChangePassword}}</h3>
+    <div class="text-center">
+        <div class="alert alert-danger d-inline-block" style="border: none; padding: 0px;" Visible="{value: PasswordsDontMatch}">
+            <dot:Validator Value="{value: PasswordsDontMatch}" InvalidCssClass="has-error-alert" ShowErrorMessageText="true" class="d-block" />
+        </div>
+    </div>
+    <div class="mr-auto ml-auto normal-green" style="max-width: 400px;">
+        <dot:Literal Text="{resource: Texts.NewPassword}" />
+        <cc:FormGroupPassword Label="{resource: Texts.NewPassword}" Value="{value: NewPassword}" />
+        <dot:Literal Text="{resource: Texts.NewPasswordConfirm}" />
+        <cc:FormGroupPassword Label="{resource: Texts.NewPasswordConfirm}" Value="{value: NewPasswordConfirm}" />
+        <div class="text-right">
+            <dot:Button ButtonTagName="button" class="btn btn-outline" Click="{command: ChangePassword()}" Validation.Enabled="true" Text="{value: Texts.ChangePassword}" />
+        </div>
+    </div>
+
+</dot:Content>
+

@@ -1,0 +1,46 @@
+﻿<local:UserControlBase x:Class="MovieDatabase.App.Views.NavBar"
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                       xmlns:local="clr-namespace:MovieDatabase.App.Views"
+                       mc:Ignorable="d">
+    <Grid Height="50px" Background="DarkBlue">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Style="{StaticResource NavBarBtnBorder}">
+            <Button Command="{Binding GoHomeCommand, Mode=OneWay}" Style="{StaticResource NavBarBtn}">
+                <Image Width="28px" Source="{Binding HomeIcon}"/>
+            </Button>
+        </Border>
+        <Border Grid.Column="1" Style="{StaticResource NavBarBtnBorder}">
+            <Button Command="{Binding GoToMoviesCommand, Mode=OneWay}" Style="{StaticResource NavBarBtn}" Content="Movies" />
+        </Border>
+        <Border Grid.Column="2" Style="{StaticResource NavBarBtnBorder}">
+            <Button Command="{Binding GoToPeopleCommand, Mode=OneWay}" Style="{StaticResource NavBarBtn}" Content="People"/>
+        </Border>
+        <Border Grid.Column="3" Style="{StaticResource NavBarBtnBorder}"/>
+        <Grid Grid.Column="3" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="1" Grid.Column="1" Padding="2, 4" Text="{Binding Filter, UpdateSourceTrigger=PropertyChanged}"/>
+            <Button Grid.Row="1" Grid.Column="2" Style="{StaticResource SearchBtn}" Command="{Binding SearchCommand}">
+                <Image Width="28px" Source="{Binding SearchIcon}"/>
+            </Button>
+        </Grid>
+    </Grid>
+</local:UserControlBase>

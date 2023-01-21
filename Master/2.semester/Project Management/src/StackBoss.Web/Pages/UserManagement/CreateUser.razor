@@ -1,0 +1,90 @@
+﻿@page "/CreateUser"
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+@inject NavigationManager NavigationManager
+
+
+<AuthorizeView Roles="Admin">
+<Authorized Context="Auth">
+<div class="container">
+<div class="card">
+    <h4 class="card-header">Create User</h4>
+    <div class="card-body">
+        <EditForm Model="@User" OnValidSubmit="OnValidSubmit">
+            <DataAnnotationsValidator />
+            <div class="form-group">
+                <label>Email</label>
+                <InputText @bind-Value="User.Username" class="form-control" />
+                <ValidationMessage For="@(() => User.Username)" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <InputText @bind-Value="User.Password" type="password" class="form-control" />
+                <ValidationMessage For="@(() => User.Password)" />
+            </div>
+              <div class="form-group">
+                <label>Project Manager Role:
+                <InputCheckbox @bind-Value="IsProjectManagerRole" />
+                </label>
+                 </div>
+              <div class="form-group">
+                <label>Project Director Role:
+                <InputCheckbox @bind-Value="IsProjectDirectorRole"  />
+                </label>
+             </div>
+           
+
+            <button type="submit" class="btn btn-primary" >
+                Register
+            </button>
+            <NavLink href="UserManagement" class="btn btn-link">Cancel</NavLink>
+        </EditForm>
+    </div>
+</div>
+</div>
+@if(IsError)
+{
+    <h3 style="color:red;">User already exists!</h3>
+
+}
+</Authorized>
+<NotAuthorized>
+    <h3>Please login as Administrator!</h3>
+</NotAuthorized>
+</AuthorizeView>
+@code {
+    private bool IsError;
+     
+    private bool IsProjectManagerRole { get; set; }
+    private bool IsProjectDirectorRole {get;set;}
+    private UserRegisterModel User = new UserRegisterModel();
+    private List<string> RoleList = new List<string> {"Admin","ProjectManager","ProjectDirector"};
+   
+    private async Task OnValidSubmit()
+    {
+        var usr = await UserManager.FindByEmailAsync(User.Username);
+        if (usr == null)
+        {
+            IdentityUser user = new IdentityUser
+            {
+                UserName = User.Username,
+                Email = User.Username
+            };
+
+            IdentityResult result = await UserManager.CreateAsync(user, User.Password);
+
+            if (result.Succeeded)
+            {
+                if(IsProjectManagerRole) await UserManager.AddToRoleAsync(user, "ProjectManager");
+                if(IsProjectDirectorRole) await UserManager.AddToRoleAsync(user, "ProjectDirector");
+                NavigationManager.NavigateTo("/UserManagement");
+            }
+        }
+        else
+        {
+            IsError = true;
+        }
+    }
+}

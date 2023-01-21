@@ -1,0 +1,7 @@
+# Pig
+Skript pracuje s daty od roku 1995 a seskupuje hráče s týmy a počítá průměrný a celkový počet odehraných utkání. Vrací pouze ty s průměrem vyšším než 10.
+
+Výstupem jsou tedy záznamy všech hráčů (playerID) a jejich týmů (teamID), kteří od roku 1995 odehráli v daném týmu ročně v průměru alespoň 10 zápasů. Pro každou dvojici je na výstupu i daný průměr (avgGames) a celkový počet zápasů za daný tým (sumGames). Formát je CSV.
+
+# MapReduce
+Výstupní data jsou stejná jako u Pig skriptu, pouze formát se liší. Jsou seřazeny abecedně dle klíče "{playerID},{teamID}" od něhož je tabulátorem oddělena dvojice (avgGames:double,sumGames:int).
