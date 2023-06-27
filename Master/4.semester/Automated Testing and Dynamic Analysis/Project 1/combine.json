@@ -1,0 +1,65 @@
+{
+  "name": "Cart management",
+  "t_strength": "2",
+  "dont_care_values": "no",
+  "values": "values",
+  "parameters": [
+    {
+      "identificator": "C_slots",
+      "type": "integer",
+      "blocks": [
+        "C_slots = 1",
+        "C_slots = 2",
+        "C_slots = 3",
+        "C_slots = 4"
+      ]
+    },
+    {
+      "identificator": "C_load_capacity",
+      "type": "integer",
+      "blocks": [
+        "C_load_capacity = 50",
+        "C_load_capacity = 150",
+        "C_load_capacity = 500"
+      ]
+    },
+    {
+      "identificator": "C_current_cart_weight",
+      "type": "boolean",
+      "blocks": [
+        false,
+        true
+      ]
+    },
+    {
+      "identificator": "C_weight",
+      "type": "boolean",
+      "blocks": [
+        false,
+        true
+      ]
+    },
+    {
+      "identificator": "C_when",
+      "type": "enum",
+      "blocks": [
+        "C_when = now",
+        "C_when = future"
+      ]
+    },
+    {
+      "identificator": "C_path",
+      "type": "boolean",
+      "blocks": [
+        false,
+        true
+      ]
+    }
+  ],
+  "constraints": [
+    "C_load_capacity.1 -> !C_slots.1",
+    "C_load_capacity.3 -> !C_slots.3",
+    "C_load_capacity.3 -> !C_slots.4",
+    "C_current_cart_weight.1 -> !C_weight.2"
+  ]
+}

@@ -1,0 +1,34 @@
+9a10,18
+> class CannotProcessRequestException(Exception):
+>     """ If cart knows it cannot process request. It refuses via this exception.
+>         In reality there would be just some message back and the factory would
+>         send the request to another cart, but for our scenario just simply fail.
+>     """
+> 
+> class PriorityTimeExceededException(Exception):
+>     """ If priority request is not loaded in 1 min after setting priority property, fail with this exception. """
+> 
+31a41,51
+> 
+>         # the specification was modified to refuse requests if the cart cannot process them ... this is it
+>         # I realise there can be much more complex check as e.g. a slot can be freed in the future
+>         # before the cart would actually load so all could work out well
+>         # but as this is not the objective of the project I guess it is ok to assume just the current time
+>         # (if cannot load under current conditions -> fail, otherwise let it enqueue)
+>         no_free_slots = self.cart.get_free_slot() == -1
+>         free_cap = self.cart.load_capacity - self.cart.load_sum()
+>         if no_free_slots or free_cap < new_cargo.weight or self.status == Status.UnloadOnly:
+>             raise CannotProcessRequestException()            
+> 
+139c159
+<         "remove normal request if it is too big or prioritized request if it waits too long."
+---
+>         "raise exceptions if normal request is too big or prioritized request waits too long."
+144c164
+<                 self.requests.remove(cargo_req)
+---
+>                 raise PriorityTimeExceededException()
+146c166
+<                 self.requests.remove(cargo_req)
+---
+>                 raise CannotProcessRequestException()

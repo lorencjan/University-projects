@@ -1,0 +1,7 @@
+digraph track {
+  A -> B [label="20"];
+  B -> A [label="30"];
+  B -> C [label="20"];
+  C -> D [label="20"];
+  D -> A [label="10"];
+}

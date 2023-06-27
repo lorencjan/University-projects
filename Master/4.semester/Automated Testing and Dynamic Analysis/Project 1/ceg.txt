@@ -1,0 +1,86 @@
+Causes:
+
+T1: Before transport request accepted               // timespan before any action ... a request can be refused and still nothing
+T2: First minute after transport request accepted   // timespan for normal material to load
+T3: Second minute after transport request accepted  // timespan for priority material to load
+T4: Too long after transport request                // priority material load timeouts
+
+1: Create a transport request            // initiate transport .... request might get refuse
+2: Accept a transport request            // receive and accept a request ... refusal due to slots etc won't make it here
+3: Mark material with priority property  // 1 minute expires ... material has priority 
+
+4: Load normal material
+5: Load priority material
+
+// requirements for accepting a request
+6: A slot available
+7: Maximum weight not exceeded
+8: Unload_Only state is not selected
+9: Can Load
+
+
+Effects:
+R1: Transport request in progress
+
+P1: Priority property is set
+P2: State switched to Unload_Only
+
+L1: Normal material loaded
+L2: Priority material loaded
+
+N1: No more weight can be loaded
+
+EXC: Throw timeout exception
+
+
+Rules:
+R1 = 1 && 2 && 9
+
+P1 = 3
+P2 = T3 && 5
+
+L1 = T2 && 1 && 2 && 4 && 9
+L2 = T3 && 1 && 3 && 5 && 9
+
+N1 = !9
+
+EXC = T4
+
+Constraints:
+// only 1 time span is active
+O: T1, T2, T3, T4
+
+// can load aka would accept request if slots are free, weight does not exceed and is not unload only state
+9 -> 6
+9 -> 7
+9 -> 8
+// cart must be available for a request to pass
+2 -> 9
+// remove unneccesary 6,7,8 combinations for no request
+I: 1, 9
+
+// request must exist if it passed
+2 -> 1
+
+// in all request active time spans the request must have been made
+T2 -> 2
+T3 -> 2
+T4 -> 2
+
+// once a request is accepted, transport time changes
+E: T1, 2
+
+// only 1 typy of material can be loaded
+E: 4, 5
+
+// load only in appropriate time interval
+4 -> T2
+5 -> T3
+
+// if priority time, set priority property ... goes both ways
+T3 -> 3
+// same goes both ways, but the priority property is set in both T3 and T4
+E: T1, 3
+E: T2, 3
+// but if exception, the priority property is expected
+T4 -> 3

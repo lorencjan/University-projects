@@ -1,0 +1,51 @@
+10 requesting A B helmet 20
+10 loading A helmet 20 0
+12 loaded A helmet
+12 idle A
+12 moving A B
+25 requesting D C braceletR 140
+30 requesting D C braceletL 40
+32 moved to B
+32 idle B
+32 unloading_init B
+32 unloading B helmet 20 0
+34 unloaded B helmet
+34 idle B
+34 unloading_finished B helmet
+34 moving B C
+45 requesting C A heart 40
+54 moved to C
+54 idle C
+54 loading C heart 40 0
+56 loaded C heart
+56 idle C
+56 moving C D
+76 moved to D
+76 idle D
+76 loading D braceletL 40 1
+78 loaded D braceletL
+78 idle D
+78 moving D A
+88 moved to A
+88 idle A
+88 unloading_init A
+88 unloading A heart 40 0
+90 unloaded A heart
+90 idle A
+90 unloading_finished A heart
+90 moving A B
+110 moved to B
+110 idle B
+110 moving B C
+130 moved to C
+130 idle C
+130 unloading_init C
+130 unloading C braceletL 40 1
+132 unloaded C braceletL
+132 idle C
+132 unloading_finished C braceletL
+132 moving C D
+152 moved to D
+152 idle D
+152 stop
+152 Cart(pos=D, Status.Idle, data=None, maxload=150, slots=['None', 'None', 'None', 'None'])

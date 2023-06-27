@@ -1,0 +1,13 @@
+10 requesting A B helmet 20
+10 requesting A B braceletR 40
+10 loading A helmet 20 0
+12 idle A
+12 loading A braceletR 40 0
+14 idle A
+14 moving A B
+34 idle B
+34 unloading B helmet 20 0
+36 idle B
+36 unloading B bracelerR 40 0
+38 idle B
+38 stop

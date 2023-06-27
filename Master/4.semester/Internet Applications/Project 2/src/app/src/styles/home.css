@@ -1,0 +1,15 @@
+.home {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-top: 60px;
+}
+
+.home > div {
+    width: 650px;
+}
+
+.home > div > img {
+    width: 500px;
+    margin-top: 20px;
+}

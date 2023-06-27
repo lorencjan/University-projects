@@ -1,0 +1,8 @@
+.page-404 {
+    text-align: center;
+    padding-top: 60px;
+}
+
+.page-404 > div {
+    width: 600px;
+}

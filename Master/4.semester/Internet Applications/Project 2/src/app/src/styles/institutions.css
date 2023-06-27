@@ -1,0 +1,9 @@
+.institution-filter {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.institution-filter > .MuiAutocomplete-root {
+    min-width: 250px;
+}

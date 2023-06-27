@@ -1,0 +1,29 @@
+{
+    "name": "iterate_properties",
+    "version": "1.0.0",
+    "description": "This package.json file is not required for the iterate.mjs module. It's just for setting up jest unit tests (install, config, run)",
+    "main": "iterate.mjs",
+    "scripts": {
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --max-workers 1",
+        "doc": "./node_modules/.bin/jsdoc -c jsdoc.config.json -d doc --readme README.md iterate.mjs",
+        "install-test": "npm install jest@29.4.2",
+        "install-doc": "npm install jsdoc@4.0.0"
+    },
+    "keywords": [
+        "WAP",
+        "Internet Applications",
+        "Brno University of Technology"
+    ],
+    "author": "Jan Lorenc",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^29.4.2",
+        "jsdoc": "^4.0.0"
+    },
+    "jest": {
+        "transform": {},
+        "testMatch": [
+            "**/__test__/*.[m]js"
+        ]
+    }
+}

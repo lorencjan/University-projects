@@ -134,3 +134,13 @@
   - Project on distributed computing (map-reduce - hadoop, spark)
 * Soft Computing
   - Project was to implement and neural network library from scratch and use it to train a model for a practical prediction task
+
+#### 4.semester
+* Internet Applications
+  - Simple project concerning JS prototype chain
+  - Data visualisation of car accidents in React
+* Automated Testing and Dynamic Analysis
+  - Test design project using CEG and combinatory testing
+  - Automata test coverage project
+* Master's Thesis
+  - I had a practical assignment from company Y Soft focusing on keyboard and keys image recognition.

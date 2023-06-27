@@ -1,0 +1,18 @@
+.date-range-picker {
+    display: flex;
+    justify-content: left;
+}
+
+    .date-range-picker > .date-range-picker-separator { 
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-inline: 15px;
+        margin-bottom: 2pt;
+    }
+
+    .date-range-picker > .date-range-picker-separator > div {
+        height: 1pt;
+        width: 20px;
+        background-color: #B8B8B8
+    }
