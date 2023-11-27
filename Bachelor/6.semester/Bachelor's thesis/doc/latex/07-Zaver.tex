@@ -1,0 +1,14 @@
+\chapter*{Závěr}
+\addcontentsline{toc}{chapter}{Závěr} 
+
+Práce představila robotický systém RQA pro~automatizaci testování zařízení a vysvětlila nutnost detekce anomálií v~požadavcích na~mikroslužby, jež tento systém tvoří. Anomálie se konkrétně hledaly mezi délkami zpracování jednotlivých požadavků a v~jejich chybovosti.
+
+Byl navržen a implementován sběr dat potřebných pro~detekci anomálií. Data jsou zaznamenávána pomocí mechanismu middleware a ukládána formou logů v~centrálním logovacím systému Graylog. Logy nesou identifikační údaje, jimiž jsou časové razítko, jméno cílové služby a její obslužné rutiny. Dále obsahují samotné údaje pro~detekci, tedy úroveň závažnosti pro~určení chyby a délku zpracování požadavku, jedná-li se o~log oznamující konec požadavku. Z~Graylogu jsou data stahována a transformována do~formátu CSV, jenž se ukládá na straně aplikace provádějící jejich následnou analýzu.
+
+Byla provedena rešerše algoritmů strojového učení bez učitele pro~detekci anomálií se~zaměřením na~shlukovou analýzu. Práce pro~úplnost popisuje představitele všech základních kategorií shlukových algoritmů navzdory tomu, že některé kategorie jako takové nejsou vhodné pro~zadaný úkol. Mimo shlukovou analýzu práce představuje i zástupce rozhodovacích stromů nebo statistických metod.
+
+Anomálie v~délkách zpracování požadavků se definovala jako shluk outlierů, a~proto jejich detekce probíhá ve~dvou průchodech. V~prvním se oddělí platná data od~outlierů kombinací shlukového algoritmu založeném na~hustotě DBSCAN a statistické metody modifikovaného z-skóre. V~druhém průchodu se nalezené outliery shlukují algoritmy DBSCAN či HDBSCAN opět s~pomocí modifikovaného z-skóre. Detekce je proveditelná jak na~samostatných datech, tak lze i platná data předchozích detekcí použít jako referenční dataset pro~následné detekce.
+
+Analýza chybových požadavků již nevyužívá strojové učení, nýbrž pouze statisticky porovnává poměry počtů chyb během požadavků mezi referenčními a nově příchozími daty. Za~anomálii je prohlášen stav, kdy se tyto poměry liší o~více než stanovenou mez.
+
+Výsledné řešení odpovídá požadavkům firmy Y~Soft na~detekci anomálií v~RQA. Dokáže pracovat nad~různými typy požadavků služeb s~odlišnými vlastnostmi a navzdory této obecnosti velmi úspěšně. Dalším postupem bude jeho integrace do~systému RQA, monitorování výsledků detekce v~reálném provozu a ladění parametrů použitých algoritmů pro~ještě další zpřesnění.

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>YSoft.Rqa.AnomalyDetection.Metrics</RootNamespace>
+    <IsPackable>true</IsPackable>
+    <PackageId>YSoft.Rqa.AnomalyDetection.Metrics</PackageId>
+    <Description>Contains components meassuring metrics for YSoft's RQA AnomalyDetection.</Description>
+    <Authors>Y Soft Corporation,a.s., RQA, Jan Lorenc</Authors>
+    <PackageTags>YSoft RQA AnomalyDetection Metrics</PackageTags>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.10" />
+  </ItemGroup>
+
+</Project>

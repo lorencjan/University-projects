@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>YSoft.Rqa.AnomalyDetection.Data</RootNamespace>
+    <IsPackable>true</IsPackable>
+    <PackageId>YSoft.Rqa.AnomalyDetection.Data</PackageId>
+    <Description>Contains components for handling data manipulation in Y Soft's RQA Anomaly Detection.</Description>
+    <Authors>Y Soft Corporation,a.s., RQA, Jan Lorenc</Authors>
+    <PackageTags>YSoft RQA AnomalyDetection Data</PackageTags>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="15.0.8" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.10" />
+  </ItemGroup>
+
+</Project>

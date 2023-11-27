@@ -1,0 +1,16 @@
+\chapter{Úvod}
+\label{uvod}
+
+Detekce anomálií je v~dnešním světě stále více používaná aplikace umělé inteligence. Jedná se o~identifikaci vzorů či položek, jež se výrazně liší od většiny v~konkrétní kolekci dat. Tyto poté typicky signalizují nějakou vadu nebo problém. Z~tohoto důvodu ji lze aplikovat téměř v~každém odvětví, neboť jen málokde lze podezřelá a vyčnívající data považovat za~zanedbatelná. Mezi časté případy užití lze uvést například odhalování finančních podvodů, závad ve~výrobě, hackerských útoků na systémy či jiných podezřelých aktivit v~síti.
+
+K~běžným aplikacím však také patří monitorování stavu nějakého systému za~účelem zlepšení jeho kvality a výkonu. O~tento případ se jedná i v~systému RQA (Robotic Quality Assurance) firmy Y~Soft, který představuje kapitola~\ref{rqa}. Systém je založen na architektuře mikroslužeb, což znamená, že neustále probíhá velký počet volání různých služeb. O~průběhu vykonání požadavků na služby však nelze v aktuálním stavu RQA téměř nic zjistit. Neexistuje v tomto ohledu žádná zpětná vazba o chodu systému. Je proto velmi obtížné odhalit, zda určitým službám netrvá zpracování požadavků neobvyklou dobu nebo negenerují nezvyklé množství chyb. To v důsledku ztěžuje údržbu systému a snižuje jeho kvalitu.
+
+Tato práce se absencí sledování požadavků na~služby v~RQA zabývá. Definuje, jaká data vypovídají o~stavu systému. Do~RQA zavádí pasivní monitorování příchozích požadavků a chyb v~nich formou jednotného logování. Dále přináší způsob získání dat z~logovacího systému Graylog. Hlavním přínosem je pak analýza těchto dat za~účelem detekce anomálií v~délkách zpracování požadavků a chybovosti systému. Výsledky analýzy lze využít mnoha způsoby. Jedním je nalezení chyb v~systému, které by jinak byly jen těžko odhalitelné. Dalším je například optimalizace rychlosti služeb na~základě znalostí délek zpracování jejich požadavků. Dále umožní sbírat statistiky o~stavu systému.
+
+O~tom, jak se data v~systému RQA sbírají, pojednává kapitola~\ref{sber-dat}. Zaměřuje se na~konkrétní metriky vypovídající o~stavu systému. Zabývá se zaznamenáním těchto údajů do~centrálního logovacího systému Graylog, jenž RQA využívá k~ukládání logů. Následně navrhuje způsob jejich stažení z~Graylogu a transformaci do~vhodného formátu pro~detekční algoritmy.
+
+Souhrn běžně používaných algoritmů pro~detekci anomálií je popsán v~kapitole~\ref{ml-algoritmy}. V~ní je představeno velké množství algoritmů zejména z~oblasti shlukové analýzy. Dále ukazuje možnosti využití statistiky pro~danou úlohu. Na~závěr popisuje i zástupce rozhodovacích stromů.
+
+Návrh a implementaci detekce anomálií pro~RQA předkládá kapitola~\ref{navrh-ai}. Kapitola začíná definicí anomálie v RQA a popisem dat, nad nimiž je analýza prováděna. Následně se zaměřuje na návrh detekce anomálií v délkách zpracování požadavků, což je hlavní úlohou této práce. Poté vysvětluje, jakým způsobem se anomálie detekují mezi chybami v průběhu požadavků. Ke konci kapitoly je popsána implementace řešení a princip čištění referenčního datasetu pro~detekci anomálií.
+
+Práci uzavírá kapitola~\ref{testovani-a-vyhodnoceni} o~testování výsledného řešení. Popisuje dva způsoby prováděných testování a vyhodnocuje jejich výsledky. V~rámci vyhodnocení je diskutováno i splnění požadavků firmy Y~Soft.

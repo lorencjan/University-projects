@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>YSoft.Rqa.AnomalyDetection.Application</RootNamespace>
+    <IsPackable>true</IsPackable>
+    <PackageId>YSoft.Rqa.AnomalyDetection.Application</PackageId>
+    <Description>Contains components for detecting anomalies in YSoft's RQA.</Description>
+    <Authors>Y Soft Corporation,a.s., RQA, Jan Lorenc</Authors>
+    <PackageTags>YSoft RQA AnomalyDetection Application</PackageTags>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <UserSecretsId>7ce1a551-9b33-4904-8125-43a0e25c9f61</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;1591</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DBSCAN" Version="2.0.12" />
+    <PackageReference Include="DBSCAN.RBush" Version="2.0.12" />
+    <PackageReference Include="HdbscanSharp" Version="1.0.16" />
+    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+    <PackageReference Include="Microsoft.Data.Analysis" Version="0.4.0" />
+    <PackageReference Include="morelinq" Version="3.3.2" />
+    <PackageReference Include="XPlot.Plotly" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnomalyDetection.Data\AnomalyDetection.Data.csproj" />
+  </ItemGroup>
+
+</Project>
