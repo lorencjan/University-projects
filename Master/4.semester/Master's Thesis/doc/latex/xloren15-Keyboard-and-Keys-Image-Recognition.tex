@@ -1,0 +1,331 @@
+%==============================================================================
+% tento soubor pouzijte jako zaklad
+% this file should be used as a base for the thesis
+% Autoři / Authors: 2008 Michal Bidlo, 2019 Jaroslav Dytrych
+% Kontakt pro dotazy a připomínky: sablona@fit.vutbr.cz
+% Contact for questions and comments: sablona@fit.vutbr.cz
+%==============================================================================
+% kodovani: UTF-8 (zmena prikazem iconv, recode nebo cstocs)
+% encoding: UTF-8 (you can change it by command iconv, recode or cstocs)
+%------------------------------------------------------------------------------
+% zpracování / processing: make, make pdf, make clean
+%==============================================================================
+% Soubory, které je nutné upravit nebo smazat: / Files which have to be edited or deleted:
+%   projekt-20-literatura-bibliography.bib - literatura / bibliography
+%   projekt-01-kapitoly-chapters.tex - obsah práce / the thesis content
+%   projekt-01-kapitoly-chapters-en.tex - obsah práce v angličtině / the thesis content in English
+%   projekt-30-prilohy-appendices.tex - přílohy / appendices
+%   projekt-30-prilohy-appendices-en.tex - přílohy v angličtině / appendices in English
+%==============================================================================
+%\documentclass[]{fitthesis} % bez zadání - pro začátek práce, aby nebyl problém s překladem
+%\documentclass[english]{fitthesis} % without assignment - for the work start to avoid compilation problem
+%\documentclass[zadani]{fitthesis} % odevzdani do wisu a/nebo tisk s barevnými odkazy - odkazy jsou barevné
+%\documentclass[zadani,twoside]{fitthesis}
+\documentclass[english,zadani]{fitthesis} % for submission to the IS FIT and/or print with color links - links are color
+%\documentclass[zadani,print]{fitthesis} % pro černobílý tisk - odkazy jsou černé
+%\documentclass[english,zadani,print]{fitthesis} % for the black and white print - links are black
+%\documentclass[zadani,cprint]{fitthesis} % pro barevný tisk - odkazy jsou černé, znak VUT barevný
+%\documentclass[english,zadani,cprint]{fitthesis} % for the print - links are black, logo is color
+% * Je-li práce psaná v anglickém jazyce, je zapotřebí u třídy použít 
+%   parametr english následovně:
+%   If thesis is written in English, it is necessary to use 
+%   parameter english as follows:
+%      \documentclass[english]{fitthesis}
+% * Je-li práce psaná ve slovenském jazyce, je zapotřebí u třídy použít 
+%   parametr slovak následovně:
+%   If the work is written in the Slovak language, it is necessary 
+%   to use parameter slovak as follows:
+%      \documentclass[slovak]{fitthesis}
+% * Je-li práce psaná v anglickém jazyce se slovenským abstraktem apod., 
+%   je zapotřebí u třídy použít parametry english a enslovak následovně:
+%   If the work is written in English with the Slovak abstract, etc., 
+%   it is necessary to use parameters english and enslovak as follows:
+%      \documentclass[english,enslovak]{fitthesis}
+
+% Základní balíčky jsou dole v souboru šablony fitthesis.cls
+% Basic packages are at the bottom of template file fitthesis.cls
+% zde můžeme vložit vlastní balíčky / you can place own packages here
+
+% Kompilace po částech (rychlejší, ale v náhledu nemusí být vše aktuální)
+% Compilation piecewise (faster, but not all parts in preview will be up-to-date)
+% \usepackage{subfiles}
+
+% Nastavení cesty k obrázkům
+% Setting of a path to the pictures
+%\graphicspath{{obrazky-figures/}{./obrazky-figures/}}
+%\graphicspath{{obrazky-figures/}{../obrazky-figures/}}
+
+%---rm---------------
+\renewcommand{\rmdefault}{lmr}%zavede Latin Modern Roman jako rm / set Latin Modern Roman as rm
+%---sf---------------
+\renewcommand{\sfdefault}{qhv}%zavede TeX Gyre Heros jako sf
+%---tt------------
+\renewcommand{\ttdefault}{lmtt}% zavede Latin Modern tt jako tt
+
+% vypne funkci šablony, která automaticky nahrazuje uvozovky,
+% aby nebyly prováděny nevhodné náhrady v popisech API apod.
+% disables function of the template which replaces quotation marks
+% to avoid unnecessary replacements in the API descriptions etc.
+\csdoublequotesoff
+
+
+
+\usepackage{url}
+\usepackage{dirtytalk}
+
+% =======================================================================
+% balíček "hyperref" vytváří klikací odkazy v pdf, pokud tedy použijeme pdflatex
+% problém je, že balíček hyperref musí být uveden jako poslední, takže nemůže
+% být v šabloně
+% "hyperref" package create clickable links in pdf if you are using pdflatex.
+% Problem is that this package have to be introduced as the last one so it 
+% can not be placed in the template file.
+\ifWis
+\ifx\pdfoutput\undefined % nejedeme pod pdflatexem / we are not using pdflatex
+\else
+  \usepackage{color}
+  \usepackage[unicode,colorlinks,hyperindex,plainpages=false,pdftex]{hyperref}
+  \definecolor{hrcolor-ref}{RGB}{223,52,30}
+  \definecolor{hrcolor-cite}{HTML}{2F8F00}
+  \definecolor{hrcolor-urls}{HTML}{092EAB}
+  \hypersetup{
+	linkcolor=hrcolor-ref,
+	citecolor=hrcolor-cite,
+	filecolor=magenta,
+	urlcolor=hrcolor-urls
+  }
+  \def\pdfBorderAttrs{/Border [0 0 0] }  % bez okrajů kolem odkazů / without margins around links
+  \pdfcompresslevel=9
+\fi
+\else % pro tisk budou odkazy, na které se dá klikat, černé / for the print clickable links will be black
+\ifx\pdfoutput\undefined % nejedeme pod pdflatexem / we are not using pdflatex
+\else
+  \usepackage{color}
+  \usepackage[unicode,colorlinks,hyperindex,plainpages=false,pdftex,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+  \definecolor{links}{rgb}{0,0,0}
+  \definecolor{anchors}{rgb}{0,0,0}
+  \def\AnchorColor{anchors}
+  \def\LinkColor{links}
+  \def\pdfBorderAttrs{/Border [0 0 0] } % bez okrajů kolem odkazů / without margins around links
+  \pdfcompresslevel=9
+\fi
+\fi
+% Řešení problému, kdy klikací odkazy na obrázky vedou za obrázek
+% This solves the problems with links which leads after the picture
+\usepackage[all]{hypcap}
+
+% Informace o práci/projektu / Information about the thesis
+%---------------------------------------------------------------------------
+\projectinfo{
+  %Prace / Thesis
+  project={DP},            %typ práce BP/SP/DP/DR  / thesis type (SP = term project)
+  year={2023},             % rok odevzdání / year of submission
+  date=\today,             % datum odevzdání / submission date
+  %Nazev prace / thesis title
+  title.cs={Rozpoznání klávesnice a kláves v obraze},  % název práce v češtině či slovenštině (dle zadání) / thesis title in czech language (according to assignment)
+  title.en={Keyboard and Keys Image Recognition}, % název práce v angličtině / thesis title in english
+  %title.length={14.5cm}, % nastavení délky bloku s titulkem pro úpravu zalomení řádku (lze definovat zde nebo níže) / setting the length of a block with a thesis title for adjusting a line break (can be defined here or below)
+  %sectitle.length={14.5cm}, % nastavení délky bloku s druhým titulkem pro úpravu zalomení řádku (lze definovat zde nebo níže) / setting the length of a block with a second thesis title for adjusting a line break (can be defined here or below)
+  %Autor / Author
+  author.name={Jan},   % jméno autora / author name
+  author.surname={Lorenc},   % příjmení autora / author surname 
+  author.title.p={Bc.}, % titul před jménem (nepovinné) / title before the name (optional)
+  %author.title.a={Ph.D.}, % titul za jménem (nepovinné) / title after the name (optional)
+  %Ustav / Department
+  department={UIFS}, % doplňte příslušnou zkratku dle ústavu na zadání: UPSY/UIFS/UITS/UPGM / fill in appropriate abbreviation of the department according to assignment: UPSY/UIFS/UITS/UPGM
+  % Školitel / supervisor
+  supervisor.name={Jan},   % jméno školitele / supervisor name 
+  supervisor.surname={Pluskal},   % příjmení školitele / supervisor surname
+  supervisor.title.p={Ing.},   %titul před jménem (nepovinné) / title before the name (optional)
+  %supervisor.title.a={},    %titul za jménem (nepovinné) / title after the name (optional)
+  % Klíčová slova / keywords
+  keywords.cs={strojové učení, počítačové vidění, detekce objektů, rozpoznávání, neuronové sítě, Cannyho detektor hran, augmentace dat, detekce klávesnice, rozpoznání znaků}, % klíčová slova v českém či slovenském jazyce / keywords in czech or slovak language
+  keywords.en={machine learning, computer vision, object detection, recognition, neural networks, Canny edge detector, data augmentation, keyboard detection, character recognition}, % klíčová slova v anglickém jazyce / keywords in english
+  % Abstrakt / Abstract
+abstract.cs={Cílem práce je vytvoření řešení pro rozpoznání kláves na~klávesnici za~účelem automatizace robotického psaní na~klávesnici. V~rámci práce jsou vytvořeny datasety pro~detekci klávesnice v~obraze, rozpoznání znaků v~obraze a dodatečnou korekci detekovaných znaků na~základě různých rozložení klávesnic. Práce předkládá různé přístupy k~řešení problému rozpoznání znaků na~klávesnici a vybírá ten nejvhodnější. Navržený postup je rozdělen do~3~fází, kterým odpovídají připravené datasety. Pomocí neuronových sítí a Cannyho metody detekce hran se nejprve rozpozná klávesnice v~obraze a následně se v~nalezené klávesnici detekují jednotlivé znaky. V~poslední fázi dochází k~dodatečnému zpracování výsledků (oprava znaků, doplnění nerozpoznaných znaků, nalezení speciálních kláves~apod.). Pro každou část jsou vyhodnoceny výsledky. Přínos práce spočívá ve~vytvoření datasetů pro~detekci klávesnice a jejích kláves a především modulárního a  rozšiřitelného řešení pro detekční proces se~slibnými výsledky.}, % abstrakt v českém či slovenském jazyce / abstract in czech or slovak language
+  abstract.en={The goal of~this thesis is to~create a solution for~keyboard keys recognition to automate robotic writing on~keyboards. Datasets for~keyboard detection in~an image, character detection in~an image and post-processing correction of~the character detection based on~various keyboard layouts were created as prerequisites for this work. This research presents several approaches towards keyboard keys detection problem and selects the most suitable one. The~chosen strategy is to~split the problem into~3~phases which correspond to~the prepared datasets. First of all, a separate keyboard detection is run. After that, characters are recognized in~the detected keyboard region. These tasks are accomplished using neural networks and Canny edge detection technique. The last phase is the post-processing of~the detection results (character correction, autocompletion of undetected characters, special keys distinction etc.). The results of each phase are evaluated. The contribution of~the thesis lies in~the creation of~the datasets for~keyboard and keys detection, and novel modular and extensible solution for~the recognition process that yields very promising results.}, % abstrakt v anglickém jazyce / abstract in english
+  % Prohlášení (u anglicky psané práce anglicky, u slovensky psané práce slovensky) / Declaration (for thesis in english should be in english)
+  declaration={I hereby declare that this thesis was prepared as an original work by the author under the supervision of Ing. Jan Pluskal. The supplementary information was provided by the members of Y~Soft AIVA team. I have listed all the literary sources, publications and other sources, which were used during the preparation of this thesis.},
+  % Poděkování (nepovinné, nejlépe v jazyce práce) / Acknowledgement (optional, ideally in the language of the thesis)
+  acknowledgment={I would like to give my sincere thanks to the supervisor of the thesis Ing. Jan Pluskal for his expert guidance. Furthermore, I thank the Y Soft Corporation a.s. and especially the AIVA team for making this thesis possible and for useful advice.},
+  % Rozšířený abstrakt (cca 3 normostrany) - lze definovat zde nebo níže / Extended abstract (approximately 3 standard pages) - can be defined here or below
+  extendedabstract={Práce se zabývá rozpoznáním klávesnice a jejích kláves v~obraze. Námět vzešel z~firmy Y~Soft vyvýjející robotické řešení k~ovládání hardwarových zařízení. To lze využít například k~automatizaci testování daných přístrojů. Aktuálním cílem je naučit robota autonomně psát na~klávesnici, k~čemuž je potřeba dokázat klávesnici s~jejím obsahem rozpoznat. Úloha je rozdělena na~3~úkoly. Nejprve je třeba detekovat samostatnou klávesnici v~obraze. Dále se naleznou jednotlivé klávesy s~cílem rozpoznat především alfanumerické znaky. Na~závěr se dodatečně zpracují výsledky na~základě podporovaných rozložní klávesnic za~účelem oprav chyb, dopočítání nedetekovaných kláves, nalezení klíčových slov apod. Pro~každou podúlohu jsou připraveny patřičné datové sady.
+  
+  Při průzkumu existujících řešení bylo nalezeno pouze jedno a v~práci je dále popsáno. Taktéž rozpoznává klávesnici s jejími znaky a posloužilo k~inspiraci. Nicméně, nebere v~potaz speciální znaky a nedokáže rozpoznat speciální klávesy, pokud na~nich není ikona. Navíc, ani kód ani datové sady se nepodařilo veřejně dohledat. Z~toho vyplývá, že dle průzkumu této práce neexistuje jiné dostupné řešení daného problému ani data k~jeho realizaci.
+  
+  Datové sady byly vytvořeny celkem~tři. První se týká klávesnic a slouží k~trénování a validaci neuronové sítě k~detekci objektů v~obraze, kde jedinou třídou je právě klávesnice. Z~odlišných zařízení (telefony, televize, tiskárny, infotainmenty aut...) bylo dohromady na\-sbíráno~615~klávesnic různých typů (qwerty/abecední/numerické, fyzické/digitální). Tyto byly augmentovány na~20~000~obrázků, v~rámci čehož byly generovány na~různá pozadí. Těmi byly buď náhodná scéna ze~sady COCO17, nebo shodné pozadí s~pozadím klávesnice. K~augmentaci byly použity metody jako škálování, rozostření, změna světla či průhlednosti nebo přidání různých šumů a moiré efektů. Další datová sada obsahuje~99~různých znaků či ikon speciálních kláves a taktéž slouží k~trénování detektoru. Tato sada je reali\-zována v šedotónové barevné paletě. Důvodem pro tuto volbu je vysoký kontrast mezi pozadím klávesnice a samotnými znaky. Převedením do~šedotónových odstínů lze minimali\-zovat potenciální vizuální rušivé faktory, spojené s~různými barevnými designy uživatelských rozhraní. Znaky jsou generovány na~jednobarevné pozadí náhodného odstínu šedi, což odpovídá pozadí klávesnic. Metody augmentace jsou použity stejné jako u~klávesnic a celkem bylo vytvořeno~40~000~obrázků. Poslední datová sada je ryze validační a slouží ke~kontrole výstupů algoritmu následného zpracování výstupů detekce.
+  
+  Pro~rozpoznání klávesnice v~obraze byla použita zmenšená verze současného state-of-the-art detektoru pro~rozpoznání objektů v~obraze YOLOv7. Tato zmenšená verze dosáhla srovnatelné přesnosti jako originální, přičemž je však násobně rychlejší a využívá mnohem méně výpočetních prostředků. Velikost vstupních obrázků detektoru je~640x640~pixelů, avšak pro~jinou velikost proběhne automaticky škálování či výplň. Výstup detektoru klávesnic, tedy rozpoznaný region klávesnice, je pak použit jako vstup pro~detektor znaků. Zde je znovu použit YOLOv7 detektor a byly opět trénovány různé verze. Zmenšená verze tu již nedosahovala stejných výsledků jako originální, nicméně výsledky algoritmu následného zpracování prokázaly, že obě verze jsou funkční a prakticky použitelné. Nicméně, ku~pří\-kladu mezerník je velmi často prázdná klávesa a zatímco v~obecnosti platí, že znak reprezentuje klávesu, není tomu tak vždy. Z~toho důvodu je paralelně provedena i detekce hran pomocí Cannyho metody. Výsledky detekce hran jsou pak použity algoritmem následného zpracování. Cílem tohoto algoritmu je rozpoznání rozložení klávesnice a dle toho korekce chyb. Je schopen doplnit nedetekované znaky, opravit pozice detekovaných, opravit velká a malá písmena těžko rozpoznatelných znaků jako x~vs.~X, o~vs.~O~atd. Dále, na některých klávesách se může vyskytovat více znaků platících pro~jiný mód klávesnice. Algoritmus se pak snaží určit, o~kterou klávesu se jedná. Významnou součástí je také rozpoznání klíčových slov, tedy sloučení korespondujících a sousedících znaků do~slova a označení správnou třídou. Na~závěr, \hbox{nejsou-li} nalezené vybrané speciální klávesy, dojde k~pokusu je uhodnout dle výstupu Cannyho detektoru hran.
+  
+  Všechny~3~úlohy byly vyhodnoceny samostatně na~svých datových sadách. Výborného výsledku dosáhl detektor klávesnic, který korektně rozpoznal každou klávesnici v~testovacích datech. Detektor znaků již tak přesný nebyl, nicméně to se ani neočekávalo z~několika důvodů. Rozpoznává i velmi těžké speciální znaky jako jsou tečky, čárky středníky apod. Dále existuje již zmíněná problematika podobných velkých a malých písmen (x~vs.~X). Navzdory tomu však taktéž dosahuje velice kvalitních výsledků a to nejen v~originální verzi modelu, ale i ve~zmenšené. Oba modely mají přesnost alespoň 95~\%, nicméně úplnost menšího modelu značně zaostává. Rozdíl mezi zmenšenou a originální verzí modelu je však smazán použitím algoritmu následného zpracování. Jelikož je schopen dopočítat vynechané znaky, nižší úplnost menšího modelu nevadí, dokud rozpozná alespoň něco. Naopak, tím, že zmenšený model nabízí při stejném prahu jistoty méně znaků, produkuje i méně chybných pozitivních detekcí a tím i méně mate daný algoritmus. Proto dokonce po~aplikaci algoritmu následného zpracování produkuje na~konečné validační datové sadě i lehce lepší výsledky, než-li originální model.
+  
+  Výstupem práce je pak modulární funkční řešení problému rozpoznání klávesnice a kláves v~obraze. Libovolný model je možné přetrénovat či vyměnit za jiný. Podobně lze snadno přidat či modifikovat následné zpracování výsledků. Řešení bude integrováno do~produkční verze systému Y~Soft~AIVA. Navíc nabízí datové sady klávesnic a znaků použitelné i pro~jiné modely či úkoly. Práce se také účastnila konference Excel@FIT 2023, kde byla oceněna odbornou veřejností cenou Jiřího Kunovského.
+},
+  %faculty={FIT}, % FIT/FEKT/FSI/FA/FCH/FP/FAST/FAVU/USI/DEF
+  faculty.cs={Fakulta informačních technologií}, % Fakulta v češtině - pro využití této položky výše zvolte fakultu DEF / Faculty in Czech - for use of this entry select DEF above
+  faculty.en={Faculty of Information Technology}, % Fakulta v angličtině - pro využití této položky výše zvolte fakultu DEF / Faculty in English - for use of this entry select DEF above
+  %department.cs={Ústav matematiky}, % Ústav v češtině - pro využití této položky výše zvolte ústav DEF nebo jej zakomentujte / Department in Czech - for use of this entry select DEF above or comment it out
+  %department.en={Institute of Mathematics} % Ústav v angličtině - pro využití této položky výše zvolte ústav DEF nebo jej zakomentujte / Department in English - for use of this entry select DEF above or comment it out
+}
+
+% Rozšířený abstrakt (cca 3 normostrany) - lze definovat zde nebo výše / Extended abstract (approximately 3 standard pages) - can be defined here or above
+%\extendedabstract{Do tohoto odstavce bude zapsán výtah (abstrakt) práce v českém (slovenském) jazyce.}
+
+% nastavení délky bloku s titulkem pro úpravu zalomení řádku - lze definovat zde nebo výše / setting the length of a block with a thesis title for adjusting a line break - can be defined here or above
+%\titlelength{14.5cm}
+% nastavení délky bloku s druhým titulkem pro úpravu zalomení řádku - lze definovat zde nebo výše / setting the length of a block with a second thesis title for adjusting a line break - can be defined here or above
+%\sectitlelength{14.5cm}
+
+% řeší první/poslední řádek odstavce na předchozí/následující stránce
+% solves first/last row of the paragraph on the previous/next page
+\clubpenalty=10000
+\widowpenalty=10000
+
+% checklist
+\newlist{checklist}{itemize}{1}
+\setlist[checklist]{label=$\square$}
+
+\begin{document}
+  % Vysazeni titulnich stran / Typesetting of the title pages
+  % ----------------------------------------------
+  \maketitle
+  % Obsah
+  % ----------------------------------------------
+  \setlength{\parskip}{0pt}
+
+  {\hypersetup{hidelinks}\tableofcontents}
+  
+  % Seznam obrazku a tabulek (pokud prace obsahuje velke mnozstvi obrazku, tak se to hodi)
+  % List of figures and list of tables (if the thesis contains a lot of pictures, it is good)
+  \ifczech
+    \renewcommand\listfigurename{Seznam obrázků}
+  \fi
+  \ifslovak
+    \renewcommand\listfigurename{Zoznam obrázkov}
+  \fi
+  % {\hypersetup{hidelinks}\listoffigures}
+  
+  \ifczech
+    \renewcommand\listtablename{Seznam tabulek}
+  \fi
+  \ifslovak
+    \renewcommand\listtablename{Zoznam tabuliek}
+  \fi
+  % {\hypersetup{hidelinks}\listoftables}
+
+  \ifODSAZ
+    \setlength{\parskip}{0.5\bigskipamount}
+  \else
+    \setlength{\parskip}{0pt}
+  \fi
+
+  % vynechani stranky v oboustrannem rezimu
+  % Skip the page in the two-sided mode
+  \iftwoside
+    \cleardoublepage
+  \fi
+
+  % Text prace / Thesis text
+  % ----------------------------------------------
+  \input{01-Intro}
+  \input{02-Algorithms}
+  \input{03-Dataset}
+  \input{04-Design-and-implementation}
+  \input{05-Evaluation}
+  \input{06-Conclusion}
+  
+  % Kompilace po částech (viz výše, nutno odkomentovat)
+  % Compilation piecewise (see above, it is necessary to uncomment it)
+  %\subfile{projekt-01-uvod-introduction}
+  % ...
+  %\subfile{chapters/projekt-05-conclusion}
+
+
+  % Pouzita literatura / Bibliography
+  % ----------------------------------------------
+\ifslovak
+  \makeatletter
+  \def\@openbib@code{\addcontentsline{toc}{chapter}{Literatúra}}
+  \makeatother
+  \bibliographystyle{bib-styles/Pysny/skplain}
+\else
+  \ifczech
+    \makeatletter
+    \def\@openbib@code{\addcontentsline{toc}{chapter}{Literatura}}
+    \makeatother
+    \bibliographystyle{bib-styles/Pysny/czplain}
+  \else 
+    \makeatletter
+    \def\@openbib@code{\addcontentsline{toc}{chapter}{Bibliography}}
+    \makeatother
+    \bibliographystyle{bib-styles/Pysny/enplain}
+  %  \bibliographystyle{alpha}
+  \fi
+\fi
+  \begin{flushleft}
+  \bibliography{Bibliography}
+  \end{flushleft}
+
+  % vynechani stranky v oboustrannem rezimu
+  % Skip the page in the two-sided mode
+  \iftwoside
+    \cleardoublepage
+  \fi
+
+  % Prilohy / Appendices
+  % ---------------------------------------------
+  \appendix
+\ifczech
+  \renewcommand{\appendixpagename}{Přílohy}
+  \renewcommand{\appendixtocname}{Přílohy}
+  \renewcommand{\appendixname}{Příloha}
+\fi
+\ifslovak
+  \renewcommand{\appendixpagename}{Prílohy}
+  \renewcommand{\appendixtocname}{Prílohy}
+  \renewcommand{\appendixname}{Príloha}
+\fi
+%  \appendixpage
+
+% vynechani stranky v oboustrannem rezimu
+% Skip the page in the two-sided mode
+%\iftwoside
+%  \cleardoublepage
+%\fi
+  
+\ifslovak
+%  \section*{Zoznam príloh}
+%  \addcontentsline{toc}{section}{Zoznam príloh}
+\else
+  \ifczech
+%    \section*{Seznam příloh}
+%    \addcontentsline{toc}{section}{Seznam příloh}
+  \else
+%    \section*{List of Appendices}
+%    \addcontentsline{toc}{section}{List of Appendices}
+  \fi
+\fi
+  \startcontents[chapters]
+  \setlength{\parskip}{0pt} 
+  % seznam příloh / list of appendices
+  % \printcontents[chapters]{l}{0}{\setcounter{tocdepth}{2}}
+  
+  \ifODSAZ
+    \setlength{\parskip}{0.5\bigskipamount}
+  \else
+    \setlength{\parskip}{0pt}
+  \fi
+  
+  % vynechani stranky v oboustrannem rezimu
+  \iftwoside
+    \cleardoublepage
+  \fi
+  
+  % Přílohy / Appendices
+  \input{07-Appendix}
+  
+  % Kompilace po částech (viz výše, nutno odkomentovat)
+  % Compilation piecewise (see above, it is necessary to uncomment it)
+  %\subfile{projekt-30-prilohy-appendices}
+  
+\end{document}

@@ -1,0 +1,18 @@
+# File: keyboards-local.py
+# Solution: [Thesis] Keyboard and Keys Image Recognition
+# Year: 2022/2023
+# Author: Jan Lorenc
+# University: Brno University of Technology
+# Faculty: Faculty of Information Technology
+# Description: Training settings for keyboard detection.
+
+# path to data ... labels are expected to be in the same path but with 'labels' instead of 'images'
+train: ../../data/dataset/keyboards/sample/images/train
+val: ../../data/dataset/keyboards/sample/images/val
+test: ../../data/dataset/keyboards/sample/images/test
+
+# number of classes - just 1 - keyboard
+nc: 1
+
+# class names
+names: ["keyboard"]

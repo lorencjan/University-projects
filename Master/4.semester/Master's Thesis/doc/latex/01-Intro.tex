@@ -1,0 +1,49 @@
+\chapter{Introduction}
+\label{introduction}
+
+Object detection is one of~the most commonly used techniques in~the image processing field. Its aim is to~locate objects such as people, cars, animals etc. in~an image or a~video, construct bounding boxes for such objects and correctly label them. As of~today, the application of~object detection is used in~various areas. For~self-driving cars, it is of~utmost importance to~recognize obstacles. To~gather information about customers, people counting systems are used. In~agriculture, animals can be monitored thanks to object detection. Countless other domains including anomaly detection, security or medicine benefit from~it. In~this work, object detection is employed for~automation, namely for automatic keyboard typing.
+
+\section{Current state of keyboard and keys detection}
+\label{introduction-current-state}
+At~the time of~writing the thesis, only one solution for~keyboard and keys detection seems to have been published. Researchers from Amazon have a robotic framework for~testing mobile devices and they need to~recognize keyboards and their keys so that their robots can automatically type~\cite{amazon-framework}. This is essentially the same problem as mine and they solve it in~another paper~\cite{amazon-paper}. However, their solution focuses primarily on~mobile Android and iOS devices while there are other devices such as printers, car infotainments, e-book readers etc. which might not even have a digital keyboard but a physical one. Moreover, neither the code nor the dataset can be easily found, if they are even publicly available, so it doesn't look to be a reusable solution.
+
+Should we split the problems into~just keyboard detection and keys detection, more options can be found. Keyboards can be recognized by~standard object detection methods and even cameras on most modern smartphones can detect keyboards. There even exist some libraries~\cite{github-keyboard-1, github-keyboard-2} which can detect a keyboard on~the screen, but rather than image recognition they usually just use the UI API of~the device operating system to~get information about~the layout of~the UI elements.
+
+The problem of~keys detection can be viewed as~a~single-character recognition. There exist a huge amount of research and available methods for~OCR technologies which might solve this issue. Nevertheless, after testing several popular OCRs both open-source\footnote[1]{Tesseract, EAST, CRAFT} and commercial\footnote[2]{Google, Microsoft}, the OCR were insufficient for~the task. The~main problem is that they try to~join the characters to~words as~the major focus of~most OCRs is to~detect text in~scenes and not single characters. Even the CRAFT OCR~\cite{craft-paper} which doesn't search for~words but for~letters doesn't produce satisfying results. The~reason for~this is that the letters are further merged into~words based on~an affinity score which is nearly impossible to~find so it is general. To~the same conclusion, that the OCR is not the way to~solve this problem, came even the above-mentioned Amazon researchers in~their paper~\cite{amazon-paper}.
+
+The final issue with~keyboard detection and its keys is a non-existent dataset. There cannot be found any set of~keyboards to be used for~keyboard detection, let alone \mbox{annotated}. The Amazon researchers struggled with this as~well and were forced to~download \mbox{various} keyboards from internet search engines and manually label them~\cite{amazon-paper}. However, as~\mbox{already} mentioned, this dataset doesn't seem to be publicly available either.
+
+To summarize, a general public solution for~keyboard and~keys detection task is nowhere to be found. Existing available methods are not suitable either. In~addition, according to this work's research there is no dataset that can be used for~solving this problem and comparing against it.
+
+\section{Motivation}
+\label{introduction-motivation}
+While the creation of~an open-source solution for~keyboards and keys detection along with~a dataset is an incentive of its own, it is not the fundamental reason for~this work. Apart~from~the Amazon robotic testing system, there exists another. Y~Soft Corporation has developed a robotic system AIVA for~testing and remote-controlling devices. The idea for~this work originated from~the need for~learning AIVA to~write on~a keyboard by~itself to~further automate the testing processes.
+
+The current process of~writing on~a keyboard in~the AIVA system is as~follows. There are images of~known target device screens in~the system. Screens with~the possibility of~a keyboard needs to~have a second variant with~the keyboard displayed. Furthermore, each screen must have defined actionable elements such as~buttons or input fields. In~the case of~a keyboard screen, every keyboard key has its own button element defined. In~a test scenario, all of~this is specified and a test flow of~filling a login "uSer" can look like this:
+
+\begin{enumerate}[topsep=0pt,itemsep=-1.5pt,partopsep=6pt]
+  \item Go to screen \say{Login screen}
+  \item Go to screen \say{Login screen with keyboard}
+  \item Tap element \say{u}
+  \item Tap element \say{shift}
+  \item Tap element \say{s}
+  \item Tap element \say{shift}
+  \item Tap element \say{e}
+  \item Tap element \say{r}
+\end{enumerate}
+
+The system naturally provides the user with~a set of~flow actions which simplify the text writing so that one doesn't need to~specify each letter individually. Nevertheless, this set of~actions is what it is translated to on~the backend eventually. Moreover, the usage of~special keys like \say{shift} often forces the explicit writing of~letters anyway. Consequently, automatic recognition of~keyboard keys would allow the creation of a single flow action capable of~distinguishing keyboard modes, switching them using special keys and hence writing any text without the need of~specifying any key elements. Furthermore, duplicate screen definitions just with~a keyboard on~them would no longer be required owing to~the keyboard detection.
+
+\section{Expectations}
+\label{introduction-expectation}
+The AIVA system already has several features which can help with~the task specification in~more depth and definition of~what exactly is expected of the thesis. Firstly, full-HD cameras are used in~all AIVA units so high-quality images can be presumed. Secondly, AIVA units always operate in~a lab or an office environment. Therefore, image noise caused by~natural elements such as rain doesn't need to be taken into~account. Lastly, a~camera calibration system is in~place which means that it is possible to~obtain just the device screen (zoomed without any background) still in~full-HD quality and without~any rotation or distortion. With~these system properties being defined, solution requirements can be further described.
+
+One of~the key requirements is the very ability to~detect a keyboard in~an image. This task is needed quite often both for~validation of~test steps and navigation on~and between the screens. To~solve this problem, research into~object detection algorithms has been done and further described in~chapter~\ref{algorithms}. Then, a~dataset for~training a~model must have been created about which refers chapter~\ref{dataset-keyboards}. Final model architecture is illustrated in~chapter~\ref{design-keyboard}.
+
+The expected thesis outcome is the means for typing automation though. For~that reason another detection model is required, now for~the keyboard keys with~the objective to~recognize alphanumeric characters and basic special keys (space, enter, shift...). Optional inclusion of~special characters would be a benefit, however, problematic keys can still be defined explicitly the old way. More about the dataset creation can be found in~chapters~\ref{dataset-characters} and~\ref{dataset-postprocessing}. Solution design is described in~chapter~\ref{design-and-implementation}.
+
+\section{Contributions}
+\label{introduction-contributions}
+There are two areas which benefit from~this work, as~the previous sections might have \mbox{already} hinted. Regarding the public, open-source neural network models for~both keyboard region detection and keyboard keys recognition in~an image are provided. Along~with that, an algorithm for~keys correction based on~keyboard layout is devised. Furthermore, datasets for all three tasks are created and available. Being split into several parts, the solution can be used for~individual problems as~well as for~the whole keyboard automation issue.
+
+Concerning Y~Soft company, the thesis provides a new set of~features for~automatic keyboard typing. Compared to~the old approach, it removes the need for~keys definition completely. Moreover, a duplicate screen definition for~the same screen, just with the keyboard opened, is no longer required. This also leads to~simpler navigation between screens. The automatic key detection can be used to~switch between the keyboard modes and find a target character elsewhere. Thanks to all of~that, the test case scenario can be significantly reduced. At~the end of~the day, it makes AIVA one step smarter and the job of~a quality assurance engineer easier.

@@ -1,0 +1,18 @@
+# File: keyboards-kaggle.py
+# Solution: [Thesis] Keyboard and Keys Image Recognition
+# Year: 2022/2023
+# Author: Jan Lorenc
+# University: Brno University of Technology
+# Faculty: Faculty of Information Technology
+# Description: Training settings for keyboard detection.
+
+# path to data ... labels are expected to be in the same path but with 'labels' instead of 'images'
+train: /kaggle/input/keyboards-dataset-for-yolov7/images/train
+val: /kaggle/input/keyboards-dataset-for-yolov7/images/val
+test: /kaggle/input/keyboards-dataset-for-yolov7/images/test
+
+# number of classes - just 1 - keyboard
+nc: 1
+
+# class names
+names: ["keyboard"]

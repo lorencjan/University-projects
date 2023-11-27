@@ -1,0 +1,1 @@
+Trained models can be found [here](https://www.kaggle.com/datasets/lorencjan/keyboard-and-character-recognition-models)
